@@ -18,6 +18,7 @@
 		1AD6D41423BF9DBF000B1893 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AD6D41223BF9DBF000B1893 /* LaunchScreen.storyboard */; };
 		1AD6D41F23BF9DBF000B1893 /* MNT_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD6D41E23BF9DBF000B1893 /* MNT_iOSTests.swift */; };
 		1AD6D42A23BF9DBF000B1893 /* MNT_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD6D42923BF9DBF000B1893 /* MNT_iOSUITests.swift */; };
+		1AFC040223C99841005B7A6F /* Objects+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFC040123C99841005B7A6F /* Objects+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		1AD6D42523BF9DBF000B1893 /* MNT_iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MNT_iOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AD6D42923BF9DBF000B1893 /* MNT_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNT_iOSUITests.swift; sourceTree = "<group>"; };
 		1AD6D42B23BF9DBF000B1893 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1AFC040123C99841005B7A6F /* Objects+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Objects+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 		1AD6D40323BF9DBC000B1893 /* MNT_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				1AFC040023C99831005B7A6F /* Extensions */,
 				1A49808323C967AF004B4058 /* ViewControllers */,
 				1AD6D40423BF9DBC000B1893 /* AppDelegate.swift */,
 				1AD6D40623BF9DBC000B1893 /* SceneDelegate.swift */,
@@ -154,6 +157,14 @@
 				1AD6D42B23BF9DBF000B1893 /* Info.plist */,
 			);
 			path = MNT_iOSUITests;
+			sourceTree = "<group>";
+		};
+		1AFC040023C99831005B7A6F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1AFC040123C99841005B7A6F /* Objects+.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -287,6 +298,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AFC040223C99841005B7A6F /* Objects+.swift in Sources */,
 				1AD6D40923BF9DBC000B1893 /* ViewController.swift in Sources */,
 				1AD6D40F23BF9DBC000B1893 /* MNT_iOS.xcdatamodeld in Sources */,
 				1AD6D40523BF9DBC000B1893 /* AppDelegate.swift in Sources */,

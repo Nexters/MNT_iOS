@@ -21,6 +21,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(self.className + "is O[pened")
         // Do any additional setup after loading the view.
     }
 

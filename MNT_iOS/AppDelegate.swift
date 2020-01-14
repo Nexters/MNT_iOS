@@ -16,31 +16,72 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK:- APP Lifecycle
     
+    var loginViewController: UIViewController?
+    var mainViewController: UIViewController?
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        // 로그인,로그아웃 상태 변경 받기
+        setupEntryControllers()
         window = UIWindow()
-        window?.rootViewController = LoginController()
-        window?.makeKeyAndVisible()
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(AppDelegate.kakaoSessionDidChangeWithNotification),
+                                               name: NSNotification.Name.KOSessionDidChange,
+                                               object: nil)
+        
+        reloadRootViewController()
         
         return true
     }
     
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        //카카오 로그인 페이지만 보여주는 것. 토큰 처리는 따로 필요
-        if KOSession.isKakaoAgeAuthCallback(url.absoluteURL) {
-            return KOSession.handleOpen(url)
-        }
+    fileprivate func setupEntryControllers() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let navigationController = storyboard.instantiateViewController(withIdentifier: UINavigationController.className) as! UINavigationController
+        let navigationController2 = storyboard.instantiateViewController(withIdentifier: UINavigationController.className) as! UINavigationController
         
-        return true
+        let viewController = storyboard.instantiateViewController(withIdentifier: LoginController.className) as UIViewController
+        navigationController.pushViewController(viewController, animated: true)
+        self.loginViewController = navigationController
+        
+        let viewController2 = storyboard.instantiateViewController(withIdentifier: ViewController.className) as UIViewController
+        navigationController2.pushViewController(viewController2, animated: true)
+        self.mainViewController = navigationController2
+    }
+    
+    fileprivate func reloadRootViewController() {
+        guard let isOpened = KOSession.shared()?.isOpen() else { return }
+        if !isOpened {
+            let mainViewController = self.mainViewController as! UINavigationController
+            mainViewController.popToRootViewController(animated: true)
+        }
+        self.window?.rootViewController = isOpened ? self.mainViewController : self.loginViewController
+        self.window?.makeKeyAndVisible()
+    }
+    
+    @objc fileprivate func kakaoSessionDidChangeWithNotification() {
+        reloadRootViewController()
     }
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        //카카오 로그인 페이지만 보여주는 것. 토큰 처리는 따로 필요
-        if KOSession.isKakaoAgeAuthCallback(url.absoluteURL) {
-            return KOSession.handleOpen(url)
+        if KOSession.handleOpen(url) {
+            return true
         }
-        
-        return true
+        return false
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
+        if KOSession.handleOpen(url) {
+            return true
+        }
+        return false
+    }
+
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        KOSession.handleDidEnterBackground()
+    }
+
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        KOSession.handleDidBecomeActive()
     }
 
     // MARK: UISceneSession Lifecycle
@@ -49,6 +90,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         // Called when a new scene session is being created.
         // Use this method to select a configuration to create the new scene with.
+        
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
 
