@@ -42,8 +42,8 @@ class LoginController: UIViewController {
                     let nickname = user.nickname else { return }
                 
                 let mainVC = ViewController()
-                mainVC.emailLabel.text = email
                 mainVC.nicknameLabel.text = nickname
+                mainVC.profileImageView.kf.setImage(with: user.profileImageURL)
                 mainVC.modalPresentationStyle = .fullScreen
                 
                 self.present(mainVC, animated: false, completion: nil)

@@ -11,14 +11,14 @@
         <!--Navigation Controller-->
         <scene sceneID="urI-DU-TPd">
             <objects>
-                <navigationController restorationIdentifier="UINavigationController" storyboardIdentifier="UINavigationController" id="gYV-tL-xfu" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="navigator" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gYV-tL-xfu" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Fx9-h0-B9O">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="LtD-gU-Yp2" kind="show" identifier="main" id="LCp-ir-a3P"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="login" id="Fcn-MW-d98"/>
+                        <segue destination="LtD-gU-Yp2" kind="show" identifier="login" id="LCp-ir-a3P"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="main" id="Fcn-MW-d98"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f3W-AQ-3Ge" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -28,7 +28,7 @@
         <!--Login Controller-->
         <scene sceneID="R6j-11-h2N">
             <objects>
-                <viewController storyboardIdentifier="LoginController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="LtD-gU-Yp2" customClass="LoginController" customModule="MNT_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="login" useStoryboardIdentifierAsRestorationIdentifier="YES" id="LtD-gU-Yp2" customClass="LoginController" customModule="MNT_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MyN-Uh-NM0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -44,7 +44,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="MNT_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="main" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="MNT_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
