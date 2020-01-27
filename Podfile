@@ -6,9 +6,10 @@ target 'MNT_iOS' do
   use_frameworks!
 
   # Pods for MNT_iOS
-  pod 'SDWebImage'
   pod 'JGProgressHUD'
   pod 'Kingfisher'
+  pod 'RxSwift'
+  pod 'RxCocoa'
 
   target 'MNT_iOSTests' do
     inherit! :search_paths

@@ -3,12 +3,21 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		1A49808523C967C1004B4058 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A49808423C967C1004B4058 /* LoginController.swift */; };
 		1A49808A23C96B57004B4058 /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A49808923C96B57004B4058 /* KakaoOpenSDK.framework */; };
+		1AAB0E2B23DECA080003A2C4 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAB0E2A23DECA080003A2C4 /* View+.swift */; };
+		1AAB0E2D23DECBDE0003A2C4 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAB0E2C23DECBDE0003A2C4 /* UIButton+.swift */; };
+		1AAB0E2F23DECBFF0003A2C4 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAB0E2E23DECBFF0003A2C4 /* UILabel+.swift */; };
+		1AAB0E3123DECC2C0003A2C4 /* CircularImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAB0E3023DECC2C0003A2C4 /* CircularImageView.swift */; };
+		1AAB0E3323DECC770003A2C4 /* UIView+Stacking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAB0E3223DECC770003A2C4 /* UIView+Stacking.swift */; };
+		1AAB0E3523DED2310003A2C4 /* NSObject+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAB0E3423DED2310003A2C4 /* NSObject+Rx.swift */; };
+		1AAB0E3823DED4240003A2C4 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAB0E3723DED4240003A2C4 /* BaseViewController.swift */; };
+		1AAB0E3A23DED4980003A2C4 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAB0E3923DED4980003A2C4 /* BaseViewModel.swift */; };
+		1AAB0E3C23DED4C50003A2C4 /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAB0E3B23DED4C50003A2C4 /* ViewModelProtocol.swift */; };
 		1AD6D40523BF9DBC000B1893 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD6D40423BF9DBC000B1893 /* AppDelegate.swift */; };
 		1AD6D40723BF9DBC000B1893 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD6D40623BF9DBC000B1893 /* SceneDelegate.swift */; };
 		1AD6D40923BF9DBC000B1893 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD6D40823BF9DBC000B1893 /* ViewController.swift */; };
@@ -46,6 +55,15 @@
 		1A49808423C967C1004B4058 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		1A49808623C96925004B4058 /* KakaoOpenSDK-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KakaoOpenSDK-Bridging-Header.h"; sourceTree = "<group>"; };
 		1A49808923C96B57004B4058 /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoOpenSDK.framework; sourceTree = "<group>"; };
+		1AAB0E2A23DECA080003A2C4 /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
+		1AAB0E2C23DECBDE0003A2C4 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
+		1AAB0E2E23DECBFF0003A2C4 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
+		1AAB0E3023DECC2C0003A2C4 /* CircularImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularImageView.swift; sourceTree = "<group>"; };
+		1AAB0E3223DECC770003A2C4 /* UIView+Stacking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Stacking.swift"; sourceTree = "<group>"; };
+		1AAB0E3423DED2310003A2C4 /* NSObject+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Rx.swift"; sourceTree = "<group>"; };
+		1AAB0E3723DED4240003A2C4 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		1AAB0E3923DED4980003A2C4 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		1AAB0E3B23DED4C50003A2C4 /* ViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
 		1AD6D40123BF9DBC000B1893 /* MNT_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MNT_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AD6D40423BF9DBC000B1893 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1AD6D40623BF9DBC000B1893 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -121,6 +139,16 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
+		1AAB0E3623DED4190003A2C4 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				1AAB0E3723DED4240003A2C4 /* BaseViewController.swift */,
+				1AAB0E3923DED4980003A2C4 /* BaseViewModel.swift */,
+				1AAB0E3B23DED4C50003A2C4 /* ViewModelProtocol.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
 		1AD6D3F823BF9DBC000B1893 = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +175,7 @@
 		1AD6D40323BF9DBC000B1893 /* MNT_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				1AAB0E3623DED4190003A2C4 /* Base */,
 				1AFC040023C99831005B7A6F /* Extensions */,
 				1A49808323C967AF004B4058 /* ViewControllers */,
 				1AD6D40423BF9DBC000B1893 /* AppDelegate.swift */,
@@ -182,6 +211,12 @@
 			isa = PBXGroup;
 			children = (
 				1AFC040123C99841005B7A6F /* Objects+.swift */,
+				1AAB0E2A23DECA080003A2C4 /* View+.swift */,
+				1AAB0E2C23DECBDE0003A2C4 /* UIButton+.swift */,
+				1AAB0E2E23DECBFF0003A2C4 /* UILabel+.swift */,
+				1AAB0E3023DECC2C0003A2C4 /* CircularImageView.swift */,
+				1AAB0E3223DECC770003A2C4 /* UIView+Stacking.swift */,
+				1AAB0E3423DED2310003A2C4 /* NSObject+Rx.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -196,7 +231,6 @@
 				AB74A15F01BF71A867A7F874 /* Pods-MNT_iOSTests.debug.xcconfig */,
 				341C7360E22267225953F064 /* Pods-MNT_iOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -439,12 +473,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AAB0E3823DED4240003A2C4 /* BaseViewController.swift in Sources */,
+				1AAB0E2F23DECBFF0003A2C4 /* UILabel+.swift in Sources */,
 				1AFC040223C99841005B7A6F /* Objects+.swift in Sources */,
+				1AAB0E3A23DED4980003A2C4 /* BaseViewModel.swift in Sources */,
 				1AD6D40923BF9DBC000B1893 /* ViewController.swift in Sources */,
 				1AD6D40F23BF9DBC000B1893 /* MNT_iOS.xcdatamodeld in Sources */,
 				1AD6D40523BF9DBC000B1893 /* AppDelegate.swift in Sources */,
+				1AAB0E3523DED2310003A2C4 /* NSObject+Rx.swift in Sources */,
+				1AAB0E3123DECC2C0003A2C4 /* CircularImageView.swift in Sources */,
+				1AAB0E2B23DECA080003A2C4 /* View+.swift in Sources */,
 				1AD6D40723BF9DBC000B1893 /* SceneDelegate.swift in Sources */,
+				1AAB0E3C23DED4C50003A2C4 /* ViewModelProtocol.swift in Sources */,
+				1AAB0E3323DECC770003A2C4 /* UIView+Stacking.swift in Sources */,
 				1A49808523C967C1004B4058 /* LoginController.swift in Sources */,
+				1AAB0E2D23DECBDE0003A2C4 /* UIButton+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

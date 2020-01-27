@@ -8,6 +8,8 @@
 
 import UIKit
 import Kingfisher
+import RxSwift
+import RxCocoa
 
 class ViewController: UIViewController {
     
@@ -20,12 +22,20 @@ class ViewController: UIViewController {
         lb.adjustsFontSizeToFitWidth = true
         return lb
     }()
+    
     let profileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
         imageView.backgroundColor = .blue
         return imageView
+    }()
+    
+    let button = UIButton(title: "Goto", titleColor: .black)
+    let textfield: UITextField = {
+        let tf = UITextField()
+        tf.placeholder = "마 적어바라"
+        return tf
     }()
 
     override func viewDidLoad() {
@@ -36,19 +46,20 @@ class ViewController: UIViewController {
     }
 
     fileprivate func setupLayout() {
-        view.addSubview(nicknameLabel)
-        view.addSubview(profileImageView)
+        let stackView = view.stack(profileImageView,
+                   nicknameLabel,
+                   textfield,
+                   button,
+            distribution: .fillEqually)
+            
+        stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 200)
         
-        NSLayoutConstraint.activate([
-            nicknameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            nicknameLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            nicknameLabel.heightAnchor.constraint(equalToConstant: 30),
-            nicknameLabel.widthAnchor.constraint(equalToConstant: 80),
-            profileImageView.widthAnchor.constraint(equalToConstant: 100),
-            profileImageView.heightAnchor.constraint(equalToConstant: 100),
-            profileImageView.bottomAnchor.constraint(equalTo: nicknameLabel.topAnchor, constant: -40),
-            profileImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-        ])
+        let tapGest = UITapGestureRecognizer()
+        view.addGestureRecognizer(tapGest)
+        
+        tapGest.rx.event.bind { (recognizer) in
+            self.view.endEditing(true)
+        }.disposed(by: rx.disposeBag)
     }
     
     fileprivate func requestMe() {
