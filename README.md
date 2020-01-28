@@ -1,2 +1,2 @@
-# MNT_IOS
-MNT IOS repository
+# MNT_iOS
+MNT iOS repository
