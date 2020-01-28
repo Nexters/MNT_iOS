@@ -8,11 +8,16 @@
 
 import UIKit
 
-class BaseViewController: UIViewController {
+class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupTapGesture()
+        setupLayout()
+    }
+    
+    fileprivate func setupTapGesture() {
         let tapGest = UITapGestureRecognizer()
         view.addGestureRecognizer(tapGest)
         
@@ -21,5 +26,5 @@ class BaseViewController: UIViewController {
         }.disposed(by: rx.disposeBag)
     }
     
-    fileprivate func setupLayout() {}
+    func setupLayout() {}
 }

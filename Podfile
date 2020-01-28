@@ -10,6 +10,7 @@ target 'MNT_iOS' do
   pod 'Kingfisher'
   pod 'RxSwift'
   pod 'RxCocoa'
+  pod 'Action'
 
   target 'MNT_iOSTests' do
     inherit! :search_paths

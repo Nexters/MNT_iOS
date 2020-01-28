@@ -206,3 +206,9 @@ extension UIView {
     }
     
 }
+
+extension UIViewController {
+    var sceneViewController: UIViewController {
+        return self.children.first ?? self
+    }
+}

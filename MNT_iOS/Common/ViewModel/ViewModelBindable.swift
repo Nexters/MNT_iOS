@@ -10,18 +10,19 @@ import Foundation
 
 
 // ViewModel 을 사용하는 모든 ViewController가 채택해야하는 Protocol
-protocol ViewModelProtocol {
+protocol ViewModelBindableType {
     associatedtype ViewModelType
     
     var viewModel: ViewModelType? { get set }
-    func bind()
+    func bindViewModel()
 }
 
-extension ViewModelProtocol where Self: UIViewController {
+extension ViewModelBindableType where Self: UIViewController {
     mutating func bind(viewModel: Self.ViewModelType) {
         self.viewModel = viewModel
         loadViewIfNeeded()
         
-        bind()
+        // execute on viewDidLoad
+        bindViewModel()
     }
 }

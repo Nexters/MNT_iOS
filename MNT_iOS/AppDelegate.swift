@@ -22,41 +22,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         // 로그인,로그아웃 상태 변경 받기
-        setupEntryControllers()
-
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(AppDelegate.kakaoSessionDidChangeWithNotification),
-                                               name: NSNotification.Name.KOSessionDidChange,
-                                               object: nil)
+        addObserver()
         reloadRootViewController()
         
         return true
     }
     
-    fileprivate func setupEntryControllers() {        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let navigationController = storyboard.instantiateViewController(withIdentifier: "navigator") as! UINavigationController
-        let navigationController2 = storyboard.instantiateViewController(withIdentifier: "navigator") as! UINavigationController
-        
-        let viewController = storyboard.instantiateViewController(withIdentifier: "login") as UIViewController
-        navigationController.pushViewController(viewController, animated: true)
-        self.loginViewController = navigationController
-        
-        let viewController2 = storyboard.instantiateViewController(withIdentifier: "main") as UIViewController
-        navigationController2.pushViewController(viewController2, animated: true)
-        self.mainViewController = navigationController2
+    fileprivate func addObserver() {
+        NotificationCenter
+            .default
+            .addObserver(self,
+                         selector: #selector(AppDelegate.kakaoSessionDidChangeWithNotification),
+                         name: NSNotification.Name.KOSessionDidChange,
+                         object: nil)
     }
     
     fileprivate func reloadRootViewController() {
         guard let isOpened = KOSession.shared()?.isOpen() else { return }
         
-        if !isOpened {
-            let mainViewController = self.mainViewController as! UINavigationController
-            mainViewController.popToRootViewController(animated: true)
-        }
+        let coordinator = SceneCoordinator(window: window!)
         
-        self.window?.rootViewController = isOpened ? self.mainViewController : self.loginViewController
-        self.window?.makeKeyAndVisible()
+        let viewModel = isOpened ? MainViewModel(title: "메인", coordinator: coordinator) : LoginViewModel(title: "메인", coordinator: coordinator)
+        let scene: SceneType = isOpened ? MainScene.main(viewModel as! MainViewModel) : LoginScene.login(viewModel as! LoginViewModel)
+        coordinator.transition(to: scene, using: .root, animated: true)
     }
     
     @objc fileprivate func kakaoSessionDidChangeWithNotification() {

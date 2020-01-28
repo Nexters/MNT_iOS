@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+
 extension UIView {
     
     fileprivate func _stack(_ axis: NSLayoutConstraint.Axis = .vertical, views: [UIView], spacing: CGFloat = 0, alignment: UIStackView.Alignment = .fill, distribution: UIStackView.Distribution = .fill) -> UIStackView {
@@ -70,6 +72,12 @@ extension UIEdgeInsets {
 extension UIImageView {
     convenience public init(image: UIImage?, contentMode: UIView.ContentMode = .scaleAspectFill) {
         self.init(image: image)
+        self.contentMode = contentMode
+        self.clipsToBounds = true
+    }
+    
+    convenience public init(contentMode: UIView.ContentMode = .scaleAspectFill) {
+        self.init(image: nil)
         self.contentMode = contentMode
         self.clipsToBounds = true
     }

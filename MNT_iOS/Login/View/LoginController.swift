@@ -9,7 +9,7 @@
 import UIKit
 import KakaoOpenSDK
 
-class LoginController: UIViewController {
+class LoginController: ViewController {
     
     private let loginButton: KOLoginButton = {
         let button = KOLoginButton()
@@ -18,12 +18,7 @@ class LoginController: UIViewController {
         return button
     }()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        print(LoginController.className + "is OPened")
-        view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        setupLayout()
-    }
+    var viewModel: LoginViewModel?
     
     @objc fileprivate func touchUpLoginButton(_ sender: UIButton) {
         guard let session = KOSession.shared() else {
@@ -41,7 +36,7 @@ class LoginController: UIViewController {
                     let email = user.account?.email,
                     let nickname = user.nickname else { return }
                 
-                let mainVC = ViewController()
+                let mainVC = MainViewController()
                 mainVC.nicknameLabel.text = nickname
                 mainVC.profileImageView.kf.setImage(with: user.profileImageURL)
                 mainVC.modalPresentationStyle = .fullScreen
@@ -51,7 +46,7 @@ class LoginController: UIViewController {
         }
     }
     
-    private func setupLayout() {
+    override func setupLayout() {
         view.addSubview(loginButton)
         
         var bottomMargin: CGFloat = -30
@@ -63,5 +58,12 @@ class LoginController: UIViewController {
         loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
         loginButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: bottomMargin).isActive = true
         loginButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+    }
+}
+
+extension LoginController: ViewModelBindableType {
+    func bindViewModel() {
+        guard let viewModel = viewModel else { return }
+        // binding views
     }
 }
