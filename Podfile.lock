@@ -1,0 +1,28 @@
+PODS:
+  - JGProgressHUD (2.1)
+  - Kingfisher (5.12.0):
+    - Kingfisher/Core (= 5.12.0)
+  - Kingfisher/Core (5.12.0)
+  - SDWebImage (5.5.0):
+    - SDWebImage/Core (= 5.5.0)
+  - SDWebImage/Core (5.5.0)
+
+DEPENDENCIES:
+  - JGProgressHUD
+  - Kingfisher
+  - SDWebImage
+
+SPEC REPOS:
+  trunk:
+    - JGProgressHUD
+    - Kingfisher
+    - SDWebImage
+
+SPEC CHECKSUMS:
+  JGProgressHUD: aa403e9a5b45cae98903c4600cccdd98c0c3ec90
+  Kingfisher: dc6e0f53bb5b12c3e75bedb0e01bbd7a640eea69
+  SDWebImage: 86589f0d47a7de15827640c71813e23fd428965c
+
+PODFILE CHECKSUM: 6055695e86c1ad11b9f0c03bb4a2ec7ebc5efc62
+
+COCOAPODS: 1.8.4
