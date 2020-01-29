@@ -10,20 +10,50 @@ import UIKit
 
 enum MainScene {
     case main(MainViewModel)
+    case joinRoom(JoinRoomViewModel)
+    case createRoom(CreateRoomViewModel)
+    case setRoomDetail(SetRoomDetailViewModel)
 }
 
 extension MainScene: SceneType {
-    func instantiate() -> UIViewController {
+    
+    func instantiate(from storyboard: String) -> UIViewController {
+        let storyboard = UIStoryboard(name: storyboard, bundle: nil)
+        
         switch self {
         case .main(let viewModel):
             // 메모리 적재 타이밍을 위하여 인스턴스 내부 생성
             // UINavigationConroller -> MainViewController 순으로
-            let navigationVC = UINavigationController(rootViewController: MainViewController())
-            if var mainVC = navigationVC.viewControllers.first as? MainViewController {
-                mainVC.bind(viewModel: viewModel)
+            guard let navigationController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as? UINavigationController,
+                var viewController = navigationController.viewControllers.first as? MainViewController
+                else {
+                    return UIViewController()
             }
-            return navigationVC
+            
+            viewController.bind(viewModel: viewModel)
+            return navigationController
+        case .joinRoom(let viewModel):
+            guard var viewController = storyboard.instantiateViewController(withIdentifier: "JoinRoomViewController") as? JoinRoomViewController else { return UIViewController() }
+
+            viewController.bind(viewModel: viewModel)
+            return viewController
+        case .createRoom(let viewModel):
+            guard var viewController = storyboard.instantiateViewController(withIdentifier: "CreateRoomViewController") as? CreateRoomViewController else { return UIViewController() }
+
+            viewController.bind(viewModel: viewModel)
+            return viewController
+        case .setRoomDetail(let viewModel):
+            guard var viewController = storyboard.instantiateViewController(withIdentifier: "SetRoomDetailViewController") as? SetRoomDetailViewController else { return UIViewController() }
+
+            viewController.bind(viewModel: viewModel)
+        return viewController
+
         }
+        
+    }
+    
+    func instantiate() -> UIViewController {
+        return instantiate(from: "Main")
     }
 }
 

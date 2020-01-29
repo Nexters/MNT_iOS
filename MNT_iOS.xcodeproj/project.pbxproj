@@ -25,7 +25,7 @@
 		1AAB0E3523DED2310003A2C4 /* NSObject+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAB0E3423DED2310003A2C4 /* NSObject+Rx.swift */; };
 		1AAB0E3823DED4240003A2C4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAB0E3723DED4240003A2C4 /* ViewController.swift */; };
 		1AAB0E3A23DED4980003A2C4 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAB0E3923DED4980003A2C4 /* ViewModel.swift */; };
-		1AAB0E3C23DED4C50003A2C4 /* ViewModelBindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAB0E3B23DED4C50003A2C4 /* ViewModelBindable.swift */; };
+		1AAB0E3C23DED4C50003A2C4 /* ViewModelBindableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAB0E3B23DED4C50003A2C4 /* ViewModelBindableType.swift */; };
 		1AD6D40523BF9DBC000B1893 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD6D40423BF9DBC000B1893 /* AppDelegate.swift */; };
 		1AD6D40723BF9DBC000B1893 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD6D40623BF9DBC000B1893 /* SceneDelegate.swift */; };
 		1AD6D40923BF9DBC000B1893 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD6D40823BF9DBC000B1893 /* MainViewController.swift */; };
@@ -36,6 +36,14 @@
 		1AD6D41F23BF9DBF000B1893 /* MNT_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD6D41E23BF9DBF000B1893 /* MNT_iOSTests.swift */; };
 		1AD6D42A23BF9DBF000B1893 /* MNT_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD6D42923BF9DBF000B1893 /* MNT_iOSUITests.swift */; };
 		1AFC040223C99841005B7A6F /* Objects+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFC040123C99841005B7A6F /* Objects+.swift */; };
+		583659A523E146E600E2752F /* CreateRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583659A423E146E600E2752F /* CreateRoomViewController.swift */; };
+		583659A723E153DC00E2752F /* JoinRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583659A623E153DC00E2752F /* JoinRoomViewModel.swift */; };
+		583659A923E1547700E2752F /* CreateRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583659A823E1547700E2752F /* CreateRoomViewModel.swift */; };
+		583659AB23E158A200E2752F /* JoinRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583659AA23E158A200E2752F /* JoinRoomViewController.swift */; };
+		583659B123E19D1B00E2752F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 583659B023E19D1B00E2752F /* Main.storyboard */; };
+		583659B323E19F4800E2752F /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583659B223E19F4800E2752F /* BaseNavigationController.swift */; };
+		583659B523E1B9FE00E2752F /* SetRoomDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583659B423E1B9FE00E2752F /* SetRoomDetailViewController.swift */; };
+		583659B723E1BA2500E2752F /* SetRoomDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583659B623E1BA2500E2752F /* SetRoomDetailViewModel.swift */; };
 		66B8E3541E3CFB1FAA501496 /* Pods_MNT_iOS_MNT_iOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88EA694FBB02409DA30AB831 /* Pods_MNT_iOS_MNT_iOSUITests.framework */; };
 		6F8C0272B30607E25FC8F8C8 /* Pods_MNT_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95E9A4A6BF4DD4A6D97A4951 /* Pods_MNT_iOS.framework */; };
 		B13A90DE644E5B9587B70BAD /* Pods_MNT_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 186C7888D6F657BF5ED2D930 /* Pods_MNT_iOSTests.framework */; };
@@ -79,7 +87,7 @@
 		1AAB0E3423DED2310003A2C4 /* NSObject+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Rx.swift"; sourceTree = "<group>"; };
 		1AAB0E3723DED4240003A2C4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1AAB0E3923DED4980003A2C4 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
-		1AAB0E3B23DED4C50003A2C4 /* ViewModelBindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBindable.swift; sourceTree = "<group>"; };
+		1AAB0E3B23DED4C50003A2C4 /* ViewModelBindableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBindableType.swift; sourceTree = "<group>"; };
 		1AD6D40123BF9DBC000B1893 /* MNT_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MNT_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AD6D40423BF9DBC000B1893 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1AD6D40623BF9DBC000B1893 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -101,6 +109,14 @@
 		341C7360E22267225953F064 /* Pods-MNT_iOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MNT_iOSTests.release.xcconfig"; path = "Target Support Files/Pods-MNT_iOSTests/Pods-MNT_iOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		4803407A17E8E93EF842E6CF /* Pods-MNT_iOS-MNT_iOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MNT_iOS-MNT_iOSUITests.debug.xcconfig"; path = "Target Support Files/Pods-MNT_iOS-MNT_iOSUITests/Pods-MNT_iOS-MNT_iOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5814FD539E707AB76982D861 /* Pods-MNT_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MNT_iOS.debug.xcconfig"; path = "Target Support Files/Pods-MNT_iOS/Pods-MNT_iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		583659A423E146E600E2752F /* CreateRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoomViewController.swift; sourceTree = "<group>"; };
+		583659A623E153DC00E2752F /* JoinRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinRoomViewModel.swift; sourceTree = "<group>"; };
+		583659A823E1547700E2752F /* CreateRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoomViewModel.swift; sourceTree = "<group>"; };
+		583659AA23E158A200E2752F /* JoinRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinRoomViewController.swift; sourceTree = "<group>"; };
+		583659B023E19D1B00E2752F /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		583659B223E19F4800E2752F /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
+		583659B423E1B9FE00E2752F /* SetRoomDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetRoomDetailViewController.swift; sourceTree = "<group>"; };
+		583659B623E1BA2500E2752F /* SetRoomDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetRoomDetailViewModel.swift; sourceTree = "<group>"; };
 		88EA694FBB02409DA30AB831 /* Pods_MNT_iOS_MNT_iOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MNT_iOS_MNT_iOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		95E9A4A6BF4DD4A6D97A4951 /* Pods_MNT_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MNT_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB74A15F01BF71A867A7F874 /* Pods-MNT_iOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MNT_iOSTests.debug.xcconfig"; path = "Target Support Files/Pods-MNT_iOSTests/Pods-MNT_iOSTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -159,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				1AAB0E3723DED4240003A2C4 /* ViewController.swift */,
+				583659B223E19F4800E2752F /* BaseNavigationController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -167,7 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				1AAB0E3923DED4980003A2C4 /* ViewModel.swift */,
-				1AAB0E3B23DED4C50003A2C4 /* ViewModelBindable.swift */,
+				1AAB0E3B23DED4C50003A2C4 /* ViewModelBindableType.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -179,6 +196,7 @@
 				1A8FAF3D23E05FA4009A92C1 /* View */,
 				1A8FAF3E23E05FA7009A92C1 /* ViewModel */,
 				1A8FAF3C23E05F9C009A92C1 /* Scene */,
+				583659B023E19D1B00E2752F /* Main.storyboard */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -237,6 +255,9 @@
 			isa = PBXGroup;
 			children = (
 				1AD6D40823BF9DBC000B1893 /* MainViewController.swift */,
+				583659A423E146E600E2752F /* CreateRoomViewController.swift */,
+				583659AA23E158A200E2752F /* JoinRoomViewController.swift */,
+				583659B423E1B9FE00E2752F /* SetRoomDetailViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -245,6 +266,9 @@
 			isa = PBXGroup;
 			children = (
 				1A8FAF4523E06952009A92C1 /* MainViewModel.swift */,
+				583659A823E1547700E2752F /* CreateRoomViewModel.swift */,
+				583659A623E153DC00E2752F /* JoinRoomViewModel.swift */,
+				583659B623E1BA2500E2752F /* SetRoomDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -474,6 +498,7 @@
 				1AD6D41423BF9DBF000B1893 /* LaunchScreen.storyboard in Resources */,
 				1AD6D41123BF9DBF000B1893 /* Assets.xcassets in Resources */,
 				1AD6D40C23BF9DBC000B1893 /* Main.storyboard in Resources */,
+				583659B123E19D1B00E2752F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -601,23 +626,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				583659A923E1547700E2752F /* CreateRoomViewModel.swift in Sources */,
+				583659A723E153DC00E2752F /* JoinRoomViewModel.swift in Sources */,
 				1A8FAF3023E0249C009A92C1 /* SceneCoordinator.swift in Sources */,
 				1AAB0E3823DED4240003A2C4 /* ViewController.swift in Sources */,
 				1A8FAF4C23E0755D009A92C1 /* UITextField+.swift in Sources */,
+				583659B523E1B9FE00E2752F /* SetRoomDetailViewController.swift in Sources */,
 				1AAB0E2F23DECBFF0003A2C4 /* UILabel+.swift in Sources */,
 				1A8FAF4823E06A81009A92C1 /* MainScene.swift in Sources */,
 				1AFC040223C99841005B7A6F /* Objects+.swift in Sources */,
+				583659B323E19F4800E2752F /* BaseNavigationController.swift in Sources */,
 				1A8FAF4223E060AE009A92C1 /* LoginScene.swift in Sources */,
 				1AAB0E3A23DED4980003A2C4 /* ViewModel.swift in Sources */,
 				1AD6D40923BF9DBC000B1893 /* MainViewController.swift in Sources */,
 				1AD6D40F23BF9DBC000B1893 /* MNT_iOS.xcdatamodeld in Sources */,
 				1AD6D40523BF9DBC000B1893 /* AppDelegate.swift in Sources */,
+				583659AB23E158A200E2752F /* JoinRoomViewController.swift in Sources */,
+				583659A523E146E600E2752F /* CreateRoomViewController.swift in Sources */,
 				1AAB0E3523DED2310003A2C4 /* NSObject+Rx.swift in Sources */,
 				1A8FAF3523E02563009A92C1 /* CoordinatorType.swift in Sources */,
 				1AAB0E3123DECC2C0003A2C4 /* CircularImageView.swift in Sources */,
 				1AAB0E2B23DECA080003A2C4 /* View+.swift in Sources */,
+				583659B723E1BA2500E2752F /* SetRoomDetailViewModel.swift in Sources */,
 				1AD6D40723BF9DBC000B1893 /* SceneDelegate.swift in Sources */,
-				1AAB0E3C23DED4C50003A2C4 /* ViewModelBindable.swift in Sources */,
+				1AAB0E3C23DED4C50003A2C4 /* ViewModelBindableType.swift in Sources */,
 				1A8FAF4623E06952009A92C1 /* MainViewModel.swift in Sources */,
 				1AAB0E3323DECC770003A2C4 /* UIView+Stacking.swift in Sources */,
 				1A49808523C967C1004B4058 /* LoginController.swift in Sources */,
@@ -798,7 +830,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CJ9DCX3V4H;
+				DEVELOPMENT_TEAM = WF8UF5VWG6;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
@@ -823,7 +855,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CJ9DCX3V4H;
+				DEVELOPMENT_TEAM = WF8UF5VWG6;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",

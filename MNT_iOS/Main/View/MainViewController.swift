@@ -22,12 +22,14 @@ class MainViewController: ViewController {
     let button = UIButton(title: "Gogo", titleColor: .black)
     let textfield = UITextField(placeholder: "아무거나 입력하시던지요.")
     let mimicLabel = UILabel(text: "난 따라하지 !", numberOfLines: 0)
+    var joinButton = UIButton(title: "참여하기", titleColor: .black)
+    var createButton = UIButton(title: "방 만들기", titleColor: .black)
     
     var viewModel: MainViewModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.isHidden = true
+        
         requestMe()
     }
 
@@ -37,6 +39,8 @@ class MainViewController: ViewController {
                    textfield.withHeight(50),
                    mimicLabel.withHeight(50),
                    button.withHeight(50),
+                   joinButton.withHeight(50),
+                   createButton.withHeight(50),
                    alignment: .center)
             .withMargins(.init(top: view.frame.height/2 - 200,
                                left: 0,
@@ -61,10 +65,13 @@ class MainViewController: ViewController {
 extension MainViewController: ViewModelBindableType {
     func bindViewModel() {
         guard let viewModel = viewModel else { return }
+        
+        joinButton.rx.action = viewModel.presentJoinAction()
+        createButton.rx.action = viewModel.presentCreateAction()
+        
         textfield.rx.text.orEmpty
             .bind(to: viewModel.textfieldRelay)
             .disposed(by: rx.disposeBag)
         
-//        button.rx.action = viewModel.
     }
 }
