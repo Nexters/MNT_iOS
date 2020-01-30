@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import Kingfisher
+import RxSwift
+import RxCocoa
 
 class SetRoomDetailViewController: ViewController {
     
@@ -54,6 +57,6 @@ extension SetRoomDetailViewController: ViewModelBindableType {
     func bindViewModel() {
         guard let viewModel = viewModel else { return }
 
-        
+        button.rx.action = viewModel.presentReadyAction()
     }
 }

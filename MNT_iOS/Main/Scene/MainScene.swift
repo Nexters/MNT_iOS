@@ -13,6 +13,7 @@ enum MainScene {
     case joinRoom(JoinRoomViewModel)
     case createRoom(CreateRoomViewModel)
     case setRoomDetail(SetRoomDetailViewModel)
+    case ready(ReadyViewModel)
 }
 
 extension MainScene: SceneType {
@@ -46,8 +47,12 @@ extension MainScene: SceneType {
             guard var viewController = storyboard.instantiateViewController(withIdentifier: "SetRoomDetailViewController") as? SetRoomDetailViewController else { return UIViewController() }
 
             viewController.bind(viewModel: viewModel)
-        return viewController
+            return viewController
+        case .ready(let viewModel):
+            guard var viewController = storyboard.instantiateViewController(withIdentifier: "ReadyViewController") as? ReadyViewController else { return UIViewController() }
 
+            viewController.bind(viewModel: viewModel)
+            return viewController
         }
         
     }

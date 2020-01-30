@@ -44,6 +44,8 @@
 		583659B323E19F4800E2752F /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583659B223E19F4800E2752F /* BaseNavigationController.swift */; };
 		583659B523E1B9FE00E2752F /* SetRoomDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583659B423E1B9FE00E2752F /* SetRoomDetailViewController.swift */; };
 		583659B723E1BA2500E2752F /* SetRoomDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583659B623E1BA2500E2752F /* SetRoomDetailViewModel.swift */; };
+		583659BD23E32AA300E2752F /* ReadyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583659BC23E32AA300E2752F /* ReadyViewController.swift */; };
+		583659BF23E32B5100E2752F /* ReadyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583659BE23E32B5100E2752F /* ReadyViewModel.swift */; };
 		66B8E3541E3CFB1FAA501496 /* Pods_MNT_iOS_MNT_iOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88EA694FBB02409DA30AB831 /* Pods_MNT_iOS_MNT_iOSUITests.framework */; };
 		6F8C0272B30607E25FC8F8C8 /* Pods_MNT_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95E9A4A6BF4DD4A6D97A4951 /* Pods_MNT_iOS.framework */; };
 		B13A90DE644E5B9587B70BAD /* Pods_MNT_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 186C7888D6F657BF5ED2D930 /* Pods_MNT_iOSTests.framework */; };
@@ -117,6 +119,8 @@
 		583659B223E19F4800E2752F /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		583659B423E1B9FE00E2752F /* SetRoomDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetRoomDetailViewController.swift; sourceTree = "<group>"; };
 		583659B623E1BA2500E2752F /* SetRoomDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetRoomDetailViewModel.swift; sourceTree = "<group>"; };
+		583659BC23E32AA300E2752F /* ReadyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyViewController.swift; sourceTree = "<group>"; };
+		583659BE23E32B5100E2752F /* ReadyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyViewModel.swift; sourceTree = "<group>"; };
 		88EA694FBB02409DA30AB831 /* Pods_MNT_iOS_MNT_iOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MNT_iOS_MNT_iOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		95E9A4A6BF4DD4A6D97A4951 /* Pods_MNT_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MNT_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB74A15F01BF71A867A7F874 /* Pods-MNT_iOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MNT_iOSTests.debug.xcconfig"; path = "Target Support Files/Pods-MNT_iOSTests/Pods-MNT_iOSTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -256,8 +260,9 @@
 			children = (
 				1AD6D40823BF9DBC000B1893 /* MainViewController.swift */,
 				583659A423E146E600E2752F /* CreateRoomViewController.swift */,
-				583659AA23E158A200E2752F /* JoinRoomViewController.swift */,
 				583659B423E1B9FE00E2752F /* SetRoomDetailViewController.swift */,
+				583659AA23E158A200E2752F /* JoinRoomViewController.swift */,
+				583659BC23E32AA300E2752F /* ReadyViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -267,8 +272,9 @@
 			children = (
 				1A8FAF4523E06952009A92C1 /* MainViewModel.swift */,
 				583659A823E1547700E2752F /* CreateRoomViewModel.swift */,
-				583659A623E153DC00E2752F /* JoinRoomViewModel.swift */,
 				583659B623E1BA2500E2752F /* SetRoomDetailViewModel.swift */,
+				583659A623E153DC00E2752F /* JoinRoomViewModel.swift */,
+				583659BE23E32B5100E2752F /* ReadyViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -626,6 +632,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				583659BD23E32AA300E2752F /* ReadyViewController.swift in Sources */,
 				583659A923E1547700E2752F /* CreateRoomViewModel.swift in Sources */,
 				583659A723E153DC00E2752F /* JoinRoomViewModel.swift in Sources */,
 				1A8FAF3023E0249C009A92C1 /* SceneCoordinator.swift in Sources */,
@@ -641,6 +648,7 @@
 				1AD6D40923BF9DBC000B1893 /* MainViewController.swift in Sources */,
 				1AD6D40F23BF9DBC000B1893 /* MNT_iOS.xcdatamodeld in Sources */,
 				1AD6D40523BF9DBC000B1893 /* AppDelegate.swift in Sources */,
+				583659BF23E32B5100E2752F /* ReadyViewModel.swift in Sources */,
 				583659AB23E158A200E2752F /* JoinRoomViewController.swift in Sources */,
 				583659A523E146E600E2752F /* CreateRoomViewController.swift in Sources */,
 				1AAB0E3523DED2310003A2C4 /* NSObject+Rx.swift in Sources */,
