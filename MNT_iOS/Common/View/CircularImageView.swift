@@ -12,7 +12,7 @@ open class CircularImageView: UIImageView {
     
     public init(width: CGFloat, image: UIImage? = nil) {
         super.init(image: image)
-        contentMode = .scaleAspectFill
+        contentMode = .scaleAspectFit
         if width != 0 {
             widthAnchor.constraint(equalToConstant: width).isActive = true
         }

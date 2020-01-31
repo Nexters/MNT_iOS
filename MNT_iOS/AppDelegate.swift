@@ -22,10 +22,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         // 로그인,로그아웃 상태 변경 받기
-        addObserver()
-        reloadRootViewController()
-        
+        //addObserver()
+        //reloadRootViewController()
+        testing()
         return true
+    }
+    
+    fileprivate func testing() {
+        //testingFeed()
+        testingMission()
+    }
+    
+    fileprivate func testingMission() {
+        let coordinator = SceneCoordinator(window: window!)
+        let viewModel = MissionViewModel(title: "미션", coordinator: coordinator)
+        let scene: SceneType = MissionScene.missionParticipant(viewModel)
+        //let scene: SceneType = MissionScene.missionAdministrator(viewModel)
+        coordinator.transition(to: scene, using: .root, animated: true)
+    }
+    
+    fileprivate func testingFeed() {
+        let coordinator = SceneCoordinator(window: window!)
+        let viewModel = FeedViewModel(title: "피드", coordinator: coordinator)
+        let scene: SceneType = FeedScene.feed(viewModel)
+        coordinator.transition(to: scene, using: .root, animated: true)
     }
     
     fileprivate func addObserver() {
@@ -42,7 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let coordinator = SceneCoordinator(window: window!)
         
-        let viewModel = isOpened ? MainViewModel(title: "메인", coordinator: coordinator) : LoginViewModel(title: "메인", coordinator: coordinator)
+        let viewModel = isOpened ? MainViewModel(title: "메인", coordinator: coordinator) : LoginViewModel(title: "로그인", coordinator: coordinator)
         let scene: SceneType = isOpened ? MainScene.main(viewModel as! MainViewModel) : LoginScene.login(viewModel as! LoginViewModel)
         coordinator.transition(to: scene, using: .root, animated: true)
     }

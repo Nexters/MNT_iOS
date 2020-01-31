@@ -1,5 +1,5 @@
 //
-//  FeedViewModel.swift
+//  Model.swift
 //  MNT_iOS
 //
 //  Created by 최민섭 on 2020/01/31.
@@ -8,8 +8,10 @@
 
 import Foundation
 
-class FeedViewModel: ViewModel {
-    var infos: [FeedInfo] = []
+protocol Model {
+    
 }
 
-
+protocol ProducesCellViewModel {
+    
+}

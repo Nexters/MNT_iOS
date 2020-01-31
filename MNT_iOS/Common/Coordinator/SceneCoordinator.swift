@@ -41,13 +41,10 @@ extension SceneCoordinator: SceneCoordinatorType {
     func transition(to scene: SceneType, using style: TransitionStyle, animated: Bool) -> Completable {
         let subject = PublishSubject<Void>()
         let target = scene.instantiate()
-        print("완료???")
         
         switch style {
         case .root:
             currentVC = target.sceneViewController
-            print("target : \(target)")
-            print("currentVC : \(currentVC)")
             target.view.backgroundColor = .white
             window.rootViewController = target
             window.makeKeyAndVisible()

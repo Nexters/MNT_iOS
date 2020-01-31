@@ -12,9 +12,25 @@
 		1A4E686423E3E9D6005D2CFD /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4E686323E3E9D6005D2CFD /* FeedViewController.swift */; };
 		1A4E686923E3EA92005D2CFD /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4E686823E3EA92005D2CFD /* FeedViewModel.swift */; };
 		1A4E686B23E3EBE4005D2CFD /* FeedScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4E686A23E3EBE4005D2CFD /* FeedScene.swift */; };
-		1A4E686D23E3EC19005D2CFD /* FeedInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4E686C23E3EC19005D2CFD /* FeedInfos.swift */; };
+		1A4E686D23E3EC19005D2CFD /* FeedInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4E686C23E3EC19005D2CFD /* FeedInfo.swift */; };
 		1A4E687023E3ED49005D2CFD /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4E686E23E3ED49005D2CFD /* FeedCell.swift */; };
 		1A4E687123E3ED49005D2CFD /* FeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A4E686F23E3ED49005D2CFD /* FeedCell.xib */; };
+		1A4E687323E3F471005D2CFD /* FeedCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4E687223E3F471005D2CFD /* FeedCellViewModel.swift */; };
+		1A4E687623E3F7FF005D2CFD /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4E687523E3F7FF005D2CFD /* Model.swift */; };
+		1A4E687923E3FFC3005D2CFD /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4E687823E3FFC3005D2CFD /* RoundedImageView.swift */; };
+		1A4E687B23E4048D005D2CFD /* UITableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4E687A23E4048D005D2CFD /* UITableView+.swift */; };
+		1A4E687D23E404BC005D2CFD /* UICollectionView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4E687C23E404BC005D2CFD /* UICollectionView+.swift */; };
+		1A4E688723E40DA1005D2CFD /* MissionScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4E688623E40DA1005D2CFD /* MissionScene.swift */; };
+		1A4E688923E40DD3005D2CFD /* MissionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4E688823E40DD3005D2CFD /* MissionViewModel.swift */; };
+		1A4E688B23E40DF9005D2CFD /* Mission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4E688A23E40DF9005D2CFD /* Mission.swift */; };
+		1A4E688D23E40E79005D2CFD /* MissionPariticipantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4E688C23E40E79005D2CFD /* MissionPariticipantViewController.swift */; };
+		1A4E689023E40F81005D2CFD /* MissionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4E688E23E40F81005D2CFD /* MissionCell.swift */; };
+		1A4E689123E40F81005D2CFD /* MissionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A4E688F23E40F81005D2CFD /* MissionCell.xib */; };
+		1A4E689323E40FAB005D2CFD /* MissionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4E689223E40FAB005D2CFD /* MissionCellViewModel.swift */; };
+		1A4E689523E42993005D2CFD /* MissionAdministratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4E689423E42993005D2CFD /* MissionAdministratorViewController.swift */; };
+		1A4E689723E429EF005D2CFD /* MissionListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4E689623E429EF005D2CFD /* MissionListTableViewController.swift */; };
+		1A4E68A323E474AE005D2CFD /* MissionPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4E68A223E474AE005D2CFD /* MissionPostViewController.swift */; };
+		1A4E68A523E474D4005D2CFD /* MissionPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4E68A423E474D4005D2CFD /* MissionPostViewModel.swift */; };
 		1A8FAF3023E0249C009A92C1 /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8FAF2F23E0249C009A92C1 /* SceneCoordinator.swift */; };
 		1A8FAF3523E02563009A92C1 /* CoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8FAF3423E02563009A92C1 /* CoordinatorType.swift */; };
 		1A8FAF4223E060AE009A92C1 /* LoginScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8FAF4123E060AE009A92C1 /* LoginScene.swift */; };
@@ -72,9 +88,25 @@
 		1A4E686323E3E9D6005D2CFD /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		1A4E686823E3EA92005D2CFD /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		1A4E686A23E3EBE4005D2CFD /* FeedScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedScene.swift; sourceTree = "<group>"; };
-		1A4E686C23E3EC19005D2CFD /* FeedInfos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedInfos.swift; sourceTree = "<group>"; };
+		1A4E686C23E3EC19005D2CFD /* FeedInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedInfo.swift; sourceTree = "<group>"; };
 		1A4E686E23E3ED49005D2CFD /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		1A4E686F23E3ED49005D2CFD /* FeedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedCell.xib; sourceTree = "<group>"; };
+		1A4E687223E3F471005D2CFD /* FeedCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCellViewModel.swift; sourceTree = "<group>"; };
+		1A4E687523E3F7FF005D2CFD /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		1A4E687823E3FFC3005D2CFD /* RoundedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedImageView.swift; sourceTree = "<group>"; };
+		1A4E687A23E4048D005D2CFD /* UITableView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+.swift"; sourceTree = "<group>"; };
+		1A4E687C23E404BC005D2CFD /* UICollectionView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+.swift"; sourceTree = "<group>"; };
+		1A4E688623E40DA1005D2CFD /* MissionScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionScene.swift; sourceTree = "<group>"; };
+		1A4E688823E40DD3005D2CFD /* MissionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionViewModel.swift; sourceTree = "<group>"; };
+		1A4E688A23E40DF9005D2CFD /* Mission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mission.swift; sourceTree = "<group>"; };
+		1A4E688C23E40E79005D2CFD /* MissionPariticipantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionPariticipantViewController.swift; sourceTree = "<group>"; };
+		1A4E688E23E40F81005D2CFD /* MissionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionCell.swift; sourceTree = "<group>"; };
+		1A4E688F23E40F81005D2CFD /* MissionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MissionCell.xib; sourceTree = "<group>"; };
+		1A4E689223E40FAB005D2CFD /* MissionCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionCellViewModel.swift; sourceTree = "<group>"; };
+		1A4E689423E42993005D2CFD /* MissionAdministratorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionAdministratorViewController.swift; sourceTree = "<group>"; };
+		1A4E689623E429EF005D2CFD /* MissionListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionListTableViewController.swift; sourceTree = "<group>"; };
+		1A4E68A223E474AE005D2CFD /* MissionPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionPostViewController.swift; sourceTree = "<group>"; };
+		1A4E68A423E474D4005D2CFD /* MissionPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionPostViewModel.swift; sourceTree = "<group>"; };
 		1A8FAF2F23E0249C009A92C1 /* SceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
 		1A8FAF3423E02563009A92C1 /* CoordinatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorType.swift; sourceTree = "<group>"; };
 		1A8FAF4123E060AE009A92C1 /* LoginScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScene.swift; sourceTree = "<group>"; };
@@ -161,6 +193,7 @@
 		1A4E686123E3E9C3005D2CFD /* Feed */ = {
 			isa = PBXGroup;
 			children = (
+				1A4E687E23E40D27005D2CFD /* FeedDetails */,
 				1A4E686623E3EA29005D2CFD /* ViewModel */,
 				1A4E686723E3EA2F005D2CFD /* Scene */,
 				1A4E686523E3EA23005D2CFD /* Model */,
@@ -182,7 +215,7 @@
 		1A4E686523E3EA23005D2CFD /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1A4E686C23E3EC19005D2CFD /* FeedInfos.swift */,
+				1A4E686C23E3EC19005D2CFD /* FeedInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -191,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				1A4E686823E3EA92005D2CFD /* FeedViewModel.swift */,
+				1A4E687223E3F471005D2CFD /* FeedCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -201,6 +235,152 @@
 				1A4E686A23E3EBE4005D2CFD /* FeedScene.swift */,
 			);
 			path = Scene;
+			sourceTree = "<group>";
+		};
+		1A4E687423E3F7EC005D2CFD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1A4E687523E3F7FF005D2CFD /* Model.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1A4E687723E3FFAD005D2CFD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1AAB0E3023DECC2C0003A2C4 /* CircularImageView.swift */,
+				1A4E687823E3FFC3005D2CFD /* RoundedImageView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1A4E687E23E40D27005D2CFD /* FeedDetails */ = {
+			isa = PBXGroup;
+			children = (
+				1A4E687F23E40D35005D2CFD /* FeedDetail */,
+			);
+			path = FeedDetails;
+			sourceTree = "<group>";
+		};
+		1A4E687F23E40D35005D2CFD /* FeedDetail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FeedDetail;
+			sourceTree = "<group>";
+		};
+		1A4E688123E40D75005D2CFD /* Misson */ = {
+			isa = PBXGroup;
+			children = (
+				1A4E689A23E4718C005D2CFD /* Administrator */,
+				1A4E689923E47185005D2CFD /* Participant */,
+				1A4E688523E40D8D005D2CFD /* Scene */,
+				1A4E688423E40D88005D2CFD /* Model */,
+				1A4E688323E40D82005D2CFD /* ViewModel */,
+				1A4E688223E40D7D005D2CFD /* View */,
+			);
+			path = Misson;
+			sourceTree = "<group>";
+		};
+		1A4E688223E40D7D005D2CFD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1A4E689623E429EF005D2CFD /* MissionListTableViewController.swift */,
+				1A4E688E23E40F81005D2CFD /* MissionCell.swift */,
+				1A4E688F23E40F81005D2CFD /* MissionCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1A4E688323E40D82005D2CFD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1A4E688823E40DD3005D2CFD /* MissionViewModel.swift */,
+				1A4E689223E40FAB005D2CFD /* MissionCellViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1A4E688423E40D88005D2CFD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1A4E688A23E40DF9005D2CFD /* Mission.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1A4E688523E40D8D005D2CFD /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				1A4E688623E40DA1005D2CFD /* MissionScene.swift */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		1A4E689923E47185005D2CFD /* Participant */ = {
+			isa = PBXGroup;
+			children = (
+				1A4E689E23E471BC005D2CFD /* Model */,
+				1A4E689C23E471B2005D2CFD /* ViewModel */,
+				1A4E689B23E471AD005D2CFD /* View */,
+			);
+			path = Participant;
+			sourceTree = "<group>";
+		};
+		1A4E689A23E4718C005D2CFD /* Administrator */ = {
+			isa = PBXGroup;
+			children = (
+				1A4E68A123E471D7005D2CFD /* Model */,
+				1A4E68A023E471D3005D2CFD /* ViewModel */,
+				1A4E689F23E471CF005D2CFD /* View */,
+			);
+			path = Administrator;
+			sourceTree = "<group>";
+		};
+		1A4E689B23E471AD005D2CFD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1A4E688C23E40E79005D2CFD /* MissionPariticipantViewController.swift */,
+				1A4E68A223E474AE005D2CFD /* MissionPostViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1A4E689C23E471B2005D2CFD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1A4E68A423E474D4005D2CFD /* MissionPostViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1A4E689E23E471BC005D2CFD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1A4E689F23E471CF005D2CFD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1A4E689423E42993005D2CFD /* MissionAdministratorViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1A4E68A023E471D3005D2CFD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1A4E68A123E471D7005D2CFD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		1A8FAF3123E02520009A92C1 /* Coordinator */ = {
@@ -325,6 +505,8 @@
 		1AAB0E3623DED4190003A2C4 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				1A4E687723E3FFAD005D2CFD /* View */,
+				1A4E687423E3F7EC005D2CFD /* Model */,
 				1A8FAF3323E02533009A92C1 /* ViewModel */,
 				1A8FAF3223E0252B009A92C1 /* ViewController */,
 				1A8FAF3123E02520009A92C1 /* Coordinator */,
@@ -358,6 +540,7 @@
 		1AD6D40323BF9DBC000B1893 /* MNT_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				1A4E688123E40D75005D2CFD /* Misson */,
 				1A4E686123E3E9C3005D2CFD /* Feed */,
 				1A8FAF3723E05D7E009A92C1 /* Login */,
 				1A8FAF3623E05D78009A92C1 /* Main */,
@@ -398,11 +581,12 @@
 				1AAB0E2A23DECA080003A2C4 /* View+.swift */,
 				1AAB0E2C23DECBDE0003A2C4 /* UIButton+.swift */,
 				1AAB0E2E23DECBFF0003A2C4 /* UILabel+.swift */,
-				1AAB0E3023DECC2C0003A2C4 /* CircularImageView.swift */,
 				1AAB0E3223DECC770003A2C4 /* UIView+Stacking.swift */,
 				1AAB0E3423DED2310003A2C4 /* NSObject+Rx.swift */,
 				1A8FAF4923E0737E009A92C1 /* UIStackView+.swift */,
 				1A8FAF4B23E0755D009A92C1 /* UITextField+.swift */,
+				1A4E687A23E4048D005D2CFD /* UITableView+.swift */,
+				1A4E687C23E404BC005D2CFD /* UICollectionView+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -529,6 +713,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A4E689123E40F81005D2CFD /* MissionCell.xib in Resources */,
 				1AD6D41423BF9DBF000B1893 /* LaunchScreen.storyboard in Resources */,
 				1A4E687123E3ED49005D2CFD /* FeedCell.xib in Resources */,
 				1AD6D41123BF9DBF000B1893 /* Assets.xcassets in Resources */,
@@ -661,30 +846,45 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A4E686923E3EA92005D2CFD /* FeedViewModel.swift in Sources */,
-				1A4E686D23E3EC19005D2CFD /* FeedInfos.swift in Sources */,
+				1A4E686D23E3EC19005D2CFD /* FeedInfo.swift in Sources */,
 				1A8FAF3023E0249C009A92C1 /* SceneCoordinator.swift in Sources */,
 				1AAB0E3823DED4240003A2C4 /* ViewController.swift in Sources */,
+				1A4E689023E40F81005D2CFD /* MissionCell.swift in Sources */,
 				1A8FAF4C23E0755D009A92C1 /* UITextField+.swift in Sources */,
 				1AAB0E2F23DECBFF0003A2C4 /* UILabel+.swift in Sources */,
+				1A4E689323E40FAB005D2CFD /* MissionCellViewModel.swift in Sources */,
+				1A4E688B23E40DF9005D2CFD /* Mission.swift in Sources */,
 				1A8FAF4823E06A81009A92C1 /* MainScene.swift in Sources */,
 				1AFC040223C99841005B7A6F /* Objects+.swift in Sources */,
 				1A8FAF4223E060AE009A92C1 /* LoginScene.swift in Sources */,
 				1AAB0E3A23DED4980003A2C4 /* ViewModel.swift in Sources */,
+				1A4E689523E42993005D2CFD /* MissionAdministratorViewController.swift in Sources */,
 				1AD6D40923BF9DBC000B1893 /* MainViewController.swift in Sources */,
+				1A4E688923E40DD3005D2CFD /* MissionViewModel.swift in Sources */,
 				1AD6D40F23BF9DBC000B1893 /* MNT_iOS.xcdatamodeld in Sources */,
+				1A4E68A523E474D4005D2CFD /* MissionPostViewModel.swift in Sources */,
 				1AD6D40523BF9DBC000B1893 /* AppDelegate.swift in Sources */,
+				1A4E687D23E404BC005D2CFD /* UICollectionView+.swift in Sources */,
 				1AAB0E3523DED2310003A2C4 /* NSObject+Rx.swift in Sources */,
+				1A4E688723E40DA1005D2CFD /* MissionScene.swift in Sources */,
 				1A8FAF3523E02563009A92C1 /* CoordinatorType.swift in Sources */,
+				1A4E687623E3F7FF005D2CFD /* Model.swift in Sources */,
 				1AAB0E3123DECC2C0003A2C4 /* CircularImageView.swift in Sources */,
+				1A4E687323E3F471005D2CFD /* FeedCellViewModel.swift in Sources */,
 				1AAB0E2B23DECA080003A2C4 /* View+.swift in Sources */,
+				1A4E68A323E474AE005D2CFD /* MissionPostViewController.swift in Sources */,
 				1AD6D40723BF9DBC000B1893 /* SceneDelegate.swift in Sources */,
 				1AAB0E3C23DED4C50003A2C4 /* ViewModelBindable.swift in Sources */,
 				1A4E686B23E3EBE4005D2CFD /* FeedScene.swift in Sources */,
+				1A4E689723E429EF005D2CFD /* MissionListTableViewController.swift in Sources */,
 				1A8FAF4623E06952009A92C1 /* MainViewModel.swift in Sources */,
 				1A4E687023E3ED49005D2CFD /* FeedCell.swift in Sources */,
 				1AAB0E3323DECC770003A2C4 /* UIView+Stacking.swift in Sources */,
+				1A4E687B23E4048D005D2CFD /* UITableView+.swift in Sources */,
 				1A49808523C967C1004B4058 /* LoginController.swift in Sources */,
+				1A4E688D23E40E79005D2CFD /* MissionPariticipantViewController.swift in Sources */,
 				1A8FAF4A23E0737E009A92C1 /* UIStackView+.swift in Sources */,
+				1A4E687923E3FFC3005D2CFD /* RoundedImageView.swift in Sources */,
 				1A8FAF4423E0612C009A92C1 /* LoginViewModel.swift in Sources */,
 				1A4E686423E3E9D6005D2CFD /* FeedViewController.swift in Sources */,
 				1AAB0E2D23DECBDE0003A2C4 /* UIButton+.swift in Sources */,

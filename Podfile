@@ -11,6 +11,7 @@ target 'MNT_iOS' do
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'Action'
+  pod 'RxGesture'
 
   target 'MNT_iOSTests' do
     inherit! :search_paths
