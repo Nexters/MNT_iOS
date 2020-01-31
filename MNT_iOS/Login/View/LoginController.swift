@@ -62,8 +62,7 @@ class LoginController: ViewController {
 }
 
 extension LoginController: ViewModelBindableType {
-    func bindViewModel() {
-        guard let viewModel = viewModel else { return }
-        // binding views
+    func bindViewModel(viewModel: LoginViewModel) {
+        
     }
 }
