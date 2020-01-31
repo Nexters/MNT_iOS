@@ -19,6 +19,7 @@ extension UIView {
         stackView.alignment = alignment
         stackView.distribution = distribution
         addSubview(stackView)
+        
         stackView.fillSuperview()
         return stackView
     }

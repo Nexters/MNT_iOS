@@ -24,7 +24,8 @@ extension MissionParticipantViewController: ViewModelBindableType {
         
         // setupDummys
         (0...6).forEach { viewModel.missions.append(Mission(id: $0,
-                                                            name: "메시지 보내기",
+                                                            title: "메시지 보내기",
+                                                            subTitle: "부제목이지롱",
                                                             isDone: $0 % 2 == 0)) }
         missionTableController.viewModel = self.viewModel
     }

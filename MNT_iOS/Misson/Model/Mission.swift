@@ -10,7 +10,8 @@ import Foundation
 
 struct Mission: ProducesMissionCellViewModel {
     let id: Int
-    let name: String
+    let title: String
+    let subTitle: String
     var isDone: Bool
     
     var asMissionCellViewModel: MissionCellViewModel { return MissionCellViewModel(datas: self)}
