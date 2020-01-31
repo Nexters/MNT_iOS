@@ -59,12 +59,9 @@ class MainViewController: ViewController {
 }
 
 extension MainViewController: ViewModelBindableType {
-    func bindViewModel() {
-        guard let viewModel = viewModel else { return }
-        textfield.rx.text.orEmpty
-            .bind(to: viewModel.textfieldRelay)
-            .disposed(by: rx.disposeBag)
-        
-//        button.rx.action = viewModel.
+    func bindViewModel(viewModel: MainViewModel) {
+         textfield.rx.text.orEmpty
+                   .bind(to: viewModel.textfieldRelay)
+                   .disposed(by: rx.disposeBag)
     }
 }

@@ -11,6 +11,10 @@
 		1A49808A23C96B57004B4058 /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A49808923C96B57004B4058 /* KakaoOpenSDK.framework */; };
 		1A4E686423E3E9D6005D2CFD /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4E686323E3E9D6005D2CFD /* FeedViewController.swift */; };
 		1A4E686923E3EA92005D2CFD /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4E686823E3EA92005D2CFD /* FeedViewModel.swift */; };
+		1A4E686B23E3EBE4005D2CFD /* FeedScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4E686A23E3EBE4005D2CFD /* FeedScene.swift */; };
+		1A4E686D23E3EC19005D2CFD /* FeedInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4E686C23E3EC19005D2CFD /* FeedInfos.swift */; };
+		1A4E687023E3ED49005D2CFD /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4E686E23E3ED49005D2CFD /* FeedCell.swift */; };
+		1A4E687123E3ED49005D2CFD /* FeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A4E686F23E3ED49005D2CFD /* FeedCell.xib */; };
 		1A8FAF3023E0249C009A92C1 /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8FAF2F23E0249C009A92C1 /* SceneCoordinator.swift */; };
 		1A8FAF3523E02563009A92C1 /* CoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8FAF3423E02563009A92C1 /* CoordinatorType.swift */; };
 		1A8FAF4223E060AE009A92C1 /* LoginScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8FAF4123E060AE009A92C1 /* LoginScene.swift */; };
@@ -67,6 +71,10 @@
 		1A49808923C96B57004B4058 /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoOpenSDK.framework; sourceTree = "<group>"; };
 		1A4E686323E3E9D6005D2CFD /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		1A4E686823E3EA92005D2CFD /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
+		1A4E686A23E3EBE4005D2CFD /* FeedScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedScene.swift; sourceTree = "<group>"; };
+		1A4E686C23E3EC19005D2CFD /* FeedInfos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedInfos.swift; sourceTree = "<group>"; };
+		1A4E686E23E3ED49005D2CFD /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
+		1A4E686F23E3ED49005D2CFD /* FeedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedCell.xib; sourceTree = "<group>"; };
 		1A8FAF2F23E0249C009A92C1 /* SceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
 		1A8FAF3423E02563009A92C1 /* CoordinatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorType.swift; sourceTree = "<group>"; };
 		1A8FAF4123E060AE009A92C1 /* LoginScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScene.swift; sourceTree = "<group>"; };
@@ -165,6 +173,8 @@
 			isa = PBXGroup;
 			children = (
 				1A4E686323E3E9D6005D2CFD /* FeedViewController.swift */,
+				1A4E686E23E3ED49005D2CFD /* FeedCell.swift */,
+				1A4E686F23E3ED49005D2CFD /* FeedCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -172,6 +182,7 @@
 		1A4E686523E3EA23005D2CFD /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1A4E686C23E3EC19005D2CFD /* FeedInfos.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -187,6 +198,7 @@
 		1A4E686723E3EA2F005D2CFD /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				1A4E686A23E3EBE4005D2CFD /* FeedScene.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -518,6 +530,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1AD6D41423BF9DBF000B1893 /* LaunchScreen.storyboard in Resources */,
+				1A4E687123E3ED49005D2CFD /* FeedCell.xib in Resources */,
 				1AD6D41123BF9DBF000B1893 /* Assets.xcassets in Resources */,
 				1AD6D40C23BF9DBC000B1893 /* Main.storyboard in Resources */,
 			);
@@ -648,6 +661,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A4E686923E3EA92005D2CFD /* FeedViewModel.swift in Sources */,
+				1A4E686D23E3EC19005D2CFD /* FeedInfos.swift in Sources */,
 				1A8FAF3023E0249C009A92C1 /* SceneCoordinator.swift in Sources */,
 				1AAB0E3823DED4240003A2C4 /* ViewController.swift in Sources */,
 				1A8FAF4C23E0755D009A92C1 /* UITextField+.swift in Sources */,
@@ -665,7 +679,9 @@
 				1AAB0E2B23DECA080003A2C4 /* View+.swift in Sources */,
 				1AD6D40723BF9DBC000B1893 /* SceneDelegate.swift in Sources */,
 				1AAB0E3C23DED4C50003A2C4 /* ViewModelBindable.swift in Sources */,
+				1A4E686B23E3EBE4005D2CFD /* FeedScene.swift in Sources */,
 				1A8FAF4623E06952009A92C1 /* MainViewModel.swift in Sources */,
+				1A4E687023E3ED49005D2CFD /* FeedCell.swift in Sources */,
 				1AAB0E3323DECC770003A2C4 /* UIView+Stacking.swift in Sources */,
 				1A49808523C967C1004B4058 /* LoginController.swift in Sources */,
 				1A8FAF4A23E0737E009A92C1 /* UIStackView+.swift in Sources */,
