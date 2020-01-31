@@ -10,6 +10,10 @@ import Foundation
 
 class FeedViewController: ViewController {
     var viewModel: FeedViewModel?
+    
+    override func setupLayout() {
+        
+    }
 }
 
 extension FeedViewController: ViewModelBindableType {

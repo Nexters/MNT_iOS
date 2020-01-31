@@ -24,6 +24,7 @@ extension ViewModelBindableType where Self: UIViewController {
         
         // execute on viewDidLoad
         guard let viewModel = self.viewModel else { return }
-        bindViewModel(viewModel: ViewModelType)
+        bindViewModel(viewModel: viewModel)
     }
 }
+
