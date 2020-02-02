@@ -15,6 +15,4 @@ class MissionPostViewModel: ViewModel {
         self.missionInfo = missionInfo
         super.init(title: title, coordinator: coordinator)
     }
-    
-    
 }

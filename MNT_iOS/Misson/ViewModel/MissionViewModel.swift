@@ -22,7 +22,7 @@ class MissionViewModel: ViewModel {
             let scene = MissionScene.missionDetail(viewModel)
             return self.coordinator
                 .transition(to: scene,
-                            using: .modal,
+                            using: .push,
                             animated: true)
                 .asObservable().map { _ in }
         }

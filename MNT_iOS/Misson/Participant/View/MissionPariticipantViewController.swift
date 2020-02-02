@@ -15,7 +15,7 @@ class MissionParticipantViewController: ViewController {
 
     override func setupLayout() {
         view.addSubview(missionTableController.view)
-        missionTableController.view.fillSuperview()
+        missionTableController.view.fillSuperviewSafeAreaLayoutGuide()
     }
 }
 
