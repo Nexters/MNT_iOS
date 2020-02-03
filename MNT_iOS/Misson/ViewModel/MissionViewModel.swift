@@ -19,7 +19,7 @@ class MissionViewModel: ViewModel {
             let viewModel = MissionPostViewModel(title: "미션 등록",
                                                  coordinator: self.coordinator,
                                                  missionInfo: self.missions[index])
-            let scene = MissionScene.missionDetail(viewModel)
+            let scene = MissionScene.missionPost(viewModel)
             return self.coordinator
                 .transition(to: scene,
                             using: .push,

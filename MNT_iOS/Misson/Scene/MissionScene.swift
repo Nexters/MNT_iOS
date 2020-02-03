@@ -11,7 +11,9 @@ import Foundation
 enum MissionScene {
     case missionParticipant(MissionViewModel)
     case missionAdministrator(MissionViewModel)
-    case missionDetail(MissionPostViewModel)
+    case missionPost(MissionPostViewModel)
+    case missionPreview(MissionPostViewModel)
+    case sendMission
 }
 
 extension MissionScene: SceneType {
@@ -31,10 +33,17 @@ extension MissionScene: SceneType {
                 mainVC.bind(viewModel: viewModel)
             }
             return navigationVC
-        case .missionDetail(let viewModel):
-            var missionDetailVC = MissionPostViewController()
-            missionDetailVC.bind(viewModel: viewModel)
-            return missionDetailVC
+        case .missionPost(let viewModel):
+            var missionPostVC = MissionPostViewController()
+            missionPostVC.bind(viewModel: viewModel)
+            return missionPostVC
+        case .missionPreview(let viewModel):
+            var missionPreviewVC = MissionPreviewViewController()
+            missionPreviewVC.bind(viewModel: viewModel)
+            return missionPreviewVC
+        case .sendMission:
+            // Demo..
+            return MissionParticipantViewController()
         }
     }
 }
