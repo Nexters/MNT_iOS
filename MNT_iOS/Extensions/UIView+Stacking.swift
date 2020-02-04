@@ -8,11 +8,15 @@
 
 import UIKit
 
-
+public enum StackingType {
+    case fill
+    case exceptBottom
+    case exceptTop
+}
 
 extension UIView {
     
-    fileprivate func _stack(_ axis: NSLayoutConstraint.Axis = .vertical, views: [UIView], spacing: CGFloat = 0, alignment: UIStackView.Alignment = .fill, distribution: UIStackView.Distribution = .fill) -> UIStackView {
+    fileprivate func _stack(_ axis: NSLayoutConstraint.Axis = .vertical, views: [UIView], spacing: CGFloat = 0, alignment: UIStackView.Alignment = .fill, distribution: UIStackView.Distribution = .fill, type: StackingType = StackingType.fill) -> UIStackView {
         let stackView = UIStackView(arrangedSubviews: views)
         stackView.axis = axis
         stackView.spacing = spacing
@@ -20,15 +24,23 @@ extension UIView {
         stackView.distribution = distribution
         addSubview(stackView)
         
-        stackView.fillSuperview()
+        switch type {
+        case .fill:
+            stackView.fillSuperview()
+        case .exceptTop:
+            stackView.fillSuperview(exceptTop: true)
+        case .exceptBottom:
+            stackView.fillSuperview(exceptBottom: true)
+        }
+        
         return stackView
     }
     
     @discardableResult
-    open func stack(_ views: UIView..., spacing: CGFloat = 0, alignment: UIStackView.Alignment = .fill, distribution: UIStackView.Distribution = .fill) -> UIStackView {
-        return _stack(.vertical, views: views, spacing: spacing, alignment: alignment, distribution: distribution)
+    open func stack(_ views: UIView..., spacing: CGFloat = 0, alignment: UIStackView.Alignment = .fill, distribution: UIStackView.Distribution = .fill, type: StackingType = StackingType.fill) -> UIStackView {
+        return _stack(.vertical, views: views, spacing: spacing, alignment: alignment, distribution: distribution, type: type)
     }
-    
+
     @discardableResult
     open func hstack(_ views: UIView..., spacing: CGFloat = 0, alignment: UIStackView.Alignment = .fill, distribution: UIStackView.Distribution = .fill) -> UIStackView {
         return _stack(.horizontal, views: views, spacing: spacing, alignment: alignment, distribution: distribution)
