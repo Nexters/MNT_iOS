@@ -17,6 +17,12 @@ class ViewController: UIViewController {
         setupLayout()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        setupNavigationController()
+    }
+    
     fileprivate func setupTapGesture() {
         let tapGest = UITapGestureRecognizer()
         view.addGestureRecognizer(tapGest)
@@ -27,4 +33,6 @@ class ViewController: UIViewController {
     }
     
     func setupLayout() {}
+    
+    func setupNavigationController() {}
 }

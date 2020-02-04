@@ -14,11 +14,16 @@ class MissionPostViewController: ViewController {
     fileprivate let subtitleLabel = UILabel(text: "subtitle")
     fileprivate let textfield = UITextField(placeholder: "텍스트 입력")
     fileprivate let button = UIButton(title: "이미지 업로드", titleColor: .black)
+    fileprivate var barbutton = UIBarButtonItem(title: "다음",
+                                                style: .done,
+                                                target: nil,
+                                                action: nil)
+    
     fileprivate lazy var titleStackView: UIStackView = {
         let sv = UIStackView(arrangedSubviews: [
-                titleLabel,
-                subtitleLabel
-            ])
+            titleLabel,
+            subtitleLabel
+        ])
         sv.axis = .vertical
         return sv
     }()
@@ -33,8 +38,6 @@ class MissionPostViewController: ViewController {
         return sv
     }()
     
-    
-
     override func setupLayout() {
         view.backgroundColor = .white
         view.addSubview(wholeStackView)
@@ -45,22 +48,15 @@ class MissionPostViewController: ViewController {
             .trailing(view.trailingAnchor, constant: 40))
         
         wholeStackView.constrainHeight(300)
-        
-        navigationController?.navigationItem.setRightBarButton(UIBarButtonItem(title: "다음",
-                                                                               style: .plain,
-                                                                               target: self,
-                                                                               action: #selector(handleNext)),
-                                                               animated: true)
     }
     
-    @objc fileprivate func handleNext() {
-        // sync with ViewModel
-        
+    override func setupNavigationController() {
+        navigationItem.setRightBarButton(barbutton, animated: true)
     }
 }
 
 extension MissionPostViewController: ViewModelBindableType {
     func bindViewModel(viewModel: MissionPostViewModel) {
-        
+        barbutton.rx.action = viewModel.missionPreviewAction(content: "",     imageURL: "")
     }
 }

@@ -27,20 +27,24 @@ extension MissionScene: SceneType {
                 mainVC.bind(viewModel: viewModel)
             }
             return navigationVC
+            
         case .missionAdministrator(let viewModel):
             let navigationVC = UINavigationController(rootViewController: MissionAdministratorViewController())
             if var mainVC = navigationVC.viewControllers.first as? MissionAdministratorViewController {
                 mainVC.bind(viewModel: viewModel)
             }
             return navigationVC
+            
         case .missionPost(let viewModel):
             var missionPostVC = MissionPostViewController()
             missionPostVC.bind(viewModel: viewModel)
             return missionPostVC
+            
         case .missionPreview(let viewModel):
             var missionPreviewVC = MissionPreviewViewController()
             missionPreviewVC.bind(viewModel: viewModel)
             return missionPreviewVC
+            
         case .sendMission:
             // Demo..
             return MissionParticipantViewController()

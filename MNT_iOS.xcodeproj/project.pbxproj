@@ -48,6 +48,8 @@
 		1AAB0E3823DED4240003A2C4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAB0E3723DED4240003A2C4 /* ViewController.swift */; };
 		1AAB0E3A23DED4980003A2C4 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAB0E3923DED4980003A2C4 /* ViewModel.swift */; };
 		1AAB0E3C23DED4C50003A2C4 /* ViewModelBindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAB0E3B23DED4C50003A2C4 /* ViewModelBindable.swift */; };
+		1AD5F7BB23E8762400F96263 /* MissionPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD5F7BA23E8762400F96263 /* MissionPreviewViewController.swift */; };
+		1AD5F7BD23E8771500F96263 /* SendMission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD5F7BC23E8771500F96263 /* SendMission.swift */; };
 		1AD6D40523BF9DBC000B1893 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD6D40423BF9DBC000B1893 /* AppDelegate.swift */; };
 		1AD6D40723BF9DBC000B1893 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD6D40623BF9DBC000B1893 /* SceneDelegate.swift */; };
 		1AD6D40923BF9DBC000B1893 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD6D40823BF9DBC000B1893 /* MainViewController.swift */; };
@@ -124,6 +126,8 @@
 		1AAB0E3723DED4240003A2C4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1AAB0E3923DED4980003A2C4 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		1AAB0E3B23DED4C50003A2C4 /* ViewModelBindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBindable.swift; sourceTree = "<group>"; };
+		1AD5F7BA23E8762400F96263 /* MissionPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionPreviewViewController.swift; sourceTree = "<group>"; };
+		1AD5F7BC23E8771500F96263 /* SendMission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMission.swift; sourceTree = "<group>"; };
 		1AD6D40123BF9DBC000B1893 /* MNT_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MNT_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AD6D40423BF9DBC000B1893 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1AD6D40623BF9DBC000B1893 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -342,6 +346,7 @@
 			children = (
 				1A4E688C23E40E79005D2CFD /* MissionPariticipantViewController.swift */,
 				1A4E68A223E474AE005D2CFD /* MissionPostViewController.swift */,
+				1AD5F7BA23E8762400F96263 /* MissionPreviewViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -357,6 +362,7 @@
 		1A4E689E23E471BC005D2CFD /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1AD5F7BC23E8771500F96263 /* SendMission.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -857,12 +863,14 @@
 				1A8FAF4823E06A81009A92C1 /* MainScene.swift in Sources */,
 				1AFC040223C99841005B7A6F /* Objects+.swift in Sources */,
 				1A8FAF4223E060AE009A92C1 /* LoginScene.swift in Sources */,
+				1AD5F7BB23E8762400F96263 /* MissionPreviewViewController.swift in Sources */,
 				1AAB0E3A23DED4980003A2C4 /* ViewModel.swift in Sources */,
 				1A4E689523E42993005D2CFD /* MissionAdministratorViewController.swift in Sources */,
 				1AD6D40923BF9DBC000B1893 /* MainViewController.swift in Sources */,
 				1A4E688923E40DD3005D2CFD /* MissionViewModel.swift in Sources */,
 				1AD6D40F23BF9DBC000B1893 /* MNT_iOS.xcdatamodeld in Sources */,
 				1A4E68A523E474D4005D2CFD /* MissionPostViewModel.swift in Sources */,
+				1AD5F7BD23E8771500F96263 /* SendMission.swift in Sources */,
 				1AD6D40523BF9DBC000B1893 /* AppDelegate.swift in Sources */,
 				1A4E687D23E404BC005D2CFD /* UICollectionView+.swift in Sources */,
 				1AAB0E3523DED2310003A2C4 /* NSObject+Rx.swift in Sources */,

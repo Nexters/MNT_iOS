@@ -69,6 +69,8 @@ extension SceneCoordinator: SceneCoordinatorType {
             }
             currentVC = target.sceneViewController
             currentVC.modalPresentationStyle = .overFullScreen
+        case .popToRoot:
+            currentVC.navigationController?.popToRootViewController(animated: true)
         }
 
         return subject.ignoreElements()
