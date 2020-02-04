@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct SendMission {
+struct MissionDetail {
     let mission: Mission
     let fromId, toId: Int
     let fromImageURL, toImageURL: String

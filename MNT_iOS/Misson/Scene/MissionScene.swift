@@ -12,7 +12,7 @@ enum MissionScene {
     case missionParticipant(MissionViewModel)
     case missionAdministrator(MissionViewModel)
     case missionPost(MissionPostViewModel)
-    case missionPreview(MissionPostViewModel)
+    case missionPreview(MissionDetailViewModel)
     case sendMission
 }
 

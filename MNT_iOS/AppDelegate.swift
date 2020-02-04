@@ -29,8 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     fileprivate func testing() {
-        //testingFeed()
-        testingMission()
+        testingFeed()
+//        testingMission()
     }
     
     fileprivate func testingMission() {

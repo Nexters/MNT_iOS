@@ -10,7 +10,6 @@ import Foundation
 
 class MissionPostViewModel: ViewModel {
     let missionInfo: Mission
-    var sendMissionInfo: SendMission?
     
     init(title: String, coordinator: SceneCoordinatorType, missionInfo: Mission) {
         self.missionInfo = missionInfo
@@ -19,24 +18,19 @@ class MissionPostViewModel: ViewModel {
     
     func missionPreviewAction(content: String, imageURL: String) -> CocoaAction {
         return Action { [unowned self] _ in
-            self.sendMissionInfo = SendMission(mission: self.missionInfo,
+            let missionDetail = MissionDetail(mission: self.missionInfo,
                                                fromId: 1,
                                                toId: 1,
                                                fromImageURL: "",
                                                toImageURL: "",
                                                text: content,
                                                imageURL: imageURL)
-            return self.coordinator.transition(to: MissionScene.missionPreview(self),
+            let viewModel = MissionDetailViewModel(title: "미리보기",
+                                                   coordinator: self.coordinator,
+                                                   missionDetail: missionDetail)
+            return self.coordinator.transition(to: MissionScene.missionPreview(viewModel),
                                                using: .push,
                                                animated: true).asObservable().map { _ in}
-        }
-    }
-    
-    func missionCompleteAction() -> CocoaAction {
-        return Action { [unowned self] _ in
-            return self.coordinator.transition(to: MissionScene.sendMission,
-                                               using: .popToRoot,
-                                               animated: true).asObservable().map { _ in }
         }
     }
 }
