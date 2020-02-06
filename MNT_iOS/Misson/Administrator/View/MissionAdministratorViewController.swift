@@ -37,6 +37,7 @@ extension MissionAdministratorViewController: ViewModelBindableType {
 
 extension MissionAdministratorViewController: MissionTableViewControllerHeaderDataSource {
     func tableViewHeader() -> UIView? {
+        header.backgroundColor = .yellow
         return header
     }
 }

@@ -208,7 +208,6 @@ extension UIView {
         self.init(frame: .zero)
         self.backgroundColor = backgroundColor
     }
-    
 }
 
 extension UIViewController {

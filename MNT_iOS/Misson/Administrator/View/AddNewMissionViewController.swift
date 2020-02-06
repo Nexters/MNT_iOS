@@ -10,6 +10,39 @@ import Foundation
 
 class AddNewMissionViewController: ViewController {
     var viewModel: AddNewMissionViewModel?
+    let view1: UIView = {
+        let v = StackChildView()
+        v.backgroundColor = .yellow
+        v.propotionalHeight = 1
+        return v
+    }()
+    let view2: UIView = {
+        let v = StackChildView()
+        v.backgroundColor = .blue
+        v.propotionalHeight = 2
+        return v
+    }()
+    let view3: UIView = {
+        let v = StackChildView()
+        v.backgroundColor = .red
+        v.propotionalHeight = 1
+        return v
+    }()
+    
+    override func setupLayout() {
+        view.backgroundColor = .green
+        
+        let stackView = UIStackView(arrangedSubviews: [
+            view1,
+            view2,
+            view3])
+        view.addSubview(stackView)
+        stackView.fillSuperview()
+        stackView.axis = .vertical
+        stackView.distribution = .fillProportionally
+        
+        
+    }
 }
 
 extension AddNewMissionViewController: ViewModelBindableType {
