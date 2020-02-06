@@ -17,13 +17,14 @@ class SetRoomDetailViewController: ViewController {
     let textField = UITextField(placeholder: "최대 정원 설정")
     var beginDate = UIDatePicker()
     var endDate = UIDatePicker()
-    var button = UIButton(title: "방 만들기", titleColor: .black)
+    var button = UIBarButtonItem(title: "다음", style: .plain, target: self, action: nil)
     
     var viewModel: SetRoomDetailViewModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationItem.rightBarButtonItem = button
     }
     
     override func setupLayout() {
@@ -36,7 +37,6 @@ class SetRoomDetailViewController: ViewController {
                    textField.withHeight(50),
                    beginDate.withHeight(50),
                    endDate.withHeight(50),
-                   button.withHeight(50),
                    alignment: .center)
         .withMargins(.init(top: view.frame.height/2 - 300,
                                 left: 0,
@@ -48,7 +48,6 @@ class SetRoomDetailViewController: ViewController {
         let dateFormatter: DateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/dd/yyyy hh:mm a"
         let selectedDate: String = dateFormatter.string(from: sender.date)
-        print("Selected value \(selectedDate)")
     }
     
 }

@@ -24,6 +24,7 @@ class ReadyViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationController?.navigationBar.isHidden = true
     }
     
     override func setupLayout() {
@@ -34,7 +35,8 @@ class ReadyViewController: ViewController {
                    checkButton.withHeight(50),
                    startButton.withHeight(50),
                    alignment: .center,
-                   distribution: .fillEqually)
+                   distribution: .fillEqually
+)
             .withMargins(.init(top: view.frame.height/2 - 300,
                                left: 0,
                                bottom: view.frame.height/2 - 300,
@@ -46,6 +48,9 @@ class ReadyViewController: ViewController {
 extension ReadyViewController: ViewModelBindableType {
     func bindViewModel() {
         guard let viewModel = viewModel else { return }
-
+        
+        var dummyCode: Int = 11111
+        
+        sendButton.rx.action = viewModel.sendKakaoLinkAction(code : dummyCode)
     }
 }

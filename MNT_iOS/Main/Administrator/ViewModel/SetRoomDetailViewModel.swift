@@ -12,6 +12,8 @@ import Action
 import RxSwift
 
 class SetRoomDetailViewModel: ViewModel {
+    let beginDateRelay = BehaviorRelay(value: "")
+    let endDateRelay = BehaviorRelay(value: "")
     
     func presentReadyAction() -> CocoaAction {
         return CocoaAction { _ in

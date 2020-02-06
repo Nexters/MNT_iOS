@@ -15,16 +15,16 @@ class JoinRoomViewController: ViewController {
 
     var viewModel: JoinRoomViewModel?
     var textField = UITextField(placeholder: "초대코드입력")
-    var button = UIButton(title: "다음", titleColor: .black)
+    var button = UIBarButtonItem(title: "다음", style: .plain, target: self, action: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationItem.rightBarButtonItem = button
     }
     
     override func setupLayout() {
         view.stack(textField.withHeight(50),
-                   button.withHeight(50),
                    alignment: .center)
             .withMargins(.init(top: view.frame.height/2 - 200,
                                left: 0,

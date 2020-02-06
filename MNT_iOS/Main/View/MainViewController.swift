@@ -23,7 +23,7 @@ class MainViewController: ViewController {
     let textfield = UITextField(placeholder: "아무거나 입력하시던지요.")
     let mimicLabel = UILabel(text: "난 따라하지 !", numberOfLines: 0)
     var joinButton = UIButton(title: "참여하기", titleColor: .black)
-    var createButton = UIButton(title: "방 만들기", titleColor: .black)
+    var produceButton = UIButton(title: "방 만들기", titleColor: .black)
     
     var viewModel: MainViewModel?
 
@@ -34,13 +34,13 @@ class MainViewController: ViewController {
     }
 
     override func setupLayout() {
-        view.stack(profileImageView,
-                   nicknameLabel.withHeight(50),
-                   textfield.withHeight(50),
-                   mimicLabel.withHeight(50),
-                   button.withHeight(50),
+        view.stack(//profileImageView,
+//                   nicknameLabel.withHeight(50),
+//                   textfield.withHeight(50),
+//                   mimicLabel.withHeight(50),
+//                   button.withHeight(50),
                    joinButton.withHeight(50),
-                   createButton.withHeight(50),
+                   produceButton.withHeight(50),
                    alignment: .center)
             .withMargins(.init(top: view.frame.height/2 - 200,
                                left: 0,
@@ -67,7 +67,7 @@ extension MainViewController: ViewModelBindableType {
         guard let viewModel = viewModel else { return }
         
         joinButton.rx.action = viewModel.presentJoinAction()
-        createButton.rx.action = viewModel.presentCreateAction()
+        produceButton.rx.action = viewModel.presentSetAction()
         
         textfield.rx.text.orEmpty
             .bind(to: viewModel.textfieldRelay)

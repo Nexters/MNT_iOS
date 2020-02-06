@@ -23,10 +23,10 @@ class MainViewModel: ViewModel {
         }
     }
     
-    func presentCreateAction() -> CocoaAction {
+    func presentSetAction() -> CocoaAction {
         return CocoaAction { _ in
-            let viewModel = CreateRoomViewModel(title: "방 만들기", coordinator: self.coordinator)
-            let scene = MainScene.createRoom(viewModel)
+            let viewModel = SetRoomTitleViewModel(title: "방 만들기", coordinator: self.coordinator)
+            let scene = MainScene.setRoomTitle(viewModel)
             
             return self.coordinator.transition(to: scene, using: .push, animated: true).asObservable().map { _ in }
         }

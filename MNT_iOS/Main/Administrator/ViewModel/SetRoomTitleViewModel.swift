@@ -1,5 +1,5 @@
 //
-//  createViewModel.swift
+//  SetRoomTitleViewModel.swift
 //  MNT_iOS
 //
 //  Created by Jihye on 2020/01/29.
@@ -11,8 +11,8 @@ import RxCocoa
 import Action
 import RxSwift
 
-class CreateRoomViewModel: ViewModel {
-    let roomNameTextRelay = BehaviorRelay(value: "")
+class SetRoomTitleViewModel: ViewModel {
+    let roomTitleTextRelay = BehaviorRelay(value: "")
     
     func presentSetRoomDetailAction() -> CocoaAction {
         return CocoaAction { _ in
@@ -22,5 +22,4 @@ class CreateRoomViewModel: ViewModel {
             return self.coordinator.transition(to: scene, using: .push, animated: true).asObservable().map { _ in }
         }
     }
-    
 }
