@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A3022AD23EBDAD800693E22 /* AddNewMissionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3022AC23EBDAD800693E22 /* AddNewMissionViewModel.swift */; };
+		1A3022AF23EBDB5B00693E22 /* AddNewMissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3022AE23EBDB5B00693E22 /* AddNewMissionViewController.swift */; };
 		1A49808523C967C1004B4058 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A49808423C967C1004B4058 /* LoginController.swift */; };
 		1A49808A23C96B57004B4058 /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A49808923C96B57004B4058 /* KakaoOpenSDK.framework */; };
 		1A4E686423E3E9D6005D2CFD /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4E686323E3E9D6005D2CFD /* FeedViewController.swift */; };
@@ -87,6 +89,8 @@
 
 /* Begin PBXFileReference section */
 		186C7888D6F657BF5ED2D930 /* Pods_MNT_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MNT_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A3022AC23EBDAD800693E22 /* AddNewMissionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewMissionViewModel.swift; sourceTree = "<group>"; };
+		1A3022AE23EBDB5B00693E22 /* AddNewMissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewMissionViewController.swift; sourceTree = "<group>"; };
 		1A49808423C967C1004B4058 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		1A49808623C96925004B4058 /* KakaoOpenSDK-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KakaoOpenSDK-Bridging-Header.h"; sourceTree = "<group>"; };
 		1A49808923C96B57004B4058 /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoOpenSDK.framework; sourceTree = "<group>"; };
@@ -380,6 +384,7 @@
 			isa = PBXGroup;
 			children = (
 				1A4E689423E42993005D2CFD /* MissionAdministratorViewController.swift */,
+				1A3022AE23EBDB5B00693E22 /* AddNewMissionViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -387,6 +392,7 @@
 		1A4E68A023E471D3005D2CFD /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				1A3022AC23EBDAD800693E22 /* AddNewMissionViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -875,6 +881,7 @@
 				1A4E689023E40F81005D2CFD /* MissionCell.swift in Sources */,
 				1A8FAF4C23E0755D009A92C1 /* UITextField+.swift in Sources */,
 				1AAB0E2F23DECBFF0003A2C4 /* UILabel+.swift in Sources */,
+				1A3022AD23EBDAD800693E22 /* AddNewMissionViewModel.swift in Sources */,
 				1A4E689323E40FAB005D2CFD /* MissionCellViewModel.swift in Sources */,
 				1A4E688B23E40DF9005D2CFD /* Mission.swift in Sources */,
 				1A8FAF4823E06A81009A92C1 /* MainScene.swift in Sources */,
@@ -915,6 +922,7 @@
 				1A4E687923E3FFC3005D2CFD /* RoundedImageView.swift in Sources */,
 				1A8FAF4423E0612C009A92C1 /* LoginViewModel.swift in Sources */,
 				1A4E686423E3E9D6005D2CFD /* FeedViewController.swift in Sources */,
+				1A3022AF23EBDB5B00693E22 /* AddNewMissionViewController.swift in Sources */,
 				1AAB0E2D23DECBDE0003A2C4 /* UIButton+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

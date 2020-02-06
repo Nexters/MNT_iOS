@@ -13,5 +13,6 @@ struct MissionDetail {
     let fromId, toId: Int
     let fromImageURL, toImageURL: String
     let text: String
+    var fromName, toName: String?
     let imageURL: String
 }

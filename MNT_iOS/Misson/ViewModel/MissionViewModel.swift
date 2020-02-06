@@ -27,4 +27,31 @@ class MissionViewModel: ViewModel {
                 .asObservable().map { _ in }
         }
     }
+    
+    func newMissionAction() -> CocoaAction {
+        return Action { [unowned self] in
+            let viewModel = AddNewMissionViewModel(title: "미션 부여하기", coordinator: self.coordinator)
+            let scene = MissionScene.addNewMission(viewModel)
+            return self.coordinator
+                .transition(to: scene,
+                            using: .push,
+                            animated: true)
+                .asObservable().map { _ in }
+        }
+    }
+    
+    let incomeText = BehaviorRelay(value: "")
+    
+    func addNewMissionAction(_ gesture: UITapGestureRecognizer) -> Void {
+        let viewModel = AddNewMissionViewModel(title: "미션 부여하기", coordinator: self.coordinator)
+        let scene = MissionScene.addNewMission(viewModel)
+        self.coordinator
+            .transition(to: scene,
+                        using: .push,
+                        animated: true)
+    }
+    
+//    func tapnewMissionAction() -> TapControlEvent {
+//
+//    }
 }

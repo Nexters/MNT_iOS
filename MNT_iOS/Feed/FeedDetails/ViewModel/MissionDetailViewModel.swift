@@ -9,7 +9,7 @@
 import Foundation
 
 class MissionDetailViewModel: ViewModel {
-    var missionDetail: MissionDetail?
+    let missionDetail: MissionDetail
     
     init(title: String, coordinator: SceneCoordinatorType, missionDetail: MissionDetail) {
         self.missionDetail = missionDetail

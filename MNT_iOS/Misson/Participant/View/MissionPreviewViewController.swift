@@ -15,10 +15,32 @@ class MissionPreviewViewController: ViewController {
                                                 style: .done,
                                                 target: nil,
                                                 action: nil)
+    let imageView = UIImageView(image: nil, contentMode: .scaleAspectFill)
+    let label = UILabel(numberOfLines: 0)
+    let fromToView = FromToView()
     
     override func setupLayout() {
-        // stackView 어떻게 적용할지..
-        
+        view.stack(
+            fromToView.withHeight(80),
+            imageView.withHeight(view.bounds.height * 0.4),
+            label.withHeight(view.bounds.height * 0.2),
+            spacing: 20,
+            distribution: .equalSpacing
+        )
+
+
+//        let stackView = UIStackView(arrangedSubviews: [
+//            fromToView.withHeight(100),
+//            imageView.withHeight(100)
+//        ])
+//
+//        view.addSubview(stackView)
+//        stackView.anchor(top: view.topAnchor,
+//                         leading: view.leadingAnchor,
+//                         bottom: view.bottomAnchor,
+//                         trailing: view.trailingAnchor)
+//        //stackView.constrainHeight(200)
+//        stackView.backgroundColor = .blue
     }
     
     override func setupNavigationController() {

@@ -13,6 +13,7 @@ enum MissionScene {
     case missionAdministrator(MissionViewModel)
     case missionPost(MissionPostViewModel)
     case missionPreview(MissionDetailViewModel)
+    case addNewMission(AddNewMissionViewModel)
     case sendMission
 }
 
@@ -48,6 +49,10 @@ extension MissionScene: SceneType {
         case .sendMission:
             // Demo..
             return MissionParticipantViewController()
+        case .addNewMission(let viewModel):
+            var addNewMissionVC = AddNewMissionViewController()
+            addNewMissionVC.bind(viewModel: viewModel)
+            return addNewMissionVC
         }
     }
 }

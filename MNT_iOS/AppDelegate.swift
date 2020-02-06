@@ -29,15 +29,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     fileprivate func testing() {
-        testingFeed()
-//        testingMission()
+//        testingFeed()
+        testingMission()
     }
     
     fileprivate func testingMission() {
         let coordinator = SceneCoordinator(window: window!)
         let viewModel = MissionViewModel(title: "미션", coordinator: coordinator)
-        let scene: SceneType = MissionScene.missionParticipant(viewModel)
-        //let scene: SceneType = MissionScene.missionAdministrator(viewModel)
+//        let scene: SceneType = MissionScene.missionParticipant(viewModel)
+        let scene: SceneType = MissionScene.missionAdministrator(viewModel)
         coordinator.transition(to: scene, using: .root, animated: true)
     }
     

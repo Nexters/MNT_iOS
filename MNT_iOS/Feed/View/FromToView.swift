@@ -8,7 +8,7 @@
 
 import Foundation
 
-class FromToVew: UIView {
+class FromToView: UIView {
     let manittoImageView = CircularImageView(width: 30, image: .none)
     let manittoLabel = UILabel(text: "마니또", font: .systemFont(ofSize: 18))
     let targetImageView = CircularImageView(width: 30, image: .none)
@@ -18,9 +18,9 @@ class FromToVew: UIView {
         super.draw(rect)
         
         hstack(manittoImageView,
-        manittoLabel,
-        UIImageView(image: nil, contentMode: .scaleAspectFit).withWidth(60),
-        targetImageView,
-        targetLabel)
+               manittoLabel,
+               UIImageView(image: nil, contentMode: .scaleAspectFit).withWidth(60),
+               targetImageView,
+               targetLabel)
     }
 }

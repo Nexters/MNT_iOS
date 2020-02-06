@@ -10,6 +10,9 @@ import UIKit
 import RxCocoa
 import RxGesture
 
+protocol MissionTableViewControllerHeaderDataSource {
+    func tableViewHeader() -> UIView?
+}
 
 class MissionTableViewController: UITableViewController {
     var viewModel: MissionViewModel? {
@@ -17,6 +20,8 @@ class MissionTableViewController: UITableViewController {
             tableView.reloadData()
         }
     }
+    
+    var delegate: MissionTableViewControllerHeaderDataSource?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +33,6 @@ class MissionTableViewController: UITableViewController {
 
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return viewModel?.missions.count ?? 0
     }
 
@@ -49,8 +53,11 @@ class MissionTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let item = viewModel?.missions[indexPath.row] else { return }
-        
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return delegate?.tableViewHeader()
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return delegate == nil ? 0 : 120
     }
 }

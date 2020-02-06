@@ -14,7 +14,7 @@ class FeedCell: UITableViewCell {
    
     let postImageView = RoundedImageView(contentMode: .scaleAspectFill)
     let postLabel = UILabel(text: "내용", font: .systemFont(ofSize: 15), numberOfLines: 0)
-    let fromtoView = FromToVew()
+    let fromtoView = FromToView()
     
     override func awakeFromNib() {
         super.awakeFromNib()
