@@ -28,6 +28,9 @@ class AddNewMissionViewController: ViewController {
         v.propotionalHeight = 1
         return v
     }()
+    let button: UIButton = {
+        return UIButton(type: .system)
+    }()
     
     override func setupLayout() {
         view.backgroundColor = .green
@@ -41,7 +44,7 @@ class AddNewMissionViewController: ViewController {
         stackView.axis = .vertical
         stackView.distribution = .fillProportionally
         
-        
+        button.bottomAnchor.constraint(equalTo: view.refinedBottomAnchor).isActive = true
     }
 }
 

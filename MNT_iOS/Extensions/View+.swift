@@ -208,6 +208,24 @@ extension UIView {
         self.init(frame: .zero)
         self.backgroundColor = backgroundColor
     }
+    
+    // return Anchors dealing with safeArea
+    
+    var refinedTopAnchor: NSLayoutYAxisAnchor {
+        if #available(iOS 11.0, *) {
+            return safeAreaLayoutGuide.topAnchor
+        } else {
+            return topAnchor
+        }
+    }
+    
+    var refinedBottomAnchor: NSLayoutYAxisAnchor {
+        if #available(iOS 11.0, *) {
+            return safeAreaLayoutGuide.bottomAnchor
+        } else {
+            return bottomAnchor
+        }
+    }
 }
 
 extension UIViewController {
