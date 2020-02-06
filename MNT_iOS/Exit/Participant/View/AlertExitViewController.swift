@@ -39,9 +39,7 @@ class AlertExitViewController: ViewController {
 }
 
 extension AlertExitViewController: ViewModelBindableType {
-    func bindViewModel() {
-        guard let viewModel = viewModel else { return }
-        
-        //button.rx.action = viewModel.presentGuessAction()
+    func bindViewModel(viewModel: AlertExitViewModel) {
+        button.rx.action = viewModel.presentGuessAction()
     }
 }

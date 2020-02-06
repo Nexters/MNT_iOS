@@ -53,9 +53,7 @@ class SetRoomDetailViewController: ViewController {
 }
 
 extension SetRoomDetailViewController: ViewModelBindableType {
-    func bindViewModel() {
-        guard let viewModel = viewModel else { return }
-
+    func bindViewModel(viewModel: SetRoomDetailViewModel) {
         button.rx.action = viewModel.presentReadyAction()
     }
 }

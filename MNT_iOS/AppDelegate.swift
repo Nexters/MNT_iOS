@@ -42,10 +42,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let coordinator = SceneCoordinator(window: window!)
         
-//        let viewModel = isOpened ? AlertExitViewModel(title: "메인", coordinator: coordinator) : AlertExitViewModel(title: "메인", coordinator: coordinator)
-//        let scene: SceneType = isOpened ? ExitScene.alertExit(viewModel as! AlertExitViewModel) : LoginScene.login(viewModel as! LoginViewModel)
-        let viewModel = isOpened ? MainViewModel(title: "메인", coordinator: coordinator) : LoginViewModel(title: "메인", coordinator: coordinator)
-        let scene: SceneType = isOpened ? MainScene.main(viewModel as! MainViewModel) : LoginScene.login(viewModel as! LoginViewModel)
+        let viewModel = isOpened ? AlertExitViewModel(title: "메인", coordinator: coordinator) : AlertExitViewModel(title: "메인", coordinator: coordinator)
+        let scene: SceneType = isOpened ? ExitScene.alertExit(viewModel as! AlertExitViewModel) : LoginScene.login(viewModel as! LoginViewModel)
+//        let viewModel = isOpened ? MainViewModel(title: "메인", coordinator: coordinator) : LoginViewModel(title: "메인", coordinator: coordinator)
+//        let scene: SceneType = isOpened ? MainScene.main(viewModel as! MainViewModel) : LoginScene.login(viewModel as! LoginViewModel)
         coordinator.transition(to: scene, using: .root, animated: true)
     }
     

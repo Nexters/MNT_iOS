@@ -46,9 +46,7 @@ class ReadyViewController: ViewController {
 }
 
 extension ReadyViewController: ViewModelBindableType {
-    func bindViewModel() {
-        guard let viewModel = viewModel else { return }
-        
+    func bindViewModel(viewModel: ReadyViewModel) {
         var dummyCode: Int = 11111
         
         sendButton.rx.action = viewModel.sendKakaoLinkAction(code : dummyCode)

@@ -35,9 +35,7 @@ class JoinRoomViewController: ViewController {
 }
 
 extension JoinRoomViewController: ViewModelBindableType {
-    func bindViewModel() {
-        guard let viewModel = viewModel else { return }
-
+    func bindViewModel(viewModel: JoinRoomViewModel) {
         textField.rx.text.orEmpty
             .bind(to: viewModel.codeTextRelay)
             .disposed(by: rx.disposeBag)

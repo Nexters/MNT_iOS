@@ -39,9 +39,7 @@ class SetRoomTitleViewController: ViewController {
 }
 
 extension SetRoomTitleViewController: ViewModelBindableType {
-    func bindViewModel() {
-        guard let viewModel = viewModel else { return }
-        
+    func bindViewModel(viewModel: SetRoomTitleViewModel) {
         textField.rx.text.orEmpty
             .bind(to: viewModel.roomTitleTextRelay)
             .disposed(by: rx.disposeBag)

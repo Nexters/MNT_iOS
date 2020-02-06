@@ -14,7 +14,7 @@ protocol ViewModelBindableType {
     associatedtype ViewModelType
     
     var viewModel: ViewModelType? { get set }
-    func bindViewModel()
+    func bindViewModel(viewModel: ViewModelType)
 }
 
 extension ViewModelBindableType where Self: UIViewController {
@@ -23,6 +23,29 @@ extension ViewModelBindableType where Self: UIViewController {
         loadViewIfNeeded()
         
         // execute on viewDidLoad
-        bindViewModel()
+        guard let viewModel = self.viewModel else { return }
+        bindViewModel(viewModel: viewModel)
+    }
+}
+
+extension ViewModelBindableType where Self: UITableViewCell {
+    mutating func bind(viewModel: Self.ViewModelType) {
+        self.viewModel = viewModel
+        layoutIfNeeded()
+        
+        // execute on viewDidLoad
+        guard let viewModel = self.viewModel else { return }
+        bindViewModel(viewModel: viewModel)
+    }
+}
+
+extension ViewModelBindableType where Self: UICollectionViewCell {
+    mutating func bind(viewModel: Self.ViewModelType) {
+        self.viewModel = viewModel
+        layoutIfNeeded()
+        
+        // execute on viewDidLoad
+        guard let viewModel = self.viewModel else { return }
+        bindViewModel(viewModel: viewModel)
     }
 }
