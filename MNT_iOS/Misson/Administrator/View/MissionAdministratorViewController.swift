@@ -16,7 +16,7 @@ class MissionAdministratorViewController: ViewController {
     override func setupLayout() {
         missionTableController.delegate = self
         view.addSubview(missionTableController.view)
-        missionTableController.view.fillSuperviewSafeAreaLayoutGuide()
+        missionTableController.view.fillSuperview()
     }
 }
 

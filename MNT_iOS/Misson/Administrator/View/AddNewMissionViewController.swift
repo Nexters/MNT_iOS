@@ -10,41 +10,51 @@ import Foundation
 
 class AddNewMissionViewController: ViewController {
     var viewModel: AddNewMissionViewModel?
-    let view1: UIView = {
+    lazy var view1: UIView = {
         let v = StackChildView()
         v.backgroundColor = .yellow
-        v.propotionalHeight = 1
+        //v.propotionalHeight = 1
+        v.withHeight(view.bounds.height * 0.3)
         return v
     }()
-    let view2: UIView = {
+    lazy var view2: UIView = {
         let v = StackChildView()
         v.backgroundColor = .blue
-        v.propotionalHeight = 2
+        //v.propotionalHeight = 2
+        v.withHeight(view.bounds.height * 0.2)
         return v
     }()
-    let view3: UIView = {
+    lazy var view3: UIView = {
         let v = StackChildView()
         v.backgroundColor = .red
-        v.propotionalHeight = 1
+//        v.propotionalHeight = 1
+        v.withHeight(view.bounds.height * 0.1)
         return v
     }()
     let button: UIButton = {
-        return UIButton(type: .system)
+        return UIButton(title: "hellow!", titleColor: .black)
+    }()
+    lazy var stackView: UIStackView = {
+        let sv = UIStackView(arrangedSubviews: [
+            view1, view2, view3
+        ])
+        sv.axis = .vertical
+        sv.spacing = 5
+        //sv.distribution = .fillProportionally
+        
+       return sv
     }()
     
     override func setupLayout() {
-        view.backgroundColor = .green
-        
-        let stackView = UIStackView(arrangedSubviews: [
-            view1,
-            view2,
-            view3])
         view.addSubview(stackView)
-        stackView.fillSuperview()
-        stackView.axis = .vertical
-        stackView.distribution = .fillProportionally
+        view.addSubview(button)
+        button.anchor(.bottom(view.refinedBottomAnchor, constant: 10))
+        button.centerXToSuperview()
+        stackView.anchor(top: view.refinedTopAnchor,
+                         leading: view.leadingAnchor,
+                         bottom: nil,
+                         trailing: view.trailingAnchor)
         
-        button.bottomAnchor.constraint(equalTo: view.refinedBottomAnchor).isActive = true
     }
 }
 
