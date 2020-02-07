@@ -53,6 +53,8 @@
 		581B161623ECB2CB00D0593B /* UIAlertController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581B161523ECB2CB00D0593B /* UIAlertController+.swift */; };
 		581B161823ECB58F00D0593B /* UIApplication+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581B161723ECB58F00D0593B /* UIApplication+.swift */; };
 		581B161A23ED6E3000D0593B /* FromToViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581B161923ED6E3000D0593B /* FromToViewController.swift */; };
+		581B161C23ED808600D0593B /* AlertExitOrNotViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581B161B23ED808600D0593B /* AlertExitOrNotViewModel.swift */; };
+		581B161E23ED809C00D0593B /* AlertExitOrNotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581B161D23ED809C00D0593B /* AlertExitOrNotViewController.swift */; };
 		583659A523E146E600E2752F /* SetRoomTitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583659A423E146E600E2752F /* SetRoomTitleViewController.swift */; };
 		583659A723E153DC00E2752F /* JoinRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583659A623E153DC00E2752F /* JoinRoomViewModel.swift */; };
 		583659A923E1547700E2752F /* SetRoomTitleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583659A823E1547700E2752F /* SetRoomTitleViewModel.swift */; };
@@ -145,6 +147,8 @@
 		581B161523ECB2CB00D0593B /* UIAlertController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+.swift"; sourceTree = "<group>"; };
 		581B161723ECB58F00D0593B /* UIApplication+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+.swift"; sourceTree = "<group>"; };
 		581B161923ED6E3000D0593B /* FromToViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FromToViewController.swift; sourceTree = "<group>"; };
+		581B161B23ED808600D0593B /* AlertExitOrNotViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertExitOrNotViewModel.swift; sourceTree = "<group>"; };
+		581B161D23ED809C00D0593B /* AlertExitOrNotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertExitOrNotViewController.swift; sourceTree = "<group>"; };
 		583659A423E146E600E2752F /* SetRoomTitleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetRoomTitleViewController.swift; sourceTree = "<group>"; };
 		583659A623E153DC00E2752F /* JoinRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinRoomViewModel.swift; sourceTree = "<group>"; };
 		583659A823E1547700E2752F /* SetRoomTitleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetRoomTitleViewModel.swift; sourceTree = "<group>"; };
@@ -453,6 +457,7 @@
 		581B15E423EACD5400D0593B /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				581B161B23ED808600D0593B /* AlertExitOrNotViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -460,6 +465,7 @@
 		581B15E523EACD6100D0593B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				581B161D23ED809C00D0593B /* AlertExitOrNotViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -869,6 +875,8 @@
 				583659B323E19F4800E2752F /* BaseNavigationController.swift in Sources */,
 				1A8FAF4223E060AE009A92C1 /* LoginScene.swift in Sources */,
 				581B160923EC741C00D0593B /* ProfileCollectionViewCell.swift in Sources */,
+				581B161C23ED808600D0593B /* AlertExitOrNotViewModel.swift in Sources */,
+				581B161E23ED809C00D0593B /* AlertExitOrNotViewController.swift in Sources */,
 				581B161823ECB58F00D0593B /* UIApplication+.swift in Sources */,
 				1AAB0E3A23DED4980003A2C4 /* ViewModel.swift in Sources */,
 				1AD6D40923BF9DBC000B1893 /* MainViewController.swift in Sources */,

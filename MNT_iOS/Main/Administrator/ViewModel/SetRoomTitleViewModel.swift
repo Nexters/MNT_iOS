@@ -15,11 +15,24 @@ class SetRoomTitleViewModel: ViewModel {
     let roomTitleTextRelay = BehaviorRelay(value: "")
     
     func presentSetRoomDetailAction() -> CocoaAction {
-        return CocoaAction { _ in
-            let viewModel = SetRoomDetailViewModel(title: "정원 및 진행일자 설정", coordinator: self.coordinator)
-            let scene = MainScene.setRoomDetail(viewModel)
-            
-            return self.coordinator.transition(to: scene, using: .push, animated: true).asObservable().map { _ in }
+        return CocoaAction { action in
+            if self.roomTitleTextRelay.value == "" || self.roomTitleTextRelay.value == nil {
+                print("입력 안 함")
+                
+                let alert = UIAlertController(title: nil, message: "방 이름을 입력해주세요.", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
+                alert.addAction(okAction)
+                UIApplication.topViewController()?.present(alert, animated: false)
+                
+                return Observable.just(action)
+            }
+            else {
+                print("입력 함")
+                let viewModel = SetRoomDetailViewModel(title: "정원 및 진행일자 설정", coordinator: self.coordinator)
+                let scene = MainScene.setRoomDetail(viewModel)
+                
+                return self.coordinator.transition(to: scene, using: .push, animated: true).asObservable().map { _ in }
+            }
         }
     }
 }

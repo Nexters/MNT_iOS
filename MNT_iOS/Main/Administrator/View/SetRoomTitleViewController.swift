@@ -29,7 +29,6 @@ class SetRoomTitleViewController: ViewController {
         
         view.stack(Label.withHeight(50),
                    textField.withHeight(50),
-                   //button.withHeight(50),
                    alignment: .center)
             .withMargins(.init(top: view.frame.height/2 - 200,
                                left: 0,
@@ -43,6 +42,7 @@ extension SetRoomTitleViewController: ViewModelBindableType {
         textField.rx.text.orEmpty
             .bind(to: viewModel.roomTitleTextRelay)
             .disposed(by: rx.disposeBag)
+        
         button.rx.action = viewModel.presentSetRoomDetailAction()
     }
 }
