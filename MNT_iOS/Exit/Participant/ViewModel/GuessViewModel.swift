@@ -14,21 +14,25 @@ import RxSwift
 class GuessViewModel: ViewModel {
     var profiles: [ManittoProfile] = []
     
-    func openAlertAction() -> CocoaAction {
+    func openAlertAction(_ fromImage: String, _ fromLabel: String, _ toImage: String, _ toLabel: String) -> CocoaAction {
         return Action { [unowned self] action in
+            
             let alert = UIAlertController(title: nil, message: "당신의 내또는 누구였습니다!", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
+            let VC = FromToViewController()
+            
+            VC.manittoLabel.text = fromLabel
+            VC.targetLabel.text = toLabel
+            VC.manittoImageView.kf.setImage(with: URL(string: fromImage))
+            VC.targetImageView.kf.setImage(with: URL(string: toImage))
+            
+            alert.setValue(VC, forKey: "contentViewController")
 
             alert.addAction(okAction)
-
-//            let contentView = FromToView()
-//            alert.setValue(contentView, forKey: "FromToView")
-
             UIApplication.topViewController()?.present(alert, animated: false)
-
-            //self.present(alert, animated: false)
 
             return Observable.just(action)
         }
     }
 }
+

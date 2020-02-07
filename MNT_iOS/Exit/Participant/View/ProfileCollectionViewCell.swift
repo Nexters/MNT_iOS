@@ -23,7 +23,7 @@ class ProfileCollectionViewCell: UICollectionViewCell {
 
 extension ProfileCollectionViewCell: ViewModelBindableType {
     func bindViewModel(viewModel: ProfileCellViewModel) {
-        profileImageView.kf.setImage(with: viewModel.ProfileImageURL)
+        profileImageView.kf.setImage(with: viewModel.manittoImageURL)
         profileNameLabel.text = viewModel.datas.manittoName
     }
 }

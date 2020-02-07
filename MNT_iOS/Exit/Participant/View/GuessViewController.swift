@@ -36,8 +36,6 @@ class GuessViewController: ViewController, UICollectionViewDelegateFlowLayout {
     }
     
     override func setupLayout() {
-//        view.addSubview(collectionView)
-//        collectionView.fillSuperview()
         
         view.stack(titleLabel,
                    descriptionLabel,
@@ -47,17 +45,20 @@ class GuessViewController: ViewController, UICollectionViewDelegateFlowLayout {
     }
 }
 
-let dummyImage = "https://image.shutterstock.com/image-vector/user-icon-260nw-523867123.jpg"
+let dummyFromImage = "https://image.shutterstock.com/image-vector/user-icon-260nw-523867123.jpg"
+let dummyToImage = "https://image.shutterstock.com/image-vector/user-icon-260nw-523867123.jpg"
+let dummyFromLabel = "뚱이"
+let dummyToLabel = "핑핑이"
 
 extension GuessViewController: ViewModelBindableType {
     func bindViewModel(viewModel: GuessViewModel) {
-        (0...8).forEach {
-            self.viewModel?.profiles.append(ManittoProfile(manittoName: "마니또\($0)", manittoProfileImageURL: dummyImage))
+        (0...8).forEach {_ in
+            self.viewModel?.profiles.append(ManittoProfile(manittoName: dummyFromLabel, targetName: dummyToLabel, manittoImageURL: dummyFromImage, targetImageURL: dummyToImage))
         }
         
         collectionView.reloadData()
         
-        button.rx.action = viewModel.openAlertAction()
+        button.rx.action = viewModel.openAlertAction(dummyFromImage, dummyFromLabel, dummyToImage, dummyToLabel)
     }
 }
 
@@ -75,8 +76,7 @@ extension GuessViewController: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
-
-        //이벤트처리
+        //셀 이벤트처리
         
     }
 

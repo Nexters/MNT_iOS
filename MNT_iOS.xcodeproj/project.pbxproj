@@ -50,9 +50,9 @@
 		581B160A23EC741C00D0593B /* ProfileCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 581B160823EC741C00D0593B /* ProfileCollectionViewCell.xib */; };
 		581B160C23EC760D00D0593B /* GuessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581B160B23EC760D00D0593B /* GuessViewController.swift */; };
 		581B160E23EC790D00D0593B /* UICollectionView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581B160D23EC790D00D0593B /* UICollectionView+.swift */; };
-		581B161423ECA8D900D0593B /* FromToView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581B161323ECA8D900D0593B /* FromToView.swift */; };
 		581B161623ECB2CB00D0593B /* UIAlertController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581B161523ECB2CB00D0593B /* UIAlertController+.swift */; };
 		581B161823ECB58F00D0593B /* UIApplication+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581B161723ECB58F00D0593B /* UIApplication+.swift */; };
+		581B161A23ED6E3000D0593B /* FromToViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581B161923ED6E3000D0593B /* FromToViewController.swift */; };
 		583659A523E146E600E2752F /* SetRoomTitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583659A423E146E600E2752F /* SetRoomTitleViewController.swift */; };
 		583659A723E153DC00E2752F /* JoinRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583659A623E153DC00E2752F /* JoinRoomViewModel.swift */; };
 		583659A923E1547700E2752F /* SetRoomTitleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583659A823E1547700E2752F /* SetRoomTitleViewModel.swift */; };
@@ -142,9 +142,9 @@
 		581B160823EC741C00D0593B /* ProfileCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileCollectionViewCell.xib; sourceTree = "<group>"; };
 		581B160B23EC760D00D0593B /* GuessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessViewController.swift; sourceTree = "<group>"; };
 		581B160D23EC790D00D0593B /* UICollectionView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+.swift"; sourceTree = "<group>"; };
-		581B161323ECA8D900D0593B /* FromToView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FromToView.swift; sourceTree = "<group>"; };
 		581B161523ECB2CB00D0593B /* UIAlertController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+.swift"; sourceTree = "<group>"; };
 		581B161723ECB58F00D0593B /* UIApplication+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+.swift"; sourceTree = "<group>"; };
+		581B161923ED6E3000D0593B /* FromToViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FromToViewController.swift; sourceTree = "<group>"; };
 		583659A423E146E600E2752F /* SetRoomTitleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetRoomTitleViewController.swift; sourceTree = "<group>"; };
 		583659A623E153DC00E2752F /* JoinRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinRoomViewModel.swift; sourceTree = "<group>"; };
 		583659A823E1547700E2752F /* SetRoomTitleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetRoomTitleViewModel.swift; sourceTree = "<group>"; };
@@ -489,7 +489,7 @@
 				581B160723EC741C00D0593B /* ProfileCollectionViewCell.swift */,
 				581B160823EC741C00D0593B /* ProfileCollectionViewCell.xib */,
 				581B160B23EC760D00D0593B /* GuessViewController.swift */,
-				581B161323ECA8D900D0593B /* FromToView.swift */,
+				581B161923ED6E3000D0593B /* FromToViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -859,7 +859,6 @@
 				583659A723E153DC00E2752F /* JoinRoomViewModel.swift in Sources */,
 				1A8FAF3023E0249C009A92C1 /* SceneCoordinator.swift in Sources */,
 				1AAB0E3823DED4240003A2C4 /* ViewController.swift in Sources */,
-				581B161423ECA8D900D0593B /* FromToView.swift in Sources */,
 				581B15F423EAD55D00D0593B /* ExitScene.swift in Sources */,
 				1A8FAF4C23E0755D009A92C1 /* UITextField+.swift in Sources */,
 				583659B523E1B9FE00E2752F /* SetRoomDetailViewController.swift in Sources */,
@@ -876,6 +875,7 @@
 				1AD6D40F23BF9DBC000B1893 /* MNT_iOS.xcdatamodeld in Sources */,
 				1AD6D40523BF9DBC000B1893 /* AppDelegate.swift in Sources */,
 				583659BF23E32B5100E2752F /* ReadyViewModel.swift in Sources */,
+				581B161A23ED6E3000D0593B /* FromToViewController.swift in Sources */,
 				581B15F223EAD04E00D0593B /* AlertExitViewController.swift in Sources */,
 				583659AB23E158A200E2752F /* JoinRoomViewController.swift in Sources */,
 				581B15F023EACE5F00D0593B /* AlertExitViewModel.swift in Sources */,

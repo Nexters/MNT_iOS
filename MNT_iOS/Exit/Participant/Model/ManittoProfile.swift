@@ -10,7 +10,9 @@ import Foundation
 
 struct ManittoProfile: ProducesProfileCellViewModel {
     let manittoName: String
-    let manittoProfileImageURL: String
+    let targetName: String
+    let manittoImageURL: String
+    let targetImageURL: String
     
     var asProfileCellViewModel: ProfileCellViewModel {
         return ProfileCellViewModel(datas: self)
