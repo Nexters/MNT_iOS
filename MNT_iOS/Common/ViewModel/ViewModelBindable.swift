@@ -38,3 +38,14 @@ extension ViewModelBindableType where Self: UITableViewCell {
         bindViewModel(viewModel: viewModel)
     }
 }
+
+extension ViewModelBindableType where Self: UICollectionViewCell {
+    mutating func bind(viewModel: Self.ViewModelType) {
+        self.viewModel = viewModel
+        layoutIfNeeded()
+        
+        // execute on viewDidLoad
+        guard let viewModel = self.viewModel else { return }
+        bindViewModel(viewModel: viewModel)
+    }
+}

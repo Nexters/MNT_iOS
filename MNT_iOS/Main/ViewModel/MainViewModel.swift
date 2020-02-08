@@ -14,10 +14,21 @@ import RxSwift
 class MainViewModel: ViewModel {
     let textfieldRelay = BehaviorRelay(value: "")
     
-//    func buttonAction() -> CocoaAction {
-//        return Action { [unowned self] action in
-//            return Observable.just(action)
-//            .flatMap(<#T##selector: (()) throws -> ObservableConvertibleType##(()) throws -> ObservableConvertibleType#>)
-//        }
-//    }
+    func presentJoinAction() -> CocoaAction {
+        return CocoaAction { _ in
+            let viewModel = JoinRoomViewModel(title: "참여하기", coordinator: self.coordinator)
+            let scene = MainScene.joinRoom(viewModel)
+
+            return self.coordinator.transition(to: scene, using: .push, animated: true).asObservable().map { _ in }
+        }
+    }
+    
+    func presentSetAction() -> CocoaAction {
+        return CocoaAction { _ in
+            let viewModel = SetRoomTitleViewModel(title: "방 만들기", coordinator: self.coordinator)
+            let scene = MainScene.setRoomTitle(viewModel)
+            
+            return self.coordinator.transition(to: scene, using: .push, animated: true).asObservable().map { _ in }
+        }
+    }
 }

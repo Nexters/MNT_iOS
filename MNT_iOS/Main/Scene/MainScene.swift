@@ -10,9 +10,14 @@ import UIKit
 
 enum MainScene {
     case main(MainViewModel)
+    case joinRoom(JoinRoomViewModel)
+    case setRoomTitle(SetRoomTitleViewModel)
+    case setRoomDetail(SetRoomDetailViewModel)
+    case ready(ReadyViewModel)
 }
 
 extension MainScene: SceneType {
+    
     func instantiate() -> UIViewController {
         switch self {
         case .main(let viewModel):
@@ -23,7 +28,24 @@ extension MainScene: SceneType {
                 mainVC.bind(viewModel: viewModel)
             }
             return navigationVC
+        case .joinRoom(let viewModel):
+            var joinRoomVC = JoinRoomViewController()
+            joinRoomVC.bind(viewModel: viewModel)
+            return joinRoomVC
+        case . setRoomTitle(let viewModel):
+            var setRoomTitleVC = SetRoomTitleViewController()
+            setRoomTitleVC.bind(viewModel: viewModel)
+            return setRoomTitleVC
+        case .setRoomDetail(let viewModel):
+            var setRoomDetailVC = SetRoomDetailViewController()
+            setRoomDetailVC.bind(viewModel: viewModel)
+            return setRoomDetailVC
+        case .ready(let viewModel):
+            var readyVC = ReadyViewController()
+            readyVC.bind(viewModel: viewModel)
+            return readyVC
         }
+        
     }
 }
 

@@ -35,6 +35,9 @@
 #define KakaoLinkSenderForSwift_KakaoOpenSDK_Bridging_Header_h
 
 #import <KakaoOpenSDK/KakaoOpenSDK.h>
+//#import <KakaoLink/KakaoLink.h>
+#import <KakaoMessageTemplate/KakaoMessageTemplate.h>
+#import <KakaoLink/KakaoLink.h>
 
 #endif
 
