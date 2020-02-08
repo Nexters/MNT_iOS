@@ -13,8 +13,15 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = .white
         setupTapGesture()
         setupLayout()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        setupNavigationController()
     }
     
     fileprivate func setupTapGesture() {
@@ -27,4 +34,6 @@ class ViewController: UIViewController {
     }
     
     func setupLayout() {}
+    
+    func setupNavigationController() {}
 }

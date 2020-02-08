@@ -67,7 +67,7 @@ extension UIView {
     }
     
     @discardableResult
-    open func anchor(top: NSLayoutYAxisAnchor?, leading: NSLayoutXAxisAnchor?, bottom: NSLayoutYAxisAnchor?, trailing: NSLayoutXAxisAnchor?, padding: UIEdgeInsets = .zero, size: CGSize = .zero) -> AnchoredConstraints {
+    open func anchor(top: NSLayoutYAxisAnchor? = nil, leading: NSLayoutXAxisAnchor? = nil, bottom: NSLayoutYAxisAnchor? = nil, trailing: NSLayoutXAxisAnchor? = nil, padding: UIEdgeInsets = .zero, size: CGSize = .zero) -> AnchoredConstraints {
         
         translatesAutoresizingMaskIntoConstraints = false
         var anchoredConstraints = AnchoredConstraints()
@@ -102,22 +102,11 @@ extension UIView {
     }
     
     @discardableResult
-    open func fillSuperview(padding: UIEdgeInsets = .zero) -> AnchoredConstraints {
+    open func fillSuperview(padding: UIEdgeInsets = .zero, exceptTop: Bool = false, exceptBottom: Bool = false) -> AnchoredConstraints {
         translatesAutoresizingMaskIntoConstraints = false
-        let anchoredConstraints = AnchoredConstraints()
-        guard let superviewTopAnchor = superview?.topAnchor,
-            let superviewBottomAnchor = superview?.bottomAnchor,
-            let superviewLeadingAnchor = superview?.leadingAnchor,
-            let superviewTrailingAnchor = superview?.trailingAnchor else {
-                return anchoredConstraints
-        }
         
-        return anchor(top: superviewTopAnchor, leading: superviewLeadingAnchor, bottom: superviewBottomAnchor, trailing: superviewTrailingAnchor, padding: padding)
-    }
-    
-    @discardableResult
-    open func fillSuperviewSafeAreaLayoutGuide(padding: UIEdgeInsets = .zero) -> AnchoredConstraints {
         let anchoredConstraints = AnchoredConstraints()
+        
         if #available(iOS 11.0, *) {
             guard let superviewTopAnchor = superview?.safeAreaLayoutGuide.topAnchor,
                 let superviewBottomAnchor = superview?.safeAreaLayoutGuide.bottomAnchor,
@@ -126,10 +115,22 @@ extension UIView {
                     return anchoredConstraints
             }
             return anchor(top: superviewTopAnchor, leading: superviewLeadingAnchor, bottom: superviewBottomAnchor, trailing: superviewTrailingAnchor, padding: padding)
-            
         } else {
             return anchoredConstraints
         }
+        
+        guard let superviewTopAnchor = superview?.topAnchor,
+            let superviewBottomAnchor = superview?.bottomAnchor,
+            let superviewLeadingAnchor = superview?.leadingAnchor,
+            let superviewTrailingAnchor = superview?.trailingAnchor else {
+                return anchoredConstraints
+        }
+        
+        return anchor(top: exceptTop ? nil : superviewTopAnchor,
+                      leading: superviewLeadingAnchor,
+                      bottom: exceptBottom ? nil : superviewBottomAnchor,
+                      trailing: superviewTrailingAnchor,
+                      padding: padding)
     }
     
     open func centerInSuperview(size: CGSize = .zero) {
@@ -205,6 +206,23 @@ extension UIView {
         self.backgroundColor = backgroundColor
     }
     
+    // return Anchors dealing with safeArea
+    
+    var refinedTopAnchor: NSLayoutYAxisAnchor {
+        if #available(iOS 11.0, *) {
+            return self.safeAreaLayoutGuide.topAnchor
+        } else {
+            return topAnchor
+        }
+    }
+    
+    var refinedBottomAnchor: NSLayoutYAxisAnchor {
+        if #available(iOS 11.0, *) {
+            return self.safeAreaLayoutGuide.bottomAnchor
+        } else {
+            return bottomAnchor
+        }
+    }
 }
 
 extension UIViewController {

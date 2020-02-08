@@ -23,5 +23,4 @@ class ViewModel: NSObject {
         self.title = Observable.just(title).asDriver(onErrorJustReturn: "")
         self.coordinator = viewModel.coordinator
     }
-
 }

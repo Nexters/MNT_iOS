@@ -9,16 +9,30 @@
 import UIKit
 
 class FeedCell: UITableViewCell {
-
+    
+    var viewModel: FeedCellViewModel?
+   
+    let postImageView = RoundedImageView(contentMode: .scaleAspectFill)
+    let postLabel = UILabel(text: "내용", font: .systemFont(ofSize: 15), numberOfLines: 0)
+    let fromtoView = FromToView()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        stack(
+            fromtoView.withHeight(70),
+            postImageView.withSize(.init(width: 200, height: 100)),
+            postLabel.withHeight(20)
+        )
     }
+}
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+extension FeedCell: ViewModelBindableType {
+    func bindViewModel(viewModel: FeedCellViewModel) {
+        fromtoView.manittoImageView.kf.setImage(with: viewModel.manittoImageURL)
+        fromtoView.targetImageView.kf.setImage(with: viewModel.targetImageURL)
+        fromtoView.manittoLabel.text = viewModel.datas.manittoName
+        fromtoView.targetLabel.text = viewModel.datas.targetName
+        postImageView.kf.setImage(with: viewModel.postURL)
     }
-    
 }

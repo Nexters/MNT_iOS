@@ -28,3 +28,13 @@ extension ViewModelBindableType where Self: UIViewController {
     }
 }
 
+extension ViewModelBindableType where Self: UITableViewCell {
+    mutating func bind(viewModel: Self.ViewModelType) {
+        self.viewModel = viewModel
+        layoutIfNeeded()
+        
+        // execute on viewDidLoad
+        guard let viewModel = self.viewModel else { return }
+        bindViewModel(viewModel: viewModel)
+    }
+}

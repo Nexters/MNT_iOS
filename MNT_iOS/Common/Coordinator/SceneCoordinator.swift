@@ -41,13 +41,10 @@ extension SceneCoordinator: SceneCoordinatorType {
     func transition(to scene: SceneType, using style: TransitionStyle, animated: Bool) -> Completable {
         let subject = PublishSubject<Void>()
         let target = scene.instantiate()
-        print("완료???")
         
         switch style {
         case .root:
             currentVC = target.sceneViewController
-            print("target : \(target)")
-            print("currentVC : \(currentVC)")
             target.view.backgroundColor = .white
             window.rootViewController = target
             window.makeKeyAndVisible()
@@ -72,6 +69,8 @@ extension SceneCoordinator: SceneCoordinatorType {
             }
             currentVC = target.sceneViewController
             currentVC.modalPresentationStyle = .overFullScreen
+        case .popToRoot:
+            currentVC.navigationController?.popToRootViewController(animated: true)
         }
 
         return subject.ignoreElements()

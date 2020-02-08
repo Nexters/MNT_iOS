@@ -9,7 +9,7 @@
 import Foundation
 
 class FeedViewModel: ViewModel {
-    
+    var infos: [FeedInfo] = []
 }
 
 
