@@ -1,28 +1,48 @@
 PODS:
+  - Action (4.0.0):
+    - RxCocoa (~> 5.0)
+    - RxSwift (~> 5.0)
   - JGProgressHUD (2.1)
   - Kingfisher (5.12.0):
     - Kingfisher/Core (= 5.12.0)
   - Kingfisher/Core (5.12.0)
-  - SDWebImage (5.5.0):
-    - SDWebImage/Core (= 5.5.0)
-  - SDWebImage/Core (5.5.0)
+  - RxCocoa (5.0.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxGesture (3.0.1):
+    - RxCocoa (~> 5.0)
+    - RxSwift (~> 5.0)
+  - RxRelay (5.0.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.0.1)
 
 DEPENDENCIES:
+  - Action
   - JGProgressHUD
   - Kingfisher
-  - SDWebImage
+  - RxCocoa
+  - RxGesture
+  - RxSwift
 
 SPEC REPOS:
   trunk:
+    - Action
     - JGProgressHUD
     - Kingfisher
-    - SDWebImage
+    - RxCocoa
+    - RxGesture
+    - RxRelay
+    - RxSwift
 
 SPEC CHECKSUMS:
+  Action: 0d14986aad0f1330aa27ce65d0cdeaacbb63d91c
   JGProgressHUD: aa403e9a5b45cae98903c4600cccdd98c0c3ec90
   Kingfisher: dc6e0f53bb5b12c3e75bedb0e01bbd7a640eea69
-  SDWebImage: 86589f0d47a7de15827640c71813e23fd428965c
+  RxCocoa: e741b9749968e8a143e2b787f1dfbff2b63d0a5c
+  RxGesture: a3f8dd6adf078110ed5e1c9c30d09d705a09852e
+  RxRelay: 89d54507f4fd4d969e6ec1d4bd7f3673640b4640
+  RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
 
-PODFILE CHECKSUM: 6055695e86c1ad11b9f0c03bb4a2ec7ebc5efc62
+PODFILE CHECKSUM: 84650dde55a76d9ec948fdd0ddedd140e4721309
 
 COCOAPODS: 1.8.4

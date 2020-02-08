@@ -70,5 +70,8 @@ extension MainViewController: ViewModelBindableType {
         textfield.rx.text.orEmpty
             .bind(to: viewModel.textfieldRelay)
             .disposed(by: rx.disposeBag)
+         textfield.rx.text.orEmpty
+                   .bind(to: viewModel.textfieldRelay)
+                   .disposed(by: rx.disposeBag)
     }
 }
