@@ -8,6 +8,11 @@
 
 import Foundation
 
+struct APIStatus: Codable {
+    let label: String
+    let httpStatus: Int
+}
+
 protocol Model {
     
 }
@@ -15,3 +20,4 @@ protocol Model {
 protocol ProducesCellViewModel {
     
 }
+

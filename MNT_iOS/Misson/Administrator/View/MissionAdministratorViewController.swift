@@ -23,10 +23,10 @@ class MissionAdministratorViewController: ViewController {
 extension MissionAdministratorViewController: ViewModelBindableType {
     func bindViewModel(viewModel: MissionViewModel) {
         // setupDummys
-        (0...6).forEach { viewModel.missions.append(Mission(id: $0,
-                                                            title: "메시지 보내기",
-                                                            subTitle: "부제목이지롱",
-                                                            isDone: $0 % 2 == 0)) }
+//        (0...6).forEach { viewModel.missions.append(Mission(id: $0,
+//                                                            text: "메시지 보내기",
+//                                                            missionName: "부제목이지롱",
+//                                                            isDone: $0 % 2 == 0)) }
         missionTableController.viewModel = self.viewModel
         
         header.rx.tapGesture()

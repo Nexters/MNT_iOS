@@ -12,6 +12,7 @@ target 'MNT_iOS' do
   pod 'RxCocoa'
   pod 'Action'
   pod 'RxGesture'
+  pod 'RxAlamofire'
 
   target 'MNT_iOSTests' do
     inherit! :search_paths

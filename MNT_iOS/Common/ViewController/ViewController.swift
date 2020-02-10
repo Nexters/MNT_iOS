@@ -36,4 +36,6 @@ class ViewController: UIViewController {
     func setupLayout() {}
     
     func setupNavigationController() {}
+    
+    func requestAPIs() {}
 }
