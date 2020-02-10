@@ -68,6 +68,7 @@
 		1AECB7D023F0FA510018BC16 /* RxSwift+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AECB7CF23F0FA510018BC16 /* RxSwift+.swift */; };
 		1AECB7D223F0FACE0018BC16 /* APISource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AECB7D123F0FACE0018BC16 /* APISource.swift */; };
 		1AECB7D423F0FF780018BC16 /* RxAlamofire+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AECB7D323F0FF780018BC16 /* RxAlamofire+.swift */; };
+		1AECB7D623F137000018BC16 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AECB7D523F137000018BC16 /* UIColor+.swift */; };
 		1AF8288B23EBFCB100BDAEF9 /* StackChildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF8288A23EBFCB100BDAEF9 /* StackChildView.swift */; };
 		1AFC040223C99841005B7A6F /* Objects+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFC040123C99841005B7A6F /* Objects+.swift */; };
 		581B15F023EACE5F00D0593B /* AlertExitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581B15EF23EACE5F00D0593B /* AlertExitViewModel.swift */; };
@@ -191,6 +192,7 @@
 		1AECB7CF23F0FA510018BC16 /* RxSwift+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxSwift+.swift"; sourceTree = "<group>"; };
 		1AECB7D123F0FACE0018BC16 /* APISource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISource.swift; sourceTree = "<group>"; };
 		1AECB7D323F0FF780018BC16 /* RxAlamofire+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxAlamofire+.swift"; sourceTree = "<group>"; };
+		1AECB7D523F137000018BC16 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		1AF8288A23EBFCB100BDAEF9 /* StackChildView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackChildView.swift; sourceTree = "<group>"; };
 		1AFC040123C99841005B7A6F /* Objects+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Objects+.swift"; sourceTree = "<group>"; };
 		237B29BC7317A4214DD15AB7 /* Pods-MNT_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MNT_iOS.release.xcconfig"; path = "Target Support Files/Pods-MNT_iOS/Pods-MNT_iOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -714,6 +716,7 @@
 				1A4E687C23E404BC005D2CFD /* UICollectionView+.swift */,
 				1AECB7CF23F0FA510018BC16 /* RxSwift+.swift */,
 				1AECB7D323F0FF780018BC16 /* RxAlamofire+.swift */,
+				1AECB7D523F137000018BC16 /* UIColor+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1237,6 +1240,7 @@
 				1A4E688D23E40E79005D2CFD /* MissionPariticipantViewController.swift in Sources */,
 				1A8FAF4A23E0737E009A92C1 /* UIStackView+.swift in Sources */,
 				1A4E687923E3FFC3005D2CFD /* RoundedImageView.swift in Sources */,
+				1AECB7D623F137000018BC16 /* UIColor+.swift in Sources */,
 				1A8FAF4423E0612C009A92C1 /* LoginViewModel.swift in Sources */,
 				1AECB7CE23F0F5BE0018BC16 /* APISourceProtocol.swift in Sources */,
 				1A4E686423E3E9D6005D2CFD /* FeedViewController.swift in Sources */,

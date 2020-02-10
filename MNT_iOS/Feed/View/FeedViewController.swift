@@ -14,16 +14,22 @@ class FeedViewController: ViewController {
     
     lazy var tableView: UITableView = {
         let tb = UITableView()
-        tb.translatesAutoresizingMaskIntoConstraints = false
-        tb.registerNib(FeedCell.self)
         tb.delegate = self
         tb.dataSource = self
+        tb.registerNib(FeedCell.self)
+        tb.showsVerticalScrollIndicator = false
+        tb.translatesAutoresizingMaskIntoConstraints = false
         return tb
     }()
     
     override func setupLayout() {
         view.addSubview(tableView)
         tableView.fillSuperview()
+    }
+    
+    override func setupNavigationController() {
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
     }
 }
 
@@ -33,6 +39,9 @@ fileprivate let dummmyPostImageURL = "https://www.goodmorningcc.com/news/photo/2
 extension FeedViewController: ViewModelBindableType {
     func bindViewModel(viewModel: FeedViewModel) {
         // setup Dummys
+        self.viewModel = viewModel
+        
+        getTimeline()
     }
     
     private func getTimeline() {
@@ -52,7 +61,6 @@ extension FeedViewController: ViewModelBindableType {
 
 extension FeedViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(viewModel?.infos.count)
         return viewModel?.infos.count ?? 0
     }
     
@@ -65,7 +73,6 @@ extension FeedViewController: UITableViewDelegate, UITableViewDataSource {
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         if(velocity.y>0) {
-            //Code will work without the animation block.I am using animation block incase if you want to set any delay to it.
             UIView.animate(withDuration: 2.5, delay: 0, options: UIView.AnimationOptions(), animations: {
                 self.navigationController?.setNavigationBarHidden(true, animated: true)
                 print("Hide")

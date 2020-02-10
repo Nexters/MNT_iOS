@@ -29,6 +29,8 @@ class FeedCell: UITableViewCell {
 
 extension FeedCell: ViewModelBindableType {
     func bindViewModel(viewModel: FeedCellViewModel) {
+        fromtoView.manittoImageView.kf.setImage(with: viewModel.manittoImageURL,
+                                                placeholder: #imageLiteral(resourceName: "group"))
         fromtoView.manittoImageView.kf.setImage(with: viewModel.manittoImageURL)
         fromtoView.targetImageView.kf.setImage(with: viewModel.targetImageURL)
         fromtoView.manittoLabel.text = viewModel.datas.userId
