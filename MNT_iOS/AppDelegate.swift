@@ -62,7 +62,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let coordinator = SceneCoordinator(window: window!)
         
-        let viewModel = isOpened ? MainViewModel(title: "메인", coordinator: coordinator) : LoginViewModel(title: "메인", coordinator: coordinator)
         let viewModel = isOpened ? MainViewModel(title: "메인", coordinator: coordinator) : LoginViewModel(title: "로그인", coordinator: coordinator)
         let scene: SceneType = isOpened ? MainScene.main(viewModel as! MainViewModel) : LoginScene.login(viewModel as! LoginViewModel)
         coordinator.transition(to: scene, using: .root, animated: true)
