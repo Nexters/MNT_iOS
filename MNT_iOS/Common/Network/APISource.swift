@@ -14,7 +14,7 @@ class APISource: APISourceProtocol {
     static let shared = APISource()
     private init() {}
     
-    func getMissionList(roomId: Int, completion: @escaping ([Mission]) -> Void) -> Disposable? {        
+    func getTimeline(roomId: Int, completion: @escaping ([Mission]) -> Void) -> Disposable? {        
         return requestDataObject(.get,
                     .missionList,
                     parameters: roomId) { (res: MissionListResponse) in

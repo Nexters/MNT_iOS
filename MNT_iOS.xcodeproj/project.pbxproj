@@ -14,7 +14,7 @@
 		1A4E686423E3E9D6005D2CFD /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4E686323E3E9D6005D2CFD /* FeedViewController.swift */; };
 		1A4E686923E3EA92005D2CFD /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4E686823E3EA92005D2CFD /* FeedViewModel.swift */; };
 		1A4E686B23E3EBE4005D2CFD /* FeedScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4E686A23E3EBE4005D2CFD /* FeedScene.swift */; };
-		1A4E686D23E3EC19005D2CFD /* FeedInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4E686C23E3EC19005D2CFD /* FeedInfo.swift */; };
+		1A4E686D23E3EC19005D2CFD /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4E686C23E3EC19005D2CFD /* Feed.swift */; };
 		1A4E687023E3ED49005D2CFD /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4E686E23E3ED49005D2CFD /* FeedCell.swift */; };
 		1A4E687123E3ED49005D2CFD /* FeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A4E686F23E3ED49005D2CFD /* FeedCell.xib */; };
 		1A4E687323E3F471005D2CFD /* FeedCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4E687223E3F471005D2CFD /* FeedCellViewModel.swift */; };
@@ -131,7 +131,7 @@
 		1A4E686323E3E9D6005D2CFD /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		1A4E686823E3EA92005D2CFD /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		1A4E686A23E3EBE4005D2CFD /* FeedScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedScene.swift; sourceTree = "<group>"; };
-		1A4E686C23E3EC19005D2CFD /* FeedInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedInfo.swift; sourceTree = "<group>"; };
+		1A4E686C23E3EC19005D2CFD /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
 		1A4E686E23E3ED49005D2CFD /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		1A4E686F23E3ED49005D2CFD /* FeedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedCell.xib; sourceTree = "<group>"; };
 		1A4E687223E3F471005D2CFD /* FeedCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCellViewModel.swift; sourceTree = "<group>"; };
@@ -304,7 +304,7 @@
 		1A4E686523E3EA23005D2CFD /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1A4E686C23E3EC19005D2CFD /* FeedInfo.swift */,
+				1A4E686C23E3EC19005D2CFD /* Feed.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1164,7 +1164,7 @@
 				581B15F423EAD55D00D0593B /* ExitScene.swift in Sources */,
 				1A4E686923E3EA92005D2CFD /* FeedViewModel.swift in Sources */,
 				1AECB7D423F0FF780018BC16 /* RxAlamofire+.swift in Sources */,
-				1A4E686D23E3EC19005D2CFD /* FeedInfo.swift in Sources */,
+				1A4E686D23E3EC19005D2CFD /* Feed.swift in Sources */,
 				1AF8288B23EBFCB100BDAEF9 /* StackChildView.swift in Sources */,
 				1A8FAF3023E0249C009A92C1 /* SceneCoordinator.swift in Sources */,
 				1AAB0E3823DED4240003A2C4 /* ViewController.swift in Sources */,

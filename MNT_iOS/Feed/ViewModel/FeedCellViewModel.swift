@@ -13,18 +13,18 @@ protocol ProducesFeedCellViewModel {
 }
 
 class FeedCellViewModel {
-    let datas: FeedInfo
-    init(datas: FeedInfo) {
+    let datas: Feed
+    init(datas: Feed) {
         self.datas = datas
     }
     
     var manittoImageURL: URL? {
-        return URL(string: datas.manittoProfileImageURL)
+        return URL(string: "")
     }
     var targetImageURL: URL? {
-        return URL(string: datas.targetProfileImageURL)
+        return URL(string: "")
     }
     var postURL: URL? {
-        return URL(string: datas.postURL)
+        return URL(string: datas.missionImg)
     }
 }

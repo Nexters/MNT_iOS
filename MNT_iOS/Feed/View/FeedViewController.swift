@@ -33,15 +33,20 @@ fileprivate let dummmyPostImageURL = "https://www.goodmorningcc.com/news/photo/2
 extension FeedViewController: ViewModelBindableType {
     func bindViewModel(viewModel: FeedViewModel) {
         // setup Dummys
-        print(viewModel)
-        (0...100).forEach {
-            self.viewModel?.infos.append(FeedInfo(manittoName: "마니또\($0)",
-                                                                manittoProfileImageURL: dummyImage,
-                                                                targetName: "너에게..",
-                                                                targetProfileImageURL: dummyImage,
-                                                                postURL: dummmyPostImageURL,
-                                                                text: "yolo")) }
-        tableView.reloadData()
+    }
+    
+    private func getTimeline() {
+        (0...7).forEach{ [unowned self] i in
+            self.viewModel?.infos.append(Feed(id: 1,
+                                                    content: String(i),
+                                                    missionId: nil,
+                                                    missionImg: "https://img.huffingtonpost.com/asset/5c6a1b8a250000be00c88cae.png?cache=41JoK4KsMg&ops=scalefit_630_noupscale",
+                                                    roodId: 1,
+                                                    userDone: 0,
+                                                    userDoneTime: "12:30",
+                                                    userId: "its me"))
+        }
+        self.tableView.reloadSection(section: 0)
     }
 }
 
@@ -56,5 +61,21 @@ extension FeedViewController: UITableViewDelegate, UITableViewDataSource {
         guard let item = viewModel?.infos[indexPath.row] else { return UITableViewCell(frame: .zero)}
         cell.bindViewModel(viewModel: item.asFeedCellViewModel)
         return cell
+    }
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        if(velocity.y>0) {
+            //Code will work without the animation block.I am using animation block incase if you want to set any delay to it.
+            UIView.animate(withDuration: 2.5, delay: 0, options: UIView.AnimationOptions(), animations: {
+                self.navigationController?.setNavigationBarHidden(true, animated: true)
+                print("Hide")
+            }, completion: nil)
+            
+        } else {
+            UIView.animate(withDuration: 2.5, delay: 0, options: UIView.AnimationOptions(), animations: {
+                self.navigationController?.setNavigationBarHidden(false, animated: true)
+                print("Unhide")
+            }, completion: nil)
+        }
     }
 }

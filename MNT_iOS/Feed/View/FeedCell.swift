@@ -31,8 +31,8 @@ extension FeedCell: ViewModelBindableType {
     func bindViewModel(viewModel: FeedCellViewModel) {
         fromtoView.manittoImageView.kf.setImage(with: viewModel.manittoImageURL)
         fromtoView.targetImageView.kf.setImage(with: viewModel.targetImageURL)
-        fromtoView.manittoLabel.text = viewModel.datas.manittoName
-        fromtoView.targetLabel.text = viewModel.datas.targetName
+        fromtoView.manittoLabel.text = viewModel.datas.userId
+        //fromtoView.targetLabel.text = viewModel.datas.targetName
         postImageView.kf.setImage(with: viewModel.postURL)
     }
 }

@@ -17,7 +17,7 @@ protocol MissionTableViewControllerHeaderDataSource {
 class MissionTableViewController: UITableViewController {
     var viewModel: MissionViewModel? {
         didSet {
-            tableView.reloadData()
+            tableView.reloadSection(section: 0)
         }
     }
     
