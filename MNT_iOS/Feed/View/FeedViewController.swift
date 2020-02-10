@@ -23,6 +23,7 @@ class FeedViewController: ViewController {
     
     override func setupLayout() {
         view.addSubview(tableView)
+        
         tableView.fillSuperview()
     }
 }

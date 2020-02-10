@@ -35,8 +35,7 @@ class ReadyViewController: ViewController {
                    checkButton.withHeight(50),
                    startButton.withHeight(50),
                    alignment: .center,
-                   distribution: .fillEqually
-)
+                   distribution: .fillEqually)
             .withMargins(.init(top: view.frame.height/2 - 300,
                                left: 0,
                                bottom: view.frame.height/2 - 300,
@@ -50,5 +49,6 @@ extension ReadyViewController: ViewModelBindableType {
         var dummyCode: Int = 11111
         
         sendButton.rx.action = viewModel.sendKakaoLinkAction(code : dummyCode)
+        startButton.rx.action = viewModel.enterRoom(code: dummyCode)
     }
 }

@@ -47,4 +47,13 @@ class ReadyViewModel: ViewModel {
             return Observable.just(action)
         }
     }
+    
+    func enterRoom(code: Int) -> CocoaAction {
+        return CocoaAction { _ in
+            let viewModel = TabBarViewModel(title: "모아보기", coordinator: self.coordinator)
+            let scene = MainScene.enterRoom(viewModel)
+            
+            return self.coordinator.transition(to: scene, using: .push, animated: true).asObservable().map { _ in }
+        }
+    }
 }
