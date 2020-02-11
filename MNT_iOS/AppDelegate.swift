@@ -29,8 +29,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     fileprivate func testing() {
-        testingFeed()
+//        testingFeed()
 //        testingMission()
+        testingMain()
     }
     
     fileprivate func testingMission() {
@@ -45,6 +46,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let coordinator = SceneCoordinator(window: window!)
         let viewModel = FeedViewModel(title: "피드", coordinator: coordinator)
         let scene: SceneType = FeedScene.feed(viewModel)
+        coordinator.transition(to: scene, using: .root, animated: true)
+    }
+    
+    fileprivate func testingMain() {
+        let coordinator = SceneCoordinator(window: window!)
+        let viewModel = MainViewModel(title: "main", coordinator: coordinator)
+        let scene: SceneType = MainScene.main(viewModel)
         coordinator.transition(to: scene, using: .root, animated: true)
     }
     

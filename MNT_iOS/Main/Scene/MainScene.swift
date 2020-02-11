@@ -14,6 +14,7 @@ enum MainScene {
     case setRoomTitle(SetRoomTitleViewModel)
     case setRoomDetail(SetRoomDetailViewModel)
     case ready(ReadyViewModel)
+    case enterRoom(TabBarViewModel)
 }
 
 extension MainScene: SceneType {
@@ -44,8 +45,11 @@ extension MainScene: SceneType {
             var readyVC = ReadyViewController()
             readyVC.bind(viewModel: viewModel)
             return readyVC
+        case .enterRoom(let viewModel):
+            var tabBarVC = TabBarViewController()
+            tabBarVC.bind(viewModel: viewModel)
+            return tabBarVC
         }
-        
     }
 }
 
