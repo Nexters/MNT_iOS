@@ -12,6 +12,7 @@ public enum StackingType {
     case fill
     case exceptBottom
     case exceptTop
+    case exceptTrailing
 }
 
 extension UIView {
@@ -31,6 +32,8 @@ extension UIView {
             stackView.fillSuperview(exceptTop: true)
         case .exceptBottom:
             stackView.fillSuperview(exceptBottom: true)
+        case .exceptTrailing:
+            stackView.fillSuperview(exceptTrailing: true)
         }
         
         return stackView
@@ -42,8 +45,8 @@ extension UIView {
     }
 
     @discardableResult
-    open func hstack(_ views: UIView..., spacing: CGFloat = 0, alignment: UIStackView.Alignment = .fill, distribution: UIStackView.Distribution = .fill) -> UIStackView {
-        return _stack(.horizontal, views: views, spacing: spacing, alignment: alignment, distribution: distribution)
+    open func hstack(_ views: UIView..., spacing: CGFloat = 0, alignment: UIStackView.Alignment = .fill, distribution: UIStackView.Distribution = .fill, type: StackingType = StackingType.fill) -> UIStackView {
+        return _stack(.horizontal, views: views, spacing: spacing, alignment: alignment, distribution: distribution, type: type)
     }
     
     @discardableResult
@@ -83,15 +86,10 @@ extension UIEdgeInsets {
 }
 
 extension UIImageView {
-    convenience public init(image: UIImage?, contentMode: UIView.ContentMode = .scaleAspectFill) {
+    convenience public init(image: UIImage? = nil, contentMode: UIView.ContentMode = .scaleAspectFill, radius: CGFloat = 0) {
         self.init(image: image)
         self.contentMode = contentMode
         self.clipsToBounds = true
-    }
-    
-    convenience public init(contentMode: UIView.ContentMode = .scaleAspectFill) {
-        self.init(image: nil)
-        self.contentMode = contentMode
-        self.clipsToBounds = true
+        self.layer.cornerRadius = radius
     }
 }

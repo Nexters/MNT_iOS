@@ -10,15 +10,27 @@ import Foundation
 
 enum FeedScene {
     case feed(FeedViewModel)
+    case userList(UserListViewModel)
+    case filter(FeedFilterViewModel)
 }
 
 extension FeedScene: SceneType {
     func instantiate() -> UIViewController {
         switch self {
         case .feed(let viewModel):
-            var feedVC = FeedViewController()
-            feedVC.bind(viewModel: viewModel)
-            return feedVC
+            let navigationVC = UINavigationController(rootViewController: FeedViewController())
+            if var feedVC = navigationVC.viewControllers.first as? FeedViewController {
+                feedVC.bind(viewModel: viewModel)
+            }
+            return navigationVC
+        case .userList(let viewModel):
+            var userlistVC = UserListViewController()
+            userlistVC.bind(viewModel: viewModel)
+            return userlistVC
+        case .filter(let viewModel):
+            var filterVC = FeedFilterViewController()
+            filterVC.bind(viewModel: viewModel)
+            return filterVC
         }
     }
 }

@@ -26,7 +26,7 @@ class MissionCell: UITableViewCell {
 
 extension MissionCell: ViewModelBindableType {
     func bindViewModel(viewModel: MissionCellViewModel) {
-        label.text = viewModel.datas.title
-        checkImageView.image = viewModel.datas.isDone ? UIImage() : UIImage()
+        //label.text = viewModel.datas.content
+        //checkImageView.image = viewModel.datas.isDone ? UIImage() : UIImage()
     }
 }

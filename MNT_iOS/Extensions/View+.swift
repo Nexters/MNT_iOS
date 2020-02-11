@@ -102,7 +102,7 @@ extension UIView {
     }
     
     @discardableResult
-    open func fillSuperview(padding: UIEdgeInsets = .zero, exceptTop: Bool = false, exceptBottom: Bool = false) -> AnchoredConstraints {
+    open func fillSuperview(padding: UIEdgeInsets = .zero, exceptTop: Bool = false, exceptBottom: Bool = false, exceptTrailing: Bool = false) -> AnchoredConstraints {
         translatesAutoresizingMaskIntoConstraints = false
         
         let anchoredConstraints = AnchoredConstraints()
@@ -129,7 +129,7 @@ extension UIView {
         return anchor(top: exceptTop ? nil : superviewTopAnchor,
                       leading: superviewLeadingAnchor,
                       bottom: exceptBottom ? nil : superviewBottomAnchor,
-                      trailing: superviewTrailingAnchor,
+                      trailing: exceptTrailing ? nil : superviewTrailingAnchor,
                       padding: padding)
     }
     

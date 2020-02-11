@@ -45,3 +45,4 @@
 @import RxCocoa;
 @import Action;
 @import RxGesture;
+@import RxAlamofire;
