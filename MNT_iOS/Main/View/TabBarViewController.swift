@@ -14,7 +14,7 @@ class TabBarViewController: ViewController {
     var feedButton = UIButton(title: "피드", titleColor: .black)
     var missionButton = UIButton(title: "미션", titleColor: .black)
     var stackView = UIView()
-    var stackIndex = -1 // 0: 대시보드, 1: 피드, 2: 미션
+    var stackIndex: Int? // 0: 대시보드, 1: 피드, 2: 미션
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,12 +28,11 @@ class TabBarViewController: ViewController {
 
 extension TabBarViewController: ViewModelBindableType {
     func bindViewModel(viewModel: TabBarViewModel) {
-        feedButton.rx.action = viewModel.presentFeedAction(self, self.stackIndex)
-        missionButton.rx.action = viewModel.presentMissionAction(self, self.stackIndex)
+        feedButton.rx.action = viewModel.presentFeedAction(self)
+        missionButton.rx.action = viewModel.presentMissionAction(self)
     }
     
     func changeIndex(to: Int) {
         self.stackIndex = to
     }
 }
-

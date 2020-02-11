@@ -12,18 +12,30 @@ import Action
 import RxSwift
 
 class TabBarViewModel: ViewModel {
-    func presentFeedAction(_ VC: TabBarViewController, _ stackIndex: Int) -> CocoaAction {
+    fileprivate lazy var feedVC: UIViewController = {
+        let viewModel = FeedViewModel(title: "피드", coordinator: self.coordinator)
+        let FeedVC = FeedScene.feed(viewModel).instantiate()
+        return FeedVC
+    }()
+    
+    fileprivate lazy var missionVC: UIViewController = {
+        let viewModel = MissionViewModel(title: "미션", coordinator: self.coordinator)
+        let MissionVC = MissionScene.missionParticipant(viewModel).instantiate()
+        return MissionVC
+    }()
+    
+    func presentFeedAction(_ VC: TabBarViewController) -> CocoaAction {
         return CocoaAction { action in
-            if stackIndex != 1 {
+            if VC.stackIndex != 1 {
                 self.bindFeedAction(VC)
             }
             return Observable.just(action)
         }
     }
     
-    func presentMissionAction(_ VC: TabBarViewController, _ stackIndex: Int) -> CocoaAction {
+    func presentMissionAction(_ VC: TabBarViewController) -> CocoaAction {
         return CocoaAction { action in
-            if stackIndex != 2 {
+            if VC.stackIndex != 2 {
                 self.bindMissionAction(VC)
             }
             return Observable.just(action)
@@ -31,31 +43,17 @@ class TabBarViewModel: ViewModel {
     }
     
     func bindFeedAction(_ VC: TabBarViewController) {
-        let viewModel = FeedViewModel(title: "피드", coordinator: self.coordinator)
-        let FeedVC = FeedScene.feed(viewModel).instantiate()
-        
-        //let previousStackIndex = VC.stackIndex
-        //removePreviousVC(previousStackIndex)
-        
         VC.changeIndex(to: 1)
-        VC.view.addSubview(FeedVC.view)
+        VC.view.addSubview(feedVC.view)
         setStackViewAction(VC)
         
 //        VC.printIndex()
     }
     
     func bindMissionAction(_ VC: TabBarViewController) {
-        let viewModel = MissionViewModel(title: "미션", coordinator: self.coordinator)
-        let MissionVC = MissionScene.missionParticipant(viewModel).instantiate()
-        
-        //let previousStackIndex = VC.stackIndex
-        //removePreviousVC(previousStackIndex)
-        
         VC.changeIndex(to: 2)
-        VC.view.addSubview(MissionVC.view)
+        VC.view.addSubview(missionVC.view)
         setStackViewAction(VC)
-        
-//        VC.printIndex()
     }
     
     func setStackViewAction(_ VC: TabBarViewController) {
@@ -76,17 +74,5 @@ class TabBarViewModel: ViewModel {
         
         VC.view.addSubview(VC.stackView)
         VC.view.bringSubviewToFront(VC.stackView)
-    }
-    
-    func removePreviousVC(_ previousStackIndex: Int) {
-        switch previousStackIndex {
-//        case 0:
-        case 1:
-            FeedViewController().removeFromParent()
-        case 2:
-            MissionParticipantViewController().removeFromParent()
-        default:
-            print("이전 페이지 없음")
-        }
     }
 }
