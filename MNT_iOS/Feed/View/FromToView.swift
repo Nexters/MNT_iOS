@@ -14,9 +14,9 @@ enum ArrowStyle {
 
 class FromToView: UIView {
     let manittoImageView = CircularImageView(width: 34, image: #imageLiteral(resourceName: "group"))
-    let manittoLabel = UILabel(text: "마니또", font: .systemFont(ofSize: 18), textColor: .defaultTextColor)
+    let manittoLabel = UILabel(text: "마니또", font: .boldSystemFont(ofSize: 15), textColor: .defaultText)
     let targetImageView = CircularImageView(width: 34, image: #imageLiteral(resourceName: "group"))
-    let targetLabel = UILabel(text: "타겟", font: .systemFont(ofSize: 18))
+    let targetLabel = UILabel(text: "타겟", font: .boldSystemFont(ofSize: 15))
     lazy var stackView: UIStackView = {
         let sv = UIStackView(arrangedSubviews: [
             manittoImageView,
@@ -26,7 +26,7 @@ class FromToView: UIView {
             targetLabel
         ])
         sv.axis = .horizontal
-        sv.spacing = 5
+        sv.spacing = 9
        return sv
     }()
     
@@ -34,8 +34,8 @@ class FromToView: UIView {
         super.draw(rect)
             
         addSubview(stackView)
-        stackView.anchor(.top(topAnchor, constant: 5),
-                         .bottom(bottomAnchor, constant: 5),
-                         .leading(leadingAnchor, constant: 10))
+        stackView.anchor(.top(topAnchor),
+                         .bottom(bottomAnchor),
+                         .leading(leadingAnchor))
     }
 }

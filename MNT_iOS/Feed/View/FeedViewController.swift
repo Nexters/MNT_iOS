@@ -12,7 +12,7 @@ class FeedViewController: ViewController {
     
     var viewModel: FeedViewModel?
     
-    lazy var tableView: UITableView = {
+    fileprivate lazy var tableView: UITableView = {
         let tb = UITableView()
         tb.delegate = self
         tb.dataSource = self
@@ -22,24 +22,40 @@ class FeedViewController: ViewController {
         return tb
     }()
     
+    fileprivate var userlistBarButton: UIBarButtonItem = {
+        let bt = UIBarButtonItem(image: #imageLiteral(resourceName: "people"), style: .plain, target: nil, action: nil)
+        bt.tintColor = .defaultText
+        return bt
+    }()
+    
+    fileprivate var filterBarButton: UIBarButtonItem = {
+        let bt = UIBarButtonItem(image: #imageLiteral(resourceName: "options2"), style: .plain, target: nil, action: nil)
+        bt.tintColor = .defaultText
+        return bt
+    }()
+    
     override func setupLayout() {
         view.addSubview(tableView)
-        tableView.fillSuperview()
+        tableView.anchor(.top(view.topAnchor),
+                         .bottom(view.bottomAnchor),
+                         .leading(view.leadingAnchor),
+                         .trailing(view.trailingAnchor))
     }
     
     override func setupNavigationController() {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationItem.setRightBarButtonItems([userlistBarButton, filterBarButton], animated: true)
     }
 }
-
-fileprivate let dummyImage = "https://image.shutterstock.com/image-vector/user-icon-260nw-523867123.jpg"
-fileprivate let dummmyPostImageURL = "https://www.goodmorningcc.com/news/photo/201807/92806_109217_2652.jpg"
 
 extension FeedViewController: ViewModelBindableType {
     func bindViewModel(viewModel: FeedViewModel) {
         // setup Dummys
         self.viewModel = viewModel
+        
+        userlistBarButton.rx.action = viewModel.userListAction()
+        filterBarButton.rx.action = viewModel.feedFilterAction()
         
         getTimeline()
     }
@@ -55,34 +71,46 @@ extension FeedViewController: ViewModelBindableType {
                                                     userDoneTime: "12:30",
                                                     userId: "its me"))
         }
-        self.tableView.reloadSection(section: 0)
+        self.tableView.reloadData()
     }
 }
 
 extension FeedViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
         return viewModel?.infos.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(FeedCell.self)
-        guard let item = viewModel?.infos[indexPath.row] else { return UITableViewCell(frame: .zero)}
+        guard let item = viewModel?.infos[indexPath.section] else { return UITableViewCell(frame: .zero)}
         cell.bindViewModel(viewModel: item.asFeedCellViewModel)
         return cell
     }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        if(velocity.y>0) {
-            UIView.animate(withDuration: 2.5, delay: 0, options: UIView.AnimationOptions(), animations: {
+        if(velocity.y>0) {  // HIDE
+            UIView.animate(withDuration: 1.5, delay: 0, options: UIView.AnimationOptions(), animations: {
                 self.navigationController?.setNavigationBarHidden(true, animated: true)
-                print("Hide")
             }, completion: nil)
-            
-        } else {
+        } else {            // SHOW
             UIView.animate(withDuration: 2.5, delay: 0, options: UIView.AnimationOptions(), animations: {
                 self.navigationController?.setNavigationBarHidden(false, animated: true)
-                print("Unhide")
             }, completion: nil)
         }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 24
+    }
+    
+    // Make the background color show through
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.clear
+        return headerView
     }
 }
