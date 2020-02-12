@@ -41,7 +41,7 @@ class FeedCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        stack(
+        let stackView = stack(
             fromtoView.withHeight(35),
             missionTypeView.withHeight(28),
             postImageView.withHeight(121),
@@ -56,7 +56,7 @@ class FeedCell: UITableViewCell {
         layer.cornerRadius = 30
         setupShadow(opacity: 0.15,
                     radius: 10,
-                    offset: .init(width: 0, height: 3))
+                    offset: .init(width: 0, height: 3))        
     }
 }
 

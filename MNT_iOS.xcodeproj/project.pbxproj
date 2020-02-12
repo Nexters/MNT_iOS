@@ -57,6 +57,8 @@
 		1AB0696C23F231F6000B8D27 /* UserListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0696B23F231F6000B8D27 /* UserListViewModel.swift */; };
 		1AB0696E23F232B0000B8D27 /* FeedFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0696D23F232B0000B8D27 /* FeedFilterViewController.swift */; };
 		1AB0697023F232C6000B8D27 /* FeedFilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0696F23F232C6000B8D27 /* FeedFilterViewModel.swift */; };
+		1AB0697323F27F16000B8D27 /* TabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0697123F27F16000B8D27 /* TabBarViewModel.swift */; };
+		1AB0697423F27F16000B8D27 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0697223F27F16000B8D27 /* TabBarViewController.swift */; };
 		1AD5F7BB23E8762400F96263 /* MissionPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD5F7BA23E8762400F96263 /* MissionPreviewViewController.swift */; };
 		1AD5F7BD23E8771500F96263 /* MissionDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD5F7BC23E8771500F96263 /* MissionDetail.swift */; };
 		1AD6D40523BF9DBC000B1893 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD6D40423BF9DBC000B1893 /* AppDelegate.swift */; };
@@ -180,6 +182,8 @@
 		1AB0696B23F231F6000B8D27 /* UserListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewModel.swift; sourceTree = "<group>"; };
 		1AB0696D23F232B0000B8D27 /* FeedFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedFilterViewController.swift; sourceTree = "<group>"; };
 		1AB0696F23F232C6000B8D27 /* FeedFilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedFilterViewModel.swift; sourceTree = "<group>"; };
+		1AB0697123F27F16000B8D27 /* TabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewModel.swift; sourceTree = "<group>"; };
+		1AB0697223F27F16000B8D27 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		1AD5F7BA23E8762400F96263 /* MissionPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionPreviewViewController.swift; sourceTree = "<group>"; };
 		1AD5F7BC23E8771500F96263 /* MissionDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionDetail.swift; sourceTree = "<group>"; };
 		1AD6D40123BF9DBC000B1893 /* MNT_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MNT_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -597,6 +601,7 @@
 		1A8FAF3D23E05FA4009A92C1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1AB0697223F27F16000B8D27 /* TabBarViewController.swift */,
 				1AD6D40823BF9DBC000B1893 /* MainViewController.swift */,
 				583659BC23E32AA300E2752F /* ReadyViewController.swift */,
 			);
@@ -606,6 +611,7 @@
 		1A8FAF3E23E05FA7009A92C1 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				1AB0697123F27F16000B8D27 /* TabBarViewModel.swift */,
 				1A8FAF4523E06952009A92C1 /* MainViewModel.swift */,
 				583659BE23E32B5100E2752F /* ReadyViewModel.swift */,
 				583659CB23E4AB7100E2752F /* RoomViewModel.swift */,
@@ -1174,6 +1180,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AB0697323F27F16000B8D27 /* TabBarViewModel.swift in Sources */,
+				1AB0697423F27F16000B8D27 /* TabBarViewController.swift in Sources */,
 				583659BD23E32AA300E2752F /* ReadyViewController.swift in Sources */,
 				583659A923E1547700E2752F /* SetRoomTitleViewModel.swift in Sources */,
 				583659A723E153DC00E2752F /* JoinRoomViewModel.swift in Sources */,
@@ -1441,7 +1449,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WF8UF5VWG6;
+				DEVELOPMENT_TEAM = CJ9DCX3V4H;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
@@ -1466,7 +1474,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WF8UF5VWG6;
+				DEVELOPMENT_TEAM = CJ9DCX3V4H;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",

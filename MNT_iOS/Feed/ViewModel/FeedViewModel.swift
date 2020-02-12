@@ -35,6 +35,19 @@ class FeedViewModel: ViewModel {
                   .asObservable().map { _ in }
           }
     }
+    
+    func feedDetailAction(_ indexPath: Event<IndexPath>) {
+        print("selectedIndexPath: \(indexPath)")
+        
+        // dummy scene
+        let viewModel = FeedFilterViewModel(title: "미션 등록",
+                                            coordinator: self.coordinator)
+        let scene = FeedScene.filter(viewModel)
+        self.coordinator
+            .transition(to: scene,
+                        using: .push,
+                        animated: true)
+    }
 }
 
 

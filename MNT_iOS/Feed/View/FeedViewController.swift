@@ -56,11 +56,18 @@ extension FeedViewController: ViewModelBindableType {
         
         userlistBarButton.rx.action = viewModel.userListAction()
         filterBarButton.rx.action = viewModel.feedFilterAction()
+        tableView.rx.itemSelected
+            .subscribe(viewModel.feedDetailAction(_:))
+            .disposed(by: rx.disposeBag)
         
         getTimeline()
     }
     
     private func getTimeline() {
+        APISource.shared.getTimeline(roomId: 0) { missions in
+            print(missions)
+        }
+        
         (0...7).forEach{ [unowned self] i in
             self.viewModel?.infos.append(Feed(id: 1,
                                                     content: String(i),
@@ -71,17 +78,19 @@ extension FeedViewController: ViewModelBindableType {
                                                     userDoneTime: "12:30",
                                                     userId: "its me"))
         }
+        
         self.tableView.reloadData()
     }
 }
 
+// MARK:- UITableViewControllerProtocols
 extension FeedViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        1
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return viewModel?.infos.count ?? 0
+        viewModel?.infos.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -92,9 +101,6 @@ extension FeedViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        
-        // call delegate
-        
         if(velocity.y>0) {  // HIDE
             UIView.animate(withDuration: 1.5, delay: 0, options: UIView.AnimationOptions(), animations: {
                 self.navigationController?.setNavigationBarHidden(true, animated: true)
@@ -105,15 +111,12 @@ extension FeedViewController: UITableViewDelegate, UITableViewDataSource {
             }, completion: nil)
         }
     }
-    
+
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 24
+        24
     }
-    
-    // Make the background color show through
+
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView()
-        headerView.backgroundColor = UIColor.clear
-        return headerView
+        UIView(backgroundColor: .clear)
     }
 }
