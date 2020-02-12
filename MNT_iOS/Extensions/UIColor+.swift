@@ -23,7 +23,8 @@ extension UIColor {
     }
     
     open class var accentColor: UIColor {
-        return .init(red: 255/255, green: 61/255, blue: 113/255, alpha: 1)
+//        return .init(red: 255/255, green: 61/255, blue: 113/255, alpha: 1) // 찐한분홍색,,,(변경 전)
+        return .init(red: 255/255, green: 143/255, blue: 143/255, alpha: 1) // 딸기우유색,,,
     }
     
     open class var semiAccentColor: UIColor {

@@ -46,8 +46,6 @@ class TabBarViewModel: ViewModel {
         VC.changeIndex(to: 1)
         VC.view.addSubview(feedVC.view)
         setStackViewAction(VC)
-        
-//        VC.printIndex()
     }
     
     func bindMissionAction(_ VC: TabBarViewController) {

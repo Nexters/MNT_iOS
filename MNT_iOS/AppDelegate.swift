@@ -22,16 +22,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         // 로그인,로그아웃 상태 변경 받기
-        //addObserver()
-        //reloadRootViewController()
-        testing()
+        addObserver()
+        reloadRootViewController()
+//        testing()
         return true
     }
     
     fileprivate func testing() {
 //        testingFeed()
 //        testingMission()
-        testingMain()
+//        testingMain()
     }
     
     fileprivate func testingMission() {
@@ -80,29 +80,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-//        if KOSession.handleOpen(url) {
-//            return true
-//        }
-//        return false
-        
-        if KLKTalkLinkCenter.shared().isTalkLinkCallback(url) {
-            let params = url.query
-            UIAlertController.showMessage("카카오링크 메시지 액션\n\(params ?? "파라미터 없음")")
+        if KOSession.handleOpen(url) {
             return true
         }
+        return false
+        
+//        if KLKTalkLinkCenter.shared().isTalkLinkCallback(url) {
+//            let params = url.query
+//            UIAlertController.showMessage("카카오링크 메시지 액션\n\(params ?? "파라미터 없음")")
+//            return true
+//        }
         return false
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
-//        if KOSession.handleOpen(url) {
-//            return true
-//        }
-//        return false
-        if KLKTalkLinkCenter.shared().isTalkLinkCallback(url) {
-            let params = url.query
-            UIAlertController.showMessage("카카오링크 메시지 액션\n\(params ?? "파라미터 없음")")
+        if KOSession.handleOpen(url) {
             return true
         }
+        return false
+//        if KLKTalkLinkCenter.shared().isTalkLinkCallback(url) {
+//            let params = url.query
+//            UIAlertController.showMessage("카카오링크 메시지 액션\n\(params ?? "파라미터 없음")")
+//            return true
+//        }
         return false
     }
 

@@ -41,7 +41,8 @@ class MainViewController: ViewController {
 //                   button.withHeight(50),
                    joinButton.withHeight(50),
                    produceButton.withHeight(50),
-                   alignment: .center)
+                   alignment: .center,
+                   distribution: .fillEqually)
             .withMargins(.init(top: view.frame.height/2 - 200,
                                left: 0,
                                bottom: view.frame.height/2 - 200,

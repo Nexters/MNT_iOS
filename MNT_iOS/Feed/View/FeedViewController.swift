@@ -11,6 +11,7 @@ import Foundation
 class FeedViewController: ViewController {
     
     var viewModel: FeedViewModel?
+    var headerVisible = true
     
     fileprivate lazy var tableView: UITableView = {
         let tb = UITableView()
@@ -115,5 +116,44 @@ extension FeedViewController: UITableViewDelegate, UITableViewDataSource {
         let headerView = UIView()
         headerView.backgroundColor = UIColor.clear
         return headerView
+    }
+    
+    @objc func moveToTop() { // ex) 피드 화면에서 피드 버튼 눌렀을 때 피드 화면의 최상단으로 이동
+        tableView.contentOffset = CGPoint(x: 0, y: 0 - tableView.contentInset.top)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let translation = scrollView.panGestureRecognizer.translation(in: scrollView.superview)
+        performHeaderCheck(translation: translation)
+    }
+    
+    func performHeaderCheck(translation:CGPoint) {
+        if translation.y == 0 { return }
+        if translation.y > 0 {
+            if !headerVisible { // Scroll Down
+//                showHeader()
+            }
+        } else {
+            if headerVisible { // Scroll Up
+//                hideHeader()
+            }
+        }
+    }
+    
+//    check how to get TabBarViewController
+    func hideHeader() {
+        self.headerVisible = false
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveLinear, animations: {
+            let parent = self.parent as! TabBarViewController
+            parent.hideHeader()
+        })
+    }
+
+    func showHeader() {
+        self.headerVisible = true
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveLinear, animations: {
+            let parent = self.parent as! TabBarViewController
+            parent.showHeader()
+        })
     }
 }

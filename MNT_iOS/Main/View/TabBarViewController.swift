@@ -18,11 +18,15 @@ class TabBarViewController: ViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel?.bindMissionAction(self)
+        viewModel?.bindFeedAction(self)
     }
     
     override func setupLayout() {
         
+    }
+    
+    func changeIndex(to: Int) {
+        self.stackIndex = to
     }
 }
 
@@ -32,7 +36,23 @@ extension TabBarViewController: ViewModelBindableType {
         missionButton.rx.action = viewModel.presentMissionAction(self)
     }
     
-    func changeIndex(to: Int) {
-        self.stackIndex = to
+    func hideHeader() {
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveLinear, animations: {
+            if #available(iOS 11.0, *) {
+                self.stackView.frame = CGRect(x: self.stackView.frame.origin.x, y: (self.view.frame.height + self.view.safeAreaInsets.bottom + 0), width: self.stackView.frame.width, height: 50)
+            } else {
+                self.stackView.frame = CGRect(x: self.stackView.frame.origin.x, y: (self.view.frame.height + 100), width: self.stackView.frame.width, height: 50)
+            }
+        })
+    }
+    
+    func showHeader() {
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveLinear, animations: {
+            if #available(iOS 11.0, *) {
+                self.stackView.frame = CGRect(x: self.stackView.frame.origin.x, y: self.view.frame.height - (50 + self.view.safeAreaInsets.bottom + 0), width: self.stackView.frame.width, height: 50)
+            } else {
+                self.stackView.frame = CGRect(x: self.stackView.frame.origin.x, y: self.view.frame.height - (50 + 100), width: self.stackView.frame.width, height: 50)
+            }
+        })
     }
 }
