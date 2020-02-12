@@ -21,10 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        // 로그인,로그아웃 상태 변경 받기
-        addObserver()
+//        getUserLoginData() // 로그인,로그아웃 상태 받기
+        addObserver() // 로그인,로그아웃 상태 변경 받기
         reloadRootViewController()
-//        testing()
+    //    testing()
         return true
     }
     
@@ -56,6 +56,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         coordinator.transition(to: scene, using: .root, animated: true)
     }
     
+    fileprivate func getUserLoginData() {
+        // 로그인 상태이면 실행
+        let coordinator = SceneCoordinator(window: window!)
+        let viewModel = MainViewModel(title: "메인", coordinator: coordinator)
+        let scene: SceneType = MainScene.main(viewModel as! MainViewModel)
+        coordinator.transition(to: scene, using: .root, animated: true)
+    }
+    
     fileprivate func addObserver() {
         NotificationCenter
             .default
@@ -70,8 +78,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let coordinator = SceneCoordinator(window: window!)
         
-        let viewModel = isOpened ? MainViewModel(title: "메인", coordinator: coordinator) : LoginViewModel(title: "로그인", coordinator: coordinator)
-        let scene: SceneType = isOpened ? MainScene.main(viewModel as! MainViewModel) : LoginScene.login(viewModel as! LoginViewModel)
+        let viewModel = isOpened ? ConfirmViewModel(title: "확인", coordinator: coordinator) : LoginViewModel(title: "로그인", coordinator: coordinator)
+        let scene: SceneType = isOpened ? LoginScene.confirm(viewModel as! ConfirmViewModel) : LoginScene.login(viewModel as! LoginViewModel)
+        
         coordinator.transition(to: scene, using: .root, animated: true)
     }
     

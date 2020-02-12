@@ -44,12 +44,17 @@ class LoginController: ViewController {
                     let email = user.account?.email,
                     let nickname = user.nickname else { return }
                 
-                let mainVC = MainViewController()
-                mainVC.nicknameLabel.text = nickname
-                mainVC.profileImageView.kf.setImage(with: user.profileImageURL)
-                mainVC.modalPresentationStyle = .fullScreen
+//                let mainVC = MainViewController()
+//                mainVC.nicknameLabel.text = nickname
+//                mainVC.profileImageView.kf.setImage(with: user.profileImageURL)
+//                mainVC.modalPresentationStyle = .fullScreen
                 
-                self.present(mainVC, animated: false, completion: nil)
+                let confirmVC = ConfirmViewController()
+                confirmVC.nicknameLabel.text = nickname
+                confirmVC.profileImageView.kf.setImage(with: user.profileImageURL)
+                confirmVC.modalPresentationStyle = .fullScreen
+                
+                self.present(confirmVC, animated: false, completion: nil)
             })
         }
     }
@@ -59,6 +64,10 @@ class LoginController: ViewController {
             self.navigationController?.isNavigationBarHidden = true
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+            super.viewWillDisappear(animated)
+            self.navigationController?.isNavigationBarHidden = false
+    }
     
     override func setupLayout() {
         let width = view.frame.width

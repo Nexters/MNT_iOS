@@ -10,6 +10,7 @@ import UIKit
 
 enum LoginScene {
     case login(LoginViewModel)
+    case confirm(ConfirmViewModel)
 }
 
 extension LoginScene: SceneType {
@@ -19,6 +20,11 @@ extension LoginScene: SceneType {
             var loginVC = LoginController()
             loginVC.bind(viewModel: viewModel)
             return UINavigationController(rootViewController: loginVC)
+            
+        case .confirm(let viewModel):
+            var confirmVC = ConfirmViewController()
+            confirmVC.bind(viewModel: viewModel)
+            return confirmVC
         }
     }
 }
