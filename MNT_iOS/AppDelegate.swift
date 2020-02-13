@@ -21,10 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-//        getUserLoginData() // 로그인,로그아웃 상태 받기
-        addObserver() // 로그인,로그아웃 상태 변경 받기
-        reloadRootViewController()
-    //    testing()
+        kakaoLogin() // 로그인,로그아웃 상태 받기
         return true
     }
     
@@ -56,12 +53,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         coordinator.transition(to: scene, using: .root, animated: true)
     }
     
-    fileprivate func getUserLoginData() {
-        // 로그인 상태이면 실행
-        let coordinator = SceneCoordinator(window: window!)
-        let viewModel = MainViewModel(title: "메인", coordinator: coordinator)
-        let scene: SceneType = MainScene.main(viewModel as! MainViewModel)
-        coordinator.transition(to: scene, using: .root, animated: true)
+    fileprivate func kakaoLogin() {
+        guard  let session = KOSession.shared() else {
+            return
+        }
+        
+        print("요기요기")
+        print(session.token?.accessToken)
+        
+        if session.token?.accessToken != nil {
+            print("닐 아님")
+            let coordinator = SceneCoordinator(window: window!)
+            let viewModel = MainViewModel(title: "메인", coordinator: coordinator)
+            let scene: SceneType = MainScene.main(viewModel as! MainViewModel)
+            coordinator.transition(to: scene, using: .root, animated: true)
+        } else {
+            addObserver() // 로그인,로그아웃 상태 변경 받기
+            reloadRootViewController()
+            testing()
+        }
     }
     
     fileprivate func addObserver() {
