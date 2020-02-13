@@ -45,7 +45,6 @@ class FeedViewController: ViewController {
     }()
     
     override func setupLayout() {
-//        view.addSubview(self.refreshControl)
         view.addSubview(tableView)
         tableView.anchor(.top(view.topAnchor),
                          .bottom(view.bottomAnchor),
@@ -83,6 +82,7 @@ extension FeedViewController: ViewModelBindableType {
                                                     userId: "its me"))
         }
         self.tableView.reloadData()
+        print("새로고침")
     }
     
     @objc func handleRefresh(_ sender: Any) {

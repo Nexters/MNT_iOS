@@ -18,8 +18,8 @@ class LoginController: ViewController {
 //        return button
 //    }()
     
-    private let loginButton: AccentButton = {
-        let button = AccentButton("카카오 ID로 로그인")
+    private let loginButton: FruttoButton = {
+        let button = FruttoButton("카카오 ID로 로그인")
         button.addTarget(self, action: #selector(touchUpLoginButton(_:)), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button

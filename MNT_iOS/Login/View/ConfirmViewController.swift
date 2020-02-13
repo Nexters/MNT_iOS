@@ -16,7 +16,7 @@ class ConfirmViewController: ViewController {
     var nameLabel = UILabel(text: "내이름은이제부터조야")
     let IDSubLabel = UILabel(text: "카카오 ID")
     var IDLabel = UILabel(text: "카카오 아이디이이이익익익익!!!")
-    var button = AccentButton("푸르또 시작하기🍎")
+    var button = FruttoButton("푸르또 시작하기🍎")
     
     override func viewDidLoad() {
         super.viewDidLoad()

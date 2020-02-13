@@ -45,32 +45,12 @@ class TabBarViewModel: ViewModel {
     func bindFeedAction(_ VC: TabBarViewController) {
         VC.changeIndex(to: 1)
         VC.view.addSubview(feedVC.view)
-        setStackViewAction(VC)
+        VC.bringTabBarToFront()
     }
     
     func bindMissionAction(_ VC: TabBarViewController) {
         VC.changeIndex(to: 2)
         VC.view.addSubview(missionVC.view)
-        setStackViewAction(VC)
-    }
-    
-    func setStackViewAction(_ VC: TabBarViewController) {
-        VC.stackView.hstack(VC.dashBoardButton.withHeight(50),
-                            VC.feedButton.withHeight(50),
-                            VC.missionButton.withHeight(50),
-                            alignment: .center,
-                            distribution: .fillEqually)
-                    .withMargins(.init(top: 0,
-                                       left: 0,
-                                       bottom: 0,
-                                       right: 0))
-        
-        VC.stackView.frame = CGRect(x: VC.view.frame.width/10,
-                                    y: VC.view.frame.height/10 * 9,
-                                    width: VC.view.frame.width/10 * 8,
-                                    height: 50)
-        
-        VC.view.addSubview(VC.stackView)
-        VC.view.bringSubviewToFront(VC.stackView)
+        VC.bringTabBarToFront()
     }
 }

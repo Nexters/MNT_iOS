@@ -21,8 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-//        kakaoLogin() // 로그인,로그아웃 상태 받기
-        testing()
+        kakaoLogin() // 로그인,로그아웃 상태 받기
+//        testing()
         return true
     }
     
@@ -43,9 +43,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     fileprivate func testing() {
-        testingFeed()
+//        testingFeed()
 //        testingMission()
-//        testingMain()
+        testingMain()
     }
     
     fileprivate func testingMission() {
