@@ -25,6 +25,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    fileprivate func kakaoLogin() {
+        guard  let session = KOSession.shared() else {
+            return
+        }
+        
+        if session.token?.accessToken != nil {
+            let coordinator = SceneCoordinator(window: window!)
+            let viewModel = MainViewModel(title: "메인", coordinator: coordinator)
+            let scene: SceneType = MainScene.main(viewModel as! MainViewModel)
+            coordinator.transition(to: scene, using: .root, animated: true)
+        } else {
+            addObserver() // 로그인,로그아웃 상태 변경 받기
+            reloadRootViewController()
+            testing()
+        }
+    }
+    
     fileprivate func testing() {
 //        testingFeed()
 //        testingMission()
@@ -51,27 +68,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let viewModel = MainViewModel(title: "main", coordinator: coordinator)
         let scene: SceneType = MainScene.main(viewModel)
         coordinator.transition(to: scene, using: .root, animated: true)
-    }
-    
-    fileprivate func kakaoLogin() {
-        guard  let session = KOSession.shared() else {
-            return
-        }
-        
-        print("요기요기")
-        print(session.token?.accessToken)
-        
-        if session.token?.accessToken != nil {
-            print("닐 아님")
-            let coordinator = SceneCoordinator(window: window!)
-            let viewModel = MainViewModel(title: "메인", coordinator: coordinator)
-            let scene: SceneType = MainScene.main(viewModel as! MainViewModel)
-            coordinator.transition(to: scene, using: .root, animated: true)
-        } else {
-            addObserver() // 로그인,로그아웃 상태 변경 받기
-            reloadRootViewController()
-            testing()
-        }
     }
     
     fileprivate func addObserver() {
