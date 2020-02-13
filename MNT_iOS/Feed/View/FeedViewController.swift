@@ -17,6 +17,7 @@ class FeedViewController: ViewController {
         let tb = UITableView()
         tb.delegate = self
         tb.dataSource = self
+        tb.addSubview(self.refreshControl)
         tb.registerNib(FeedCell.self)
         tb.showsVerticalScrollIndicator = false
         tb.translatesAutoresizingMaskIntoConstraints = false
@@ -35,7 +36,16 @@ class FeedViewController: ViewController {
         return bt
     }()
     
+    fileprivate lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(handleRefresh(_:)), for: .valueChanged)
+        refreshControl.tintColor = UIColor.accentColor
+        
+        return refreshControl
+    }()
+    
     override func setupLayout() {
+//        view.addSubview(self.refreshControl)
         view.addSubview(tableView)
         tableView.anchor(.top(view.topAnchor),
                          .bottom(view.bottomAnchor),
@@ -73,6 +83,15 @@ extension FeedViewController: ViewModelBindableType {
                                                     userId: "its me"))
         }
         self.tableView.reloadData()
+    }
+    
+    @objc func handleRefresh(_ sender: Any) {
+        getTimeline()
+        self.refreshControl.endRefreshing()
+    }
+    
+    @objc func moveToTop() { // ex) 피드 화면에서 피드 버튼 눌렀을 때 피드 화면의 최상단으로 이동
+        tableView.contentOffset = CGPoint(x: 0, y: 0 - tableView.contentInset.top)
     }
 }
 
@@ -118,27 +137,24 @@ extension FeedViewController: UITableViewDelegate, UITableViewDataSource {
         return headerView
     }
     
-    @objc func moveToTop() { // ex) 피드 화면에서 피드 버튼 눌렀을 때 피드 화면의 최상단으로 이동
-        tableView.contentOffset = CGPoint(x: 0, y: 0 - tableView.contentInset.top)
-    }
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        let translation = scrollView.panGestureRecognizer.translation(in: scrollView.superview)
+//        performHeaderCheck(translation: translation)
+//    }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let translation = scrollView.panGestureRecognizer.translation(in: scrollView.superview)
-        performHeaderCheck(translation: translation)
-    }
     
-    func performHeaderCheck(translation:CGPoint) {
-        if translation.y == 0 { return }
-        if translation.y > 0 {
-            if !headerVisible { // Scroll Down
+//    func performHeaderCheck(translation:CGPoint) {
+//        if translation.y == 0 { return }
+//        if translation.y > 0 {
+//            if !headerVisible { // Scroll Down
 //                showHeader()
-            }
-        } else {
-            if headerVisible { // Scroll Up
+//            }
+//        } else {
+//            if headerVisible { // Scroll Up
 //                hideHeader()
-            }
-        }
-    }
+//            }
+//        }
+//    }
     
 //    check how to get TabBarViewController
     func hideHeader() {
