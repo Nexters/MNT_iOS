@@ -21,6 +21,7 @@ struct API {
 
 enum URLType: String {
     case missionList = "/mission/list"
+    case userList = "/room/user-list"
 }
 
 // for case handling

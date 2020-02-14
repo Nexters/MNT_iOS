@@ -45,7 +45,7 @@ class FeedViewController: ViewController {
     override func setupNavigationController() {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationItem.setRightBarButtonItems([userlistBarButton, filterBarButton], animated: true)
+        self.navigationItem.setRightBarButtonItems([filterBarButton, userlistBarButton], animated: true)
     }
 }
 

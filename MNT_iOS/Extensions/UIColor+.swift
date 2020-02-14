@@ -33,4 +33,8 @@ extension UIColor {
     open class var moreText: UIColor {
         return .init(red: 143/255, green: 155/255, blue: 179/255, alpha: 1)
     }
+    
+    open class var lightBlue: UIColor {
+        return .init(red: 237/255, green: 241/255, blue: 247/255, alpha: 1)
+    }
 }

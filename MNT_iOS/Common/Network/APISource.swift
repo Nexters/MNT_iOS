@@ -21,4 +21,13 @@ class APISource: APISourceProtocol {
                         completion(res.data)
         }
     }
+    
+    func getUserList(roomId: Int, completion: @escaping ([Participant]) -> Void) -> Disposable? {
+        return requestDataObject(.get,
+                                 .userList,
+                                 parameters: roomId) { (res: UserListResponse) in
+                                    print(res)
+                                    completion(res.data)
+        }
+    }
 }

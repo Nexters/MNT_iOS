@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A01BB6623F6456200FF8B7C /* UserListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A01BB6523F6456200FF8B7C /* UserListResponse.swift */; };
+		1A01BB6923F64B9B00FF8B7C /* UserListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A01BB6723F64B9B00FF8B7C /* UserListCell.swift */; };
+		1A01BB6A23F64B9B00FF8B7C /* UserListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A01BB6823F64B9B00FF8B7C /* UserListCell.xib */; };
 		1A3022AD23EBDAD800693E22 /* AddNewMissionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3022AC23EBDAD800693E22 /* AddNewMissionViewModel.swift */; };
 		1A3022AF23EBDB5B00693E22 /* AddNewMissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3022AE23EBDB5B00693E22 /* AddNewMissionViewController.swift */; };
 		1A49808523C967C1004B4058 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A49808423C967C1004B4058 /* LoginController.swift */; };
@@ -131,6 +134,9 @@
 
 /* Begin PBXFileReference section */
 		186C7888D6F657BF5ED2D930 /* Pods_MNT_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MNT_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A01BB6523F6456200FF8B7C /* UserListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListResponse.swift; sourceTree = "<group>"; };
+		1A01BB6723F64B9B00FF8B7C /* UserListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListCell.swift; sourceTree = "<group>"; };
+		1A01BB6823F64B9B00FF8B7C /* UserListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserListCell.xib; sourceTree = "<group>"; };
 		1A3022AC23EBDAD800693E22 /* AddNewMissionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewMissionViewModel.swift; sourceTree = "<group>"; };
 		1A3022AE23EBDB5B00693E22 /* AddNewMissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewMissionViewController.swift; sourceTree = "<group>"; };
 		1A49808423C967C1004B4058 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -280,6 +286,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A01BB6423F6453D00FF8B7C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1A01BB6523F6456200FF8B7C /* UserListResponse.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		1A49808023C962F8004B4058 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -364,6 +378,7 @@
 		1A4E687E23E40D27005D2CFD /* FeedDetails */ = {
 			isa = PBXGroup;
 			children = (
+				1A01BB6423F6453D00FF8B7C /* Model */,
 				1A81AE5B23E90A01004CADBC /* ViewModel */,
 				1A4E687F23E40D35005D2CFD /* View */,
 			);
@@ -376,6 +391,8 @@
 				1AB0696D23F232B0000B8D27 /* FeedFilterViewController.swift */,
 				1A81AE5923E9099A004CADBC /* MissionDetailViewController.swift */,
 				1AB0696923F231D8000B8D27 /* UserListViewController.swift */,
+				1A01BB6723F64B9B00FF8B7C /* UserListCell.swift */,
+				1A01BB6823F64B9B00FF8B7C /* UserListCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1048,6 +1065,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A4E689123E40F81005D2CFD /* MissionCell.xib in Resources */,
+				1A01BB6A23F64B9B00FF8B7C /* UserListCell.xib in Resources */,
 				1AD6D41423BF9DBF000B1893 /* LaunchScreen.storyboard in Resources */,
 				1A4E687123E3ED49005D2CFD /* FeedCell.xib in Resources */,
 				1AD6D41123BF9DBF000B1893 /* Assets.xcassets in Resources */,
@@ -1207,6 +1225,7 @@
 				1AB0696E23F232B0000B8D27 /* FeedFilterViewController.swift in Sources */,
 				1AFC040223C99841005B7A6F /* Objects+.swift in Sources */,
 				581B160E23EC790D00D0593B /* UICollectionView+.swift in Sources */,
+				1A01BB6623F6456200FF8B7C /* UserListResponse.swift in Sources */,
 				583659B323E19F4800E2752F /* BaseNavigationController.swift in Sources */,
 				1A8FAF4223E060AE009A92C1 /* LoginScene.swift in Sources */,
 				1AECB7D823F14A950018BC16 /* MissionTypeView.swift in Sources */,
@@ -1243,6 +1262,7 @@
 				581B160223EC735400D0593B /* GuessViewModel.swift in Sources */,
 				1AAB0E2B23DECA080003A2C4 /* View+.swift in Sources */,
 				583659B723E1BA2500E2752F /* SetRoomDetailViewModel.swift in Sources */,
+				1A01BB6923F64B9B00FF8B7C /* UserListCell.swift in Sources */,
 				581B160C23EC760D00D0593B /* GuessViewController.swift in Sources */,
 				1AD6D40723BF9DBC000B1893 /* SceneDelegate.swift in Sources */,
 				1AAB0E3C23DED4C50003A2C4 /* ViewModelBindable.swift in Sources */,
