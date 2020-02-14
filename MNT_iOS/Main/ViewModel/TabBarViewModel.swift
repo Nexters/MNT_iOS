@@ -28,6 +28,8 @@ class TabBarViewModel: ViewModel {
         return CocoaAction { action in
             if VC.stackIndex != 1 {
                 self.bindFeedAction(VC)
+            } else {
+                NotificationCenter.default.post(name: Notification.Name("TabFeedButtonAgain"), object: self, userInfo: nil)
             }
             return Observable.just(action)
         }
@@ -37,6 +39,8 @@ class TabBarViewModel: ViewModel {
         return CocoaAction { action in
             if VC.stackIndex != 2 {
                 self.bindMissionAction(VC)
+            } else {
+                NotificationCenter.default.post(name: Notification.Name("TabMissionButtonAgain"), object: self, userInfo: nil)
             }
             return Observable.just(action)
         }

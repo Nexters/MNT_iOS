@@ -22,12 +22,7 @@ class MainViewController: ViewController {
     }
 
     override func setupLayout() {
-        view.stack(//profileImageView,
-//                   nicknameLabel.withHeight(50),
-//                   textfield.withHeight(50),
-//                   mimicLabel.withHeight(50),
-//                   button.withHeight(50),
-                   joinButton.withHeight(50),
+        view.stack(joinButton.withHeight(50),
                    produceButton.withHeight(50),
                    alignment: .center,
                    distribution: .fillEqually)

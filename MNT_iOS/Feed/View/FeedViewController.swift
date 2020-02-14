@@ -11,7 +11,6 @@ import Foundation
 class FeedViewController: ViewController {
     
     var viewModel: FeedViewModel?
-    var headerVisible = true
     
     fileprivate lazy var tableView: UITableView = {
         let tb = UITableView()
@@ -43,6 +42,11 @@ class FeedViewController: ViewController {
         
         return refreshControl
     }()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        addFeedButtonObserver()
+    }
     
     override func setupLayout() {
         view.addSubview(tableView)
@@ -82,16 +86,23 @@ extension FeedViewController: ViewModelBindableType {
                                                     userId: "its me"))
         }
         self.tableView.reloadData()
-        print("새로고침")
+    }
+    
+    func addFeedButtonObserver() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(moveToTop(_:)),
+                                               name: NSNotification.Name("TabFeedButtonAgain"),
+                                               object: nil)
+    }
+    
+    @objc func moveToTop(_ notification: Notification) {
+        tableView.contentOffset = CGPoint(x: 0,
+                                          y: 0 - (44 + tableView.contentInset.top + (self.navigationController?.navigationBar.frame.size.height)!))
     }
     
     @objc func handleRefresh(_ sender: Any) {
         getTimeline()
         self.refreshControl.endRefreshing()
-    }
-    
-    @objc func moveToTop() { // ex) 피드 화면에서 피드 버튼 눌렀을 때 피드 화면의 최상단으로 이동
-        tableView.contentOffset = CGPoint(x: 0, y: 0 - tableView.contentInset.top)
     }
 }
 
@@ -114,16 +125,26 @@ extension FeedViewController: UITableViewDelegate, UITableViewDataSource {
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         
         // call delegate
+        let userInfo: [AnyHashable: Any]
         
         if(velocity.y>0) {  // HIDE
+            userInfo = ["TabBarAction":"HIDE"]
+    
             UIView.animate(withDuration: 1.5, delay: 0, options: UIView.AnimationOptions(), animations: {
                 self.navigationController?.setNavigationBarHidden(true, animated: true)
             }, completion: nil)
+            
         } else {            // SHOW
+            userInfo = ["TabBarAction":"SHOW"]
+            
             UIView.animate(withDuration: 2.5, delay: 0, options: UIView.AnimationOptions(), animations: {
                 self.navigationController?.setNavigationBarHidden(false, animated: true)
             }, completion: nil)
         }
+        
+        NotificationCenter.default.post(name: Notification.Name("ScrollAction"),
+                                        object: self,
+                                        userInfo: userInfo)
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -135,41 +156,5 @@ extension FeedViewController: UITableViewDelegate, UITableViewDataSource {
         let headerView = UIView()
         headerView.backgroundColor = UIColor.clear
         return headerView
-    }
-    
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        let translation = scrollView.panGestureRecognizer.translation(in: scrollView.superview)
-//        performHeaderCheck(translation: translation)
-//    }
-    
-    
-//    func performHeaderCheck(translation:CGPoint) {
-//        if translation.y == 0 { return }
-//        if translation.y > 0 {
-//            if !headerVisible { // Scroll Down
-//                showHeader()
-//            }
-//        } else {
-//            if headerVisible { // Scroll Up
-//                hideHeader()
-//            }
-//        }
-//    }
-    
-//    check how to get TabBarViewController
-    func hideHeader() {
-        self.headerVisible = false
-        UIView.animate(withDuration: 0.3, delay: 0, options: .curveLinear, animations: {
-            let parent = self.parent as! TabBarViewController
-            parent.hideHeader()
-        })
-    }
-
-    func showHeader() {
-        self.headerVisible = true
-        UIView.animate(withDuration: 0.3, delay: 0, options: .curveLinear, animations: {
-            let parent = self.parent as! TabBarViewController
-            parent.showHeader()
-        })
     }
 }

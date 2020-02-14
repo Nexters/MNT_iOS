@@ -10,19 +10,23 @@ import UIKit
 
 class TabBarViewController: ViewController {
     var viewModel: TabBarViewModel?
+    
     var dashBoardButton = UIButton(title: "", titleColor: .black)
     var feedButton = UIButton(title: "", titleColor: .black)
     var missionButton = UIButton(title: "", titleColor: .black)
     var dashBoardLabel = UILabel(text: "대시보드", font: .boldSystemFont(ofSize: 10), textColor: UIColor.contentText, textAlignment: .center, numberOfLines: 0)
     var feedLabel = UILabel(text: "피드", font: .boldSystemFont(ofSize: 10), textColor: UIColor.contentText, textAlignment: .center, numberOfLines: 0)
     var missionLabel = UILabel(text: "미션", font: .boldSystemFont(ofSize: 10), textColor: UIColor.contentText, textAlignment: .center, numberOfLines: 0)
-
+    var dashBoardST = UIButton(title: "", titleColor: .black)
+    var feedST = UIButton(title: "", titleColor: .black)
+    var missionST = UIButton(title: "", titleColor: .black)
     var stackView = UIView()
     var stackIndex: Int? // 0: 대시보드, 1: 피드, 2: 미션
     
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel?.bindFeedAction(self)
+        addScrollObserver()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,29 +43,27 @@ class TabBarViewController: ViewController {
         let width = view.frame.width
         let height = view.frame.height
         
-        stackView.stack(UIView().withHeight(height * 0.012),
-                        stackView.hstack(UIView().withWidth(36),
-                                         dashBoardButton.withWidth(24),
-                                         UIView().withWidth(59),
-                                         feedButton.withWidth(24),
-                                         UIView().withWidth(59),
-                                         missionButton.withWidth(24),
-                                         UIView().withWidth(37)).withHeight(24),
-                        UIView().withHeight(5),
-                        stackView.hstack(UIView().withWidth(31),
-                                         dashBoardLabel.withWidth(35),
-                                         UIView().withWidth(48),
-                                         feedLabel.withWidth(35),
-                                         UIView().withWidth(57),
-                                         missionLabel.withWidth(18),
-                                         UIView().withWidth(39)).withHeight(10),
-                        UIView().withHeight(10))
-        
         stackView.frame = CGRect(x: (width - 263)/2,
-                                 y: height - (59 + 34),
+                                 y: height - 93,
                                  width: 263,
                                  height: 59)
         
+        dashBoardST.stack(dashBoardButton, dashBoardLabel)
+        feedST.stack(feedButton, feedLabel)
+        missionST.stack(missionButton, missionLabel)
+        stackView.hstack(dashBoardST, feedST, missionST)
+        
+        dashBoardST.topAnchor.constraint(equalTo: stackView.topAnchor, constant: 10).isActive = true
+        dashBoardST.bottomAnchor.constraint(equalTo: stackView.bottomAnchor, constant: -10).isActive = true
+        dashBoardST.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: width * 0.082).isActive = true
+        feedST.topAnchor.constraint(equalTo: stackView.topAnchor, constant: 10).isActive = true
+        feedST.bottomAnchor.constraint(equalTo: stackView.bottomAnchor, constant: -10).isActive = true
+        missionST.topAnchor.constraint(equalTo: stackView.topAnchor, constant: 10).isActive = true
+        missionST.bottomAnchor.constraint(equalTo: stackView.bottomAnchor, constant: -10).isActive = true
+        missionST.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: width * 0.467).isActive = true
+        missionST.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -(width * 0.104)).isActive = true
+        
+        view.addSubview(stackView)
         stackView.backgroundColor = UIColor.white
         stackView.layer.masksToBounds = false
         stackView.layer.cornerRadius = 30
@@ -105,31 +107,52 @@ class TabBarViewController: ViewController {
             print("error")
         }
     }
+    
+    func addScrollObserver() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(animateTabBar(_:)),
+                                               name: NSNotification.Name("ScrollAction"),
+                                               object: nil)
+    }
+    
+    @objc func animateTabBar(_ notification: Notification) {
+        guard let tabBarAction: String = notification.userInfo?["TabBarAction"] as? String else { return }
+        
+        if (tabBarAction == "HIDE") {
+            hideHeader()
+        } else {
+            showHeader()
+        }
+    }
+    
+    func hideHeader() {
+        let width = view.frame.width
+        let height = view.frame.height
+        
+        UIView.animate(withDuration: 3.0, delay: 0, options: .curveLinear, animations: {
+            self.stackView.frame = CGRect(x: (width - 263)/2,
+                                     y: height + 100,
+                                     width: 263,
+                                     height: 59)
+        })
+    }
+    
+    func showHeader() {
+        let width = view.frame.width
+        let height = view.frame.height
+
+        UIView.animate(withDuration: 1.0, delay: 0, options: .curveLinear, animations: {
+            self.stackView.frame = CGRect(x: (width - 263)/2,
+                                     y: height - 93,
+                                     width: 263,
+                                     height: 59)
+        })
+    }
 }
 
 extension TabBarViewController: ViewModelBindableType {
     func bindViewModel(viewModel: TabBarViewModel) {
         feedButton.rx.action = viewModel.presentFeedAction(self)
         missionButton.rx.action = viewModel.presentMissionAction(self)
-    }
-    
-    func hideHeader() {
-        UIView.animate(withDuration: 0.3, delay: 0, options: .curveLinear, animations: {
-            if #available(iOS 11.0, *) {
-                self.stackView.frame = CGRect(x: self.stackView.frame.origin.x, y: (self.view.frame.height + self.view.safeAreaInsets.bottom + 0), width: self.stackView.frame.width, height: 50)
-            } else {
-                self.stackView.frame = CGRect(x: self.stackView.frame.origin.x, y: (self.view.frame.height + 100), width: self.stackView.frame.width, height: 50)
-            }
-        })
-    }
-    
-    func showHeader() {
-        UIView.animate(withDuration: 0.3, delay: 0, options: .curveLinear, animations: {
-            if #available(iOS 11.0, *) {
-                self.stackView.frame = CGRect(x: self.stackView.frame.origin.x, y: self.view.frame.height - (50 + self.view.safeAreaInsets.bottom + 0), width: self.stackView.frame.width, height: 50)
-            } else {
-                self.stackView.frame = CGRect(x: self.stackView.frame.origin.x, y: self.view.frame.height - (50 + 100), width: self.stackView.frame.width, height: 50)
-            }
-        })
     }
 }
