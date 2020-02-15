@@ -31,7 +31,7 @@ class APISource: APISourceProtocol {
         return requestDataObject(.get,
                     .roomAttend,
                     parameters: params) { (res: RoomAttendResponse) in
-                        completion(res.data)
+                        completion([res.data])
         }
     }
 }
