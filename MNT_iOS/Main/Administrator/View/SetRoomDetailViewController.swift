@@ -7,47 +7,98 @@
 //
 
 import UIKit
-import Kingfisher
-import RxSwift
-import RxCocoa
 
 class SetRoomDetailViewController: ViewController {
     
-    let maxLabel = UILabel(text: "👻몇 명이서 하실 건가요?👻", numberOfLines: 0)
-    let maxTF : UITextField = {
-        let tf = UITextField(placeholder: "최대 정원 설정")
-        tf.keyboardType = .numberPad
-        return tf
-    }()
-    let dateLabel = UILabel(text: "👻얼마동안 하실 건가요?👻", numberOfLines: 0)
+    var viewModel: SetRoomDetailViewModel?
+    let dashLabel = UILabel(text: "~")
     var beginDateTF = UITextField()
     var endDateTF = UITextField()
     var datePicker = UIDatePicker()
-    var button = UIButton(title: "방 만들기 ", titleColor: .black)
-    //var button = UIBarButtonItem(title: "다음", style: .plain, target: self, action: nil)
     var textFieldName: UITextField!
+    var button = PrimaryButton("방 만들기")
     
-    var viewModel: SetRoomDetailViewModel?
+    let maxLabel = UILabel(text: "몇명이서 하실 건가요? 👭",
+                           font: .systemFont(ofSize: 18),
+                           textColor: .defaultText,
+                           textAlignment: .left,
+                           numberOfLines: 0)
     
-    override func setupLayout() {
+    let maxSubLabel = UILabel(text: "명",
+                              font: .systemFont(ofSize: 18),
+                              textColor: .defaultText,
+                              textAlignment: .left,
+                              numberOfLines: 0)
+    
+    let dateLabel = UILabel(text: "얼마동안 하실 건가요? ⏱",
+                            font: .systemFont(ofSize: 18),
+                            textColor: .defaultText,
+                            textAlignment: .left,
+                            numberOfLines: 0)
+    
+    let maxTF : UITextField = {
+        let tf = UITextField(placeholder: "Enter")
+        tf.keyboardType = .numberPad
+        return tf
+    }()
+    
+    lazy var maxStack: UIStackView = {
+        let sv = UIStackView(arrangedSubviews: [
+            maxTF, maxSubLabel
+        ])
+        sv.axis = .horizontal
+        sv.spacing = 5
+        return sv
+    }()
+    
+    lazy var dateStack: UIStackView = {
+        let sv = UIStackView(arrangedSubviews: [
+            beginDateTF, dashLabel, endDateTF
+        ])
+        sv.axis = .horizontal
+        sv.spacing = 10
+        return sv
+    }()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         addButtonToTextField(textField: maxTF)
         datePicker.timeZone = NSTimeZone.local
         beginDateTF.borderStyle = .roundedRect
         endDateTF.borderStyle = .roundedRect
+    }
+    
+    override func setupLayout() {
+        let width = view.frame.width
+        let height = view.frame.height
         
-        view.stack(maxLabel.withHeight(50),
-                   maxTF.withHeight(50),
-                   dateLabel.withHeight(50),
-                   view.hstack(beginDateTF.withWidth(view.frame.width/3).withHeight(50),
-                               endDateTF.withWidth(view.frame.width/3).withHeight(50))
-                        .withMargins(.init(top: 0, left: 10, bottom: 0, right: 10)),
-                   button.withHeight(50),
-                   alignment: .center,
-                   distribution: .equalSpacing)
-            .withMargins(.init(top: view.frame.height/2 - 300,
-                               left: 0,
-                               bottom: view.frame.height/2 - 200,
-                               right: 0))
+        view.addSubview(maxLabel)
+        view.addSubview(maxStack)
+        view.addSubview(dateLabel)
+        view.addSubview(dateStack)
+        view.addSubview(button)
+        
+        maxLabel.anchor(
+            .top(view.topAnchor, constant: height * 0.28),
+            .leading(view.leadingAnchor, constant: width * 0.069))
+        maxStack.anchor(
+            .top(maxLabel.bottomAnchor, constant: height * 0.05),
+            .leading(view.leadingAnchor, constant: width * 0.069)
+        )
+        dateLabel.anchor(
+            .top(maxLabel.bottomAnchor, constant: height * 0.187),
+            .leading(view.leadingAnchor, constant: width * 0.069)
+        )
+        dateStack.anchor(
+            .top(maxLabel.bottomAnchor, constant: height * 0.255)
+        )
+        button.anchor(
+            .top(maxLabel.bottomAnchor, constant: height * 0.353)
+        )
+        dateStack.centerXToSuperview()
+        button.centerXToSuperview()
+        beginDateTF.constrainWidth(width * 0.35)
+        endDateTF.constrainWidth(width * 0.35)
     }
     
     func addButtonToTextField(textField: UITextField){

@@ -34,11 +34,31 @@ extension UIColor {
         return .init(red: 255/255, green: 168/255, blue: 180/255, alpha: 1)
     }
     
-    open class var fruttoColor: UIColor {
-        return .init(red: 255/255, green: 143/255, blue: 143/255, alpha: 1) // 딸기우유색,,,
-    }
-    
     open class var moreText: UIColor {
         return .init(red: 143/255, green: 155/255, blue: 179/255, alpha: 1)
+    }
+    
+    open class var primaryColor: UIColor {
+        return .init(red: 255/255, green: 143/255, blue: 143/255, alpha: 1)
+    }
+    
+    open class var subColor: UIColor {
+        return .init(red: 255/255, green: 209/255, blue: 209/255, alpha: 1)
+    }
+    
+    open class var subTextColor: UIColor {
+        return .init(red: 255/255, green: 41/255, blue: 40/255, alpha: 1)
+    }
+    
+    open class var textOnlyColor: UIColor {
+        return .init(red: 255/255, green: 63/255, blue: 63/255, alpha: 1)
+    }
+    
+    open class var grayColor: UIColor {
+        return .init(red: 246/255, green: 246/255, blue: 246/255, alpha: 1)
+    }
+    
+    open class var subLabelColor: UIColor {
+        return .init(red: 88/255, green: 88/255, blue: 88/255, alpha: 1)
     }
 }

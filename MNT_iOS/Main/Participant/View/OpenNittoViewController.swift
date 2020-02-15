@@ -15,7 +15,7 @@ class OpenNittoViewController: ViewController {
     var subLabel = UILabel(text: "나나나님의 마니또는 너너너님입니다.")
     let fromToView = FromToView()
     var descriptionLabel = UILabel(text: "이 날짜까지 마니또 친구들을 많이 많이 챙겨주세요!", numberOfLines: 0)
-    let button = FruttoButton("확인")
+    let button = PrimaryButton("확인")
     
     var backButton: UIBarButtonItem = {
         let bt = UIBarButtonItem(image: #imageLiteral(resourceName: "close"), style: .plain, target: nil, action: nil)

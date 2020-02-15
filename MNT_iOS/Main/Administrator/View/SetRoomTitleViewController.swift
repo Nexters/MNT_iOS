@@ -7,33 +7,36 @@
 //
 
 import UIKit
-import Kingfisher
-import RxSwift
-import RxCocoa
 
 class SetRoomTitleViewController: ViewController {
     
-    let Label = UILabel(text: "👻설명 추가 예정👻", numberOfLines: 0)
-    let textField = UITextField(placeholder: "방 이름을 입력해주세요")
-    var button = UIBarButtonItem(title: "다음", style: .plain, target: self, action: nil)
-    
     var viewModel: SetRoomTitleViewModel?
+    let label = UILabel(text: "프루또 방 이름을 만들어 주세요🍇",
+                        font: .systemFont(ofSize: 18),
+                        textColor: .defaultText,
+                        textAlignment: .left,
+                        numberOfLines: 0)
+    let textField = UITextField(placeholder: "Enter")
+    var nextButton = PrimaryButton("다음")
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        navigationItem.rightBarButtonItem = button
-    }
-    
     override func setupLayout() {
+        let width = view.frame.width
+        let height = view.frame.height
         
-        view.stack(Label.withHeight(50),
-                   textField.withHeight(50),
-                   alignment: .center)
-            .withMargins(.init(top: view.frame.height/2 - 200,
-                               left: 0,
-                               bottom: view.frame.height/2 - 200,
-                               right: 0))
+        view.addSubview(label)
+        view.addSubview(textField)
+        view.addSubview(nextButton)
+        
+        label.anchor(
+            .top(view.topAnchor, constant: height * 0.307),
+            .leading(view.leadingAnchor, constant: width * 0.08)
+        )
+        textField.anchor(
+            .top(label.bottomAnchor, constant: height * 0.05),
+            .leading(view.leadingAnchor, constant: width * 0.08)
+        )
+        nextButton.anchor(.top(label.bottomAnchor, constant: height * 0.155))
+        nextButton.centerXToSuperview()
     }
 }
 
@@ -43,6 +46,6 @@ extension SetRoomTitleViewController: ViewModelBindableType {
             .bind(to: viewModel.roomTitleTextRelay)
             .disposed(by: rx.disposeBag)
         
-        button.rx.action = viewModel.presentSetRoomDetailAction()
+        nextButton.rx.action = viewModel.presentSetRoomDetailAction()
     }
 }

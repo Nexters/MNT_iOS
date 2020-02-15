@@ -12,24 +12,51 @@ import RxSwift
 import RxCocoa
 
 class MainViewController: ViewController {
-    var joinButton = UIButton(title: "참여하기", titleColor: .black)
-    var produceButton = UIButton(title: "방 만들기", titleColor: .black)
-    
     var viewModel: MainViewModel?
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    let logoImage = UIImageView(image: #imageLiteral(resourceName: "logo"))
+    let label = UILabel(text: "참여코드를 받았다면 참여하기로 입장해주세요.",
+                        font: .systemFont(ofSize: 13),
+                        textColor: .black,
+                        textAlignment: .center,
+                        numberOfLines: 0)
+    var joinButton = PrimaryButton("참여하기🤝")
+    var produceButton = SubButton("방 만들기🙋‍♀️")
+    let leftButton: UIBarButtonItem = {
+        let bt = UIBarButtonItem(image: #imageLiteral(resourceName: "arrowLeft"), style: .plain, target: nil, action: nil)
+        bt.tintColor = .defaultText
+        return bt
+    }()
+        
+    override func setupNavigationController() {
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        navigationItem.leftBarButtonItem = leftButton
     }
-
+    
     override func setupLayout() {
-        view.stack(joinButton.withHeight(50),
-                   produceButton.withHeight(50),
-                   alignment: .center,
-                   distribution: .fillEqually)
-            .withMargins(.init(top: view.frame.height/2 - 200,
-                               left: 0,
-                               bottom: view.frame.height/2 - 200,
-                               right: 0))
+        let width = view.frame.width
+        let height = view.frame.height
+        
+        view.addSubview(logoImage)
+        view.addSubview(label)
+        view.addSubview(joinButton)
+        view.addSubview(produceButton)
+        
+        logoImage.anchor(
+            .top(view.topAnchor, constant: height * 0.217)
+        )
+        
+        
+        logoImage.constrainWidth(height * 0.273)
+        logoImage.constrainHeight(height * 0.298)
+        label.anchor(.top(logoImage.bottomAnchor, constant: height * 0.179))
+        joinButton.anchor(.top(logoImage.bottomAnchor, constant: height * 0.214))
+        produceButton.anchor(.top(logoImage.bottomAnchor, constant: height * 0.313))
+        
+        logoImage.centerXToSuperview()
+        label.centerXToSuperview()
+        joinButton.centerXToSuperview()
+        produceButton.centerXToSuperview()
     }
 }
 
