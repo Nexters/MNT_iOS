@@ -11,13 +11,21 @@ import KakaoOpenSDK
 
 class LoginController: ViewController {
     
-    private let loginButton: KOLoginButton = {
-        let button = KOLoginButton()
+//    private let loginButton: KOLoginButton = {
+//        let button = KOLoginButton()
+//        button.addTarget(self, action: #selector(touchUpLoginButton(_:)), for: .touchUpInside)
+//        button.translatesAutoresizingMaskIntoConstraints = false
+//        return button
+//    }()
+    
+    private let loginButton: FruttoButton = {
+        let button = FruttoButton("카카오 ID로 로그인")
         button.addTarget(self, action: #selector(touchUpLoginButton(_:)), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
+    let logoImage = UIImageView(image: #imageLiteral(resourceName: "logo"))
     var viewModel: LoginViewModel?
     
     @objc fileprivate func touchUpLoginButton(_ sender: UIButton) {
@@ -36,28 +44,45 @@ class LoginController: ViewController {
                     let email = user.account?.email,
                     let nickname = user.nickname else { return }
                 
-                let mainVC = MainViewController()
-                mainVC.nicknameLabel.text = nickname
-                mainVC.profileImageView.kf.setImage(with: user.profileImageURL)
-                mainVC.modalPresentationStyle = .fullScreen
+//                let mainVC = MainViewController()
+//                mainVC.nicknameLabel.text = nickname
+//                mainVC.profileImageView.kf.setImage(with: user.profileImageURL)
+//                mainVC.modalPresentationStyle = .fullScreen
                 
-                self.present(mainVC, animated: false, completion: nil)
+                let confirmVC = ConfirmViewController()
+                confirmVC.nicknameLabel.text = nickname
+                confirmVC.profileImageView.kf.setImage(with: user.profileImageURL)
+                confirmVC.modalPresentationStyle = .fullScreen
+                
+                self.present(confirmVC, animated: false, completion: nil)
             })
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+            super.viewWillAppear(animated)
+            self.navigationController?.isNavigationBarHidden = true
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+            super.viewWillDisappear(animated)
+            self.navigationController?.isNavigationBarHidden = false
+    }
+    
     override func setupLayout() {
-        view.addSubview(loginButton)
+        let width = view.frame.width
+        let height = view.frame.height
         
-        var bottomMargin: CGFloat = -30
-        if #available(iOS 11.0, *) {
-            bottomMargin = bottomMargin - 30
-        }
+        view.stack(view.hstack(UIView().withWidth(width * 0.3),
+                               logoImage.withWidth(width * 0.45),
+                               UIView().withWidth(width * 0.25)),
+                   UIView().withHeight(height * 0.279),
+                   view.hstack(UIView().withWidth(width * 0.053),
+                               loginButton.withHeight(height * 0.069)
+                                          .withWidth(width * 0.893),
+                               UIView().withWidth(width * 0.053)))
+            .withMargins(.init(top: height * 0.203, left: 0, bottom: height * 0.11, right: 0))
         
-        loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
-        loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
-        loginButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: bottomMargin).isActive = true
-        loginButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
 }
 

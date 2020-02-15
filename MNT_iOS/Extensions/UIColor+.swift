@@ -18,6 +18,10 @@ extension UIColor {
         return .init(red: 15/255, green: 21/255, blue: 37/255, alpha: 1)
     }
     
+    open class var contentImage: UIColor {
+        return .init(red: 16/255, green: 20/255, blue: 38/255, alpha: 1)
+    }
+    
     open class var defaultShadow: UIColor {
         return .init(red: 185/255, green: 185/255, blue: 185/255, alpha: 0.5)
     }
@@ -28,6 +32,10 @@ extension UIColor {
     
     open class var semiAccentColor: UIColor {
         return .init(red: 255/255, green: 168/255, blue: 180/255, alpha: 1)
+    }
+    
+    open class var fruttoColor: UIColor {
+        return .init(red: 255/255, green: 143/255, blue: 143/255, alpha: 1) // 딸기우유색,,,
     }
     
     open class var moreText: UIColor {

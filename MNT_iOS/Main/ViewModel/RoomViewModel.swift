@@ -6,8 +6,13 @@
 //  Copyright © 2020 최민섭. All rights reserved.
 //
 
-import Foundation
+protocol getRoomViewModel {
+    var asRoomViewModel: RoomViewModel { get }
+}
 
 class RoomViewModel {
-
+    let datas: Room
+    init(datas: Room) {
+        self.datas = datas
+    }
 }

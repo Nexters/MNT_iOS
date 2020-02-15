@@ -16,6 +16,7 @@ class FeedViewController: ViewController {
         let tb = UITableView()
         tb.delegate = self
         tb.dataSource = self
+        tb.addSubview(self.refreshControl)
         tb.registerNib(FeedCell.self)
         tb.showsVerticalScrollIndicator = false
         tb.translatesAutoresizingMaskIntoConstraints = false
@@ -33,6 +34,19 @@ class FeedViewController: ViewController {
         bt.tintColor = .defaultText
         return bt
     }()
+    
+    fileprivate lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(handleRefresh(_:)), for: .valueChanged)
+        refreshControl.tintColor = UIColor.accentColor
+        
+        return refreshControl
+    }()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        addFeedButtonObserver()
+    }
     
     override func setupLayout() {
         view.addSubview(tableView)
@@ -81,6 +95,23 @@ extension FeedViewController: ViewModelBindableType {
         
         self.tableView.reloadData()
     }
+    
+    func addFeedButtonObserver() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(moveToTop(_:)),
+                                               name: NSNotification.Name("TabFeedButtonAgain"),
+                                               object: nil)
+    }
+    
+    @objc func moveToTop(_ notification: Notification) {
+        tableView.contentOffset = CGPoint(x: 0,
+                                          y: 0 - (44 + tableView.contentInset.top + (self.navigationController?.navigationBar.frame.size.height)!))
+    }
+    
+    @objc func handleRefresh(_ sender: Any) {
+        getTimeline()
+        self.refreshControl.endRefreshing()
+    }
 }
 
 // MARK:- UITableViewControllerProtocols
@@ -101,15 +132,28 @@ extension FeedViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        
+        // call delegate
+        let userInfo: [AnyHashable: Any]
+        
         if(velocity.y>0) {  // HIDE
+            userInfo = ["TabBarAction":"HIDE"]
+    
             UIView.animate(withDuration: 1.5, delay: 0, options: UIView.AnimationOptions(), animations: {
                 self.navigationController?.setNavigationBarHidden(true, animated: true)
             }, completion: nil)
+            
         } else {            // SHOW
+            userInfo = ["TabBarAction":"SHOW"]
+            
             UIView.animate(withDuration: 2.5, delay: 0, options: UIView.AnimationOptions(), animations: {
                 self.navigationController?.setNavigationBarHidden(false, animated: true)
             }, completion: nil)
         }
+        
+        NotificationCenter.default.post(name: Notification.Name("ScrollAction"),
+                                        object: self,
+                                        userInfo: userInfo)
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

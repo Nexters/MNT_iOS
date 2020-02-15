@@ -14,7 +14,11 @@ import RxCocoa
 class SetRoomDetailViewController: ViewController {
     
     let maxLabel = UILabel(text: "👻몇 명이서 하실 건가요?👻", numberOfLines: 0)
-    let maxTF = UITextField(placeholder: "최대 정원 설정")
+    let maxTF : UITextField = {
+        let tf = UITextField(placeholder: "최대 정원 설정")
+        tf.keyboardType = .numberPad
+        return tf
+    }()
     let dateLabel = UILabel(text: "👻얼마동안 하실 건가요?👻", numberOfLines: 0)
     var beginDateTF = UITextField()
     var endDateTF = UITextField()
@@ -24,14 +28,9 @@ class SetRoomDetailViewController: ViewController {
     var textFieldName: UITextField!
     
     var viewModel: SetRoomDetailViewModel?
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        //navigationItem.rightBarButtonItem = button
-    }
     
     override func setupLayout() {
+        addButtonToTextField(textField: maxTF)
         datePicker.timeZone = NSTimeZone.local
         beginDateTF.borderStyle = .roundedRect
         endDateTF.borderStyle = .roundedRect
@@ -51,6 +50,14 @@ class SetRoomDetailViewController: ViewController {
                                right: 0))
     }
     
+    func addButtonToTextField(textField: UITextField){
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        let nextBtn = UIBarButtonItem(title: "done", style: .done, target: self, action: nil)
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        toolBar.items = [flexibleSpace, nextBtn]
+        maxTF.inputAccessoryView = toolBar
+    }
 }
 
 extension SetRoomDetailViewController: ViewModelBindableType {
@@ -87,7 +94,6 @@ extension SetRoomDetailViewController: ViewModelBindableType {
     // Should Move createDatePicker(), donePressed() to SetRoomDetailViewModel - try using Relay
     func createDatePicker() {
         let toolbar = UIToolbar()
-        
         var doneButton = UIBarButtonItem(title: "done", style: .done, target: self, action: #selector(donePressed(_:)))
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         toolbar.sizeToFit()

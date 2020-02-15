@@ -12,16 +12,6 @@ import RxSwift
 import RxCocoa
 
 class MainViewController: ViewController {
-    
-    let nicknameLabel = UILabel(text: "",
-                                 font: .systemFont(ofSize: 20),
-                                 textAlignment: .center,
-                                 numberOfLines: 0)
-    let profileImageView = CircularImageView(width: 100)
-    
-    let button = UIButton(title: "Gogo", titleColor: .black)
-    let textfield = UITextField(placeholder: "아무거나 입력하시던지요.")
-    let mimicLabel = UILabel(text: "난 따라하지 !", numberOfLines: 0)
     var joinButton = UIButton(title: "참여하기", titleColor: .black)
     var produceButton = UIButton(title: "방 만들기", titleColor: .black)
     
@@ -29,36 +19,17 @@ class MainViewController: ViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        requestMe()
     }
 
     override func setupLayout() {
-        view.stack(//profileImageView,
-//                   nicknameLabel.withHeight(50),
-//                   textfield.withHeight(50),
-//                   mimicLabel.withHeight(50),
-//                   button.withHeight(50),
-                   joinButton.withHeight(50),
+        view.stack(joinButton.withHeight(50),
                    produceButton.withHeight(50),
-                   alignment: .center)
+                   alignment: .center,
+                   distribution: .fillEqually)
             .withMargins(.init(top: view.frame.height/2 - 200,
                                left: 0,
                                bottom: view.frame.height/2 - 200,
                                right: 0))
-    }
-    
-    fileprivate func requestMe() {
-        KOSessionTask.userMeTask { [unowned self] (error, me) in
-            guard
-                let me = me,
-                let account = me.account,
-                let profileImageUrl = account.profile?.profileImageURL
-                else {return}
-            
-            self.nicknameLabel.text = me.nickname
-            self.profileImageView.kf.setImage(with: profileImageUrl)
-        }
     }
 }
 
@@ -66,12 +37,5 @@ extension MainViewController: ViewModelBindableType {
     func bindViewModel(viewModel: MainViewModel) {
         joinButton.rx.action = viewModel.presentJoinAction()
         produceButton.rx.action = viewModel.presentSetAction()
-        
-        textfield.rx.text.orEmpty
-            .bind(to: viewModel.textfieldRelay)
-            .disposed(by: rx.disposeBag)
-         textfield.rx.text.orEmpty
-                   .bind(to: viewModel.textfieldRelay)
-                   .disposed(by: rx.disposeBag)
     }
 }
