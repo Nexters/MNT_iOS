@@ -15,12 +15,12 @@ class FeedViewModel: ViewModel {
           return Action { [unowned self] _ in
             let viewModel = UserListViewModel(title: "참여자 리스트", coordinator: self.coordinator)
             let scene = FeedScene.userList(viewModel)
-              return self.coordinator
-                  .transition(to: scene,
-                              using: .push,
-                              animated: true)
-                  .asObservable().map { _ in }
-          }
+            return self.coordinator
+                .transition(to: scene,
+                            using: .push,
+                            animated: true)
+                .asObservable().map { _ in }
+        }
     }
     
     func feedFilterAction() -> CocoaAction {
@@ -37,7 +37,7 @@ class FeedViewModel: ViewModel {
     }
     
     func feedDetailAction(_ indexPath: Event<IndexPath>) {
-        print("selectedIndexPath: \(indexPath)")
+        //print("selectedIndexPath: \(indexPath)")
         
         // dummy scene
         let viewModel = FeedFilterViewModel(title: "미션 등록",

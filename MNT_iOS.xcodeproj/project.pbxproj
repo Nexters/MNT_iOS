@@ -56,6 +56,12 @@
 		1AAB0E3823DED4240003A2C4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAB0E3723DED4240003A2C4 /* ViewController.swift */; };
 		1AAB0E3A23DED4980003A2C4 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAB0E3923DED4980003A2C4 /* ViewModel.swift */; };
 		1AAB0E3C23DED4C50003A2C4 /* ViewModelBindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAB0E3B23DED4C50003A2C4 /* ViewModelBindable.swift */; };
+		1AAF289823F7D06D0042D7CC /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAF289723F7D06D0042D7CC /* Room.swift */; };
+		1AAF289A23F7D0E00042D7CC /* OpenNittoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAF289923F7D0E00042D7CC /* OpenNittoViewModel.swift */; };
+		1AAF289E23F7D1980042D7CC /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAF289C23F7D1970042D7CC /* ConfirmViewController.swift */; };
+		1AAF289F23F7D1980042D7CC /* ConfirmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAF289D23F7D1970042D7CC /* ConfirmViewModel.swift */; };
+		1AAF28A123F7D1BF0042D7CC /* FruttoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAF28A023F7D1BF0042D7CC /* FruttoButton.swift */; };
+		1AAF28A323F7D1DA0042D7CC /* OpenNittoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAF28A223F7D1DA0042D7CC /* OpenNittoViewController.swift */; };
 		1AB0696A23F231D8000B8D27 /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0696923F231D8000B8D27 /* UserListViewController.swift */; };
 		1AB0696C23F231F6000B8D27 /* UserListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0696B23F231F6000B8D27 /* UserListViewModel.swift */; };
 		1AB0696E23F232B0000B8D27 /* FeedFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0696D23F232B0000B8D27 /* FeedFilterViewController.swift */; };
@@ -184,6 +190,13 @@
 		1AAB0E3723DED4240003A2C4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1AAB0E3923DED4980003A2C4 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		1AAB0E3B23DED4C50003A2C4 /* ViewModelBindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBindable.swift; sourceTree = "<group>"; };
+		1AAF289723F7D06D0042D7CC /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Room.swift; path = MNT_iOS/Main/Participant/View/Room.swift; sourceTree = "<group>"; };
+		1AAF289923F7D0E00042D7CC /* OpenNittoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OpenNittoViewModel.swift; path = MNT_iOS/Main/Participant/ViewModel/OpenNittoViewModel.swift; sourceTree = "<group>"; };
+		1AAF289B23F7D1450042D7CC /* LoginScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginScene.swift; path = MNT_iOS/Login/Scene/LoginScene.swift; sourceTree = "<group>"; };
+		1AAF289C23F7D1970042D7CC /* ConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ConfirmViewController.swift; path = MNT_iOS/Login/View/ConfirmViewController.swift; sourceTree = "<group>"; };
+		1AAF289D23F7D1970042D7CC /* ConfirmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ConfirmViewModel.swift; path = MNT_iOS/Login/ViewModel/ConfirmViewModel.swift; sourceTree = "<group>"; };
+		1AAF28A023F7D1BF0042D7CC /* FruttoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FruttoButton.swift; path = MNT_iOS/Common/View/FruttoButton.swift; sourceTree = "<group>"; };
+		1AAF28A223F7D1DA0042D7CC /* OpenNittoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OpenNittoViewController.swift; path = MNT_iOS/Main/Participant/View/OpenNittoViewController.swift; sourceTree = "<group>"; };
 		1AB0696923F231D8000B8D27 /* UserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
 		1AB0696B23F231F6000B8D27 /* UserListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewModel.swift; sourceTree = "<group>"; };
 		1AB0696D23F232B0000B8D27 /* FeedFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedFilterViewController.swift; sourceTree = "<group>"; };
@@ -668,6 +681,13 @@
 		1AD6D3F823BF9DBC000B1893 = {
 			isa = PBXGroup;
 			children = (
+				1AAF28A223F7D1DA0042D7CC /* OpenNittoViewController.swift */,
+				1AAF28A023F7D1BF0042D7CC /* FruttoButton.swift */,
+				1AAF289C23F7D1970042D7CC /* ConfirmViewController.swift */,
+				1AAF289D23F7D1970042D7CC /* ConfirmViewModel.swift */,
+				1AAF289B23F7D1450042D7CC /* LoginScene.swift */,
+				1AAF289923F7D0E00042D7CC /* OpenNittoViewModel.swift */,
+				1AAF289723F7D06D0042D7CC /* Room.swift */,
 				1A49808623C96925004B4058 /* KakaoOpenSDK-Bridging-Header.h */,
 				1A49808023C962F8004B4058 /* Frameworks */,
 				1AD6D40323BF9DBC000B1893 /* MNT_iOS */,
@@ -1198,6 +1218,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AAF28A323F7D1DA0042D7CC /* OpenNittoViewController.swift in Sources */,
+				1AAF28A123F7D1BF0042D7CC /* FruttoButton.swift in Sources */,
+				1AAF289E23F7D1980042D7CC /* ConfirmViewController.swift in Sources */,
+				1AAF289F23F7D1980042D7CC /* ConfirmViewModel.swift in Sources */,
+				1A8FAF4223E060AE009A92C1 /* LoginScene.swift in Sources */,
+				1AAF289A23F7D0E00042D7CC /* OpenNittoViewModel.swift in Sources */,
+				1AAF289823F7D06D0042D7CC /* Room.swift in Sources */,
 				1AB0697323F27F16000B8D27 /* TabBarViewModel.swift in Sources */,
 				1AB0697423F27F16000B8D27 /* TabBarViewController.swift in Sources */,
 				583659BD23E32AA300E2752F /* ReadyViewController.swift in Sources */,
@@ -1227,7 +1254,6 @@
 				581B160E23EC790D00D0593B /* UICollectionView+.swift in Sources */,
 				1A01BB6623F6456200FF8B7C /* UserListResponse.swift in Sources */,
 				583659B323E19F4800E2752F /* BaseNavigationController.swift in Sources */,
-				1A8FAF4223E060AE009A92C1 /* LoginScene.swift in Sources */,
 				1AECB7D823F14A950018BC16 /* MissionTypeView.swift in Sources */,
 				581B160923EC741C00D0593B /* ProfileCollectionViewCell.swift in Sources */,
 				581B161C23ED808600D0593B /* AlertExitOrNotViewModel.swift in Sources */,

@@ -26,7 +26,6 @@ class APISource: APISourceProtocol {
         return requestDataObject(.get,
                                  .userList,
                                  parameters: roomId) { (res: UserListResponse) in
-                                    print(res)
                                     completion(res.data)
         }
     }

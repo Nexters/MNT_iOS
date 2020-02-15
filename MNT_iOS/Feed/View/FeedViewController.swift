@@ -79,7 +79,7 @@ extension FeedViewController: ViewModelBindableType {
     
     private func getTimeline() {
         APISource.shared.getTimeline(roomId: 0) { missions in
-            print(missions)
+            //print(missions)
         }
         
         (0...7).forEach{ [unowned self] i in

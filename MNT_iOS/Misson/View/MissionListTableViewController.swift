@@ -31,7 +31,7 @@ class MissionTableViewController: UITableViewController {
         tableView.registerNib(MissionCell.self)
         
         tableView.rx.itemSelected.subscribe { (_) in
-            print("tapped")
+            //print("tapped")
         }
     }
 

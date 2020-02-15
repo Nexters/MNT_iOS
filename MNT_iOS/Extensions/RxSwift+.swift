@@ -20,7 +20,7 @@ extension ObservableType {
                 )
             }
             
-            print("Success to get json Data")
+            //print("Success to get json Data")
             
             let decoder = JSONDecoder()
             let object = try decoder.decode(T.self, from: jsonData)

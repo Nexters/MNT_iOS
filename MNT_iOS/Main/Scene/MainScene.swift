@@ -19,7 +19,6 @@ enum MainScene {
 }
 
 extension MainScene: SceneType {
-    
     func instantiate() -> UIViewController {
         switch self {
         case .main(let viewModel):
