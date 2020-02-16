@@ -11,7 +11,6 @@ import UIKit
 class GrayButton: UIButton {
     required init(_ text: String) {
         super.init(frame: .zero)
-        self.layer.cornerRadius = 10.0;
         self.backgroundColor = .grayColor
         self.tintColor = .textOnlyColor
         self.setTitle(text, for: .normal)
@@ -26,5 +25,6 @@ class GrayButton: UIButton {
         self.withWidth((superview?.frame.width)! * 0.893)
         self.withHeight((superview?.frame.width)! * 0.16)
         self.layer.cornerRadius = 10.0
+        self.clipsToBounds = true
     }
 }

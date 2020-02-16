@@ -9,14 +9,12 @@
 import Foundation
 
 class OpenNittoViewModel: ViewModel {
-//    let codeTextRelay = BehaviorRelay(value: "")
-//
-//    func presentReadyAction() -> CocoaAction {
-//        return CocoaAction { _ in
-//            let viewModel = ReadyViewModel(title: "대기화면", coordinator: self.coordinator)
-//            let scene = MainScene.ready(viewModel)
-//            
-//            return self.coordinator.transition(to: scene, using: .push, animated: true).asObservable().map { _ in }
-//        }
-//    }
+    
+    func presentTabBarAction() -> CocoaAction {
+        return CocoaAction { action in
+            let viewModel = TabBarViewModel(title: "피드", coordinator: self.coordinator)
+            let scene = MainScene.enterRoom(viewModel)
+            return self.coordinator.transition(to: scene, using: .push, animated: true).asObservable().map { _ in }
+        }
+    }
 }

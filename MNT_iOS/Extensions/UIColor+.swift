@@ -39,7 +39,7 @@ extension UIColor {
     }
     
     open class var primaryColor: UIColor {
-        return .init(red: 255/255, green: 143/255, blue: 143/255, alpha: 1)
+        return .init(red: 255/255, green: 133/255, blue: 133/255, alpha: 1)
     }
     
     open class var subColor: UIColor {

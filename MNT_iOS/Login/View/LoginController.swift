@@ -32,11 +32,14 @@ class LoginController: ViewController {
         view.addSubview(logoImage)
         view.addSubview(loginButton)
         
-        logoImage.anchor(.top(view.topAnchor, constant: height * 0.217))
-        loginButton.anchor(.top(logoImage.topAnchor, constant: 0.265))
+        logoImage.anchor(
+            .top(view.topAnchor, constant: height * 0.217),
+            .leading(view.leadingAnchor, constant: (width - (height * 0.273)) * 3 / 5)
+        )
+        loginButton.anchor(.top(logoImage.bottomAnchor, constant: height * 0.265))
         logoImage.constrainWidth(height * 0.273)
         logoImage.constrainHeight(height * 0.298)
-        logoImage.centerXToSuperview()
+        loginButton.centerXToSuperview()
     }
     
     @objc fileprivate func touchUpLoginButton(_ sender: UIButton) {

@@ -11,11 +11,10 @@ import UIKit
 class PrimaryButton: UIButton {
     required init(_ text: String) {
         super.init(frame: .zero)
-        self.layer.cornerRadius = 10.0
         self.backgroundColor = .primaryColor
         self.tintColor = .white
         self.setTitle(text, for: .normal)
-        self.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+        self.titleLabel?.font = .boldFont(ofSize: 18)
     }
     
     required init?(coder: NSCoder) {
@@ -26,5 +25,6 @@ class PrimaryButton: UIButton {
         self.withWidth((superview?.frame.width)! * 0.893)
         self.withHeight((superview?.frame.width)! * 0.16)
         self.layer.cornerRadius = 10.0
+        self.clipsToBounds = true
     }
 }

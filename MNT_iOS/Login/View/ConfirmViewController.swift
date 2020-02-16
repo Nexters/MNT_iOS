@@ -93,19 +93,17 @@ class ConfirmViewController: ViewController {
         KOSessionTask.userMeTask { [unowned self] (error, me) in
             guard
                 let me = me,
-                let account = me.account,
-                let profileImageUrl = account.profile?.profileImageURL
+                let account = me.account
                 else {return}
 
-//            self.nameLabel!.text = me.nickname
-//            self.idLabel!.text = me.account
+//            self.idLabel.text = account.email
+            self.nameLabel.text = me.nickname
         }
     }
 }
 
 extension ConfirmViewController: ViewModelBindableType {
     func bindViewModel(viewModel: ConfirmViewModel) {
-        
+        button.rx.action = viewModel.presentMainAction()
     }
 }
-

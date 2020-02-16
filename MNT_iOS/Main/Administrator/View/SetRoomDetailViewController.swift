@@ -11,34 +11,37 @@ import UIKit
 class SetRoomDetailViewController: ViewController {
     
     var viewModel: SetRoomDetailViewModel?
-    let dashLabel = UILabel(text: "~")
     var beginDateTF = UITextField()
     var endDateTF = UITextField()
     var datePicker = UIDatePicker()
-    var textFieldName: UITextField!
+    var touchedtextField : UITextField!
     var button = PrimaryButton("방 만들기")
     
+    let dashLabel = UILabel(text: "~",
+                            font: .semiBoldFont(ofSize: 19))
+    
     let maxLabel = UILabel(text: "몇명이서 하실 건가요? 👭",
-                           font: .systemFont(ofSize: 18),
+                           font: .boldFont(ofSize: 18),
                            textColor: .defaultText,
                            textAlignment: .left,
                            numberOfLines: 0)
     
     let maxSubLabel = UILabel(text: "명",
-                              font: .systemFont(ofSize: 18),
+                              font: .boldFont(ofSize: 18),
                               textColor: .defaultText,
                               textAlignment: .left,
                               numberOfLines: 0)
     
     let dateLabel = UILabel(text: "얼마동안 하실 건가요? ⏱",
-                            font: .systemFont(ofSize: 18),
+                            font: .boldFont(ofSize: 18),
                             textColor: .defaultText,
                             textAlignment: .left,
                             numberOfLines: 0)
     
     let maxTF : UITextField = {
-        let tf = UITextField(placeholder: "Enter")
+        let tf = UITextField(placeholder: "")
         tf.keyboardType = .numberPad
+        tf.constrainWidth(45)
         return tf
     }()
     
@@ -62,10 +65,12 @@ class SetRoomDetailViewController: ViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addButtonToTextField(textField: maxTF)
         datePicker.timeZone = NSTimeZone.local
         beginDateTF.borderStyle = .roundedRect
         endDateTF.borderStyle = .roundedRect
+        addDoneButtonToTextField(textField: maxTF)
+        addDoneButtonToTextField(textField: beginDateTF)
+        addDoneButtonToTextField(textField: endDateTF)
     }
     
     override func setupLayout() {
@@ -79,7 +84,7 @@ class SetRoomDetailViewController: ViewController {
         view.addSubview(button)
         
         maxLabel.anchor(
-            .top(view.topAnchor, constant: height * 0.28),
+            .top(view.topAnchor, constant: height * 0.18),
             .leading(view.leadingAnchor, constant: width * 0.069))
         maxStack.anchor(
             .top(maxLabel.bottomAnchor, constant: height * 0.05),
@@ -101,13 +106,57 @@ class SetRoomDetailViewController: ViewController {
         endDateTF.constrainWidth(width * 0.35)
     }
     
-    func addButtonToTextField(textField: UITextField){
+     override func viewDidLayoutSubviews() {
+        setTextFieldUnderLine(beginDateTF)
+        setTextFieldUnderLine(endDateTF)
+        setTextFieldUnderLine(maxTF)
+    }
+    
+    func setTextFieldUnderLine(_ tf: UITextField) {
+        let border = CALayer()
+        let width = CGFloat(1.0)
+        
+        tf.borderStyle = .none
+        tf.textAlignment = .center
+        
+        border.borderColor = UIColor.moreText.cgColor
+        border.frame = CGRect(x: 0,
+                              y: tf.frame.size.height - width,
+                              width:  tf.frame.size.width,
+                              height: tf.frame.size.height)
+        border.borderWidth = width
+        tf.layer.addSublayer(border)
+        tf.layer.masksToBounds = true
+    }
+    
+    func addDoneButtonToTextField(textField: UITextField){
         let toolBar = UIToolbar()
         toolBar.sizeToFit()
-        let nextBtn = UIBarButtonItem(title: "done", style: .done, target: self, action: nil)
+        let doneBtn = UIBarButtonItem(title: "done",
+                                      style: .done,
+                                      target: self,
+                                      action: #selector(donePressed(_:)))
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        toolBar.items = [flexibleSpace, nextBtn]
-        maxTF.inputAccessoryView = toolBar
+        toolBar.items = [flexibleSpace, doneBtn]
+        textField.inputAccessoryView = toolBar
+    }
+    
+    func createDatePicker(textField: UITextField) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .none
+        textField.text = dateFormatter.string(from: datePicker.date)
+        textField.inputView = datePicker
+    }
+    
+    @objc func donePressed(_ sender: Any) {
+        if touchedtextField != maxTF {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .short
+            dateFormatter.timeStyle = .none
+            touchedtextField.text = dateFormatter.string(from: datePicker.date)
+        }
+        UIApplication.topViewController()?.view.endEditing(true)
     }
 }
 
@@ -126,41 +175,25 @@ extension SetRoomDetailViewController: ViewModelBindableType {
         endDateTF.rx.text.orEmpty
             .bind(to: viewModel.endDateRelay)
             .disposed(by: rx.disposeBag)
+        
+        maxTF.rx.controlEvent(UIControl.Event.allTouchEvents)
+            .subscribe({ [weak self] _ in
+                self!.touchedtextField = self!.maxTF
+            })
+            .disposed(by: rx.disposeBag)
 
         beginDateTF.rx.controlEvent(UIControl.Event.allTouchEvents)
             .subscribe({ [weak self] _ in
-                self!.textFieldName = self!.beginDateTF
-                self!.createDatePicker()
+                self!.touchedtextField = self!.beginDateTF
+                self!.createDatePicker(textField: self!.beginDateTF)
             })
             .disposed(by: rx.disposeBag)
         
         endDateTF.rx.controlEvent(UIControl.Event.allTouchEvents)
         .subscribe({ [weak self] _ in
-            self!.textFieldName = self!.endDateTF
-            self!.createDatePicker()
+            self!.touchedtextField = self!.endDateTF
+            self!.createDatePicker(textField: self!.endDateTF)
         })
         .disposed(by: rx.disposeBag)
-    }
-    
-    // Should Move createDatePicker(), donePressed() to SetRoomDetailViewModel - try using Relay
-    func createDatePicker() {
-        let toolbar = UIToolbar()
-        var doneButton = UIBarButtonItem(title: "done", style: .done, target: self, action: #selector(donePressed(_:)))
-        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        toolbar.sizeToFit()
-        toolbar.items = [flexibleSpace, doneButton]
-        textFieldName.inputAccessoryView = toolbar
-        textFieldName.inputView = datePicker
-    }
-    
-    @objc func donePressed(_ sender : Any) {
-        //format date
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .short
-        dateFormatter.timeStyle = .none
-
-        self.textFieldName.text = dateFormatter.string(from: datePicker.date)
-
-        UIApplication.topViewController()?.view.endEditing(true)
     }
 }
