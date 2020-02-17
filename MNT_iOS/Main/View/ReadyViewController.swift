@@ -7,9 +7,6 @@
 //
 
 import UIKit
-import Kingfisher
-import RxSwift
-import RxCocoa
 
 class ReadyViewController: ViewController {
     

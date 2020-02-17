@@ -12,7 +12,7 @@ import KakaoOpenSDK
 class LoginController: ViewController {
     
     var viewModel: LoginViewModel?
-    let logoImage = UIImageView(image: #imageLiteral(resourceName: "logo"))
+    let logoImage = UIImageView(image: #imageLiteral(resourceName: "frutto1"))
     private let loginButton: PrimaryButton = {
         let button = PrimaryButton("카카오 ID로 로그인")
         button.addTarget(self, action: #selector(touchUpLoginButton(_:)), for: .touchUpInside)

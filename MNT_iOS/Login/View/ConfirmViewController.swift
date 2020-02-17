@@ -11,28 +11,28 @@ import UIKit
 class ConfirmViewController: ViewController {
     
     var viewModel: ConfirmViewModel?
-    let profileImage = UIImageView(image: #imageLiteral(resourceName: "profileFill"))
+    let profileImage = UIImageView(image: #imageLiteral(resourceName: "imgProfileFace01"))
     var button = PrimaryButton("푸르또 시작하기🍎")
     let nameSubLabel = UILabel(text: "이름",
-                               font: .systemFont(ofSize: 13),
+                               font: .mediumFont(ofSize: 13),
                                textColor: .subLabelColor,
                                textAlignment: .left,
                                numberOfLines: 0)
     
     let nameLabel = UILabel(text: "",
-                            font: .systemFont(ofSize: 17),
+                            font: .mediumFont(ofSize: 17),
                             textColor: .defaultText,
                             textAlignment: .left,
                             numberOfLines: 0)
     
     let idSubLabel = UILabel(text: "카카오 ID",
-                               font: .systemFont(ofSize: 13),
+                               font: .mediumFont(ofSize: 13),
                                textColor: .subLabelColor,
                                textAlignment: .left,
                                numberOfLines: 0)
     
     let idLabel = UILabel(text: "",
-                          font: .systemFont(ofSize: 17),
+                          font: .mediumFont(ofSize: 17),
                           textColor: .defaultText,
                           textAlignment: .left,
                           numberOfLines: 0)

@@ -13,7 +13,7 @@ import RxCocoa
 
 class MainViewController: ViewController {
     var viewModel: MainViewModel?
-    let logoImage = UIImageView(image: #imageLiteral(resourceName: "logo"))
+    let logoImage = UIImageView(image: #imageLiteral(resourceName: "frutto1"))
     let label = UILabel(text: "참여코드를 받았다면 참여하기로 입장해주세요.",
                         font: .mediumFont(ofSize: 13),
                         textColor: .black,
