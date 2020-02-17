@@ -105,6 +105,22 @@
 		583659BD23E32AA300E2752F /* ReadyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583659BC23E32AA300E2752F /* ReadyViewController.swift */; };
 		583659BF23E32B5100E2752F /* ReadyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583659BE23E32B5100E2752F /* ReadyViewModel.swift */; };
 		583659CC23E4AB7100E2752F /* RoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583659CB23E4AB7100E2752F /* RoomViewModel.swift */; };
+		58D0178923FA9AC400D55DA6 /* SFProDisplay-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 58D0178723FA9AC400D55DA6 /* SFProDisplay-Medium.ttf */; };
+		58D0178A23FA9AC400D55DA6 /* SFProDisplay-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 58D0178823FA9AC400D55DA6 /* SFProDisplay-Semibold.ttf */; };
+		58D0178C23FA9CA300D55DA6 /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D0178B23FA9CA200D55DA6 /* ConfirmViewController.swift */; };
+		58D0178E23FA9CB400D55DA6 /* ConfirmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D0178D23FA9CB300D55DA6 /* ConfirmViewModel.swift */; };
+		58D0179523FA9CE600D55DA6 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D0178F23FA9CE600D55DA6 /* PrimaryButton.swift */; };
+		58D0179623FA9CE600D55DA6 /* GrayPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D0179023FA9CE600D55DA6 /* GrayPopUp.swift */; };
+		58D0179723FA9CE600D55DA6 /* PrimaryPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D0179123FA9CE600D55DA6 /* PrimaryPopUp.swift */; };
+		58D0179823FA9CE600D55DA6 /* TextOnlyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D0179223FA9CE600D55DA6 /* TextOnlyButton.swift */; };
+		58D0179923FA9CE600D55DA6 /* GrayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D0179323FA9CE600D55DA6 /* GrayButton.swift */; };
+		58D0179A23FA9CE600D55DA6 /* SubButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D0179423FA9CE600D55DA6 /* SubButton.swift */; };
+		58D0179C23FA9D5100D55DA6 /* OpenNittoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D0179B23FA9D5100D55DA6 /* OpenNittoViewController.swift */; };
+		58D0179E23FA9D6300D55DA6 /* OpenNittoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D0179D23FA9D6300D55DA6 /* OpenNittoViewModel.swift */; };
+		58D017A023FA9DA400D55DA6 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D0179F23FA9DA400D55DA6 /* UIFont+.swift */; };
+		58D017A223FA9DDD00D55DA6 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D017A123FA9DDD00D55DA6 /* Room.swift */; };
+		58D017A423FA9DEE00D55DA6 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D017A323FA9DEE00D55DA6 /* TabBarViewController.swift */; };
+		58D017A623FA9E1500D55DA6 /* TabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D017A523FA9E1500D55DA6 /* TabBarViewModel.swift */; };
 		66B8E3541E3CFB1FAA501496 /* Pods_MNT_iOS_MNT_iOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88EA694FBB02409DA30AB831 /* Pods_MNT_iOS_MNT_iOSUITests.framework */; };
 		6F8C0272B30607E25FC8F8C8 /* Pods_MNT_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95E9A4A6BF4DD4A6D97A4951 /* Pods_MNT_iOS.framework */; };
 		B13A90DE644E5B9587B70BAD /* Pods_MNT_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 186C7888D6F657BF5ED2D930 /* Pods_MNT_iOSTests.framework */; };
@@ -239,6 +255,22 @@
 		583659BC23E32AA300E2752F /* ReadyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyViewController.swift; sourceTree = "<group>"; };
 		583659BE23E32B5100E2752F /* ReadyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyViewModel.swift; sourceTree = "<group>"; };
 		583659CB23E4AB7100E2752F /* RoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomViewModel.swift; sourceTree = "<group>"; };
+		58D0178723FA9AC400D55DA6 /* SFProDisplay-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SFProDisplay-Medium.ttf"; path = "../../../../../Downloads/SFProDisplay-Medium.ttf"; sourceTree = "<group>"; };
+		58D0178823FA9AC400D55DA6 /* SFProDisplay-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SFProDisplay-Semibold.ttf"; path = "../../../../../Downloads/SFProDisplay-Semibold.ttf"; sourceTree = "<group>"; };
+		58D0178B23FA9CA200D55DA6 /* ConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
+		58D0178D23FA9CB300D55DA6 /* ConfirmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmViewModel.swift; sourceTree = "<group>"; };
+		58D0178F23FA9CE600D55DA6 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
+		58D0179023FA9CE600D55DA6 /* GrayPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrayPopUp.swift; sourceTree = "<group>"; };
+		58D0179123FA9CE600D55DA6 /* PrimaryPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryPopUp.swift; sourceTree = "<group>"; };
+		58D0179223FA9CE600D55DA6 /* TextOnlyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextOnlyButton.swift; sourceTree = "<group>"; };
+		58D0179323FA9CE600D55DA6 /* GrayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrayButton.swift; sourceTree = "<group>"; };
+		58D0179423FA9CE600D55DA6 /* SubButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubButton.swift; sourceTree = "<group>"; };
+		58D0179B23FA9D5100D55DA6 /* OpenNittoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenNittoViewController.swift; sourceTree = "<group>"; };
+		58D0179D23FA9D6300D55DA6 /* OpenNittoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenNittoViewModel.swift; sourceTree = "<group>"; };
+		58D0179F23FA9DA400D55DA6 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
+		58D017A123FA9DDD00D55DA6 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
+		58D017A323FA9DEE00D55DA6 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		58D017A523FA9E1500D55DA6 /* TabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewModel.swift; sourceTree = "<group>"; };
 		88EA694FBB02409DA30AB831 /* Pods_MNT_iOS_MNT_iOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MNT_iOS_MNT_iOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		95E9A4A6BF4DD4A6D97A4951 /* Pods_MNT_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MNT_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB74A15F01BF71A867A7F874 /* Pods-MNT_iOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MNT_iOSTests.debug.xcconfig"; path = "Target Support Files/Pods-MNT_iOSTests/Pods-MNT_iOSTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -353,6 +385,12 @@
 				1AAB0E3023DECC2C0003A2C4 /* CircularImageView.swift */,
 				1A4E687823E3FFC3005D2CFD /* RoundedImageView.swift */,
 				1AF8288A23EBFCB100BDAEF9 /* StackChildView.swift */,
+				58D0179323FA9CE600D55DA6 /* GrayButton.swift */,
+				58D0179023FA9CE600D55DA6 /* GrayPopUp.swift */,
+				58D0178F23FA9CE600D55DA6 /* PrimaryButton.swift */,
+				58D0179123FA9CE600D55DA6 /* PrimaryPopUp.swift */,
+				58D0179423FA9CE600D55DA6 /* SubButton.swift */,
+				58D0179223FA9CE600D55DA6 /* TextOnlyButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -574,6 +612,7 @@
 			isa = PBXGroup;
 			children = (
 				1A8FAF4323E0612C009A92C1 /* LoginViewModel.swift */,
+				58D0178D23FA9CB300D55DA6 /* ConfirmViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -582,6 +621,7 @@
 			isa = PBXGroup;
 			children = (
 				1A49808423C967C1004B4058 /* LoginController.swift */,
+				58D0178B23FA9CA200D55DA6 /* ConfirmViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -599,6 +639,7 @@
 			children = (
 				1AD6D40823BF9DBC000B1893 /* MainViewController.swift */,
 				583659BC23E32AA300E2752F /* ReadyViewController.swift */,
+				58D017A323FA9DEE00D55DA6 /* TabBarViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -609,6 +650,7 @@
 				1A8FAF4523E06952009A92C1 /* MainViewModel.swift */,
 				583659BE23E32B5100E2752F /* ReadyViewModel.swift */,
 				583659CB23E4AB7100E2752F /* RoomViewModel.swift */,
+				58D017A523FA9E1500D55DA6 /* TabBarViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -616,6 +658,7 @@
 		1A8FAF3F23E05FAE009A92C1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				58D017A123FA9DDD00D55DA6 /* Room.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -623,6 +666,7 @@
 		1A8FAF4023E05FCF009A92C1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				58D0178623FA9A0700D55DA6 /* Font */,
 				1AD6D40623BF9DBC000B1893 /* SceneDelegate.swift */,
 				1AD6D41023BF9DBF000B1893 /* Assets.xcassets */,
 			);
@@ -729,6 +773,7 @@
 				581B161723ECB58F00D0593B /* UIApplication+.swift */,
 				1A4E687A23E4048D005D2CFD /* UITableView+.swift */,
 				1A4E687C23E404BC005D2CFD /* UICollectionView+.swift */,
+				58D0179F23FA9DA400D55DA6 /* UIFont+.swift */,
 				1AECB7CF23F0FA510018BC16 /* RxSwift+.swift */,
 				1AECB7D323F0FF780018BC16 /* RxAlamofire+.swift */,
 				1AECB7D523F137000018BC16 /* UIColor+.swift */,
@@ -907,6 +952,7 @@
 			isa = PBXGroup;
 			children = (
 				583659A623E153DC00E2752F /* JoinRoomViewModel.swift */,
+				58D0179D23FA9D6300D55DA6 /* OpenNittoViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -915,8 +961,18 @@
 			isa = PBXGroup;
 			children = (
 				583659AA23E158A200E2752F /* JoinRoomViewController.swift */,
+				58D0179B23FA9D5100D55DA6 /* OpenNittoViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		58D0178623FA9A0700D55DA6 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				58D0178723FA9AC400D55DA6 /* SFProDisplay-Medium.ttf */,
+				58D0178823FA9AC400D55DA6 /* SFProDisplay-Semibold.ttf */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 		A6288BC690BACDCA5EA794E6 /* Pods */ = {
@@ -1041,6 +1097,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58D0178923FA9AC400D55DA6 /* SFProDisplay-Medium.ttf in Resources */,
+				58D0178A23FA9AC400D55DA6 /* SFProDisplay-Semibold.ttf in Resources */,
 				1A4E689123E40F81005D2CFD /* MissionCell.xib in Resources */,
 				1AD6D41423BF9DBF000B1893 /* LaunchScreen.storyboard in Resources */,
 				1A4E687123E3ED49005D2CFD /* FeedCell.xib in Resources */,
@@ -1174,6 +1232,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58D017A623FA9E1500D55DA6 /* TabBarViewModel.swift in Sources */,
+				58D017A423FA9DEE00D55DA6 /* TabBarViewController.swift in Sources */,
+				58D017A223FA9DDD00D55DA6 /* Room.swift in Sources */,
+				58D017A023FA9DA400D55DA6 /* UIFont+.swift in Sources */,
+				58D0179E23FA9D6300D55DA6 /* OpenNittoViewModel.swift in Sources */,
+				58D0179C23FA9D5100D55DA6 /* OpenNittoViewController.swift in Sources */,
+				58D0179523FA9CE600D55DA6 /* PrimaryButton.swift in Sources */,
+				58D0179623FA9CE600D55DA6 /* GrayPopUp.swift in Sources */,
+				58D0179723FA9CE600D55DA6 /* PrimaryPopUp.swift in Sources */,
+				58D0179823FA9CE600D55DA6 /* TextOnlyButton.swift in Sources */,
+				58D0179923FA9CE600D55DA6 /* GrayButton.swift in Sources */,
+				58D0179A23FA9CE600D55DA6 /* SubButton.swift in Sources */,
+				58D0178E23FA9CB400D55DA6 /* ConfirmViewModel.swift in Sources */,
+				58D0178C23FA9CA300D55DA6 /* ConfirmViewController.swift in Sources */,
 				583659BD23E32AA300E2752F /* ReadyViewController.swift in Sources */,
 				583659A923E1547700E2752F /* SetRoomTitleViewModel.swift in Sources */,
 				583659A723E153DC00E2752F /* JoinRoomViewModel.swift in Sources */,
