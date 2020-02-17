@@ -11,50 +11,82 @@ import RxCocoa
 import Action
 import RxSwift
 
-class TabBarViewModel: ViewModel {
-    fileprivate lazy var feedVC: UIViewController = {
+protocol ReactiveViewModelable {
+    associatedtype InputType
+    associatedtype OutputType
+    
+    var input: InputType { get set }
+    var output: OutputType { get }
+}
+
+class TabBarViewModel: ViewModel, ReactiveViewModelable {
+    typealias InputType = Input
+    typealias OutputType = Output
+    
+    public lazy var viewControllers: [UIViewController] = {
+        return [
+            UIViewController(),
+            feedVC,
+            missionVC
+        ]
+    }()
+    
+    public lazy var input: InputType = Input()
+    public lazy var output: OutputType = Output()
+    
+    struct Input {
+        
+    }
+    
+    struct Output {
+        public let selectedIndexNumber = PublishRelay<Int>()
+    }
+    
+    fileprivate lazy var feedVC: UINavigationController = {
         let viewModel = FeedViewModel(title: "피드", coordinator: self.coordinator)
-        let FeedVC = FeedScene.feed(viewModel).instantiate()
-        return FeedVC
+        let feedScene = FeedScene.feed(viewModel)
+        var target: UIViewController = UIViewController()
+        let closer = { (vc: UIViewController) in
+            target = vc
+        }
+        self.coordinator.transition(to: feedScene, using: .replace(closer), animated: true)
+        return target.navigationController!
     }()
     
     fileprivate lazy var missionVC: UIViewController = {
         let viewModel = MissionViewModel(title: "미션", coordinator: self.coordinator)
-        let MissionVC = MissionScene.missionParticipant(viewModel).instantiate()
-        return MissionVC
+        let mainScene = MissionScene.missionParticipant(viewModel)
+        var target: UIViewController = UIViewController()
+        let closer = { (vc: UIViewController) in
+            target = vc
+        }
+        self.coordinator.transition(to: mainScene, using: .replace(closer), animated: true)
+        return target.navigationController!
     }()
     
     func presentFeedAction(_ VC: TabBarViewController) -> CocoaAction {
-        return CocoaAction { action in
-            if VC.stackIndex != 1 {
-                self.bindFeedAction(VC)
-            } else {
-                NotificationCenter.default.post(name: Notification.Name("TabFeedButtonAgain"), object: self, userInfo: nil)
-            }
+        return CocoaAction { [weak self] action in
+            self?.bindFeedAction()
             return Observable.just(action)
         }
     }
     
     func presentMissionAction(_ VC: TabBarViewController) -> CocoaAction {
-        return CocoaAction { action in
-            if VC.stackIndex != 2 {
-                self.bindMissionAction(VC)
-            } else {
-                NotificationCenter.default.post(name: Notification.Name("TabMissionButtonAgain"), object: self, userInfo: nil)
-            }
+        return CocoaAction { [weak self] action in
+            self?.bindMissionAction()
             return Observable.just(action)
         }
     }
     
-    func bindFeedAction(_ VC: TabBarViewController) {
-        VC.changeIndex(to: 1)
-        VC.view.addSubview(feedVC.view)
-        VC.bringTabBarToFront()
+    func bindDashboardAction() {
+        output.selectedIndexNumber.accept(0)
     }
     
-    func bindMissionAction(_ VC: TabBarViewController) {
-        VC.changeIndex(to: 2)
-        VC.view.addSubview(missionVC.view)
-        VC.bringTabBarToFront()
+    func bindFeedAction() {
+        output.selectedIndexNumber.accept(1)
+    }
+    
+    func bindMissionAction() {
+        output.selectedIndexNumber.accept(2)
     }
 }

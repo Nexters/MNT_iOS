@@ -65,8 +65,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     fileprivate func testingMain() {
         let coordinator = SceneCoordinator(window: window!)
-        let viewModel = MainViewModel(title: "main", coordinator: coordinator)
-        let scene: SceneType = MainScene.main(viewModel)
+        print("tagg appledelaget after coordinator")
+        let viewModel = TabBarViewModel(title: "Tabbar", coordinator: coordinator)
+        print("tagg appledelaget after viewmodel")
+        let scene: SceneType = MainScene.enterRoom(viewModel)
+        print("tagg appledelaget after enterRoom")
         coordinator.transition(to: scene, using: .root, animated: true)
     }
     

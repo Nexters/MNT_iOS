@@ -59,7 +59,7 @@ class FeedViewController: ViewController {
     override func setupNavigationController() {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationItem.setRightBarButtonItems([userlistBarButton, filterBarButton], animated: true)
+        self.navigationItem.setRightBarButtonItems([filterBarButton, userlistBarButton], animated: true)
     }
 }
 
@@ -70,11 +70,18 @@ extension FeedViewController: ViewModelBindableType {
         
         userlistBarButton.rx.action = viewModel.userListAction()
         filterBarButton.rx.action = viewModel.feedFilterAction()
+        tableView.rx.itemSelected
+            .subscribe(viewModel.feedDetailAction(_:))
+            .disposed(by: rx.disposeBag)
         
         getTimeline()
     }
     
     private func getTimeline() {
+        APISource.shared.getTimeline(roomId: 0) { missions in
+            //print(missions)
+        }
+        
         (0...7).forEach{ [unowned self] i in
             self.viewModel?.infos.append(Feed(id: 1,
                                                     content: String(i),
@@ -85,6 +92,7 @@ extension FeedViewController: ViewModelBindableType {
                                                     userDoneTime: "12:30",
                                                     userId: "its me"))
         }
+        
         self.tableView.reloadData()
     }
     
@@ -106,13 +114,14 @@ extension FeedViewController: ViewModelBindableType {
     }
 }
 
+// MARK:- UITableViewControllerProtocols
 extension FeedViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        1
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return viewModel?.infos.count ?? 0
+        viewModel?.infos.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -146,15 +155,12 @@ extension FeedViewController: UITableViewDelegate, UITableViewDataSource {
                                         object: self,
                                         userInfo: userInfo)
     }
-    
+
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 24
+        24
     }
-    
-    // Make the background color show through
+
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView()
-        headerView.backgroundColor = UIColor.clear
-        return headerView
+        UIView(backgroundColor: .clear)
     }
 }

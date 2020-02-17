@@ -10,6 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    var enableTapGesture: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,6 +27,8 @@ class ViewController: UIViewController {
     }
     
     fileprivate func setupTapGesture() {
+        if !enableTapGesture { return }
+        
         let tapGest = UITapGestureRecognizer()
         view.addGestureRecognizer(tapGest)
         

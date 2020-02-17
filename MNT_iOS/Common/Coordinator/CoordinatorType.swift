@@ -12,6 +12,7 @@ enum TransitionStyle {
     case push
     case modal
     case popToRoot
+    case replace((UIViewController) -> Void)
 }
 
 enum TransitionError: Error {
@@ -30,4 +31,6 @@ protocol SceneCoordinatorType {
     func transition(to scene: SceneType, using style: TransitionStyle, animated: Bool) -> Completable
     
     func close(animated: Bool) -> Completable
+    
+    func changeCurrentVC(_ currentVC: UIViewController)
 }

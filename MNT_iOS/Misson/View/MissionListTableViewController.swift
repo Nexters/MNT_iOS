@@ -26,9 +26,13 @@ class MissionTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.registerNib(MissionCell.self)
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.registerNib(MissionCell.self)
+        
+        tableView.rx.itemSelected.subscribe { (_) in
+            //print("tapped")
+        }
     }
 
     // MARK: - Table view data source
@@ -40,15 +44,15 @@ class MissionTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(MissionCell.self)
         guard let item = viewModel?.missions[indexPath.row] else { return UITableViewCell(frame: .zero)}
         cell.bindViewModel(viewModel: item.asMissionCellViewModel)
-        cell.rx.tapGesture()
-            .when(.recognized)
-            .materialize()
-            .filter { $0.error == nil }
-            .dematerialize()
-            .subscribe(onNext: { [unowned self] _ in
-                self.viewModel?.missionDetailAction(index: indexPath.row).execute()
-            })
-            .disposed(by: self.rx.disposeBag)
+//        cell.rx.tapGesture()
+//            .when(.recognized)
+//            .materialize()
+//            .filter { $0.error == nil }
+//            .dematerialize()
+//            .subscribe(onNext: { [unowned self] _ in
+//                self.viewModel?.missionDetailAction(index: indexPath.row).execute()
+//            })
+//            .disposed(by: self.rx.disposeBag)
 
         return cell
     }

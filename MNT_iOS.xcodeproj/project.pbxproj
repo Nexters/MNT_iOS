@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A01BB6623F6456200FF8B7C /* UserListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A01BB6523F6456200FF8B7C /* UserListResponse.swift */; };
+		1A01BB6923F64B9B00FF8B7C /* UserListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A01BB6723F64B9B00FF8B7C /* UserListCell.swift */; };
+		1A01BB6A23F64B9B00FF8B7C /* UserListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A01BB6823F64B9B00FF8B7C /* UserListCell.xib */; };
 		1A3022AD23EBDAD800693E22 /* AddNewMissionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3022AC23EBDAD800693E22 /* AddNewMissionViewModel.swift */; };
 		1A3022AF23EBDB5B00693E22 /* AddNewMissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3022AE23EBDB5B00693E22 /* AddNewMissionViewController.swift */; };
 		1A49808523C967C1004B4058 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A49808423C967C1004B4058 /* LoginController.swift */; };
@@ -53,10 +56,18 @@
 		1AAB0E3823DED4240003A2C4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAB0E3723DED4240003A2C4 /* ViewController.swift */; };
 		1AAB0E3A23DED4980003A2C4 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAB0E3923DED4980003A2C4 /* ViewModel.swift */; };
 		1AAB0E3C23DED4C50003A2C4 /* ViewModelBindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAB0E3B23DED4C50003A2C4 /* ViewModelBindable.swift */; };
+		1AAF289823F7D06D0042D7CC /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAF289723F7D06D0042D7CC /* Room.swift */; };
+		1AAF289A23F7D0E00042D7CC /* OpenNittoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAF289923F7D0E00042D7CC /* OpenNittoViewModel.swift */; };
+		1AAF289E23F7D1980042D7CC /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAF289C23F7D1970042D7CC /* ConfirmViewController.swift */; };
+		1AAF289F23F7D1980042D7CC /* ConfirmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAF289D23F7D1970042D7CC /* ConfirmViewModel.swift */; };
+		1AAF28A123F7D1BF0042D7CC /* FruttoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAF28A023F7D1BF0042D7CC /* FruttoButton.swift */; };
+		1AAF28A323F7D1DA0042D7CC /* OpenNittoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAF28A223F7D1DA0042D7CC /* OpenNittoViewController.swift */; };
 		1AB0696A23F231D8000B8D27 /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0696923F231D8000B8D27 /* UserListViewController.swift */; };
 		1AB0696C23F231F6000B8D27 /* UserListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0696B23F231F6000B8D27 /* UserListViewModel.swift */; };
 		1AB0696E23F232B0000B8D27 /* FeedFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0696D23F232B0000B8D27 /* FeedFilterViewController.swift */; };
 		1AB0697023F232C6000B8D27 /* FeedFilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0696F23F232C6000B8D27 /* FeedFilterViewModel.swift */; };
+		1AB0697323F27F16000B8D27 /* TabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0697123F27F16000B8D27 /* TabBarViewModel.swift */; };
+		1AB0697423F27F16000B8D27 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0697223F27F16000B8D27 /* TabBarViewController.swift */; };
 		1AD5F7BB23E8762400F96263 /* MissionPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD5F7BA23E8762400F96263 /* MissionPreviewViewController.swift */; };
 		1AD5F7BD23E8771500F96263 /* MissionDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD5F7BC23E8771500F96263 /* MissionDetail.swift */; };
 		1AD6D40523BF9DBC000B1893 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD6D40423BF9DBC000B1893 /* AppDelegate.swift */; };
@@ -145,6 +156,9 @@
 
 /* Begin PBXFileReference section */
 		186C7888D6F657BF5ED2D930 /* Pods_MNT_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MNT_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A01BB6523F6456200FF8B7C /* UserListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListResponse.swift; sourceTree = "<group>"; };
+		1A01BB6723F64B9B00FF8B7C /* UserListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListCell.swift; sourceTree = "<group>"; };
+		1A01BB6823F64B9B00FF8B7C /* UserListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserListCell.xib; sourceTree = "<group>"; };
 		1A3022AC23EBDAD800693E22 /* AddNewMissionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewMissionViewModel.swift; sourceTree = "<group>"; };
 		1A3022AE23EBDB5B00693E22 /* AddNewMissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewMissionViewController.swift; sourceTree = "<group>"; };
 		1A49808423C967C1004B4058 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -192,10 +206,19 @@
 		1AAB0E3723DED4240003A2C4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1AAB0E3923DED4980003A2C4 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		1AAB0E3B23DED4C50003A2C4 /* ViewModelBindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBindable.swift; sourceTree = "<group>"; };
+		1AAF289723F7D06D0042D7CC /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Room.swift; path = MNT_iOS/Main/Participant/View/Room.swift; sourceTree = "<group>"; };
+		1AAF289923F7D0E00042D7CC /* OpenNittoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OpenNittoViewModel.swift; path = MNT_iOS/Main/Participant/ViewModel/OpenNittoViewModel.swift; sourceTree = "<group>"; };
+		1AAF289B23F7D1450042D7CC /* LoginScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginScene.swift; path = MNT_iOS/Login/Scene/LoginScene.swift; sourceTree = "<group>"; };
+		1AAF289C23F7D1970042D7CC /* ConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ConfirmViewController.swift; path = MNT_iOS/Login/View/ConfirmViewController.swift; sourceTree = "<group>"; };
+		1AAF289D23F7D1970042D7CC /* ConfirmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ConfirmViewModel.swift; path = MNT_iOS/Login/ViewModel/ConfirmViewModel.swift; sourceTree = "<group>"; };
+		1AAF28A023F7D1BF0042D7CC /* FruttoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FruttoButton.swift; path = MNT_iOS/Common/View/FruttoButton.swift; sourceTree = "<group>"; };
+		1AAF28A223F7D1DA0042D7CC /* OpenNittoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OpenNittoViewController.swift; path = MNT_iOS/Main/Participant/View/OpenNittoViewController.swift; sourceTree = "<group>"; };
 		1AB0696923F231D8000B8D27 /* UserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
 		1AB0696B23F231F6000B8D27 /* UserListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewModel.swift; sourceTree = "<group>"; };
 		1AB0696D23F232B0000B8D27 /* FeedFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedFilterViewController.swift; sourceTree = "<group>"; };
 		1AB0696F23F232C6000B8D27 /* FeedFilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedFilterViewModel.swift; sourceTree = "<group>"; };
+		1AB0697123F27F16000B8D27 /* TabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewModel.swift; sourceTree = "<group>"; };
+		1AB0697223F27F16000B8D27 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		1AD5F7BA23E8762400F96263 /* MissionPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionPreviewViewController.swift; sourceTree = "<group>"; };
 		1AD5F7BC23E8771500F96263 /* MissionDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionDetail.swift; sourceTree = "<group>"; };
 		1AD6D40123BF9DBC000B1893 /* MNT_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MNT_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -308,6 +331,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A01BB6423F6453D00FF8B7C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1A01BB6523F6456200FF8B7C /* UserListResponse.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		1A49808023C962F8004B4058 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -398,6 +429,7 @@
 		1A4E687E23E40D27005D2CFD /* FeedDetails */ = {
 			isa = PBXGroup;
 			children = (
+				1A01BB6423F6453D00FF8B7C /* Model */,
 				1A81AE5B23E90A01004CADBC /* ViewModel */,
 				1A4E687F23E40D35005D2CFD /* View */,
 			);
@@ -410,6 +442,8 @@
 				1AB0696D23F232B0000B8D27 /* FeedFilterViewController.swift */,
 				1A81AE5923E9099A004CADBC /* MissionDetailViewController.swift */,
 				1AB0696923F231D8000B8D27 /* UserListViewController.swift */,
+				1A01BB6723F64B9B00FF8B7C /* UserListCell.swift */,
+				1A01BB6823F64B9B00FF8B7C /* UserListCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -637,6 +671,7 @@
 		1A8FAF3D23E05FA4009A92C1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1AB0697223F27F16000B8D27 /* TabBarViewController.swift */,
 				1AD6D40823BF9DBC000B1893 /* MainViewController.swift */,
 				583659BC23E32AA300E2752F /* ReadyViewController.swift */,
 				58D017A323FA9DEE00D55DA6 /* TabBarViewController.swift */,
@@ -647,6 +682,7 @@
 		1A8FAF3E23E05FA7009A92C1 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				1AB0697123F27F16000B8D27 /* TabBarViewModel.swift */,
 				1A8FAF4523E06952009A92C1 /* MainViewModel.swift */,
 				583659BE23E32B5100E2752F /* ReadyViewModel.swift */,
 				583659CB23E4AB7100E2752F /* RoomViewModel.swift */,
@@ -689,6 +725,13 @@
 		1AD6D3F823BF9DBC000B1893 = {
 			isa = PBXGroup;
 			children = (
+				1AAF28A223F7D1DA0042D7CC /* OpenNittoViewController.swift */,
+				1AAF28A023F7D1BF0042D7CC /* FruttoButton.swift */,
+				1AAF289C23F7D1970042D7CC /* ConfirmViewController.swift */,
+				1AAF289D23F7D1970042D7CC /* ConfirmViewModel.swift */,
+				1AAF289B23F7D1450042D7CC /* LoginScene.swift */,
+				1AAF289923F7D0E00042D7CC /* OpenNittoViewModel.swift */,
+				1AAF289723F7D06D0042D7CC /* Room.swift */,
 				1A49808623C96925004B4058 /* KakaoOpenSDK-Bridging-Header.h */,
 				1A49808023C962F8004B4058 /* Frameworks */,
 				1AD6D40323BF9DBC000B1893 /* MNT_iOS */,
@@ -1100,6 +1143,7 @@
 				58D0178923FA9AC400D55DA6 /* SFProDisplay-Medium.ttf in Resources */,
 				58D0178A23FA9AC400D55DA6 /* SFProDisplay-Semibold.ttf in Resources */,
 				1A4E689123E40F81005D2CFD /* MissionCell.xib in Resources */,
+				1A01BB6A23F64B9B00FF8B7C /* UserListCell.xib in Resources */,
 				1AD6D41423BF9DBF000B1893 /* LaunchScreen.storyboard in Resources */,
 				1A4E687123E3ED49005D2CFD /* FeedCell.xib in Resources */,
 				1AD6D41123BF9DBF000B1893 /* Assets.xcassets in Resources */,
@@ -1271,8 +1315,8 @@
 				1AB0696E23F232B0000B8D27 /* FeedFilterViewController.swift in Sources */,
 				1AFC040223C99841005B7A6F /* Objects+.swift in Sources */,
 				581B160E23EC790D00D0593B /* UICollectionView+.swift in Sources */,
+				1A01BB6623F6456200FF8B7C /* UserListResponse.swift in Sources */,
 				583659B323E19F4800E2752F /* BaseNavigationController.swift in Sources */,
-				1A8FAF4223E060AE009A92C1 /* LoginScene.swift in Sources */,
 				1AECB7D823F14A950018BC16 /* MissionTypeView.swift in Sources */,
 				581B160923EC741C00D0593B /* ProfileCollectionViewCell.swift in Sources */,
 				581B161C23ED808600D0593B /* AlertExitOrNotViewModel.swift in Sources */,
@@ -1307,6 +1351,7 @@
 				581B160223EC735400D0593B /* GuessViewModel.swift in Sources */,
 				1AAB0E2B23DECA080003A2C4 /* View+.swift in Sources */,
 				583659B723E1BA2500E2752F /* SetRoomDetailViewModel.swift in Sources */,
+				1A01BB6923F64B9B00FF8B7C /* UserListCell.swift in Sources */,
 				581B160C23EC760D00D0593B /* GuessViewController.swift in Sources */,
 				1AD6D40723BF9DBC000B1893 /* SceneDelegate.swift in Sources */,
 				1AAB0E3C23DED4C50003A2C4 /* ViewModelBindable.swift in Sources */,
@@ -1513,7 +1558,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WF8UF5VWG6;
+				DEVELOPMENT_TEAM = CJ9DCX3V4H;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
@@ -1538,7 +1583,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WF8UF5VWG6;
+				DEVELOPMENT_TEAM = CJ9DCX3V4H;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",

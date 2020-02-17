@@ -22,16 +22,24 @@ class APISource: APISourceProtocol {
         }
     }
     
-    func getRoomAttend(roomId: Int, userId: String, completion: @escaping ([Room]) -> Void) -> Disposable? {
-        let params = [
-            "roomId" : roomId,
-            "userId" : userId
-        ] as [String: Any]
-        
+    func getUserList(roomId: Int, completion: @escaping ([Participant]) -> Void) -> Disposable? {
         return requestDataObject(.get,
-                    .roomAttend,
-                    parameters: params) { (res: RoomAttendResponse) in
-                        completion([res.data])
+                                 .userList,
+                                 parameters: roomId) { (res: UserListResponse) in
+                                    completion(res.data)
         }
     }
+    
+    func getRoomAttend(roomId: Int, userId: String, completion: @escaping ([Room]) -> Void) -> Disposable? {
+          let params = [
+              "roomId" : roomId,
+              "userId" : userId
+          ] as [String: Any]
+          
+          return requestDataObject(.get,
+                      .roomAttend,
+                      parameters: params) { (res: RoomAttendResponse) in
+                          completion(res.data)
+          }
+      }
 }

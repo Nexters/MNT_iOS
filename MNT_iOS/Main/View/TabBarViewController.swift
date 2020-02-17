@@ -8,15 +8,37 @@
 
 import UIKit
 
-class TabBarViewController: ViewController {
+import RxSwift
+import RxCocoa
+
+class TabBarViewController: UITabBarController {
     var viewModel: TabBarViewModel?
     
-    var dashBoardButton = UIButton(title: "", titleColor: .black)
-    var feedButton = UIButton(title: "", titleColor: .black)
-    var missionButton = UIButton(title: "", titleColor: .black)
-    var dashBoardLabel = UILabel(text: "대시보드", font: .boldSystemFont(ofSize: 10), textColor: UIColor.contentText, textAlignment: .center, numberOfLines: 0)
-    var feedLabel = UILabel(text: "피드", font: .boldSystemFont(ofSize: 10), textColor: UIColor.contentText, textAlignment: .center, numberOfLines: 0)
-    var missionLabel = UILabel(text: "미션", font: .boldSystemFont(ofSize: 10), textColor: UIColor.contentText, textAlignment: .center, numberOfLines: 0)
+    override var selectedIndex: Int {
+        didSet {
+            print("tagg selectedIndex: \(selectedIndex)")
+        }
+    }
+    private let bag = DisposeBag()
+    
+    var dashBoardButton = UIButton(image: #imageLiteral(resourceName: "dashboard"), tintColor: .contentImage)
+    var feedButton = UIButton(image: #imageLiteral(resourceName: "feed"), tintColor: .contentImage)
+    var missionButton = UIButton(image: #imageLiteral(resourceName: "mission"), tintColor: .contentImage)
+    var dashBoardLabel = UILabel(text: "대시보드",
+                                 font: .boldSystemFont(ofSize: 10),
+                                 textColor: .contentText,
+                                 textAlignment: .center,
+                                 numberOfLines: 0)
+    var feedLabel = UILabel(text: "피드",
+                            font: .boldSystemFont(ofSize: 10),
+                            textColor: .contentText,
+                            textAlignment: .center,
+                            numberOfLines: 0)
+    var missionLabel = UILabel(text: "미션",
+                               font: .boldSystemFont(ofSize: 10),
+                               textColor: .contentText,
+                               textAlignment: .center,
+                               numberOfLines: 0)
     var dashBoardST = UIButton(title: "", titleColor: .black)
     var feedST = UIButton(title: "", titleColor: .black)
     var missionST = UIButton(title: "", titleColor: .black)
@@ -25,25 +47,39 @@ class TabBarViewController: ViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel?.bindFeedAction(self)
         addScrollObserver()
-        self.navigationController?.isNavigationBarHidden = true
+        
+        tabBar.isHidden = true
+        // init page to FeedViewController
+            
+        setupLayout()
     }
     
-    override func setupLayout() {
+    override func viewWillAppear(_ animated: Bool) {
+            super.viewWillAppear(animated)
+            self.navigationController?.isNavigationBarHidden = true
+            viewModel?.bindFeedAction()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+            super.viewWillDisappear(animated)
+            self.navigationController?.isNavigationBarHidden = false
+    }
+    
+    func setupLayout() {
         let width = view.frame.width
         let height = view.frame.height
-        
+
         stackView.frame = CGRect(x: (width - 263)/2,
                                  y: height - 93,
                                  width: 263,
                                  height: 59)
-        
+
         dashBoardST.stack(dashBoardButton, dashBoardLabel)
         feedST.stack(feedButton, feedLabel)
         missionST.stack(missionButton, missionLabel)
         stackView.hstack(dashBoardST, feedST, missionST)
-        
+
         dashBoardST.topAnchor.constraint(equalTo: stackView.topAnchor, constant: 10).isActive = true
         dashBoardST.bottomAnchor.constraint(equalTo: stackView.bottomAnchor, constant: -10).isActive = true
         dashBoardST.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: width * 0.082).isActive = true
@@ -53,7 +89,7 @@ class TabBarViewController: ViewController {
         missionST.bottomAnchor.constraint(equalTo: stackView.bottomAnchor, constant: -10).isActive = true
         missionST.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: width * 0.467).isActive = true
         missionST.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -(width * 0.104)).isActive = true
-        
+
         view.addSubview(stackView)
         stackView.backgroundColor = UIColor.white
         stackView.layer.masksToBounds = false
@@ -74,15 +110,6 @@ class TabBarViewController: ViewController {
     }
     
     func setItemColor() {
-        dashBoardButton.setImage(#imageLiteral(resourceName: "dashboard"), for: .normal)
-        feedButton.setImage(#imageLiteral(resourceName: "feed"), for: .normal)
-        missionButton.setImage(#imageLiteral(resourceName: "mission"), for: .normal)
-        dashBoardButton.tintColor = UIColor.contentImage
-        feedButton.tintColor = UIColor.contentImage
-        missionButton.tintColor = UIColor.contentImage
-        dashBoardLabel.textColor = UIColor.contentText
-        feedLabel.textColor = UIColor.contentText
-        missionLabel.textColor = UIColor.contentText
 
         switch stackIndex {
         case 0:
@@ -145,5 +172,15 @@ extension TabBarViewController: ViewModelBindableType {
     func bindViewModel(viewModel: TabBarViewModel) {
         feedButton.rx.action = viewModel.presentFeedAction(self)
         missionButton.rx.action = viewModel.presentMissionAction(self)
+        
+        self.viewControllers = viewModel.viewControllers
+        
+        //  index 바뀔떄 마다 호출
+        viewModel.output.selectedIndexNumber
+            .subscribe(onNext: { [weak self] (selectedNumber) in
+                guard let self = self else { return }
+                self.selectedIndex = selectedNumber
+                self.viewModel?.coordinator.changeCurrentVC(self.viewControllers![selectedNumber].sceneViewController)
+            }).disposed(by: bag)
     }
 }

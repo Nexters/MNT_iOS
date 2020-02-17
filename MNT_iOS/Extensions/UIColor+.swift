@@ -61,4 +61,8 @@ extension UIColor {
     open class var subLabelColor: UIColor {
         return .init(red: 88/255, green: 88/255, blue: 88/255, alpha: 1)
     }
+        
+    open class var lightBlue: UIColor {
+        return .init(red: 237/255, green: 241/255, blue: 247/255, alpha: 1)
+    }
 }

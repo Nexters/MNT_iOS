@@ -12,6 +12,8 @@ import RxCocoa
 import UIKit
 import Action
 
+
+
 class SceneCoordinator: NSObject {
     private var window: UIWindow
     private var currentVC: UIViewController
@@ -23,6 +25,10 @@ class SceneCoordinator: NSObject {
 }
 
 extension SceneCoordinator: SceneCoordinatorType {
+    func changeCurrentVC(_ currentVC : UIViewController) {
+        self.currentVC = currentVC
+    }
+    
     func showAlert(title: String, message: String) -> Completable {
         let subject = PublishSubject<Void>()
         
@@ -37,7 +43,7 @@ extension SceneCoordinator: SceneCoordinatorType {
         
         return subject.ignoreElements()
     }
-    
+        
     func transition(to scene: SceneType, using style: TransitionStyle, animated: Bool) -> Completable {
         let subject = PublishSubject<Void>()
         let target = scene.instantiate()
@@ -62,7 +68,6 @@ extension SceneCoordinator: SceneCoordinatorType {
                 .disposed(by: rx.disposeBag)
             nav.pushViewController(target, animated: animated)
             subject.onCompleted()
-            
         case .modal:
             currentVC.present(target, animated: animated) {
                 subject.onCompleted()
@@ -71,6 +76,9 @@ extension SceneCoordinator: SceneCoordinatorType {
             currentVC.modalPresentationStyle = .overFullScreen
         case .popToRoot:
             currentVC.navigationController?.popToRootViewController(animated: true)
+        case .replace(let closer):
+            currentVC = target.sceneViewController // current : Feed
+            closer(currentVC)
         }
 
         return subject.ignoreElements()
