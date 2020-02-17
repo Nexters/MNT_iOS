@@ -22,7 +22,7 @@ class SetRoomTitleViewController: ViewController {
                              textColor: .lightGray)
     var nextButton = PrimaryButton("다음")
     let leftButton: UIBarButtonItem = {
-        let bt = UIBarButtonItem(image: #imageLiteral(resourceName: "close"),
+        let bt = UIBarButtonItem(image: #imageLiteral(resourceName: "arrowLeft"),
                                  style: .plain,
                                  target: self,
                                  action: #selector(backButtonPressed(_:)))

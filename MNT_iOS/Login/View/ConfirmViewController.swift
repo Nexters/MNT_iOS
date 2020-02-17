@@ -11,7 +11,7 @@ import UIKit
 class ConfirmViewController: ViewController {
     
     var viewModel: ConfirmViewModel?
-    let profileImage = UIImageView(image: #imageLiteral(resourceName: "imgProfileFace01"))
+    let profileImage = UIImageView(image: #imageLiteral(resourceName: "profileFace01"))
     var button = PrimaryButton("푸르또 시작하기🍎")
     let nameSubLabel = UILabel(text: "이름",
                                font: .mediumFont(ofSize: 13),

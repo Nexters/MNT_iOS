@@ -18,8 +18,8 @@ class OpenNittoViewController: ViewController {
                         numberOfLines: 0)
     let frontLabelString = "님의 마니또는 "
     let backLabelString = "님입니다."
-    var myProfileImage = UIImageView(image: #imageLiteral(resourceName: "profileFill"))
-    var nittoProfileImage = UIImageView(image: #imageLiteral(resourceName: "profileFill"))
+    var myProfileImage = UIImageView(image: #imageLiteral(resourceName: "profileFace01"))
+    var nittoProfileImage = UIImageView(image: #imageLiteral(resourceName: "profileFace01"))
     let arrowImage = UIImageView(image: #imageLiteral(resourceName: "arrowRelation"))
     var myNameLabel = UILabel(text: "",
                               font: .semiBoldFont(ofSize: 15),
