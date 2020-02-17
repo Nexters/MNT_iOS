@@ -152,5 +152,6 @@ class OpenNittoViewController: ViewController {
 extension OpenNittoViewController: ViewModelBindableType {
     func bindViewModel(viewModel: OpenNittoViewModel) {
         button.rx.action = viewModel.presentTabBarAction()
+        
     }
 }

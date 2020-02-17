@@ -58,11 +58,6 @@ class LoginController: ViewController {
                     let email = user.account?.email,
                     let nickname = user.nickname else { return }
                 
-//                let mainVC = MainViewController()
-//                mainVC.nicknameLabel.text = nickname
-//                mainVC.profileImageView.kf.setImage(with: user.profileImageURL)
-//                mainVC.modalPresentationStyle = .fullScreen
-                
                 let confirmVC = ConfirmViewController()
                 confirmVC.nameLabel.text = nickname
                 confirmVC.modalPresentationStyle = .fullScreen

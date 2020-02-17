@@ -118,7 +118,6 @@ class SetRoomDetailViewController: ViewController {
         
         tf.borderStyle = .none
         tf.textAlignment = .center
-        
         border.borderColor = UIColor.moreText.cgColor
         border.frame = CGRect(x: 0,
                               y: tf.frame.size.height - width,

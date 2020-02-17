@@ -65,7 +65,6 @@ class ConfirmViewController: ViewController {
         let height = view.frame.height
         
         self.navigationController?.title = "\(nameLabel)님, 반가워요!"
-        
         view.addSubview(profileImage)
         view.addSubview(nameStack)
         view.addSubview(idStack)

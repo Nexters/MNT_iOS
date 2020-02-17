@@ -16,11 +16,14 @@ class SetRoomTitleViewController: ViewController {
                         textColor: .defaultText,
                         textAlignment: .left,
                         numberOfLines: 0)
+    
     let textField = UITextField(placeholder: "")
+    
     var countLabel = UILabel(text: "0/15",
                              font: .mediumFont(ofSize: 13),
                              textColor: .lightGray)
     var nextButton = PrimaryButton("다음")
+    
     let leftButton: UIBarButtonItem = {
         let bt = UIBarButtonItem(image: #imageLiteral(resourceName: "arrowLeft"),
                                  style: .plain,

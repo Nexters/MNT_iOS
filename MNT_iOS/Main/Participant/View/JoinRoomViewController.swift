@@ -25,10 +25,12 @@ class JoinRoomViewController: ViewController {
         tf.keyboardType = .numberPad
         return tf
     }()
+    
     var countLabel = UILabel(text: "0/5",
                              font: .mediumFont(ofSize: 13),
                              textColor: .lightGray)
     var nextButton = PrimaryButton("입장하기")
+    
     let leftButton: UIBarButtonItem = {
         let bt = UIBarButtonItem(image: #imageLiteral(resourceName: "close"),
                                  style: .plain,
