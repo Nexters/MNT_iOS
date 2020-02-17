@@ -21,9 +21,9 @@ class TabBarViewController: UITabBarController {
     }
     private let bag = DisposeBag()
     
-    var dashBoardButton = UIButton(image: #imageLiteral(resourceName: "dashboard"), tintColor: .contentImage)
-    var feedButton = UIButton(image: #imageLiteral(resourceName: "feed"), tintColor: .contentImage)
-    var missionButton = UIButton(image: #imageLiteral(resourceName: "mission"), tintColor: .contentImage)
+    var dashBoardButton = UIButton(image: #imageLiteral(resourceName: "iconNaviDashboard"), tintColor: .contentImage)
+    var feedButton = UIButton(image: #imageLiteral(resourceName: "iconNaviFeed"), tintColor: .contentImage)
+    var missionButton = UIButton(image: #imageLiteral(resourceName: "iconNaviMission"), tintColor: .contentImage)
     var dashBoardLabel = UILabel(text: "대시보드",
                                  font: .boldSystemFont(ofSize: 10),
                                  textColor: .contentText,

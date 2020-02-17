@@ -21,8 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        kakaoLogin() // 로그인,로그아웃 상태 받기
-//        testing()
+//        kakaoLogin() // 로그인,로그아웃 상태 받기
+        testing()
         return true
     }
     
@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     fileprivate func testing() {
 //        testingFeed()
 //        testingMission()
-//        testingMain()
+        testingMain()
     }
     
     fileprivate func testingMission() {
@@ -86,11 +86,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard let isOpened = KOSession.shared()?.isOpen() else { return }
         
         let coordinator = SceneCoordinator(window: window!)
-        
         let viewModel = isOpened ? ConfirmViewModel(title: "확인", coordinator: coordinator) : LoginViewModel(title: "로그인", coordinator: coordinator)
         let scene: SceneType = isOpened ? LoginScene.confirm(viewModel as! ConfirmViewModel) : LoginScene.login(viewModel as! LoginViewModel)
-        
-        coordinator.transition(to: scene, using: .root, animated: true)
+//
+//        coordinator.transition(to: scene, using: .root, animated: true)
     }
     
     @objc fileprivate func kakaoSessionDidChangeWithNotification() {
