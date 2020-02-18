@@ -9,10 +9,10 @@
 import Foundation
 
 struct MissionDetail {
-    let mission: Mission
-    let fromId, toId: Int
-    let fromImageURL, toImageURL: String
-    let text: String
-    var fromName, toName: String?
-    let imageURL: String
+    var mission: Mission = Mission()
+    var fromId = 0, toId = 0
+    var fromImageURL = "", toImageURL = ""
+    var text: String = ""
+    var fromName = "", toName = ""
+    var imageURL: String = ""
 }

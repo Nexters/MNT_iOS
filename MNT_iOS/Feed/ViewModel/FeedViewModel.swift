@@ -17,7 +17,7 @@ class FeedViewModel: ViewModel {
             let scene = FeedScene.userList(viewModel)
             return self.coordinator
                 .transition(to: scene,
-                            using: .present,
+                            using: .push,
                             animated: true)
                 .asObservable().map { _ in }
         }
@@ -38,11 +38,13 @@ class FeedViewModel: ViewModel {
     
     func feedDetailAction(_ indexPath: Event<IndexPath>) {
         //print("selectedIndexPath: \(indexPath)")
-        
         // dummy scene
-        let viewModel = FeedFilterViewModel(title: "미션 등록",
-                                            coordinator: self.coordinator)
-        let scene = FeedScene.filter(viewModel)
+        
+        guard let index = indexPath.element?.row else { return }
+        
+        let viewModel = FeedDetailViewModel(title: "미션 등록",
+                                            coordinator: self.coordinator, feedDetail: infos[index])
+        let scene = FeedScene.feedDetail(viewModel)
         self.coordinator
             .transition(to: scene,
                         using: .push,

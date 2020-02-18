@@ -13,29 +13,32 @@ enum ArrowStyle {
 }
 
 class FromToView: UIView {
-    let manittoImageView = CircularImageView(width: 34, image: #imageLiteral(resourceName: "group"))
-    let manittoLabel = UILabel(text: "마니또", font: .boldSystemFont(ofSize: 15), textColor: .defaultText)
-    let targetImageView = CircularImageView(width: 34, image: #imageLiteral(resourceName: "group"))
-    let targetLabel = UILabel(text: "타겟", font: .boldSystemFont(ofSize: 15))
-    lazy var stackView: UIStackView = {
-        let sv = UIStackView(arrangedSubviews: [
-            manittoImageView,
-            manittoLabel,
-            UIImageView(image: #imageLiteral(resourceName: "arrowRight"), contentMode: .scaleAspectFit).withWidth(20),
-            targetImageView,
-            targetLabel
-        ])
-        sv.axis = .horizontal
-        sv.spacing = 9
-       return sv
-    }()
+    let fromImageView = UIImageView(image: #imageLiteral(resourceName: "imgProfileChatCherry"))
+    let toImageView = UIImageView(image: #imageLiteral(resourceName: "imgProfileCherry"))
+    let fromtoLabel = UILabel(text: "진유진님이 지현우에게",
+                              font: .boldSystemFont(ofSize: 15),
+                              textColor: .defaultText)
+    let dateLabel = UILabel(text: "오늘",
+                            font: .systemFont(ofSize: 11),
+                            textColor: .lightGray)
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
             
+        addSubview(toImageView)
+        addSubview(fromImageView)
+        fromImageView.anchor(leading: leadingAnchor, size: .init(width: 64, height: 64))
+        fromImageView.centerYToSuperview()
+        
+        toImageView.anchor(leading: leadingAnchor, padding: .init(top: 0, left: 32, bottom: 0, right: 0), size: .init(width: 64, height: 64))
+        toImageView.centerYToSuperview()
+        
+        let stackView = UIStackView(arrangedSubviews: [fromtoLabel, dateLabel])
         addSubview(stackView)
-        stackView.anchor(.top(topAnchor),
-                         .bottom(bottomAnchor),
-                         .leading(leadingAnchor))
+        stackView.axis = .vertical
+        stackView.spacing = 3
+        stackView.anchor(.leading(toImageView.trailingAnchor))
+        stackView.centerYToSuperview()
+        
     }
 }

@@ -14,8 +14,9 @@ class UserListViewController: ViewController {
         let tb = UITableView(backgroundColor: .white)
         tb.delegate = self
         tb.dataSource = self
-        tb.registerNib(UserListCell.self)
         tb.separatorStyle = .none
+        tb.allowsSelection = false
+        tb.registerNib(UserListCell.self)
         tb.showsVerticalScrollIndicator = false
         tb.contentInset = .init(top: 20, left: 0, bottom: 0, right: 0)
         return tb
@@ -23,7 +24,11 @@ class UserListViewController: ViewController {
     
     override func setupLayout() {
         view.addSubview(tableView)
-        tableView.fillSuperview()
+        tableView.fillSuperview(padding: .init(top: 0, left: 26, bottom: 0, right: 26))
+    }
+    
+    override func setupNavigationController() {
+        navigationItem.titleView = UILabel(text: "참여자 리스트", font: .boldSystemFont(ofSize: 20), textColor: .defaultText)
     }
 }
 
@@ -61,11 +66,11 @@ extension UserListViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         10
     }
 
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         UIView(backgroundColor: .clear)
     }
 }

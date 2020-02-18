@@ -9,25 +9,47 @@
 import Foundation
 
 class FeedDetailViewController: ViewController {
-    var viewModel: MissionDetailViewModel?
-    let imageView = UIImageView(image: nil, contentMode: .scaleAspectFill)
-    let label = UILabel(numberOfLines: 0)
+    var viewModel: FeedDetailViewModel?
+    
+    let imageView = UIImageView(image: #imageLiteral(resourceName: "frutto1") , contentMode: .scaleAspectFill)
+    let titleLabel = UILabel(text: "# 닮은꼴 사진 보내기", font: .boldSystemFont(ofSize: 15), textColor: .defaultText)
+    let contentLabel = UILabel(text: "ㅁ나어ㅗㅁ나ㅣ옴나어ㅁ나어ㅗㅁ나ㅣ옴나어ㅁ나어ㅗㅁ나ㅣ옴나어ㅁ나어ㅗㅁ나ㅣ옴나어ㅁ나어ㅗㅁ나ㅣ옴나어ㅁ나어ㅗㅁ나ㅣ옴나어ㅁ나어ㅗㅁ나ㅣ옴나어ㅁ나어ㅗㅁ나ㅣ옴나어ㅁ나어ㅗㅁ나ㅣ옴나어ㅁ나어ㅗㅁ나ㅣ옴나어ㅁ나어ㅗㅁ나ㅣ옴나어ㅁ나어ㅗㅁ나ㅣ옴나어ㅁ나어ㅗㅁ나ㅣ옴나어ㅁ나어ㅗㅁ나ㅣ옴나어",
+                               font: .systemFont(ofSize: 14), textColor: .lightGray, numberOfLines: 0)
     let fromToView = FromToView()
     
     override func setupLayout() {
-        view.stack(
-            fromToView.withHeight(80),
-            imageView.withHeight(view.bounds.height * 0.4),
-            label.withHeight(view.bounds.height * 0.2),
-            spacing: 20,
-            type: .exceptBottom
-        )
+    
+        view.addSubview(fromToView)
+        view.addSubview(imageView)
+        view.addSubview(titleLabel)
+        view.addSubview(contentLabel)
+        
+        
+        fromToView.anchor(.top(topAnchor, constant: 5), .leading(view.leadingAnchor, constant: 15), .height(64), .width(200))
+        
+        imageView.anchor(.top(fromToView.bottomAnchor), .leading(view.leadingAnchor, constant: 26), .trailing(view.trailingAnchor, constant: 26))
+        imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor).isActive = true
+        imageView.layer.cornerRadius = 10
+        
+        titleLabel.anchor(.top(imageView.bottomAnchor, constant: 24), .leading(imageView.leadingAnchor))
+        
+        contentLabel.anchor(.top(titleLabel.bottomAnchor, constant: 10), .leading(imageView.leadingAnchor), .trailing(imageView.trailingAnchor))
+    }
+    
+    override func setupNavigationController() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "share"),
+                                                            style: .plain,
+                                                            target: self,
+                                                            action: #selector(tapShare))
+    }
+    
+    @objc fileprivate func tapShare() {
+        
     }
 }
 
 extension FeedDetailViewController: ViewModelBindableType {
-    func bindViewModel(viewModel: MissionDetailViewModel) {
-        // Demo
-        fromToView.manittoLabel.text = viewModel.missionDetail.fromName ?? ""
+    func bindViewModel(viewModel: FeedDetailViewModel) {
+        
     }
 }

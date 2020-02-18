@@ -12,6 +12,7 @@ enum FeedScene {
     case feed(FeedViewModel)
     case userList(UserListViewModel)
     case filter(FeedFilterViewModel)
+    case feedDetail(FeedDetailViewModel)
 }
 
 extension FeedScene: SceneType {
@@ -31,6 +32,10 @@ extension FeedScene: SceneType {
             var filterVC = FeedFilterViewController()
             filterVC.bind(viewModel: viewModel)
             return filterVC
+        case .feedDetail(let viewModel):
+            var detailVC = FeedDetailViewController()
+            detailVC.bind(viewModel: viewModel)
+            return detailVC
         }
     }
 }

@@ -25,7 +25,7 @@ class MissionPostViewModel: ViewModel {
                                                toImageURL: "",
                                                text: content,
                                                imageURL: imageURL)
-            let viewModel = MissionDetailViewModel(title: "미리보기",
+            let viewModel = FeedDetailViewModel(title: "미리보기",
                                                    coordinator: self.coordinator,
                                                    missionDetail: missionDetail)
             return self.coordinator.transition(to: MissionScene.missionPreview(viewModel),

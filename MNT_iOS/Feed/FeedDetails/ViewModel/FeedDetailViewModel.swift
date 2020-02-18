@@ -8,11 +8,17 @@
 
 import Foundation
 
-class MissionDetailViewModel: ViewModel {
-    let missionDetail: MissionDetail
+class FeedDetailViewModel: ViewModel {
+    var missionDetail: MissionDetail?
+    var feedDetail: Feed?
     
     init(title: String, coordinator: SceneCoordinatorType, missionDetail: MissionDetail) {
         self.missionDetail = missionDetail
+        super.init(title: title, coordinator: coordinator)
+    }
+    
+    init(title: String, coordinator: SceneCoordinatorType, feedDetail: Feed) {
+        self.feedDetail = feedDetail
         super.init(title: title, coordinator: coordinator)
     }
     

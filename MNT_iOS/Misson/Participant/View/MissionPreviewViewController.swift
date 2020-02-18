@@ -9,7 +9,7 @@
 import Foundation
 
 class MissionPreviewViewController: ViewController {
-    var viewModel: MissionDetailViewModel?
+    var viewModel: FeedDetailViewModel?
     
     fileprivate var barButton = UIBarButtonItem(title: "완료",
                                                 style: .done,
@@ -49,7 +49,7 @@ class MissionPreviewViewController: ViewController {
 }
 
 extension MissionPreviewViewController: ViewModelBindableType {
-    func bindViewModel(viewModel: MissionDetailViewModel) {
+    func bindViewModel(viewModel: FeedDetailViewModel) {
         barButton.rx.action = viewModel.missionCompleteAction()
     }
 }
