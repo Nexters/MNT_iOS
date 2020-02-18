@@ -13,9 +13,13 @@ class FeedViewController: ViewController {
     var viewModel: FeedViewModel?
     
     fileprivate lazy var tableView: UITableView = {
-        let tb = UITableView()
+        let tb = UITableView(frame: .zero, style: .grouped)
         tb.delegate = self
         tb.dataSource = self
+        tb.separatorStyle = .none
+        tb.backgroundColor = .white
+        tb.sectionHeaderHeight = 64
+        tb.contentInset = .init(top: 5, left: 0, bottom: 0, right: 0)
         tb.addSubview(self.refreshControl)
         tb.registerNib(FeedCell.self)
         tb.showsVerticalScrollIndicator = false
@@ -78,15 +82,25 @@ extension FeedViewController: ViewModelBindableType {
             //print(missions)
         }
         
-        (0...7).forEach{ [unowned self] i in
+        (0...2).forEach{ [unowned self] i in
             self.viewModel?.infos.append(Feed(id: 1,
-                                                    content: String(i),
-                                                    missionId: nil,
-                                                    missionImg: "https://img.huffingtonpost.com/asset/5c6a1b8a250000be00c88cae.png?cache=41JoK4KsMg&ops=scalefit_630_noupscale",
-                                                    roodId: 1,
-                                                    userDone: 0,
-                                                    userDoneTime: "12:30",
-                                                    userId: "its me"))
+                                              content: String(i),
+                                              missionId: MissionId(isAbleImg: 1),
+                                              missionImg: "https://img.huffingtonpost.com/asset/5c6a1b8a250000be00c88cae.png?cache=41JoK4KsMg&ops=scalefit_630_noupscale",
+                                              roodId: 1,
+                                              userDone: 0,
+                                              userDoneTime: "12:30",
+                                              userId: "its me"))
+        }
+        (0...5).forEach{ [unowned self] i in
+            self.viewModel?.infos.append(Feed(id: 1,
+                                              content: String(i),
+                                              missionId: nil,
+                                              missionImg: "https://img.huffingtonpost.com/asset/5c6a1b8a250000be00c88cae.png?cache=41JoK4KsMg&ops=scalefit_630_noupscale",
+                                              roodId: 1,
+                                              userDone: 0,
+                                              userDoneTime: "12:30",
+                                              userId: "its me"))
         }
         
         self.tableView.reloadData()
@@ -113,26 +127,22 @@ extension FeedViewController: ViewModelBindableType {
 // MARK:- UITableViewControllerProtocols
 extension FeedViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
         viewModel?.infos.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let item = viewModel?.infos[indexPath.row] else { return UITableViewCell(frame: .zero)}
         let cell = tableView.dequeueReusableCell(FeedCell.self)
-        guard let item = viewModel?.infos[indexPath.section] else { return UITableViewCell(frame: .zero)}
         cell.bindViewModel(viewModel: item.asFeedCellViewModel)
         return cell
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
+        FeedHeaderView(user: User())
     }
-    
+
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        
+        64
     }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {

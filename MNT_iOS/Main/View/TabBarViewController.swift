@@ -14,11 +14,6 @@ import RxCocoa
 class TabBarViewController: UITabBarController {
     var viewModel: TabBarViewModel?
     
-    override var selectedIndex: Int {
-        didSet {
-            print("tagg selectedIndex: \(selectedIndex)")
-        }
-    }
     private let bag = DisposeBag()
     
     var dashBoardButton = UIButton(image: #imageLiteral(resourceName: "iconNaviDashboard"), tintColor: .contentImage)

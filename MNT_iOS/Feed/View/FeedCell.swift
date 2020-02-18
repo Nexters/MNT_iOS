@@ -18,27 +18,34 @@ class FeedCell: UITableViewCell {
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var container: UIStackView!
     @IBOutlet weak var feedImageView: UIImageView!
+    @IBOutlet weak var labelContainer: UIStackView!
     
     var viewModel: FeedCellViewModel?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        container.withMargins(.init(top: 20, left: 22, bottom: 20, right: 22))
+        labelContainer.withMargins(.init(top: 20, left: 22, bottom: 20, right: 22))
     }
     
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         
+        
         let isAbleImage: Bool = (viewModel?.datas.missionId?.isAbleImg == 1)
-        container.roundedBorder(corners: isAbleImage ? [.bottomLeft, .bottomRight] : [.allCorners],
-                                radius: 10)
+        labelContainer.roundedBorder(corners: isAbleImage ? [.bottomLeft, .bottomRight] : [.allCorners], radius: 10)
+        feedImageView.roundedCorner(corners: [.topLeft, .topRight], radius: 10)
     }
 }
 
 extension FeedCell: ViewModelBindableType {
     func bindViewModel(viewModel: FeedCellViewModel) {
         self.viewModel = viewModel
+        let isAbleImage: Bool = (viewModel.datas.missionId?.isAbleImg == 1)
+        labelContainer.roundedBorder(corners: isAbleImage ? [.bottomLeft, .bottomRight] : [.allCorners], radius: 10, borderWidth: 1)
+        
+        feedImageView.isHidden = !isAbleImage
+        feedImageView.kf.setImage(with: viewModel.postURL)
     }
 }

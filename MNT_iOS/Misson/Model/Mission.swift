@@ -10,28 +10,28 @@ import Foundation
 
 struct MissionListResponse: Codable {
     let apiStatus: APIStatus
-    let data: [Mission]
+    var data: [Mission] = []
 }
 
 struct Mission: Codable, ProducesMissionCellViewModel {
-    let id: Int
-    let content: String
-    let missionId: MissionId?
-    let missionImg: String
-    let roodId: Int
-    let userDone: Int
-    let userDoneTime: String
-    let userId: String
+    var id: Int = 0
+    var content: String = ""
+    var missionId: MissionId = MissionId()
+    var missionImg: String = ""
+    var roodId: Int = 0
+    var userDone: Int = 0
+    var userDoneTime: String = ""
+    var userId: String = ""
     
     var asMissionCellViewModel: MissionCellViewModel { return MissionCellViewModel(datas: self)}
 }
 
 struct MissionId: Codable {
-    let id: Int
-    let isAbleImg: Int
-    let name: String
-    let roodId: Int
-    let userMissions: [UserMissions]
+    var id: Int = 0
+    var isAbleImg: Int = 0
+    var name: String = ""
+    var roodId: Int = 0
+    var userMissions: [UserMissions] = []
 }
 
 struct UserMissions: Codable {

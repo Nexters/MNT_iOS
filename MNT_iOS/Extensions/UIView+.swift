@@ -218,15 +218,27 @@ extension UIView {
         }
     }
     
-    func roundedBorder(corners: UIRectCorner, radius: CGFloat) {
+    func roundedBorder(corners: UIRectCorner, radius: CGFloat, borderWidth: CGFloat = 1) {
+        if layer.sublayers?.last is CAShapeLayer { layer.sublayers?.removeLast() }
+        
         let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
         let shapeLayer = CAShapeLayer()
         shapeLayer.strokeColor = UIColor.weakBorder.cgColor
         shapeLayer.fillColor = .none
-        shapeLayer.lineWidth = 1
+        shapeLayer.lineWidth = borderWidth
         shapeLayer.path = path.cgPath
         self.layer.addSublayer(shapeLayer)
-        
+    }
+    
+    func roundedCorner(corners: UIRectCorner, radius: CGFloat) {
+        let path = UIBezierPath(roundedRect: bounds,
+                                byRoundingCorners: corners,
+                                cornerRadii: CGSize(width: radius, height: radius))
+
+        let maskLayer = CAShapeLayer()
+
+        maskLayer.path = path.cgPath
+        layer.mask = maskLayer
     }
 }
 

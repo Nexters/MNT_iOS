@@ -48,25 +48,36 @@
                             </label>
                         </subviews>
                     </stackView>
-                    <stackView opaque="NO" userInteractionEnabled="NO" contentMode="top" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="jkc-hf-3Iw">
+                    <stackView opaque="NO" userInteractionEnabled="NO" contentMode="top" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="jkc-hf-3Iw">
                         <rect key="frame" x="26" y="64" width="359" height="236"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Dz-BF-xNp">
-                                <rect key="frame" x="0.0" y="0.0" width="359" height="14"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PMl-Gk-grV">
+                                <rect key="frame" x="0.0" y="0.0" width="359" height="141"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="14" id="3Ha-x6-lcD"/>
+                                    <constraint firstAttribute="height" constant="141" id="O0p-xg-oFC"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2lk-gY-lKv">
-                                <rect key="frame" x="0.0" y="21" width="359" height="215"/>
-                                <string key="text">asdaslkdjaslkdjaslkdjaslkdjklqdjlkajdlasjldjaskldjklasjkdlasjkld213lejlk312jlk1j2312u31298371289jlkasdjasdjklasd!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ib7-x4-a7g">
+                                <rect key="frame" x="0.0" y="141" width="359" height="95"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Dz-BF-xNp">
+                                        <rect key="frame" x="0.0" y="0.0" width="359" height="14"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="14" id="3Ha-x6-lcD"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2lk-gY-lKv">
+                                        <rect key="frame" x="0.0" y="14" width="359" height="81"/>
+                                        <string key="text">asdaslkdjaslkdjaslkdjaslkdjklqdjlkajdlasjldjaskldjklasjkdlasjkld213lejlk312jlk1j2312u31298371289jlkasdjasdjklasd!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                     </stackView>
                 </subviews>
@@ -88,7 +99,9 @@
                 <outlet property="container" destination="jkc-hf-3Iw" id="iyk-pU-fgS"/>
                 <outlet property="contentLabel" destination="2lk-gY-lKv" id="CbE-7R-uMN"/>
                 <outlet property="dateLabel" destination="eOe-EM-fan" id="DYn-2v-vsR"/>
+                <outlet property="feedImageView" destination="PMl-Gk-grV" id="yXp-jK-VU7"/>
                 <outlet property="fromtoLabel" destination="3Qa-ch-fJI" id="Yva-S8-YbD"/>
+                <outlet property="labelContainer" destination="Ib7-x4-a7g" id="8Ia-Bn-5a4"/>
                 <outlet property="receiverImageView" destination="43o-AP-KTZ" id="O5z-tm-chb"/>
                 <outlet property="senderImageView" destination="VzH-Ar-10Q" id="bXa-yn-eHw"/>
                 <outlet property="titleLabel" destination="0Dz-BF-xNp" id="O53-Fr-OeG"/>
