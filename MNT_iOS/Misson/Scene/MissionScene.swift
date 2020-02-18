@@ -24,12 +24,16 @@ extension MissionScene: SceneType {
             // 메모리 적재 타이밍을 위하여 인스턴스 내부 생성
             // UINavigationConroller -> Mission... Controller 순으로
             let navigationVC = NavigationController(rootViewController: MissionParticipantViewController())
+            navigationVC.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+            navigationVC.navigationBar.shadowImage = UIImage()
             if var mainVC = navigationVC.viewControllers.first as? MissionParticipantViewController {
                 mainVC.bind(viewModel: viewModel)
             }
             return navigationVC
         case .missionAdministrator(let viewModel):
             let navigationVC = NavigationController(rootViewController: MissionAdministratorViewController())
+            navigationVC.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+            navigationVC.navigationBar.shadowImage = UIImage()
             if var mainVC = navigationVC.viewControllers.first as? MissionAdministratorViewController {
                 mainVC.bind(viewModel: viewModel)
             }

@@ -190,6 +190,7 @@ extension UIView {
     
     open func setupShadow(opacity: Float = 0, radius: CGFloat = 0, offset: CGSize = .zero, color: UIColor = .black) {
         layer.shadowOpacity = opacity
+        layer.cornerRadius = radius
         layer.shadowRadius = radius
         layer.shadowOffset = offset
         layer.shadowColor = color.cgColor

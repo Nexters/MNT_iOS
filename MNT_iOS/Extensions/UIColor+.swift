@@ -36,6 +36,10 @@ extension UIColor {
         return .init(red: 255/255, green: 61/255, blue: 113/255, alpha: 1)
     }
     
+    open class var accentText: UIColor {
+        return .init(red: 255/255, green: 80/255, blue: 80/255, alpha: 1)
+    }
+    
     open class var semiAccentColor: UIColor {
         return .init(red: 255/255, green: 168/255, blue: 180/255, alpha: 1)
     }

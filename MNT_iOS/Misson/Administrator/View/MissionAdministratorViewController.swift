@@ -10,11 +10,10 @@ import UIKit
 
 class MissionAdministratorViewController: ViewController {
     var viewModel: MissionViewModel?
-    let missionTableController = MissionTableViewController()
+    let missionTableController = MissionTableViewController(style: .grouped)
     let header = MissionHeaderView()
     
     override func setupLayout() {
-        missionTableController.delegate = self
         view.addSubview(missionTableController.view)
         missionTableController.view.fillSuperview()
     }
@@ -27,18 +26,11 @@ extension MissionAdministratorViewController: ViewModelBindableType {
 //                                                            text: "메시지 보내기",
 //                                                            missionName: "부제목이지롱",
 //                                                            isDone: $0 % 2 == 0)) }
-        missionTableController.viewModel = self.viewModel
+        missionTableController.missions = viewModel.missions
         
         header.rx.tapGesture()
             .bind(onNext: viewModel.addNewMissionAction(_:))
             .disposed(by: rx.disposeBag)
-    }
-}
-
-extension MissionAdministratorViewController: MissionTableViewControllerHeaderDataSource {
-    func tableViewHeader() -> UIView? {
-        header.backgroundColor = .yellow
-        return header
     }
 }
 
