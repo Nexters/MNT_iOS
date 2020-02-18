@@ -47,24 +47,16 @@ class FeedFilterCell: UITableViewCell {
         filterMenuLabel.centerYTo(container.centerYAnchor)
         expandImageview.anchor(.trailing(container.trailingAnchor, constant: 14))
         expandImageview.centerYTo(container.centerYAnchor)
-        
-//        container.rx.tapGesture()
-//            .when(.recognized)
-//            .subscribe(onNext: { [weak self] _ in
-//                if self?.viewModel?.subMenus.count == 0 { return }
-//                self?.isExpanded == true ? self?.collapse() : self?.expand()
-//                self?.isExpanded = !(self?.isExpanded ?? false)
-//                }, onError: nil, onCompleted: nil, onDisposed: nil).disposed(by: rx.disposeBag)
     }
     
-    fileprivate func expand() {
+    func expand() {
         DispatchQueue.main.async {
             self.expandImageview.image = #imageLiteral(resourceName: "chevronUp")
             self.container.backgroundColor = .selectedCellColor
         }
     }
     
-    fileprivate func collapse() {
+    func collapse() {
         DispatchQueue.main.async {
             self.expandImageview.image = #imageLiteral(resourceName: "chevronDown")
             self.container.backgroundColor = .unselectedCellColor

@@ -50,12 +50,7 @@ extension FeedFilterViewController: ViewModelBindableType {
                 FeedFilterSubMenu(image: #imageLiteral(resourceName: "imgProfilePineapple"), text: "칭찬하기"),
                 FeedFilterSubMenu(image: #imageLiteral(resourceName: "imgProfilePineapple"), text: "칭찬하기")
             ]),
-            FeedFilterCellViewModel(filtername: "미션별로 보기", subMenus: [
-                FeedFilterSubMenu(image: #imageLiteral(resourceName: "imgProfilePineapple"), text: "칭찬하기"),
-                FeedFilterSubMenu(image: #imageLiteral(resourceName: "imgProfilePineapple"), text: "칭찬하기"),
-                FeedFilterSubMenu(image: #imageLiteral(resourceName: "imgProfilePineapple"), text: "칭찬하기")
-            ]),
-            FeedFilterCellViewModel(filtername: "미션별로 보기", subMenus: [
+            FeedFilterCellViewModel(filtername: "참가자별로 보기", subMenus: [
                 FeedFilterSubMenu(image: #imageLiteral(resourceName: "imgProfilePineapple"), text: "칭찬하기"),
                 FeedFilterSubMenu(image: #imageLiteral(resourceName: "imgProfilePineapple"), text: "칭찬하기"),
                 FeedFilterSubMenu(image: #imageLiteral(resourceName: "imgProfilePineapple"), text: "칭찬하기")
@@ -83,6 +78,8 @@ extension FeedFilterViewController: UITableViewDelegate, UITableViewDataSource {
         var cell = tableView.dequeueReusableCell(FeedFilterCell.self)
         guard let item = viewModel?.items[indexPath.section] else { return UITableViewCell(frame: .zero)}
         cell.bind(viewModel: item)
+        if selectedSection == indexPath.section { cell.expand() }
+        else { cell.collapse() }
         return cell
     }
     
@@ -94,9 +91,8 @@ extension FeedFilterViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         if selectedSection != section { return UIView(backgroundColor: .clear) }
-        guard let item = viewModel?.items[section] else { return UIView(backgroundColor: .clear)}
-        let footer = FeedFilterCellFooterView(subMenus: item.subMenus)
-        return footer
+        guard let item = viewModel?.items[section] else { return UIView(backgroundColor: .clear) }
+        return FeedFilterCellFooterView(subMenus: item.subMenus)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
