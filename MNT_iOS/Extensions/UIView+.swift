@@ -8,12 +8,6 @@
 
 import UIKit
 
-extension UIColor {
-    static func rgb(red: CGFloat, green: CGFloat, blue: CGFloat) -> UIColor {
-        return UIColor(red: red/255, green: green/255, blue: blue/255, alpha: 1)
-    }
-}
-
 public struct AnchoredConstraints {
     var top, leading, bottom, trailing, width, height: NSLayoutConstraint?
 }
@@ -222,6 +216,17 @@ extension UIView {
         } else {
             return bottomAnchor
         }
+    }
+    
+    func roundedBorder(corners: UIRectCorner, radius: CGFloat) {
+        let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.strokeColor = UIColor.weakBorder.cgColor
+        shapeLayer.fillColor = .none
+        shapeLayer.lineWidth = 1
+        shapeLayer.path = path.cgPath
+        self.layer.addSublayer(shapeLayer)
+        
     }
 }
 

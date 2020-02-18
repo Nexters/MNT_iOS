@@ -8,6 +8,12 @@
 
 import Foundation
 
+extension UIColor {
+    static func rgb(red: CGFloat, green: CGFloat, blue: CGFloat) -> UIColor {
+        return UIColor(red: red/255, green: green/255, blue: blue/255, alpha: 1)
+    }
+}
+
 // MARK: Custom Colors
 extension UIColor {
     open class var defaultText: UIColor {
@@ -64,5 +70,9 @@ extension UIColor {
         
     open class var lightBlue: UIColor {
         return .init(red: 237/255, green: 241/255, blue: 247/255, alpha: 1)
+    }
+    
+    open class var weakBorder: UIColor {
+        return .init(red: 235/255, green: 235/255, blue: 235/255, alpha: 1)
     }
 }

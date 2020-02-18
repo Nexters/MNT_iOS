@@ -46,7 +46,7 @@
 		1A8FAF4823E06A81009A92C1 /* MainScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8FAF4723E06A81009A92C1 /* MainScene.swift */; };
 		1A8FAF4A23E0737E009A92C1 /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8FAF4923E0737E009A92C1 /* UIStackView+.swift */; };
 		1A8FAF4C23E0755D009A92C1 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8FAF4B23E0755D009A92C1 /* UITextField+.swift */; };
-		1AAB0E2B23DECA080003A2C4 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAB0E2A23DECA080003A2C4 /* View+.swift */; };
+		1AAB0E2B23DECA080003A2C4 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAB0E2A23DECA080003A2C4 /* UIView+.swift */; };
 		1AAB0E2D23DECBDE0003A2C4 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAB0E2C23DECBDE0003A2C4 /* UIButton+.swift */; };
 		1AAB0E2F23DECBFF0003A2C4 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAB0E2E23DECBFF0003A2C4 /* UILabel+.swift */; };
 		1AAB0E3123DECC2C0003A2C4 /* CircularImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAB0E3023DECC2C0003A2C4 /* CircularImageView.swift */; };
@@ -70,6 +70,7 @@
 		1AD6D41423BF9DBF000B1893 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AD6D41223BF9DBF000B1893 /* LaunchScreen.storyboard */; };
 		1AD6D41F23BF9DBF000B1893 /* MNT_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD6D41E23BF9DBF000B1893 /* MNT_iOSTests.swift */; };
 		1AD6D42A23BF9DBF000B1893 /* MNT_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD6D42923BF9DBF000B1893 /* MNT_iOSUITests.swift */; };
+		1AE4C98223FBC93D0031EFA6 /* FeedHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE4C98123FBC93D0031EFA6 /* FeedHeaderView.swift */; };
 		1AECB7CE23F0F5BE0018BC16 /* APISourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AECB7CD23F0F5BE0018BC16 /* APISourceProtocol.swift */; };
 		1AECB7D023F0FA510018BC16 /* RxSwift+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AECB7CF23F0FA510018BC16 /* RxSwift+.swift */; };
 		1AECB7D223F0FACE0018BC16 /* APISource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AECB7D123F0FACE0018BC16 /* APISource.swift */; };
@@ -107,8 +108,6 @@
 		583659BD23E32AA300E2752F /* ReadyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583659BC23E32AA300E2752F /* ReadyViewController.swift */; };
 		583659BF23E32B5100E2752F /* ReadyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583659BE23E32B5100E2752F /* ReadyViewModel.swift */; };
 		583659CC23E4AB7100E2752F /* RoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583659CB23E4AB7100E2752F /* RoomViewModel.swift */; };
-		58D0178923FA9AC400D55DA6 /* SFProDisplay-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 58D0178723FA9AC400D55DA6 /* SFProDisplay-Medium.ttf */; };
-		58D0178A23FA9AC400D55DA6 /* SFProDisplay-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 58D0178823FA9AC400D55DA6 /* SFProDisplay-Semibold.ttf */; };
 		58D0178C23FA9CA300D55DA6 /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D0178B23FA9CA200D55DA6 /* ConfirmViewController.swift */; };
 		58D0178E23FA9CB400D55DA6 /* ConfirmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D0178D23FA9CB300D55DA6 /* ConfirmViewModel.swift */; };
 		58D0179523FA9CE600D55DA6 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D0178F23FA9CE600D55DA6 /* PrimaryButton.swift */; };
@@ -188,7 +187,7 @@
 		1A8FAF4723E06A81009A92C1 /* MainScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScene.swift; sourceTree = "<group>"; };
 		1A8FAF4923E0737E009A92C1 /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
 		1A8FAF4B23E0755D009A92C1 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
-		1AAB0E2A23DECA080003A2C4 /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
+		1AAB0E2A23DECA080003A2C4 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		1AAB0E2C23DECBDE0003A2C4 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
 		1AAB0E2E23DECBFF0003A2C4 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
 		1AAB0E3023DECC2C0003A2C4 /* CircularImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularImageView.swift; sourceTree = "<group>"; };
@@ -220,6 +219,9 @@
 		1AD6D42523BF9DBF000B1893 /* MNT_iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MNT_iOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AD6D42923BF9DBF000B1893 /* MNT_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNT_iOSUITests.swift; sourceTree = "<group>"; };
 		1AD6D42B23BF9DBF000B1893 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1AE4C97B23FBAC8F0031EFA6 /* SFProDisplay-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Medium.ttf"; sourceTree = "<group>"; };
+		1AE4C97C23FBAC8F0031EFA6 /* SFProDisplay-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Semibold.ttf"; sourceTree = "<group>"; };
+		1AE4C98123FBC93D0031EFA6 /* FeedHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedHeaderView.swift; sourceTree = "<group>"; };
 		1AECB7CD23F0F5BE0018BC16 /* APISourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISourceProtocol.swift; sourceTree = "<group>"; };
 		1AECB7CF23F0FA510018BC16 /* RxSwift+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxSwift+.swift"; sourceTree = "<group>"; };
 		1AECB7D123F0FACE0018BC16 /* APISource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISource.swift; sourceTree = "<group>"; };
@@ -358,6 +360,7 @@
 				1A4E686F23E3ED49005D2CFD /* FeedCell.xib */,
 				1A81AE5E23E90C38004CADBC /* FromToView.swift */,
 				1AECB7D723F14A950018BC16 /* MissionTypeView.swift */,
+				1AE4C98123FBC93D0031EFA6 /* FeedHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -710,6 +713,7 @@
 		1AD6D3F823BF9DBC000B1893 = {
 			isa = PBXGroup;
 			children = (
+				1AE4C97A23FBAC8F0031EFA6 /* Font */,
 				1A49808623C96925004B4058 /* KakaoOpenSDK-Bridging-Header.h */,
 				1A49808023C962F8004B4058 /* Frameworks */,
 				1AD6D40323BF9DBC000B1893 /* MNT_iOS */,
@@ -768,6 +772,16 @@
 			path = MNT_iOSUITests;
 			sourceTree = "<group>";
 		};
+		1AE4C97A23FBAC8F0031EFA6 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				1AE4C97B23FBAC8F0031EFA6 /* SFProDisplay-Medium.ttf */,
+				1AE4C97C23FBAC8F0031EFA6 /* SFProDisplay-Semibold.ttf */,
+			);
+			name = Font;
+			path = "MNT_iOS/Supporting Files/Font";
+			sourceTree = "<group>";
+		};
 		1AECB7CC23F0F5AD0018BC16 /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -781,7 +795,7 @@
 			isa = PBXGroup;
 			children = (
 				1AFC040123C99841005B7A6F /* Objects+.swift */,
-				1AAB0E2A23DECA080003A2C4 /* View+.swift */,
+				1AAB0E2A23DECA080003A2C4 /* UIView+.swift */,
 				1AAB0E2C23DECBDE0003A2C4 /* UIButton+.swift */,
 				1AAB0E2E23DECBFF0003A2C4 /* UILabel+.swift */,
 				1AAB0E3223DECC770003A2C4 /* UIView+Stacking.swift */,
@@ -1118,8 +1132,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58D0178923FA9AC400D55DA6 /* SFProDisplay-Medium.ttf in Resources */,
-				58D0178A23FA9AC400D55DA6 /* SFProDisplay-Semibold.ttf in Resources */,
 				1A4E689123E40F81005D2CFD /* MissionCell.xib in Resources */,
 				1A01BB6A23F64B9B00FF8B7C /* UserListCell.xib in Resources */,
 				1AD6D41423BF9DBF000B1893 /* LaunchScreen.storyboard in Resources */,
@@ -1267,6 +1279,7 @@
 				58D017AC23FAB90D00D55DA6 /* LoginScene.swift in Sources */,
 				58D0179923FA9CE600D55DA6 /* GrayButton.swift in Sources */,
 				58D0179A23FA9CE600D55DA6 /* SubButton.swift in Sources */,
+				1AE4C98223FBC93D0031EFA6 /* FeedHeaderView.swift in Sources */,
 				58D0178E23FA9CB400D55DA6 /* ConfirmViewModel.swift in Sources */,
 				58D0178C23FA9CA300D55DA6 /* ConfirmViewController.swift in Sources */,
 				583659BD23E32AA300E2752F /* ReadyViewController.swift in Sources */,
@@ -1328,7 +1341,7 @@
 				1AECB7D223F0FACE0018BC16 /* APISource.swift in Sources */,
 				1AAB0E3123DECC2C0003A2C4 /* CircularImageView.swift in Sources */,
 				581B160223EC735400D0593B /* GuessViewModel.swift in Sources */,
-				1AAB0E2B23DECA080003A2C4 /* View+.swift in Sources */,
+				1AAB0E2B23DECA080003A2C4 /* UIView+.swift in Sources */,
 				583659B723E1BA2500E2752F /* SetRoomDetailViewModel.swift in Sources */,
 				1A01BB6923F64B9B00FF8B7C /* UserListCell.swift in Sources */,
 				581B160C23EC760D00D0593B /* GuessViewController.swift in Sources */,
@@ -1340,7 +1353,7 @@
 				1A4E687623E3F7FF005D2CFD /* Model.swift in Sources */,
 				1AAB0E3123DECC2C0003A2C4 /* CircularImageView.swift in Sources */,
 				1A4E687323E3F471005D2CFD /* FeedCellViewModel.swift in Sources */,
-				1AAB0E2B23DECA080003A2C4 /* View+.swift in Sources */,
+				1AAB0E2B23DECA080003A2C4 /* UIView+.swift in Sources */,
 				1A4E68A323E474AE005D2CFD /* MissionPostViewController.swift in Sources */,
 				1AB0697023F232C6000B8D27 /* FeedFilterViewModel.swift in Sources */,
 				1AD6D40723BF9DBC000B1893 /* SceneDelegate.swift in Sources */,

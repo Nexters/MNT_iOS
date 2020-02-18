@@ -23,23 +23,19 @@ class FeedViewController: ViewController {
         return tb
     }()
     
-    fileprivate var userlistBarButton: UIBarButtonItem = {
-        let bt = UIBarButtonItem(image: #imageLiteral(resourceName: "people"), style: .plain, target: nil, action: nil)
-        bt.tintColor = .defaultText
-        return bt
-    }()
-    
-    fileprivate var filterBarButton: UIBarButtonItem = {
-        let bt = UIBarButtonItem(image: #imageLiteral(resourceName: "options2"), style: .plain, target: nil, action: nil)
-        bt.tintColor = .defaultText
-        return bt
-    }()
+    fileprivate var userlistBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "people").withRenderingMode(.alwaysOriginal),
+                                                        style: .plain,
+                                                        target: nil,
+                                                        action: nil)
+    fileprivate var filterBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "options2").withRenderingMode(.alwaysOriginal),
+                                                      style: .plain,
+                                                      target: nil,
+                                                      action: nil)
     
     fileprivate lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(handleRefresh(_:)), for: .valueChanged)
         refreshControl.tintColor = UIColor.accentColor
-        
         return refreshControl
     }()
     
@@ -130,6 +126,14 @@ extension FeedViewController: UITableViewDelegate, UITableViewDataSource {
         cell.bindViewModel(viewModel: item.asFeedCellViewModel)
         return cell
     }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
+    }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         
@@ -138,7 +142,7 @@ extension FeedViewController: UITableViewDelegate, UITableViewDataSource {
         
         if(velocity.y>0) {  // HIDE
             userInfo = ["TabBarAction":"HIDE"]
-    
+            
             UIView.animate(withDuration: 1.5, delay: 0, options: UIView.AnimationOptions(), animations: {
                 self.navigationController?.setNavigationBarHidden(true, animated: true)
             }, completion: nil)
@@ -154,13 +158,5 @@ extension FeedViewController: UITableViewDelegate, UITableViewDataSource {
         NotificationCenter.default.post(name: Notification.Name("ScrollAction"),
                                         object: self,
                                         userInfo: userInfo)
-    }
-
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        24
-    }
-
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        UIView(backgroundColor: .clear)
     }
 }
