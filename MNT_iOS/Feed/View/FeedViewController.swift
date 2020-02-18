@@ -27,6 +27,11 @@ class FeedViewController: ViewController {
         return tb
     }()
     
+    fileprivate lazy var cover: UIView = {
+        let v = UIView(backgroundColor: .white)
+        return v
+    }()
+    
     fileprivate var userlistBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "people").withRenderingMode(.alwaysOriginal),
                                                         style: .plain,
                                                         target: nil,
@@ -42,12 +47,28 @@ class FeedViewController: ViewController {
         refreshControl.tintColor = UIColor.accentColor
         return refreshControl
     }()
-    
+
+    // MARK:- View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         addFeedButtonObserver()
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let index = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: index, animated: true)
+        }
+        showBottomBar()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        showNavigationBar()
+        hideBottomBar()
+    }
+
     
     override func setupLayout() {
         view.addSubview(tableView)
@@ -55,6 +76,12 @@ class FeedViewController: ViewController {
                          .bottom(view.bottomAnchor),
                          .leading(view.leadingAnchor),
                          .trailing(view.trailingAnchor))
+        
+        view.addSubview(cover)
+        cover.anchor(top: view.topAnchor,
+                 leading: view.leadingAnchor,
+                 trailing: view.trailingAnchor)
+        cover.withHeight(90)
     }
     
     override func setupNavigationController() {
@@ -148,26 +175,40 @@ extension FeedViewController: UITableViewDelegate, UITableViewDataSource {
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         
-        // call delegate
-        let userInfo: [AnyHashable: Any]
-        
-        if(velocity.y>0) {  // HIDE
-            userInfo = ["TabBarAction":"HIDE"]
-            
-            UIView.animate(withDuration: 1.5, delay: 0, options: UIView.AnimationOptions(), animations: {
-                self.navigationController?.setNavigationBarHidden(true, animated: true)
-            }, completion: nil)
-            
-        } else {            // SHOW
-            userInfo = ["TabBarAction":"SHOW"]
-            
-            UIView.animate(withDuration: 2.5, delay: 0, options: UIView.AnimationOptions(), animations: {
-                self.navigationController?.setNavigationBarHidden(false, animated: true)
-            }, completion: nil)
+        if velocity.y > 0 {
+            hideBottomBar()
+            hideNavigationBar()
+        } else if velocity.y < 0 {
+            showBottomBar()
+            showNavigationBar()
         }
-        
+    }
+    
+    fileprivate func showNavigationBar() {
+        UIView.animate(withDuration: 0.5, delay: 0, options: UIView.AnimationOptions(), animations: {
+            self.navigationController?.setNavigationBarHidden(false, animated: true)
+//            self.cover.transform = .identity
+            self.cover.isHidden = false
+        }, completion: nil)
+    }
+    
+    fileprivate func hideNavigationBar() {
+        UIView.animate(withDuration: 0.3, delay: 0, options: UIView.AnimationOptions(), animations: {
+            self.navigationController?.setNavigationBarHidden(true, animated: true)
+            //self.cover.transform = CGAffineTransform(scaleX: 0, y: -0.1)
+            self.cover.isHidden = true
+        }, completion: nil)
+    }
+    
+    fileprivate func showBottomBar() {
         NotificationCenter.default.post(name: Notification.Name("ScrollAction"),
                                         object: self,
-                                        userInfo: userInfo)
+                                        userInfo: ["TabBarAction":"SHOW"])
+    }
+    
+    fileprivate func hideBottomBar() {
+        NotificationCenter.default.post(name: Notification.Name("ScrollAction"),
+                                        object: self,
+                                        userInfo: ["TabBarAction":"HIDE"])
     }
 }
