@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "imgProfileChatGrape.png",
+      "scale" : "1x",
+      "idiom" : "universal"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x",
+      "filename" : "imgProfileChatGrape@2x.png"
+    },
+    {
+      "filename" : "imgProfileChatGrape@3x.png",
+      "scale" : "3x",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}
