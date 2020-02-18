@@ -1,9 +1,9 @@
 {
   "images" : [
     {
-      "scale" : "1x",
+      "idiom" : "universal",
       "filename" : "close.png",
-      "idiom" : "universal"
+      "scale" : "1x"
     },
     {
       "filename" : "close@2x.png",
@@ -12,8 +12,8 @@
     },
     {
       "filename" : "close@3x.png",
-      "idiom" : "universal",
-      "scale" : "3x"
+      "scale" : "3x",
+      "idiom" : "universal"
     }
   ],
   "info" : {

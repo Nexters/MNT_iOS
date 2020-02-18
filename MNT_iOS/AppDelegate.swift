@@ -20,10 +20,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var mainViewController: UIViewController?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        setupNavigationBar()
+        
         // Override point for customization after application launch.
 //        kakaoLogin() // 로그인,로그아웃 상태 받기
         testing()
+        
         return true
+    }
+    
+    fileprivate func setupNavigationBar() {
+        let inset = UIEdgeInsets(top: -16, left: -16, bottom: 0, right: 0)
+        UINavigationBar.appearance().backIndicatorImage = #imageLiteral(resourceName: "arrowLeft").withAlignmentRectInsets(inset)
+        UINavigationBar.appearance().backIndicatorTransitionMaskImage = #imageLiteral(resourceName: "arrowLeft").withAlignmentRectInsets(inset)
+        UINavigationBar.appearance().tintColor = .defaultText
     }
     
     fileprivate func kakaoLogin() {

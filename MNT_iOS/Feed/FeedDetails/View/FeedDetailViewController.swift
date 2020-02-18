@@ -8,7 +8,7 @@
 
 import Foundation
 
-class MissionDetailViewController: ViewController {
+class FeedDetailViewController: ViewController {
     var viewModel: MissionDetailViewModel?
     let imageView = UIImageView(image: nil, contentMode: .scaleAspectFill)
     let label = UILabel(numberOfLines: 0)
@@ -25,7 +25,7 @@ class MissionDetailViewController: ViewController {
     }
 }
 
-extension MissionDetailViewController: ViewModelBindableType {
+extension FeedDetailViewController: ViewModelBindableType {
     func bindViewModel(viewModel: MissionDetailViewModel) {
         // Demo
         fromToView.manittoLabel.text = viewModel.missionDetail.fromName ?? ""

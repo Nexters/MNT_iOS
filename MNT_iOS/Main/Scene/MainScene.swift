@@ -24,7 +24,7 @@ extension MainScene: SceneType {
         case .main(let viewModel):
             // 메모리 적재 타이밍을 위하여 인스턴스 내부 생성
             // UINavigationConroller -> MainViewController 순으로
-            let navigationVC = UINavigationController(rootViewController: MainViewController())
+            let navigationVC = NavigationController(rootViewController: MainViewController())
             if var mainVC = navigationVC.viewControllers.first as? MainViewController {
                 mainVC.bind(viewModel: viewModel)
             }

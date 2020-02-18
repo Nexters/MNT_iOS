@@ -46,6 +46,7 @@ class FeedViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         addFeedButtonObserver()
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
     override func setupLayout() {

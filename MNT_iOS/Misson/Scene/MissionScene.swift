@@ -23,13 +23,13 @@ extension MissionScene: SceneType {
         case .missionParticipant(let viewModel):
             // 메모리 적재 타이밍을 위하여 인스턴스 내부 생성
             // UINavigationConroller -> Mission... Controller 순으로
-            let navigationVC = UINavigationController(rootViewController: MissionParticipantViewController())
+            let navigationVC = NavigationController(rootViewController: MissionParticipantViewController())
             if var mainVC = navigationVC.viewControllers.first as? MissionParticipantViewController {
                 mainVC.bind(viewModel: viewModel)
             }
             return navigationVC
         case .missionAdministrator(let viewModel):
-            let navigationVC = UINavigationController(rootViewController: MissionAdministratorViewController())
+            let navigationVC = NavigationController(rootViewController: MissionAdministratorViewController())
             if var mainVC = navigationVC.viewControllers.first as? MissionAdministratorViewController {
                 mainVC.bind(viewModel: viewModel)
             }

@@ -36,7 +36,7 @@
 		1A4E689723E429EF005D2CFD /* MissionListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4E689623E429EF005D2CFD /* MissionListTableViewController.swift */; };
 		1A4E68A323E474AE005D2CFD /* MissionPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4E68A223E474AE005D2CFD /* MissionPostViewController.swift */; };
 		1A4E68A523E474D4005D2CFD /* MissionPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4E68A423E474D4005D2CFD /* MissionPostViewModel.swift */; };
-		1A81AE5A23E9099A004CADBC /* MissionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A81AE5923E9099A004CADBC /* MissionDetailViewController.swift */; };
+		1A81AE5A23E9099A004CADBC /* FeedDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A81AE5923E9099A004CADBC /* FeedDetailViewController.swift */; };
 		1A81AE5D23E90A0C004CADBC /* MissionDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A81AE5C23E90A0C004CADBC /* MissionDetailViewModel.swift */; };
 		1A81AE5F23E90C38004CADBC /* FromToView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A81AE5E23E90C38004CADBC /* FromToView.swift */; };
 		1A8FAF3023E0249C009A92C1 /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8FAF2F23E0249C009A92C1 /* SceneCoordinator.swift */; };
@@ -71,6 +71,7 @@
 		1AD6D41F23BF9DBF000B1893 /* MNT_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD6D41E23BF9DBF000B1893 /* MNT_iOSTests.swift */; };
 		1AD6D42A23BF9DBF000B1893 /* MNT_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD6D42923BF9DBF000B1893 /* MNT_iOSUITests.swift */; };
 		1AE4C98223FBC93D0031EFA6 /* FeedHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE4C98123FBC93D0031EFA6 /* FeedHeaderView.swift */; };
+		1AE4C98923FC03C70031EFA6 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE4C98823FC03C70031EFA6 /* NavigationViewController.swift */; };
 		1AECB7CE23F0F5BE0018BC16 /* APISourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AECB7CD23F0F5BE0018BC16 /* APISourceProtocol.swift */; };
 		1AECB7D023F0FA510018BC16 /* RxSwift+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AECB7CF23F0FA510018BC16 /* RxSwift+.swift */; };
 		1AECB7D223F0FACE0018BC16 /* APISource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AECB7D123F0FACE0018BC16 /* APISource.swift */; };
@@ -177,7 +178,7 @@
 		1A4E689623E429EF005D2CFD /* MissionListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionListTableViewController.swift; sourceTree = "<group>"; };
 		1A4E68A223E474AE005D2CFD /* MissionPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionPostViewController.swift; sourceTree = "<group>"; };
 		1A4E68A423E474D4005D2CFD /* MissionPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionPostViewModel.swift; sourceTree = "<group>"; };
-		1A81AE5923E9099A004CADBC /* MissionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionDetailViewController.swift; sourceTree = "<group>"; };
+		1A81AE5923E9099A004CADBC /* FeedDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailViewController.swift; sourceTree = "<group>"; };
 		1A81AE5C23E90A0C004CADBC /* MissionDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionDetailViewModel.swift; sourceTree = "<group>"; };
 		1A81AE5E23E90C38004CADBC /* FromToView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FromToView.swift; sourceTree = "<group>"; };
 		1A8FAF2F23E0249C009A92C1 /* SceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
@@ -222,6 +223,7 @@
 		1AE4C97B23FBAC8F0031EFA6 /* SFProDisplay-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Medium.ttf"; sourceTree = "<group>"; };
 		1AE4C97C23FBAC8F0031EFA6 /* SFProDisplay-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Semibold.ttf"; sourceTree = "<group>"; };
 		1AE4C98123FBC93D0031EFA6 /* FeedHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedHeaderView.swift; sourceTree = "<group>"; };
+		1AE4C98823FC03C70031EFA6 /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
 		1AECB7CD23F0F5BE0018BC16 /* APISourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISourceProtocol.swift; sourceTree = "<group>"; };
 		1AECB7CF23F0FA510018BC16 /* RxSwift+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxSwift+.swift"; sourceTree = "<group>"; };
 		1AECB7D123F0FACE0018BC16 /* APISource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISource.swift; sourceTree = "<group>"; };
@@ -428,7 +430,7 @@
 			isa = PBXGroup;
 			children = (
 				1AB0696D23F232B0000B8D27 /* FeedFilterViewController.swift */,
-				1A81AE5923E9099A004CADBC /* MissionDetailViewController.swift */,
+				1A81AE5923E9099A004CADBC /* FeedDetailViewController.swift */,
 				1AB0696923F231D8000B8D27 /* UserListViewController.swift */,
 				1A01BB6723F64B9B00FF8B7C /* UserListCell.swift */,
 				1A01BB6823F64B9B00FF8B7C /* UserListCell.xib */,
@@ -578,6 +580,7 @@
 			children = (
 				1AAB0E3723DED4240003A2C4 /* ViewController.swift */,
 				583659B223E19F4800E2752F /* BaseNavigationController.swift */,
+				1AE4C98823FC03C70031EFA6 /* NavigationViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1290,6 +1293,7 @@
 				1AB0696A23F231D8000B8D27 /* UserListViewController.swift in Sources */,
 				581B15F423EAD55D00D0593B /* ExitScene.swift in Sources */,
 				1A4E686923E3EA92005D2CFD /* FeedViewModel.swift in Sources */,
+				1AE4C98923FC03C70031EFA6 /* NavigationViewController.swift in Sources */,
 				1AECB7D423F0FF780018BC16 /* RxAlamofire+.swift in Sources */,
 				1AB0696C23F231F6000B8D27 /* UserListViewModel.swift in Sources */,
 				1A4E686D23E3EC19005D2CFD /* Feed.swift in Sources */,
@@ -1323,7 +1327,7 @@
 				1AD6D40F23BF9DBC000B1893 /* MNT_iOS.xcdatamodeld in Sources */,
 				1A4E68A523E474D4005D2CFD /* MissionPostViewModel.swift in Sources */,
 				1AD5F7BD23E8771500F96263 /* MissionDetail.swift in Sources */,
-				1A81AE5A23E9099A004CADBC /* MissionDetailViewController.swift in Sources */,
+				1A81AE5A23E9099A004CADBC /* FeedDetailViewController.swift in Sources */,
 				1AD6D40523BF9DBC000B1893 /* AppDelegate.swift in Sources */,
 				583659BF23E32B5100E2752F /* ReadyViewModel.swift in Sources */,
 				581B161A23ED6E3000D0593B /* FromToViewController.swift in Sources */,

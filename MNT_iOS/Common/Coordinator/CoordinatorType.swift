@@ -11,6 +11,7 @@ enum TransitionStyle {
     case root
     case push
     case modal
+    case present
     case popToRoot
     case replace((UIViewController) -> Void)
 }

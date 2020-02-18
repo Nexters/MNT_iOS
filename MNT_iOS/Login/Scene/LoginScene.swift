@@ -19,7 +19,7 @@ extension LoginScene: SceneType {
         case .login(let viewModel):
             var loginVC = LoginController()
             loginVC.bind(viewModel: viewModel)
-            return UINavigationController(rootViewController: loginVC)
+            return NavigationController(rootViewController: loginVC)
             
         case .confirm(let viewModel):
             var confirmVC = ConfirmViewController()

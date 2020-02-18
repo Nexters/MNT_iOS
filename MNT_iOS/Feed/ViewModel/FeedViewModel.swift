@@ -17,7 +17,7 @@ class FeedViewModel: ViewModel {
             let scene = FeedScene.userList(viewModel)
             return self.coordinator
                 .transition(to: scene,
-                            using: .push,
+                            using: .present,
                             animated: true)
                 .asObservable().map { _ in }
         }
@@ -30,7 +30,7 @@ class FeedViewModel: ViewModel {
             let scene = FeedScene.filter(viewModel)
               return self.coordinator
                   .transition(to: scene,
-                              using: .push,
+                              using: .modal,
                               animated: true)
                   .asObservable().map { _ in }
           }

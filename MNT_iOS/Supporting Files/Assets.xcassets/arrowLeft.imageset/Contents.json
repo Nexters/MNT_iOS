@@ -11,9 +11,9 @@
       "scale" : "2x"
     },
     {
-      "filename" : "arrowLeft@3x.png",
       "idiom" : "universal",
-      "scale" : "3x"
+      "scale" : "3x",
+      "filename" : "arrowLeft@3x.png"
     }
   ],
   "info" : {

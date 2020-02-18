@@ -55,7 +55,6 @@ extension SceneCoordinator: SceneCoordinatorType {
             window.rootViewController = target
             window.makeKeyAndVisible()
             subject.onCompleted()
-            
         case .push:
             guard let nav = currentVC.navigationController else {
                 subject.onError(TransitionError.navigationControllerMissing)
@@ -72,8 +71,11 @@ extension SceneCoordinator: SceneCoordinatorType {
             currentVC.present(target, animated: animated) {
                 subject.onCompleted()
             }
-            currentVC = target.sceneViewController
-            currentVC.modalPresentationStyle = .overFullScreen
+        case .present:
+            target.modalPresentationStyle = .fullScreen
+            currentVC.present(target, animated: animated) {
+                subject.onCompleted()
+            }
         case .popToRoot:
             currentVC.navigationController?.popToRootViewController(animated: true)
         case .replace(let closer):

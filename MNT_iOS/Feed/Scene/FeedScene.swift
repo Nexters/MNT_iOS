@@ -18,7 +18,7 @@ extension FeedScene: SceneType {
     func instantiate() -> UIViewController {
         switch self {
         case .feed(let viewModel):
-            let navigationVC = UINavigationController(rootViewController: FeedViewController())
+            let navigationVC = NavigationController(rootViewController: FeedViewController())
             if var feedVC = navigationVC.viewControllers.first as? FeedViewController {
                 feedVC.bind(viewModel: viewModel)
             }
