@@ -70,6 +70,12 @@
 		1AD6D41423BF9DBF000B1893 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AD6D41223BF9DBF000B1893 /* LaunchScreen.storyboard */; };
 		1AD6D41F23BF9DBF000B1893 /* MNT_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD6D41E23BF9DBF000B1893 /* MNT_iOSTests.swift */; };
 		1AD6D42A23BF9DBF000B1893 /* MNT_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD6D42923BF9DBF000B1893 /* MNT_iOSUITests.swift */; };
+		1ADEFD9123FC295600E3DC49 /* FeedFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADEFD8F23FC295600E3DC49 /* FeedFilterCell.swift */; };
+		1ADEFD9223FC295600E3DC49 /* FeedFilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1ADEFD9023FC295600E3DC49 /* FeedFilterCell.xib */; };
+		1ADEFD9723FC3C9900E3DC49 /* FeedFilterSubmenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADEFD9523FC3C9900E3DC49 /* FeedFilterSubmenuCell.swift */; };
+		1ADEFD9823FC3C9900E3DC49 /* FeedFilterSubmenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1ADEFD9623FC3C9900E3DC49 /* FeedFilterSubmenuCell.xib */; };
+		1ADEFD9A23FC4D4E00E3DC49 /* FeedFilterCellFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADEFD9923FC4D4E00E3DC49 /* FeedFilterCellFooterView.swift */; };
+		1ADEFD9E23FC5A8E00E3DC49 /* CloseButtonBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADEFD9D23FC5A8E00E3DC49 /* CloseButtonBar.swift */; };
 		1AE4C98223FBC93D0031EFA6 /* FeedHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE4C98123FBC93D0031EFA6 /* FeedHeaderView.swift */; };
 		1AE4C98923FC03C70031EFA6 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE4C98823FC03C70031EFA6 /* NavigationViewController.swift */; };
 		1AECB7CE23F0F5BE0018BC16 /* APISourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AECB7CD23F0F5BE0018BC16 /* APISourceProtocol.swift */; };
@@ -220,6 +226,12 @@
 		1AD6D42523BF9DBF000B1893 /* MNT_iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MNT_iOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AD6D42923BF9DBF000B1893 /* MNT_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNT_iOSUITests.swift; sourceTree = "<group>"; };
 		1AD6D42B23BF9DBF000B1893 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1ADEFD8F23FC295600E3DC49 /* FeedFilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedFilterCell.swift; sourceTree = "<group>"; };
+		1ADEFD9023FC295600E3DC49 /* FeedFilterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedFilterCell.xib; sourceTree = "<group>"; };
+		1ADEFD9523FC3C9900E3DC49 /* FeedFilterSubmenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedFilterSubmenuCell.swift; sourceTree = "<group>"; };
+		1ADEFD9623FC3C9900E3DC49 /* FeedFilterSubmenuCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedFilterSubmenuCell.xib; sourceTree = "<group>"; };
+		1ADEFD9923FC4D4E00E3DC49 /* FeedFilterCellFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedFilterCellFooterView.swift; sourceTree = "<group>"; };
+		1ADEFD9D23FC5A8E00E3DC49 /* CloseButtonBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButtonBar.swift; sourceTree = "<group>"; };
 		1AE4C97B23FBAC8F0031EFA6 /* SFProDisplay-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Medium.ttf"; sourceTree = "<group>"; };
 		1AE4C97C23FBAC8F0031EFA6 /* SFProDisplay-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Semibold.ttf"; sourceTree = "<group>"; };
 		1AE4C98123FBC93D0031EFA6 /* FeedHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedHeaderView.swift; sourceTree = "<group>"; };
@@ -412,6 +424,7 @@
 				58D0179123FA9CE600D55DA6 /* PrimaryPopUp.swift */,
 				58D0179423FA9CE600D55DA6 /* SubButton.swift */,
 				58D0179223FA9CE600D55DA6 /* TextOnlyButton.swift */,
+				1ADEFD9D23FC5A8E00E3DC49 /* CloseButtonBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -434,6 +447,11 @@
 				1AB0696923F231D8000B8D27 /* UserListViewController.swift */,
 				1A01BB6723F64B9B00FF8B7C /* UserListCell.swift */,
 				1A01BB6823F64B9B00FF8B7C /* UserListCell.xib */,
+				1ADEFD8F23FC295600E3DC49 /* FeedFilterCell.swift */,
+				1ADEFD9023FC295600E3DC49 /* FeedFilterCell.xib */,
+				1ADEFD9523FC3C9900E3DC49 /* FeedFilterSubmenuCell.swift */,
+				1ADEFD9623FC3C9900E3DC49 /* FeedFilterSubmenuCell.xib */,
+				1ADEFD9923FC4D4E00E3DC49 /* FeedFilterCellFooterView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1136,10 +1154,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A4E689123E40F81005D2CFD /* MissionCell.xib in Resources */,
+				1ADEFD9823FC3C9900E3DC49 /* FeedFilterSubmenuCell.xib in Resources */,
 				1A01BB6A23F64B9B00FF8B7C /* UserListCell.xib in Resources */,
 				1AD6D41423BF9DBF000B1893 /* LaunchScreen.storyboard in Resources */,
 				1A4E687123E3ED49005D2CFD /* FeedCell.xib in Resources */,
 				1AD6D41123BF9DBF000B1893 /* Assets.xcassets in Resources */,
+				1ADEFD9223FC295600E3DC49 /* FeedFilterCell.xib in Resources */,
 				581B160A23EC741C00D0593B /* ProfileCollectionViewCell.xib in Resources */,
 				1AD6D40C23BF9DBC000B1893 /* Main.storyboard in Resources */,
 			);
@@ -1294,6 +1314,7 @@
 				581B15F423EAD55D00D0593B /* ExitScene.swift in Sources */,
 				1A4E686923E3EA92005D2CFD /* FeedViewModel.swift in Sources */,
 				1AE4C98923FC03C70031EFA6 /* NavigationViewController.swift in Sources */,
+				1ADEFD9123FC295600E3DC49 /* FeedFilterCell.swift in Sources */,
 				1AECB7D423F0FF780018BC16 /* RxAlamofire+.swift in Sources */,
 				1AB0696C23F231F6000B8D27 /* UserListViewModel.swift in Sources */,
 				1A4E686D23E3EC19005D2CFD /* Feed.swift in Sources */,
@@ -1329,6 +1350,7 @@
 				1AD5F7BD23E8771500F96263 /* MissionDetail.swift in Sources */,
 				1A81AE5A23E9099A004CADBC /* FeedDetailViewController.swift in Sources */,
 				1AD6D40523BF9DBC000B1893 /* AppDelegate.swift in Sources */,
+				1ADEFD9E23FC5A8E00E3DC49 /* CloseButtonBar.swift in Sources */,
 				583659BF23E32B5100E2752F /* ReadyViewModel.swift in Sources */,
 				581B161A23ED6E3000D0593B /* FromToViewController.swift in Sources */,
 				581B15F223EAD04E00D0593B /* AlertExitViewController.swift in Sources */,
@@ -1365,6 +1387,7 @@
 				1A4E686B23E3EBE4005D2CFD /* FeedScene.swift in Sources */,
 				1A4E689723E429EF005D2CFD /* MissionListTableViewController.swift in Sources */,
 				1A8FAF4623E06952009A92C1 /* MainViewModel.swift in Sources */,
+				1ADEFD9723FC3C9900E3DC49 /* FeedFilterSubmenuCell.swift in Sources */,
 				1A4E687023E3ED49005D2CFD /* FeedCell.swift in Sources */,
 				1AAB0E3323DECC770003A2C4 /* UIView+Stacking.swift in Sources */,
 				1A4E687B23E4048D005D2CFD /* UITableView+.swift in Sources */,
@@ -1373,6 +1396,7 @@
 				1A4E688D23E40E79005D2CFD /* MissionPariticipantViewController.swift in Sources */,
 				1A8FAF4A23E0737E009A92C1 /* UIStackView+.swift in Sources */,
 				1A4E687923E3FFC3005D2CFD /* RoundedImageView.swift in Sources */,
+				1ADEFD9A23FC4D4E00E3DC49 /* FeedFilterCellFooterView.swift in Sources */,
 				1AECB7D623F137000018BC16 /* UIColor+.swift in Sources */,
 				1A8FAF4423E0612C009A92C1 /* LoginViewModel.swift in Sources */,
 				1AECB7CE23F0F5BE0018BC16 /* APISourceProtocol.swift in Sources */,

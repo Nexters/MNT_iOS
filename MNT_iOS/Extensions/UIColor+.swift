@@ -75,4 +75,12 @@ extension UIColor {
     open class var weakBorder: UIColor {
         return .init(red: 235/255, green: 235/255, blue: 235/255, alpha: 1)
     }
+    
+    open class var unselectedCellColor: UIColor {
+        return .init(red: 246/255, green: 246/255, blue: 246/255, alpha: 1)
+    }
+    
+    open class var selectedCellColor: UIColor {
+        return .init(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
+    }
 }

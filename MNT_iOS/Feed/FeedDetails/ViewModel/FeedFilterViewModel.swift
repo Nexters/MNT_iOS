@@ -9,5 +9,5 @@
 import Foundation
 
 class FeedFilterViewModel: ViewModel {
-    
+    var items: [FeedFilterCellViewModel] = []
 }
