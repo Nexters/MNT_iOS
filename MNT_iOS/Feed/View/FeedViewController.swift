@@ -60,13 +60,12 @@ class FeedViewController: ViewController {
         if let index = tableView.indexPathForSelectedRow {
             tableView.deselectRow(at: index, animated: true)
         }
-        showBottomBar()
+        BottomBar.shared.showBottomBar()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         showNavigationBar()
-        hideBottomBar()
     }
 
     
@@ -176,10 +175,10 @@ extension FeedViewController: UITableViewDelegate, UITableViewDataSource {
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         
         if velocity.y > 0 {
-            hideBottomBar()
+            BottomBar.shared.hideBottomBar()
             hideNavigationBar()
         } else if velocity.y < 0 {
-            showBottomBar()
+            BottomBar.shared.showBottomBar()
             showNavigationBar()
         }
     }
@@ -198,17 +197,5 @@ extension FeedViewController: UITableViewDelegate, UITableViewDataSource {
             //self.cover.transform = CGAffineTransform(scaleX: 0, y: -0.1)
             self.cover.isHidden = true
         }, completion: nil)
-    }
-    
-    fileprivate func showBottomBar() {
-        NotificationCenter.default.post(name: Notification.Name("ScrollAction"),
-                                        object: self,
-                                        userInfo: ["TabBarAction":"SHOW"])
-    }
-    
-    fileprivate func hideBottomBar() {
-        NotificationCenter.default.post(name: Notification.Name("ScrollAction"),
-                                        object: self,
-                                        userInfo: ["TabBarAction":"HIDE"])
     }
 }

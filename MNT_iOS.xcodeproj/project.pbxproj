@@ -76,6 +76,7 @@
 		1ADEFD9823FC3C9900E3DC49 /* FeedFilterSubmenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1ADEFD9623FC3C9900E3DC49 /* FeedFilterSubmenuCell.xib */; };
 		1ADEFD9A23FC4D4E00E3DC49 /* FeedFilterCellFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADEFD9923FC4D4E00E3DC49 /* FeedFilterCellFooterView.swift */; };
 		1ADEFD9E23FC5A8E00E3DC49 /* CloseButtonBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADEFD9D23FC5A8E00E3DC49 /* CloseButtonBar.swift */; };
+		1ADEFDA023FC64EE00E3DC49 /* BottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADEFD9F23FC64EE00E3DC49 /* BottomBar.swift */; };
 		1AE4C98223FBC93D0031EFA6 /* FeedHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE4C98123FBC93D0031EFA6 /* FeedHeaderView.swift */; };
 		1AE4C98923FC03C70031EFA6 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE4C98823FC03C70031EFA6 /* NavigationViewController.swift */; };
 		1AECB7CE23F0F5BE0018BC16 /* APISourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AECB7CD23F0F5BE0018BC16 /* APISourceProtocol.swift */; };
@@ -232,6 +233,7 @@
 		1ADEFD9623FC3C9900E3DC49 /* FeedFilterSubmenuCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedFilterSubmenuCell.xib; sourceTree = "<group>"; };
 		1ADEFD9923FC4D4E00E3DC49 /* FeedFilterCellFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedFilterCellFooterView.swift; sourceTree = "<group>"; };
 		1ADEFD9D23FC5A8E00E3DC49 /* CloseButtonBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButtonBar.swift; sourceTree = "<group>"; };
+		1ADEFD9F23FC64EE00E3DC49 /* BottomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBar.swift; sourceTree = "<group>"; };
 		1AE4C97B23FBAC8F0031EFA6 /* SFProDisplay-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Medium.ttf"; sourceTree = "<group>"; };
 		1AE4C97C23FBAC8F0031EFA6 /* SFProDisplay-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Semibold.ttf"; sourceTree = "<group>"; };
 		1AE4C98123FBC93D0031EFA6 /* FeedHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedHeaderView.swift; sourceTree = "<group>"; };
@@ -808,6 +810,7 @@
 			children = (
 				1AECB7CD23F0F5BE0018BC16 /* APISourceProtocol.swift */,
 				1AECB7D123F0FACE0018BC16 /* APISource.swift */,
+				1ADEFD9F23FC64EE00E3DC49 /* BottomBar.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1329,6 +1332,7 @@
 				1A4E689323E40FAB005D2CFD /* MissionCellViewModel.swift in Sources */,
 				1A4E688B23E40DF9005D2CFD /* Mission.swift in Sources */,
 				1A8FAF4823E06A81009A92C1 /* MainScene.swift in Sources */,
+				1ADEFDA023FC64EE00E3DC49 /* BottomBar.swift in Sources */,
 				1AB0696E23F232B0000B8D27 /* FeedFilterViewController.swift in Sources */,
 				1AFC040223C99841005B7A6F /* Objects+.swift in Sources */,
 				581B160E23EC790D00D0593B /* UICollectionView+.swift in Sources */,

@@ -15,6 +15,7 @@ class FeedViewModel: ViewModel {
           return Action { [unowned self] _ in
             let viewModel = UserListViewModel(title: "참여자 리스트", coordinator: self.coordinator)
             let scene = FeedScene.userList(viewModel)
+            BottomBar.shared.hideBottomBar()
             return self.coordinator
                 .transition(to: scene,
                             using: .push,
@@ -25,26 +26,25 @@ class FeedViewModel: ViewModel {
     
     func feedFilterAction() -> CocoaAction {
           return Action { [unowned self] _ in
-              let viewModel = FeedFilterViewModel(title: "미션 등록",
+            let viewModel = FeedFilterViewModel(title: "미션 등록",
                                                    coordinator: self.coordinator)
             let scene = FeedScene.filter(viewModel)
-              return self.coordinator
-                  .transition(to: scene,
-                              using: .modal,
-                              animated: true)
-                  .asObservable().map { _ in }
+            return self.coordinator
+                .transition(to: scene,
+                            using: .modal,
+                            animated: true)
+                .asObservable().map { _ in }
           }
     }
     
     func feedDetailAction(_ indexPath: Event<IndexPath>) {
-        //print("selectedIndexPath: \(indexPath)")
-        // dummy scene
         
         guard let index = indexPath.element?.row else { return }
         
         let viewModel = FeedDetailViewModel(title: "미션 등록",
                                             coordinator: self.coordinator, feedDetail: infos[index])
         let scene = FeedScene.feedDetail(viewModel)
+        BottomBar.shared.hideBottomBar()
         self.coordinator
             .transition(to: scene,
                         using: .push,
