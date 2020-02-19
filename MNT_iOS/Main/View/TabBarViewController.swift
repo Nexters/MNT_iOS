@@ -40,6 +40,7 @@ class TabBarViewController: UITabBarController {
     var stackView = UIView()
     var stackIndex: Int? // 0: 대시보드, 1: 피드, 2: 미션
     
+    //MARK:- ViewLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         addScrollObserver()
@@ -61,6 +62,7 @@ class TabBarViewController: UITabBarController {
             self.navigationController?.isNavigationBarHidden = false
     }
     
+    // MARK: SetupLayout
     func setupLayout() {
         let width = view.frame.width
         let height = view.frame.height
@@ -165,8 +167,9 @@ class TabBarViewController: UITabBarController {
 
 extension TabBarViewController: ViewModelBindableType {
     func bindViewModel(viewModel: TabBarViewModel) {
-        feedButton.rx.action = viewModel.presentFeedAction(self)
-        missionButton.rx.action = viewModel.presentMissionAction(self)
+        feedButton.rx.action = viewModel.presentFeedAction()
+        missionButton.rx.action = viewModel.presentMissionAction()
+        dashBoardButton.rx.action = viewModel.presentDashboardAction()
         
         self.viewControllers = viewModel.viewControllers
         

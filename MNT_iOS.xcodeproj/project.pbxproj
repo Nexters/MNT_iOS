@@ -36,6 +36,9 @@
 		1A4E689723E429EF005D2CFD /* MissionListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4E689623E429EF005D2CFD /* MissionListTableViewController.swift */; };
 		1A4E68A323E474AE005D2CFD /* MissionPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4E68A223E474AE005D2CFD /* MissionPostViewController.swift */; };
 		1A4E68A523E474D4005D2CFD /* MissionPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4E68A423E474D4005D2CFD /* MissionPostViewModel.swift */; };
+		1A593D6A23FCF0470009CDC0 /* DashboaedScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A593D6923FCF0470009CDC0 /* DashboaedScene.swift */; };
+		1A593D6C23FCF0970009CDC0 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A593D6B23FCF0970009CDC0 /* DashboardViewModel.swift */; };
+		1A593D6E23FCF0D90009CDC0 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A593D6D23FCF0D90009CDC0 /* DashboardViewController.swift */; };
 		1A81AE5A23E9099A004CADBC /* FeedDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A81AE5923E9099A004CADBC /* FeedDetailViewController.swift */; };
 		1A81AE5D23E90A0C004CADBC /* FeedDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A81AE5C23E90A0C004CADBC /* FeedDetailViewModel.swift */; };
 		1A81AE5F23E90C38004CADBC /* FromToView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A81AE5E23E90C38004CADBC /* FromToView.swift */; };
@@ -185,6 +188,9 @@
 		1A4E689623E429EF005D2CFD /* MissionListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionListTableViewController.swift; sourceTree = "<group>"; };
 		1A4E68A223E474AE005D2CFD /* MissionPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionPostViewController.swift; sourceTree = "<group>"; };
 		1A4E68A423E474D4005D2CFD /* MissionPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionPostViewModel.swift; sourceTree = "<group>"; };
+		1A593D6923FCF0470009CDC0 /* DashboaedScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboaedScene.swift; sourceTree = "<group>"; };
+		1A593D6B23FCF0970009CDC0 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
+		1A593D6D23FCF0D90009CDC0 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		1A81AE5923E9099A004CADBC /* FeedDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailViewController.swift; sourceTree = "<group>"; };
 		1A81AE5C23E90A0C004CADBC /* FeedDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailViewModel.swift; sourceTree = "<group>"; };
 		1A81AE5E23E90C38004CADBC /* FromToView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FromToView.swift; sourceTree = "<group>"; };
@@ -576,6 +582,40 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		1A593D6423FCF0110009CDC0 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				1A593D6823FCF02C0009CDC0 /* Scene */,
+				1A593D6723FCF0260009CDC0 /* ViewModel */,
+				1A593D6523FCF01A0009CDC0 /* View */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		1A593D6523FCF01A0009CDC0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1A593D6D23FCF0D90009CDC0 /* DashboardViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1A593D6723FCF0260009CDC0 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1A593D6B23FCF0970009CDC0 /* DashboardViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1A593D6823FCF02C0009CDC0 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				1A593D6923FCF0470009CDC0 /* DashboaedScene.swift */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
 		1A81AE5B23E90A01004CADBC /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -760,6 +800,7 @@
 		1AD6D40323BF9DBC000B1893 /* MNT_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				1A593D6423FCF0110009CDC0 /* Dashboard */,
 				1A4E688123E40D75005D2CFD /* Misson */,
 				1A4E686123E3E9C3005D2CFD /* Feed */,
 				1A8FAF3723E05D7E009A92C1 /* Login */,
@@ -1342,6 +1383,7 @@
 				581B160923EC741C00D0593B /* ProfileCollectionViewCell.swift in Sources */,
 				581B161C23ED808600D0593B /* AlertExitOrNotViewModel.swift in Sources */,
 				581B161E23ED809C00D0593B /* AlertExitOrNotViewController.swift in Sources */,
+				1A593D6E23FCF0D90009CDC0 /* DashboardViewController.swift in Sources */,
 				581B161823ECB58F00D0593B /* UIApplication+.swift in Sources */,
 				1AD5F7BB23E8762400F96263 /* MissionPreviewViewController.swift in Sources */,
 				1A81AE5F23E90C38004CADBC /* FromToView.swift in Sources */,
@@ -1375,6 +1417,7 @@
 				583659B723E1BA2500E2752F /* SetRoomDetailViewModel.swift in Sources */,
 				1A01BB6923F64B9B00FF8B7C /* UserListCell.swift in Sources */,
 				581B160C23EC760D00D0593B /* GuessViewController.swift in Sources */,
+				1A593D6A23FCF0470009CDC0 /* DashboaedScene.swift in Sources */,
 				1AD6D40723BF9DBC000B1893 /* SceneDelegate.swift in Sources */,
 				1AAB0E3C23DED4C50003A2C4 /* ViewModelBindable.swift in Sources */,
 				1A8FAF4623E06952009A92C1 /* MainViewModel.swift in Sources */,
@@ -1396,6 +1439,7 @@
 				1AAB0E3323DECC770003A2C4 /* UIView+Stacking.swift in Sources */,
 				1A4E687B23E4048D005D2CFD /* UITableView+.swift in Sources */,
 				1A49808523C967C1004B4058 /* LoginController.swift in Sources */,
+				1A593D6C23FCF0970009CDC0 /* DashboardViewModel.swift in Sources */,
 				581B15FC23EC628A00D0593B /* AlertExtension.swift in Sources */,
 				1A4E688D23E40E79005D2CFD /* MissionPariticipantViewController.swift in Sources */,
 				1A8FAF4A23E0737E009A92C1 /* UIStackView+.swift in Sources */,

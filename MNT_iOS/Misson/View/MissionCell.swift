@@ -31,7 +31,7 @@ class MissionCell: UITableViewCell {
 
 extension MissionCell: ViewModelBindableType {
     func bindViewModel(viewModel: MissionCellViewModel) {
-        
+        selectedBackgroundView = .init(backgroundColor: .clear)
         //label.text = viewModel.datas.missionId.name
         
         // 참여자인지 관리자인지
@@ -42,13 +42,18 @@ extension MissionCell: ViewModelBindableType {
         // check is done or not
         if viewModel.datas.userDone == 0 {
             view.setupState(state: .yet)
+            label.alpha = 1
+            view.alpha = 1
             backgroundColor = .white
             setupShadow(opacity: 0.07, radius: 10, offset: .init(width: 0, height: 1))
+            alpha = 1
         } else {
             view.setupState(state: .done)
-            backgroundColor = .defaultShadow
-            alpha = 0.4
-            setupShadow(color: .clear)
+            //backgroundColor = .defaultShadow
+            label.alpha = 0.4
+            view.alpha = 0.4
+            backgroundColor = UIColor.grayColor.withAlphaComponent(0.3)
+            setupShadow(radius: 10, color: .clear)
         }
         
         view.centerYToSuperview()
@@ -76,9 +81,9 @@ class MissionCellButtonForParitipant: UIView {
         switch state {
         case .done:
             textLabel.text = "수행완료"
-            textLabel.textColor = .grayColor
+            textLabel.textColor = .black
             imageview.image = #imageLiteral(resourceName: "check")
-            imageview.tintColor = .grayColor
+            imageview.tintColor = .black
         case .yet:
             textLabel.text = "수행하기"
             textLabel.textColor = .accentText

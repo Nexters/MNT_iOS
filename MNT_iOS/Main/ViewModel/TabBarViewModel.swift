@@ -23,14 +23,6 @@ class TabBarViewModel: ViewModel, ReactiveViewModelable {
     typealias InputType = Input
     typealias OutputType = Output
     
-    public lazy var viewControllers: [UIViewController] = {
-        return [
-            UIViewController(),
-            feedVC,
-            missionVC
-        ]
-    }()
-    
     public lazy var input: InputType = Input()
     public lazy var output: OutputType = Output()
     
@@ -41,6 +33,27 @@ class TabBarViewModel: ViewModel, ReactiveViewModelable {
     struct Output {
         public let selectedIndexNumber = PublishRelay<Int>()
     }
+    
+    // MARK: ViewControllers
+    
+    public lazy var viewControllers: [UIViewController] = {
+        return [
+            dashVC,
+            feedVC,
+            missionVC
+        ]
+    }()
+    
+    fileprivate lazy var dashVC: UINavigationController = {
+        let viewModel = DashboardViewModel(title: "대시보드", coordinator: self.coordinator)
+        let dashScene = DashboardScene.dashBoard(viewModel)
+        var target: UIViewController = UIViewController()
+        let closer = { (vc: UIViewController) in
+            target = vc
+        }
+        self.coordinator.transition(to: dashScene, using: .replace(closer), animated: true)
+        return target.navigationController!
+    }()
     
     fileprivate lazy var feedVC: UINavigationController = {
         let viewModel = FeedViewModel(title: "피드", coordinator: self.coordinator)
@@ -64,14 +77,21 @@ class TabBarViewModel: ViewModel, ReactiveViewModelable {
         return target.navigationController!
     }()
     
-    func presentFeedAction(_ VC: TabBarViewController) -> CocoaAction {
+    func presentDashboardAction() -> CocoaAction {
+        return CocoaAction { [weak self] action in
+            self?.bindDashboardAction()
+            return Observable.just(action)
+        }
+    }
+    
+    func presentFeedAction() -> CocoaAction {
         return CocoaAction { [weak self] action in
             self?.bindFeedAction()
             return Observable.just(action)
         }
     }
     
-    func presentMissionAction(_ VC: TabBarViewController) -> CocoaAction {
+    func presentMissionAction() -> CocoaAction {
         return CocoaAction { [weak self] action in
             self?.bindMissionAction()
             return Observable.just(action)

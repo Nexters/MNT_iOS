@@ -13,7 +13,11 @@ import RxGesture
 
 class MissionTableViewController: UITableViewController {
     
-    var missions: [Mission] = []
+    var missions: [Mission] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
     override init(style: UITableView.Style) {
         super.init(style: .grouped)
@@ -27,7 +31,6 @@ class MissionTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -43,7 +46,8 @@ class MissionTableViewController: UITableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        2
+        true ? 1 : 2
+        // 관리자인지 아닌지 에 따라서
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -55,7 +55,7 @@ extension MissionParticipantViewController: ViewModelBindableType {
             //print(missions)
             }?.disposed(by: rx.disposeBag)
         
-        (0...7).forEach{ [unowned self] i in
+        (0...2).forEach{ [unowned self] i in
             viewModel.missions.append(Mission(id: 1,
                                                     content: String(i),
                                                     missionId: MissionId(),
@@ -65,6 +65,18 @@ extension MissionParticipantViewController: ViewModelBindableType {
                                                     userDoneTime: "12:30",
                                                     userId: "its me"))
         }
+        
+        (0...2).forEach{ [unowned self] i in
+            viewModel.missions.append(Mission(id: 1,
+                                              content: String(i),
+                                              missionId: MissionId(),
+                                              missionImg: "https://img.huffingtonpost.com/asset/5c6a1b8a250000be00c88cae.png?cache=41JoK4KsMg&ops=scalefit_630_noupscale",
+                                              roodId: 1,
+                                              userDone: 1,
+                                              userDoneTime: "12:30",
+                                              userId: "its me"))
+        }
+        
         missionTableController.missions = viewModel.missions
     }
 }
