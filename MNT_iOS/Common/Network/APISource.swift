@@ -30,7 +30,7 @@ class APISource: APISourceProtocol {
         }
     }
     
-    func getRoomAttend(roomId: Int, userId: String, completion: @escaping ([Room]) -> Void) -> Disposable? {
+    func getRoomAttend(roomId: Int, userId: String, completion: @escaping (Room) -> Void) -> Disposable? {
           let params = [
               "roomId" : roomId,
               "userId" : userId
@@ -39,7 +39,7 @@ class APISource: APISourceProtocol {
           return requestDataObject(.get,
                       .roomAttend,
                       parameters: params) { (res: RoomAttendResponse) in
-                        completion([res.data])
+                        completion(res.data)
           }
       }
 }

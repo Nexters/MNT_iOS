@@ -11,7 +11,7 @@ import UIKit
 class SetRoomTitleViewController: ViewController {
     
     var viewModel: SetRoomTitleViewModel?
-    let label = UILabel(text: "프루또 방 이름을 만들어 주세요🍇",
+    let label = UILabel(text: "프루또 방 이름을 지어주세요🍇",
                         font: .boldFont(ofSize: 18),
                         textColor: .defaultText,
                         textAlignment: .left,

@@ -16,8 +16,24 @@ class ProfileCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        hstack(profileImageView,
-               profileNameLabel)
+        hstack(
+            profileImageView.withWidth(30)
+                            .withHeight(30),
+            profileNameLabel.withWidth(75),
+            spacing: 15)
+            .withMargins(.init(top: 0,
+                               left: 15,
+                               bottom: 0,
+                               right: 0))
+        
+        layer.masksToBounds = false
+        layer.cornerRadius = 10
+        
+        setupShadow(opacity: 0.05,
+                    radius: 10,
+                    offset: .init(width: 0, height: 3))
+        
+        layer.backgroundColor = UIColor.white.cgColor
     }
 }
 

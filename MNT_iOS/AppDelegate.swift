@@ -21,8 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-//        kakaoLogin() // 로그인,로그아웃 상태 받기
-        testing()
+        kakaoLogin() // 로그인,로그아웃 상태 받기
+//        testing()
         return true
     }
     
@@ -46,6 +46,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        testingFeed()
 //        testingMission()
         testingMain()
+//        testingAdminExit()
+//        testingParticipantExit()
     }
     
     fileprivate func testingMission() {
@@ -73,6 +75,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         coordinator.transition(to: scene, using: .root, animated: true)
     }
     
+    fileprivate func testingAdminExit() {
+        let coordinator = SceneCoordinator(window: window!)
+        let viewModel = AlertExitOrNotViewModel(title: "푸르또 종료", coordinator: coordinator)
+        let scene: SceneType = ExitScene.alertExitOrNot(viewModel)
+        coordinator.transition(to: scene, using: .root, animated: true)
+    }
+    
+    fileprivate func testingParticipantExit() {
+        let coordinator = SceneCoordinator(window: window!)
+        let viewModel = AlertExitViewModel(title: "푸르또 종료", coordinator: coordinator)
+        let scene: SceneType = ExitScene.alertExit(viewModel)
+        coordinator.transition(to: scene, using: .root, animated: true)
+    }
+    
     fileprivate func addObserver() {
         NotificationCenter
             .default
@@ -88,8 +104,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let coordinator = SceneCoordinator(window: window!)
         let viewModel = isOpened ? ConfirmViewModel(title: "확인", coordinator: coordinator) : LoginViewModel(title: "로그인", coordinator: coordinator)
         let scene: SceneType = isOpened ? LoginScene.confirm(viewModel as! ConfirmViewModel) : LoginScene.login(viewModel as! LoginViewModel)
-//
-//        coordinator.transition(to: scene, using: .root, animated: true)
+
+        coordinator.transition(to: scene, using: .root, animated: true)
     }
     
     @objc fileprivate func kakaoSessionDidChangeWithNotification() {

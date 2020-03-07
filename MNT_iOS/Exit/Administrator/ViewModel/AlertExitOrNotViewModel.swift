@@ -12,17 +12,20 @@ import Action
 import RxSwift
 
 class AlertExitOrNotViewModel: ViewModel {
-    func openAlertAction() -> CocoaAction {
-        return Action { [unowned self] action in
-            let alert = UIAlertController(title: nil, message: "마니또를 공개하시겠습니까?\n참가자들의 마니또가 공개됩니다.", preferredStyle: .alert)
-            let noAction = UIAlertAction(title: "취소", style: .default, handler: nil)
-            let okAction = UIAlertAction(title: "종료하기", style: .default, handler: nil)
-
-            alert.addAction(noAction)
-            alert.addAction(okAction)
-            UIApplication.topViewController()?.present(alert, animated: false)
-
+    
+    func cancelAction() -> CocoaAction {
+        return Action { action in
+            
             return Observable.just(action)
+        }
+    }
+    
+    func exitAction() -> CocoaAction {
+        return CocoaAction { _ in
+            let viewModel = TabBarViewModel(title: "모아보기", coordinator: self.coordinator)
+            let scene = MainScene.enterRoom(viewModel)
+            
+            return self.coordinator.transition(to: scene, using: .push, animated: true).asObservable().map { _ in }
         }
     }
 }

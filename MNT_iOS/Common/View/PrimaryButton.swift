@@ -12,7 +12,6 @@ class PrimaryButton: UIButton {
     required init(_ text: String) {
         super.init(frame: .zero)
         self.backgroundColor = .primaryColor
-        self.tintColor = .white
         self.setTitle(text, for: .normal)
         self.titleLabel?.font = .boldFont(ofSize: 18)
     }

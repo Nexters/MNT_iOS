@@ -16,6 +16,7 @@ enum MainScene {
     case ready(ReadyViewModel)
     case enterRoom(TabBarViewModel)
     case openNitto(OpenNittoViewModel)
+    case showParticipant(MainUserListViewModel)
 }
 
 extension MainScene: SceneType {
@@ -59,6 +60,11 @@ extension MainScene: SceneType {
             var openNittoVC = OpenNittoViewController()
             openNittoVC.bind(viewModel: viewModel)
             return openNittoVC
+            
+        case .showParticipant(let viewModel):
+            var mainUserListVC = MainUserListViewController()
+            mainUserListVC.bind(viewModel: viewModel)
+            return mainUserListVC
         }
     }
 }
