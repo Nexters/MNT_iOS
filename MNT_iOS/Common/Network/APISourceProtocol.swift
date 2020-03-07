@@ -11,7 +11,7 @@ import RxAlamofire
 import Alamofire
 
 struct API {
-    static let baseURL = "http://ec2-15-164-216-156.ap-northeast-2.compute.amazonaws.com:8888/api"
+    static let baseURL = "http://ec2-15-164-49-183.ap-northeast-2.compute.amazonaws.com:8888/api"
     static let jsonDecoder: JSONDecoder = {
         let jsonDecoder = JSONDecoder()
         jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
