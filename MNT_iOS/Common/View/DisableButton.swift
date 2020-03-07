@@ -1,20 +1,19 @@
 //
-//  GrayButton.swift
+//  DisableButton.swift
 //  MNT_iOS
 //
-//  Created by Jihye on 2020/02/15.
+//  Created by Jihye on 2020/02/19.
 //  Copyright © 2020 최민섭. All rights reserved.
 //
 
 import UIKit
 
-class GrayButton: UIButton {
+class DisableButton: UIButton {
     required init(_ text: String) {
         super.init(frame: .zero)
-        self.backgroundColor = .grayColor
-        self.setTitleColor(.textOnlyColor, for: .normal)
+        self.backgroundColor = .disableColor
         self.setTitle(text, for: .normal)
-        self.titleLabel?.font = UIFont.boldFont(ofSize: 18)
+        self.titleLabel?.font = .boldFont(ofSize: 18)
     }
     
     required init?(coder: NSCoder) {

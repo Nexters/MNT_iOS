@@ -56,4 +56,13 @@ class ReadyViewModel: ViewModel {
             return self.coordinator.transition(to: scene, using: .push, animated: true).asObservable().map { _ in }
         }
     }
+    
+    func presentShowAction(code: Int) -> CocoaAction {
+        return CocoaAction { _ in
+            let viewModel = MainUserListViewModel(title: "참여자 리스트", coordinator: self.coordinator)
+            let scene = MainScene.showParticipant(viewModel)
+            
+            return self.coordinator.transition(to: scene, using: .push, animated: true).asObservable().map { _ in}
+        }
+    }
 }

@@ -76,6 +76,12 @@ extension UIColor {
         return .init(red: 237/255, green: 241/255, blue: 247/255, alpha: 1)
     }
     
+    open class var disableColor: UIColor {
+        return .init(red: 222/255, green: 222/255, blue: 222/255, alpha: 1)
+    }
+    
+    open class var deSelectedColor: UIColor {
+        return .init(red: 255/255, green: 214/255, blue: 217/255, alpha: 1)
     open class var weakBorder: UIColor {
         return .init(red: 235/255, green: 235/255, blue: 235/255, alpha: 1)
     }

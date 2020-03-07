@@ -11,34 +11,77 @@ import UIKit
 class ReadyViewController: ViewController {
     
     var viewModel: ReadyViewModel?
-    let titleLabel = UILabel(text: "title", numberOfLines: 0)
-    let codeLabel = UILabel(text: "초대코드", numberOfLines: 0)
-    let descriptionLabel = UILabel(text: "마니또 방이 생성되었습니다.\n 초대코드를 공유해서 친구들을 초대하세요.")
-    var sendButton = UIButton(title: "카카오톡 초대장 보내기", titleColor: .black)
-    var checkButton = UIButton(title: "참여자 확인", titleColor: .black)
-    var startButton = UIButton(title: "시작하기", titleColor: .black)
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+    let fruitImage = UIImageView(image: #imageLiteral(resourceName: "fruits"))
+    let titleLabel = UILabel(text: "방이름글자수제한은열다섯이야",
+                             font: .systemFont(ofSize: 22),
+                             textColor: .defaultText,
+                             textAlignment: .center,
+                             numberOfLines: 0)
+    let subLabel = UILabel(text: "프루또방이 생성되었습니다.\n초대코드를 공유해서 친구들을 초대하세요.",
+                           font: .systemFont(ofSize: 15),
+                           textColor: .subLabelColor,
+                           textAlignment: .center,
+                           numberOfLines: 0)
+    let bubbleImage = UIImageView(image: #imageLiteral(resourceName: "combinedShape"))
+    let codeSubLabel = UILabel(text: "초대코드",
+                               font: .systemFont(ofSize: 15),
+                               textColor: .subLabelColor,
+                               textAlignment: .center,
+                               numberOfLines: 0)
+    let codeLabel = UILabel(text: "99999",
+                            font: .boldFont(ofSize: 24),
+                            textColor: .subLabelColor,
+                            textAlignment: .center,
+                            numberOfLines: 0)
+    var sendButton = PrimaryButton("카카오톡 초대장 보내기 🤝")
+    var startButton = PrimaryButton("시작하기 🙋‍♀️")
+    var checkButton = TextOnlyButton("참여자 보기 👭")
+    
+    override func setupNavigationController() {
         navigationController?.navigationBar.isHidden = true
     }
     
     override func setupLayout() {
-        view.stack(titleLabel.withHeight(50),
-                   codeLabel.withHeight(50),
-                   descriptionLabel.withHeight(50),
-                   sendButton.withHeight(50),
-                   checkButton.withHeight(50),
-                   startButton.withHeight(50),
-                   alignment: .center,
-                   distribution: .fillEqually)
-            .withMargins(.init(top: view.frame.height/2 - 300,
-                               left: 0,
-                               bottom: view.frame.height/2 - 300,
-                               right: 0))
+        let width = view.frame.width
+        let height = view.frame.height
+        
+        view.addSubview(fruitImage)
+        view.addSubview(titleLabel)
+        view.addSubview(bubbleImage)
+        view.addSubview(subLabel)
+        view.addSubview(codeSubLabel)
+        view.addSubview(codeLabel)
+        view.addSubview(sendButton)
+        view.addSubview(startButton)
+        view.addSubview(checkButton)
+        
+        fruitImage.anchor(.top(view.topAnchor, constant: height * 0.2))
+        titleLabel.anchor(.top(view.topAnchor, constant: height * 0.2 + 50))
+        bubbleImage.anchor(.top(view.topAnchor, constant: height * 0.33))
+        subLabel.anchor(.top(view.topAnchor, constant: height * 0.33))
+        codeSubLabel.anchor(.top(view.topAnchor, constant: height * 0.5))
+        codeLabel.anchor(.top(codeSubLabel.topAnchor, constant: 20))
+        sendButton.anchor(.bottom(view.bottomAnchor, constant: height * 0.25))
+        startButton.anchor(.bottom(view.bottomAnchor, constant: height * 0.15))
+        checkButton.anchor(.bottom(view.bottomAnchor, constant: height * 0.05))
+        
+        fruitImage.centerXToSuperview()
+        titleLabel.centerXToSuperview()
+        bubbleImage.centerXToSuperview()
+        subLabel.centerXToSuperview()
+        codeSubLabel.centerXToSuperview()
+        codeLabel.centerXToSuperview()
+        sendButton.centerXToSuperview()
+        startButton.centerXToSuperview()
+        checkButton.centerXToSuperview()
+        
+        fruitImage.constrainWidth(78)
+        fruitImage.constrainHeight(41)
+        bubbleImage.constrainWidth(width * 0.78)
+        bubbleImage.constrainHeight(height * 0.15)
+        subLabel.constrainWidth(width * 0.75)
+        subLabel.constrainHeight(height * 0.14)
     }
-
 }
 
 extension ReadyViewController: ViewModelBindableType {
@@ -47,5 +90,6 @@ extension ReadyViewController: ViewModelBindableType {
         
         sendButton.rx.action = viewModel.sendKakaoLinkAction(code : dummyCode)
         startButton.rx.action = viewModel.enterRoom(code: dummyCode)
+        checkButton.rx.action = viewModel.presentShowAction(code: dummyCode)
     }
 }
