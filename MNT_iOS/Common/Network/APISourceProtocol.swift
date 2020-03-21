@@ -49,6 +49,15 @@ protocol APISourceProtocol {
                                                encoding: ParameterEncoding,
                                                headers: [String: String]?,
                                                completion: ((T) -> Void)?) -> Disposable?
+    // for Non-Response
+    func requestWithoutData<P: Any>(_ method: HTTPMethod,
+                                    _ url: URLType,
+                                    parameters: P?,
+                                    encoding: ParameterEncoding,
+                                    headers: [String: String]?,
+                                    completion: (() -> Void)?) -> Disposable?
+    
+    
     // for Object Array
     func requestDataArray<T: Codable, P: Any>(_ method: HTTPMethod,
                                               _ url: URLType,
@@ -136,6 +145,38 @@ extension APISourceProtocol {
         
       }
     
+    func requestWithoutData<P: Any>(_ method: HTTPMethod,
+                                    _ url: URLType,
+                                    parameters: P?,
+                                    encoding: ParameterEncoding,
+                                    headers: [String: String]?,
+                                    completion: (() -> Void)?) -> Disposable? {
+        let params = (parameters is [String: Any]?) == true ? parameters : nil
+        let path = parameters != nil && params == nil ? "/\(String(describing: parameters!))" : ""
+        
+        guard let encodedUrl = (API.baseURL+url.rawValue+path).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+            print("networking - invalid url")
+            return nil
+        }
+        
+        return RxAlamofire.requestData(method,
+                                       encodedUrl,
+                                       parameters: params as? [String : Any],
+                                       encoding: encoding,
+                                       headers: headers)
+            .subscribe(
+                onNext: { res in
+                    completion?()
+            },
+                onError: { err in
+                    // err handling
+                    print("reqeustDatas Error : \(err)")
+            },
+                onCompleted: {
+                    // completion handling
+            })
+    }
+    
     func requestDataArray<T: Codable, P: Any>(_ method: HTTPMethod,
                                               _ url: URLType,
                                               parameters: P? = nil,
@@ -167,5 +208,3 @@ extension APISourceProtocol {
             })
     }
 }
-
-
