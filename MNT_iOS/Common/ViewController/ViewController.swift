@@ -9,9 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
-    var enableTapGesture: Bool = false
-    
+        
     lazy var topAnchor: NSLayoutYAxisAnchor = {
         var topAnchor: NSLayoutYAxisAnchor
         if #available(iOS 11.0, *) {
@@ -36,7 +34,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .white
-        setupTapGesture()
         setupLayout()
     }
     
@@ -46,9 +43,7 @@ class ViewController: UIViewController {
         setupNavigationController()
     }
     
-    fileprivate func setupTapGesture() {
-        if !enableTapGesture { return }
-        
+    func activateTapGesture() {
         let tapGest = UITapGestureRecognizer()
         view.addGestureRecognizer(tapGest)
         

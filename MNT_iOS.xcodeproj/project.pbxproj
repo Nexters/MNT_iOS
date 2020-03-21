@@ -48,6 +48,7 @@
 		1A595E782425ACBB0080AE61 /* MissionDoneResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A595E772425ACBB0080AE61 /* MissionDoneResponse.swift */; };
 		1A595E7B2425C57B0080AE61 /* MissionMakeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A595E792425C57B0080AE61 /* MissionMakeCell.swift */; };
 		1A595E7C2425C57B0080AE61 /* MissionMakeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A595E7A2425C57B0080AE61 /* MissionMakeCell.xib */; };
+		1A595E812425F6670080AE61 /* TextFieldContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A595E802425F6670080AE61 /* TextFieldContainer.swift */; };
 		1A81AE5A23E9099A004CADBC /* FeedDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A81AE5923E9099A004CADBC /* FeedDetailViewController.swift */; };
 		1A81AE5D23E90A0C004CADBC /* FeedDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A81AE5C23E90A0C004CADBC /* FeedDetailViewModel.swift */; };
 		1A81AE5F23E90C38004CADBC /* FromToView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A81AE5E23E90C38004CADBC /* FromToView.swift */; };
@@ -209,6 +210,7 @@
 		1A595E772425ACBB0080AE61 /* MissionDoneResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionDoneResponse.swift; sourceTree = "<group>"; };
 		1A595E792425C57B0080AE61 /* MissionMakeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionMakeCell.swift; sourceTree = "<group>"; };
 		1A595E7A2425C57B0080AE61 /* MissionMakeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MissionMakeCell.xib; sourceTree = "<group>"; };
+		1A595E802425F6670080AE61 /* TextFieldContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldContainer.swift; sourceTree = "<group>"; };
 		1A81AE5923E9099A004CADBC /* FeedDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailViewController.swift; sourceTree = "<group>"; };
 		1A81AE5C23E90A0C004CADBC /* FeedDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailViewModel.swift; sourceTree = "<group>"; };
 		1A81AE5E23E90C38004CADBC /* FromToView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FromToView.swift; sourceTree = "<group>"; };
@@ -451,6 +453,7 @@
 				58D0179423FA9CE600D55DA6 /* SubButton.swift */,
 				58D0179223FA9CE600D55DA6 /* TextOnlyButton.swift */,
 				1ADEFD9D23FC5A8E00E3DC49 /* CloseButtonBar.swift */,
+				1A595E802425F6670080AE61 /* TextFieldContainer.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1460,6 +1463,7 @@
 				1A4E687623E3F7FF005D2CFD /* Model.swift in Sources */,
 				1AAB0E3123DECC2C0003A2C4 /* CircularImageView.swift in Sources */,
 				1A4E687323E3F471005D2CFD /* FeedCellViewModel.swift in Sources */,
+				1A595E812425F6670080AE61 /* TextFieldContainer.swift in Sources */,
 				1AAB0E2B23DECA080003A2C4 /* UIView+.swift in Sources */,
 				1A4E68A323E474AE005D2CFD /* MissionPostViewController.swift in Sources */,
 				1A595E6D242599AB0080AE61 /* DashboardGridMenuCell.swift in Sources */,

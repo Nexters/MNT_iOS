@@ -86,10 +86,8 @@ extension APISourceProtocol {
                                                parameters: P? = nil,
                                                encoding: ParameterEncoding = URLEncoding.default,
                                                headers: [String: String]? = nil, completion: ((T) -> Void)?) -> Disposable? {
-        
         let params = (parameters is [String: Any]?) == true ? parameters : nil
         let path = parameters != nil && params == nil ? "/\(String(describing: parameters!))" : ""
-        
         
         guard let encodedUrl = (API.baseURL+url.rawValue+path).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
             print("networking - invalid url")
@@ -110,40 +108,38 @@ extension APISourceProtocol {
                        onCompleted: {
                         // completion handling
             })
-        
     }
     
     func requestDataObject<T: Codable, P: Any>(_ method: HTTPMethod,
-                                                 _ url: URLType,
-                                                 parameters: P,
-                                                 path: String,
-                                                 encoding: ParameterEncoding = URLEncoding.default,
-                                                 headers: [String: String]? = nil, completion: ((T) -> Void)?) -> Disposable? {
-          let params = parameters
-          let path = "/\(path)"
-          
-          guard let encodedUrl = (API.baseURL+url.rawValue+path).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
-              print("networking - invalid url")
-              return nil
-          }
-          
-          return RxAlamofire.requestData(method,
-                                         encodedUrl,
-                                         parameters: params as? [String : Any],
-                                         encoding: encoding,
-                                         headers: headers)
-              .mapObject(type: T.self)
-              .subscribe(
+                                               _ url: URLType,
+                                               parameters: P,
+                                               path: String,
+                                               encoding: ParameterEncoding = URLEncoding.default,
+                                               headers: [String: String]? = nil, completion: ((T) -> Void)?) -> Disposable? {
+        let params = parameters
+        let path = "/\(path)"
+        
+        guard let encodedUrl = (API.baseURL+url.rawValue+path).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+            print("networking - invalid url")
+            return nil
+        }
+        
+        return RxAlamofire.requestData(method,
+                                       encodedUrl,
+                                       parameters: params as? [String : Any],
+                                       encoding: encoding,
+                                       headers: headers)
+            .mapObject(type: T.self)
+            .subscribe(
                 onNext: completion,
                 onError: { err in
                     // err handling
                     print("reqeustDatas Error : \(err)")
-              },
+            },
                 onCompleted: {
                     // completion handling
-              })
-        
-      }
+            })
+    }
     
     func requestWithoutData<P: Any>(_ method: HTTPMethod,
                                     _ url: URLType,

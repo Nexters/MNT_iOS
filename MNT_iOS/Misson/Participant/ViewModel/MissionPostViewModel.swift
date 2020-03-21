@@ -11,6 +11,16 @@ import Foundation
 class MissionPostViewModel: ViewModel {
     let missionInfo: Mission
     
+    lazy var missionName: String = {
+        let missionName = missionInfo.missionName ?? ""
+        return missionName
+    }()
+    
+    lazy var missionDescription: String = {
+        let subTitle = missionList.filter{ $0.title == missionName }.map { $0.subtitle }.first ?? ""
+        return subTitle
+    }()
+    
     init(title: String, coordinator: SceneCoordinatorType, missionInfo: Mission) {
         self.missionInfo = missionInfo
         super.init(title: title, coordinator: coordinator)

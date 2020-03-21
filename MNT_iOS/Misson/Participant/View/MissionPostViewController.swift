@@ -11,13 +11,15 @@ import UIKit
 class MissionPostViewController: ViewController {
     var viewModel: MissionPostViewModel?
     fileprivate let titleLabel = UILabel(text: "title", font: .boldSystemFont(ofSize: 20))
-    fileprivate let subtitleLabel = UILabel(text: "subtitle")
-    fileprivate let textfield = UITextField(placeholder: "텍스트 입력")
+    fileprivate let subtitleLabel = UILabel(text: "subtitle", font: .systemFont(ofSize: 16), textColor: .defaultText)
     fileprivate let button = UIButton(title: "이미지 업로드", titleColor: .black)
-    fileprivate var barbutton = UIBarButtonItem(title: "다음",
-                                                style: .done,
-                                                target: nil,
-                                                action: nil)
+    fileprivate let textfieldContainer = TextFieldContainer()
+    
+    fileprivate lazy var textfield: UITextField = {
+        let tf = UITextField(placeholder: "텍스트를 입력해주세요.")
+        tf.textAlignment = .left
+        return tf
+    }()
     
     fileprivate lazy var titleStackView: UIStackView = {
         let sv = UIStackView(arrangedSubviews: [
@@ -30,33 +32,53 @@ class MissionPostViewController: ViewController {
     
     fileprivate lazy var wholeStackView: UIStackView = {
         let sv = UIStackView(arrangedSubviews: [
-            titleStackView.withHeight(100),
-            textfield.withHeight(100),
-            button.withHeight(50)
+            titleStackView.withHeight(70),
+            textfieldContainer.withHeight(view.bounds.height * 0.27),
         ])
         sv.axis = .vertical
+        sv.spacing = 26
         return sv
     }()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        activateTapGesture()
+    }
     
     override func setupLayout() {
         view.backgroundColor = .white
         view.addSubview(wholeStackView)
+        view.addSubview(textfield)
+        view.addSubview(button)
         
         wholeStackView.anchor(
             .top(view.topAnchor, constant: 80),
             .leading(view.leadingAnchor, constant: 40),
             .trailing(view.trailingAnchor, constant: 40))
+            
+        textfield.anchor(.top(textfieldContainer.topAnchor, constant: 19),
+                                  .leading(textfieldContainer.leadingAnchor, constant: 24),
+                                  .trailing(textfieldContainer.trailingAnchor, constant: 24),
+                                  .bottom(textfieldContainer.bottomAnchor, constant: 19))
         
-        wholeStackView.constrainHeight(300)
+        button.anchor(.bottom(bottomAnchor))
+        button.centerXTo(view.centerXAnchor)
+        
+        
     }
-    
-    override func setupNavigationController() {
-        navigationItem.setRightBarButton(barbutton, animated: true)
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        textfieldContainer.roundedBorder(corners: .allCorners, radius: 10)
     }
 }
 
 extension MissionPostViewController: ViewModelBindableType {
     func bindViewModel(viewModel: MissionPostViewModel) {
-        barbutton.rx.action = viewModel.missionPreviewAction(content: "",     imageURL: "")
+        titleLabel.text = viewModel.missionName
+        subtitleLabel.text = viewModel.missionDescription
+        
     }
 }
