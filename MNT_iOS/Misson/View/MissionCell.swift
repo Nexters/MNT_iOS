@@ -8,9 +8,7 @@
 
 import UIKit
 
-class MissionCell: UITableViewCell {
-    var viewModel: MissionCellViewModel?
-    
+class MissionCell: UITableViewCell {    
     let label = UILabel(text: "👏🏻 칭찬하기", font: .boldSystemFont(ofSize: 15), numberOfLines: 1)
     
     override var frame: CGRect {
@@ -27,20 +25,23 @@ class MissionCell: UITableViewCell {
             super.frame = frame
         }
     }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        selectedBackgroundView = .init(backgroundColor: .clear)
+    }
 }
 
-extension MissionCell: ViewModelBindableType {
-    func bindViewModel(viewModel: MissionCellViewModel) {
-        selectedBackgroundView = .init(backgroundColor: .clear)
-        //label.text = viewModel.datas.missionId.name
-        
+extension MissionCell {
+    
+    func setup(mission: Mission) {
         // 참여자인지 관리자인지
         let view = MissionCellButtonForParitipant()
         addSubview(view)
         addSubview(label)
-        
         // check is done or not
-        if viewModel.datas.userDone == 0 {
+        if mission.userMission.userDone != 1 {
             view.setupState(state: .yet)
             label.alpha = 1
             view.alpha = 1
@@ -55,6 +56,8 @@ extension MissionCell: ViewModelBindableType {
             backgroundColor = UIColor.grayColor.withAlphaComponent(0.3)
             setupShadow(radius: 10, color: .clear)
         }
+        
+        label.text = mission.missionName
         
         view.centerYToSuperview()
         view.anchor(.trailing(trailingAnchor, constant: 16))

@@ -13,21 +13,31 @@ struct MissionListResponse: Codable {
     var data: [Mission] = []
 }
 
-struct Mission: Codable, ProducesMissionCellViewModel {
-    var id: Int = 0
-    var content: String = ""
-    var missionId: MissionId = MissionId()
-    var missionImg: String = ""
-    var roodId: Int = 0
-    var userDone: Int = 0
-    var userDoneTime: String = ""
-    var userId: String = ""
-    
-    var asMissionCellViewModel: MissionCellViewModel { return MissionCellViewModel(datas: self)}
+struct Mission: Codable {
+    var manitto: Manitto? = nil
+    var missionId: Int = 0
+    var missionName: String? = nil
+    var userFruttoId: Int? = nil
+    var userMission: UserMission = UserMission()
+}
+
+struct UserMission: Codable {
+    var content: String? = nil
+//    var missionId: MissionId = MissionId()
+    var missionImg: String? = nil
+    var roomId: Int = 0
+    var userDone: Int? = nil
+    var userDoneTime: String? = nil
+    var userId: UserId = UserId()
+}
+
+struct Manitto: Codable {
+    var id: String = ""
+    var fruttoId: Int = 0
+    var name: String = ""
 }
 
 struct MissionId: Codable {
-    var id: Int = 0
     var isAbleImg: Int = 0
     var name: String = ""
     var roodId: Int = 0
@@ -36,4 +46,11 @@ struct MissionId: Codable {
 
 struct UserMissions: Codable {
     
+}
+
+struct UserId: Codable {
+    var id: String = ""
+    var name: String = ""
+    var profilePic: String = ""
+    var fcmToken: String = ""
 }

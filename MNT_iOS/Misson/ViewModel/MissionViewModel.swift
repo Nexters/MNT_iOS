@@ -9,18 +9,20 @@
 class MissionViewModel: ViewModel {
     var missions: [Mission] = []
     
-    func missionDetailAction(index: Int) -> CocoaAction {
-        return Action { [unowned self] _ in
-            let viewModel = MissionPostViewModel(title: "미션 등록",
-                                                 coordinator: self.coordinator,
-                                                 missionInfo: self.missions[index])
-            let scene = MissionScene.missionPost(viewModel)
-            return self.coordinator
-                .transition(to: scene,
-                            using: .push,
-                            animated: true)
-                .asObservable().map { _ in }
+    func missionDetailAction(index: Int) {
+        if missions[index].userMission.userDone == 1 {
+            return
         }
+        
+        let viewModel = MissionPostViewModel(title: "미션 등록",
+                                             coordinator: self.coordinator,
+                                             missionInfo: self.missions[index])
+        let scene = MissionScene.missionPost(viewModel)
+        self.coordinator
+            .transition(to: scene,
+                        using: .push,
+                        animated: true)
+            .asObservable().map { _ in }
     }
     
     func addNewMissionAction(_ gesture: UITapGestureRecognizer) -> Void {

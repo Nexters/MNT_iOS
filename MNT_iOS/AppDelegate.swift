@@ -32,7 +32,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     fileprivate func setupNavigationBar() {
         let inset = UIEdgeInsets(top: -16, left: -16, bottom: 0, right: 0)
-        UINavigationBar.appearance().backIndicatorImage = #imageLiteral(resourceName: "arrowLeft").withAlignmentRectInsets(inset)
         UINavigationBar.appearance().backIndicatorTransitionMaskImage = #imageLiteral(resourceName: "arrowLeft").withAlignmentRectInsets(inset)
         UINavigationBar.appearance().tintColor = .defaultText
     }

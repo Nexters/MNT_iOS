@@ -11,7 +11,7 @@ import RxAlamofire
 import Alamofire
 
 struct API {
-    static let baseURL = "http://http://ec2-15-164-49-183.ap-northeast-2.compute.amazonaws.com:8888/api"
+    static let baseURL = "http://ec2-15-164-49-183.ap-northeast-2.compute.amazonaws.com:8888/api"
     static let jsonDecoder: JSONDecoder = {
         let jsonDecoder = JSONDecoder()
         jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
@@ -110,7 +110,6 @@ extension APISourceProtocol {
                                                  path: String,
                                                  encoding: ParameterEncoding = URLEncoding.default,
                                                  headers: [String: String]? = nil, completion: ((T) -> Void)?) -> Disposable? {
-          
           let params = parameters
           let path = "/\(path)"
           
@@ -125,15 +124,16 @@ extension APISourceProtocol {
                                          encoding: encoding,
                                          headers: headers)
               .mapObject(type: T.self)
-              .subscribe(onNext: completion,
-                         onError: { err in
-                          // err handling
-                          print("reqeustDatas Error : \(err)")
+              .subscribe(
+                onNext: completion,
+                onError: { err in
+                    // err handling
+                    print("reqeustDatas Error : \(err)")
               },
-                         onCompleted: {
-                          // completion handling
+                onCompleted: {
+                    // completion handling
               })
-          
+        
       }
     
     func requestDataArray<T: Codable, P: Any>(_ method: HTTPMethod,

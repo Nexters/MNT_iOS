@@ -87,4 +87,12 @@ extension UIColor {
     open class var selectedCellColor: UIColor {
         return .init(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
     }
+    
+    open class var customedBackgrounColor: UIColor {
+        return .init(red: 248/255, green: 247/255, blue: 247/255, alpha: 1)
+    }
+    
+    open class var lightPink: UIColor {
+        return .init(red: 255/255, green: 242/255, blue: 242/255, alpha: 1)
+    }
 }

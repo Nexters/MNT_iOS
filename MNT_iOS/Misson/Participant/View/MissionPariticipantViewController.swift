@@ -23,6 +23,7 @@ class MissionParticipantViewController: ViewController {
         )
         
         missionTableController.tableView.rx.itemSelected.subscribe { [weak self] indexPath in
+            print("tagg hihiiii")
             guard let index = indexPath.element?.row else { return }
             self?.viewModel?.missionDetailAction(index: index)
         }
@@ -46,37 +47,13 @@ class MissionParticipantViewController: ViewController {
 
 extension MissionParticipantViewController: ViewModelBindableType {
     func bindViewModel(viewModel: MissionViewModel) {
-        
-        getTimeline(viewModel)
+        getMissionDoneList(viewModel)
     }
     
-    private func getTimeline(_ viewModel: MissionViewModel) {
-        APISource.shared.getTimeline(roomId: 0) { (missions) in
-            //print(missions)
+    private func getMissionDoneList(_ viewModel: MissionViewModel) {
+        APISource.shared.getMissionDoneList(roomId: 83550, userId: "182") { [weak self] (missions) in
+            viewModel.missions = missions
+            self?.missionTableController.missions = viewModel.missions
             }?.disposed(by: rx.disposeBag)
-        
-        (0...2).forEach{ [unowned self] i in
-            viewModel.missions.append(Mission(id: 1,
-                                                    content: String(i),
-                                                    missionId: MissionId(),
-                                                    missionImg: "https://img.huffingtonpost.com/asset/5c6a1b8a250000be00c88cae.png?cache=41JoK4KsMg&ops=scalefit_630_noupscale",
-                                                    roodId: 1,
-                                                    userDone: 0,
-                                                    userDoneTime: "12:30",
-                                                    userId: "its me"))
-        }
-        
-        (0...2).forEach{ [unowned self] i in
-            viewModel.missions.append(Mission(id: 1,
-                                              content: String(i),
-                                              missionId: MissionId(),
-                                              missionImg: "https://img.huffingtonpost.com/asset/5c6a1b8a250000be00c88cae.png?cache=41JoK4KsMg&ops=scalefit_630_noupscale",
-                                              roodId: 1,
-                                              userDone: 1,
-                                              userDoneTime: "12:30",
-                                              userId: "its me"))
-        }
-        
-        missionTableController.missions = viewModel.missions
     }
 }

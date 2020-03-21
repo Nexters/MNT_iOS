@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController {
     
     var enableTapGesture: Bool = false
+    
     lazy var topAnchor: NSLayoutYAxisAnchor = {
         var topAnchor: NSLayoutYAxisAnchor
         if #available(iOS 11.0, *) {
@@ -30,7 +31,6 @@ class ViewController: UIViewController {
         }
         return bottomAnchor
     }()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()

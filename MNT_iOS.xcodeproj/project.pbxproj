@@ -39,6 +39,15 @@
 		1A593D6A23FCF0470009CDC0 /* DashboaedScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A593D6923FCF0470009CDC0 /* DashboaedScene.swift */; };
 		1A593D6C23FCF0970009CDC0 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A593D6B23FCF0970009CDC0 /* DashboardViewModel.swift */; };
 		1A593D6E23FCF0D90009CDC0 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A593D6D23FCF0D90009CDC0 /* DashboardViewController.swift */; };
+		1A595E6D242599AB0080AE61 /* DashboardGridMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A595E6B242599AB0080AE61 /* DashboardGridMenuCell.swift */; };
+		1A595E6E242599AB0080AE61 /* DashboardGridMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A595E6C242599AB0080AE61 /* DashboardGridMenuCell.xib */; };
+		1A595E71242599D80080AE61 /* DashboardProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A595E6F242599D80080AE61 /* DashboardProfileCell.swift */; };
+		1A595E72242599D80080AE61 /* DashboardProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A595E70242599D80080AE61 /* DashboardProfileCell.xib */; };
+		1A595E7524259A030080AE61 /* DashboardListMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A595E7324259A030080AE61 /* DashboardListMenuCell.swift */; };
+		1A595E7624259A030080AE61 /* DashboardListMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A595E7424259A030080AE61 /* DashboardListMenuCell.xib */; };
+		1A595E782425ACBB0080AE61 /* MissionDoneResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A595E772425ACBB0080AE61 /* MissionDoneResponse.swift */; };
+		1A595E7B2425C57B0080AE61 /* MissionMakeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A595E792425C57B0080AE61 /* MissionMakeCell.swift */; };
+		1A595E7C2425C57B0080AE61 /* MissionMakeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A595E7A2425C57B0080AE61 /* MissionMakeCell.xib */; };
 		1A81AE5A23E9099A004CADBC /* FeedDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A81AE5923E9099A004CADBC /* FeedDetailViewController.swift */; };
 		1A81AE5D23E90A0C004CADBC /* FeedDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A81AE5C23E90A0C004CADBC /* FeedDetailViewModel.swift */; };
 		1A81AE5F23E90C38004CADBC /* FromToView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A81AE5E23E90C38004CADBC /* FromToView.swift */; };
@@ -191,6 +200,15 @@
 		1A593D6923FCF0470009CDC0 /* DashboaedScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboaedScene.swift; sourceTree = "<group>"; };
 		1A593D6B23FCF0970009CDC0 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
 		1A593D6D23FCF0D90009CDC0 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		1A595E6B242599AB0080AE61 /* DashboardGridMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardGridMenuCell.swift; sourceTree = "<group>"; };
+		1A595E6C242599AB0080AE61 /* DashboardGridMenuCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardGridMenuCell.xib; sourceTree = "<group>"; };
+		1A595E6F242599D80080AE61 /* DashboardProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardProfileCell.swift; sourceTree = "<group>"; };
+		1A595E70242599D80080AE61 /* DashboardProfileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardProfileCell.xib; sourceTree = "<group>"; };
+		1A595E7324259A030080AE61 /* DashboardListMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardListMenuCell.swift; sourceTree = "<group>"; };
+		1A595E7424259A030080AE61 /* DashboardListMenuCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardListMenuCell.xib; sourceTree = "<group>"; };
+		1A595E772425ACBB0080AE61 /* MissionDoneResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionDoneResponse.swift; sourceTree = "<group>"; };
+		1A595E792425C57B0080AE61 /* MissionMakeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionMakeCell.swift; sourceTree = "<group>"; };
+		1A595E7A2425C57B0080AE61 /* MissionMakeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MissionMakeCell.xib; sourceTree = "<group>"; };
 		1A81AE5923E9099A004CADBC /* FeedDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailViewController.swift; sourceTree = "<group>"; };
 		1A81AE5C23E90A0C004CADBC /* FeedDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailViewModel.swift; sourceTree = "<group>"; };
 		1A81AE5E23E90C38004CADBC /* FromToView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FromToView.swift; sourceTree = "<group>"; };
@@ -554,6 +572,7 @@
 			isa = PBXGroup;
 			children = (
 				1AD5F7BC23E8771500F96263 /* MissionDetail.swift */,
+				1A595E772425ACBB0080AE61 /* MissionDoneResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -563,6 +582,8 @@
 			children = (
 				1A4E689423E42993005D2CFD /* MissionAdministratorViewController.swift */,
 				1A3022AE23EBDB5B00693E22 /* AddNewMissionViewController.swift */,
+				1A595E792425C57B0080AE61 /* MissionMakeCell.swift */,
+				1A595E7A2425C57B0080AE61 /* MissionMakeCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -596,6 +617,12 @@
 			isa = PBXGroup;
 			children = (
 				1A593D6D23FCF0D90009CDC0 /* DashboardViewController.swift */,
+				1A595E6B242599AB0080AE61 /* DashboardGridMenuCell.swift */,
+				1A595E6C242599AB0080AE61 /* DashboardGridMenuCell.xib */,
+				1A595E6F242599D80080AE61 /* DashboardProfileCell.swift */,
+				1A595E70242599D80080AE61 /* DashboardProfileCell.xib */,
+				1A595E7324259A030080AE61 /* DashboardListMenuCell.swift */,
+				1A595E7424259A030080AE61 /* DashboardListMenuCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1197,10 +1224,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A595E7C2425C57B0080AE61 /* MissionMakeCell.xib in Resources */,
 				1A4E689123E40F81005D2CFD /* MissionCell.xib in Resources */,
 				1ADEFD9823FC3C9900E3DC49 /* FeedFilterSubmenuCell.xib in Resources */,
 				1A01BB6A23F64B9B00FF8B7C /* UserListCell.xib in Resources */,
+				1A595E7624259A030080AE61 /* DashboardListMenuCell.xib in Resources */,
+				1A595E6E242599AB0080AE61 /* DashboardGridMenuCell.xib in Resources */,
 				1AD6D41423BF9DBF000B1893 /* LaunchScreen.storyboard in Resources */,
+				1A595E72242599D80080AE61 /* DashboardProfileCell.xib in Resources */,
 				1A4E687123E3ED49005D2CFD /* FeedCell.xib in Resources */,
 				1AD6D41123BF9DBF000B1893 /* Assets.xcassets in Resources */,
 				1ADEFD9223FC295600E3DC49 /* FeedFilterCell.xib in Resources */,
@@ -1333,6 +1364,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A595E7B2425C57B0080AE61 /* MissionMakeCell.swift in Sources */,
 				58D017A623FA9E1500D55DA6 /* TabBarViewModel.swift in Sources */,
 				58D017A423FA9DEE00D55DA6 /* TabBarViewController.swift in Sources */,
 				58D017A223FA9DDD00D55DA6 /* Room.swift in Sources */,
@@ -1370,6 +1402,7 @@
 				583659B523E1B9FE00E2752F /* SetRoomDetailViewController.swift in Sources */,
 				1AAB0E2F23DECBFF0003A2C4 /* UILabel+.swift in Sources */,
 				1A3022AD23EBDAD800693E22 /* AddNewMissionViewModel.swift in Sources */,
+				1A595E782425ACBB0080AE61 /* MissionDoneResponse.swift in Sources */,
 				1A4E689323E40FAB005D2CFD /* MissionCellViewModel.swift in Sources */,
 				1A4E688B23E40DF9005D2CFD /* Mission.swift in Sources */,
 				1A8FAF4823E06A81009A92C1 /* MainScene.swift in Sources */,
@@ -1384,6 +1417,7 @@
 				581B161C23ED808600D0593B /* AlertExitOrNotViewModel.swift in Sources */,
 				581B161E23ED809C00D0593B /* AlertExitOrNotViewController.swift in Sources */,
 				1A593D6E23FCF0D90009CDC0 /* DashboardViewController.swift in Sources */,
+				1A595E7524259A030080AE61 /* DashboardListMenuCell.swift in Sources */,
 				581B161823ECB58F00D0593B /* UIApplication+.swift in Sources */,
 				1AD5F7BB23E8762400F96263 /* MissionPreviewViewController.swift in Sources */,
 				1A81AE5F23E90C38004CADBC /* FromToView.swift in Sources */,
@@ -1428,6 +1462,7 @@
 				1A4E687323E3F471005D2CFD /* FeedCellViewModel.swift in Sources */,
 				1AAB0E2B23DECA080003A2C4 /* UIView+.swift in Sources */,
 				1A4E68A323E474AE005D2CFD /* MissionPostViewController.swift in Sources */,
+				1A595E6D242599AB0080AE61 /* DashboardGridMenuCell.swift in Sources */,
 				1AB0697023F232C6000B8D27 /* FeedFilterViewModel.swift in Sources */,
 				1AD6D40723BF9DBC000B1893 /* SceneDelegate.swift in Sources */,
 				1AAB0E3C23DED4C50003A2C4 /* ViewModelBindable.swift in Sources */,
@@ -1439,6 +1474,7 @@
 				1AAB0E3323DECC770003A2C4 /* UIView+Stacking.swift in Sources */,
 				1A4E687B23E4048D005D2CFD /* UITableView+.swift in Sources */,
 				1A49808523C967C1004B4058 /* LoginController.swift in Sources */,
+				1A595E71242599D80080AE61 /* DashboardProfileCell.swift in Sources */,
 				1A593D6C23FCF0970009CDC0 /* DashboardViewModel.swift in Sources */,
 				581B15FC23EC628A00D0593B /* AlertExtension.swift in Sources */,
 				1A4E688D23E40E79005D2CFD /* MissionPariticipantViewController.swift in Sources */,

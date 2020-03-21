@@ -10,8 +10,9 @@ import UIKit
 import RxCocoa
 import RxGesture
 
-
 class MissionTableViewController: UITableViewController {
+    
+    var flag: Int = 0 // 0: pariticipant, 1: administrator
     
     var missions: [Mission] = [] {
         didSet {
@@ -37,23 +38,31 @@ class MissionTableViewController: UITableViewController {
         tableView.contentInset = .init(top: 45, left: 0, bottom: 0, right: 0)
         tableView.separatorStyle = .none
         tableView.registerNib(MissionCell.self)
-        
+        tableView.registerNib(MissionMakeCell.self)
     }
 
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        missions.count
+        if section < tableView.numberOfSections-1 {
+            return 1
+        }
+        return missions.count
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        true ? 1 : 2
-        // 관리자인지 아닌지 에 따라서
+        flag == 0 ? 1 : 2
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section < tableView.numberOfSections-1 {
+            // for administrator only
+            print("tagg why...?")
+            let cell = tableView.dequeueReusableCell(MissionMakeCell.self)
+            return cell
+        }
         let cell = tableView.dequeueReusableCell(MissionCell.self)
-        let item = missions[indexPath.row]
-        cell.bindViewModel(viewModel: item.asMissionCellViewModel)
+        let mission = missions[indexPath.row]
+        cell.setup(mission: mission)
         return cell
     }
     
