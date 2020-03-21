@@ -11,7 +11,7 @@ import RxAlamofire
 import Alamofire
 
 struct API {
-    static let baseURL = "http://ec2-15-164-216-156.ap-northeast-2.compute.amazonaws.com:8888/api"
+    static let baseURL = "http://http://ec2-15-164-49-183.ap-northeast-2.compute.amazonaws.com:8888/api"
     static let jsonDecoder: JSONDecoder = {
         let jsonDecoder = JSONDecoder()
         jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
@@ -21,6 +21,7 @@ struct API {
 
 enum URLType: String {
     case missionList = "/mission/list"
+    case missionDoneList = "/mission/done"
     case userList = "/room/user-list"
     case roomAttend = "/room/attend"
 }
@@ -37,6 +38,14 @@ protocol APISourceProtocol {
     func requestDataObject<T: Codable, P: Any>(_ method: HTTPMethod,
                                                _ url: URLType,
                                                parameters: P?,
+                                               encoding: ParameterEncoding,
+                                               headers: [String: String]?,
+                                               completion: ((T) -> Void)?) -> Disposable?
+    // for SingleObject with Path & Param
+    func requestDataObject<T: Codable, P: Any>(_ method: HTTPMethod,
+                                               _ url: URLType,
+                                               parameters: P?,
+                                               path: String,
                                                encoding: ParameterEncoding,
                                                headers: [String: String]?,
                                                completion: ((T) -> Void)?) -> Disposable?
@@ -72,6 +81,7 @@ extension APISourceProtocol {
         let params = (parameters is [String: Any]?) == true ? parameters : nil
         let path = parameters != nil && params == nil ? "/\(String(describing: parameters!))" : ""
         
+        
         guard let encodedUrl = (API.baseURL+url.rawValue+path).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
             print("networking - invalid url")
             return nil
@@ -93,6 +103,38 @@ extension APISourceProtocol {
             })
         
     }
+    
+    func requestDataObject<T: Codable, P: Any>(_ method: HTTPMethod,
+                                                 _ url: URLType,
+                                                 parameters: P,
+                                                 path: String,
+                                                 encoding: ParameterEncoding = URLEncoding.default,
+                                                 headers: [String: String]? = nil, completion: ((T) -> Void)?) -> Disposable? {
+          
+          let params = parameters
+          let path = "/\(path)"
+          
+          guard let encodedUrl = (API.baseURL+url.rawValue+path).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+              print("networking - invalid url")
+              return nil
+          }
+          
+          return RxAlamofire.requestData(method,
+                                         encodedUrl,
+                                         parameters: params as? [String : Any],
+                                         encoding: encoding,
+                                         headers: headers)
+              .mapObject(type: T.self)
+              .subscribe(onNext: completion,
+                         onError: { err in
+                          // err handling
+                          print("reqeustDatas Error : \(err)")
+              },
+                         onCompleted: {
+                          // completion handling
+              })
+          
+      }
     
     func requestDataArray<T: Codable, P: Any>(_ method: HTTPMethod,
                                               _ url: URLType,
