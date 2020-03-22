@@ -189,10 +189,10 @@ extension SetRoomDetailViewController: ViewModelBindableType {
             .disposed(by: rx.disposeBag)
         
         endDateTF.rx.controlEvent(UIControl.Event.allTouchEvents)
-        .subscribe({ [weak self] _ in
-            self!.touchedtextField = self!.endDateTF
-            self!.createDatePicker(textField: self!.endDateTF)
-        })
+            .subscribe({ [weak self] _ in
+                self!.touchedtextField = self!.endDateTF
+                self!.createDatePicker(textField: self!.endDateTF)
+            })
         .disposed(by: rx.disposeBag)
     }
 }

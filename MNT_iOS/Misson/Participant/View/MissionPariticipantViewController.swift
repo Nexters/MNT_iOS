@@ -33,9 +33,9 @@ extension MissionParticipantViewController: ViewModelBindableType {
     }
     
     private func getTimeline() {
-        APISource.shared.getTimeline(roomId: 0) { (missions) in
-            //print(missions)
-            }?.disposed(by: rx.disposeBag)
+//        APISource.shared.getTimeline(roomId: 0) { (missions) in
+//            print(missions)
+//            }?.disposed(by: rx.disposeBag)
         
         (0...7).forEach{ [unowned self] i in
             self.viewModel?.missions.append(Mission(id: 1,

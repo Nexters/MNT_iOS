@@ -32,20 +32,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         if session.token?.accessToken != nil {
-            let coordinator = SceneCoordinator(window: window!)
-            let viewModel = MainViewModel(title: "메인", coordinator: coordinator)
-            let scene: SceneType = MainScene.main(viewModel as! MainViewModel)
-            coordinator.transition(to: scene, using: .root, animated: true)
+            transReady()
         } else {
             addObserver() // 로그인,로그아웃 상태 변경 받기
             reloadRootViewController()
         }
     }
     
+    fileprivate func transMain() {
+        let coordinator = SceneCoordinator(window: window!)
+        let viewModel = MainViewModel(title: "", coordinator: coordinator)
+        let scene: SceneType = MainScene.main(viewModel as! MainViewModel)
+        coordinator.transition(to: scene, using: .root, animated: true)
+    }
+    
+    fileprivate func transReady() {
+        let coordinator = SceneCoordinator(window: window!)
+        let viewModel = ReadyViewModel(title: "", coordinator: coordinator)
+        let scene: SceneType = MainScene.ready(viewModel as! ReadyViewModel)
+        coordinator.transition(to: scene, using: .root, animated: true)
+
+    }
+    
     fileprivate func testing() {
 //        testingFeed()
 //        testingMission()
-        testingMain()
+//        testingMain()
 //        testingAdminExit()
 //        testingParticipantExit()
     }

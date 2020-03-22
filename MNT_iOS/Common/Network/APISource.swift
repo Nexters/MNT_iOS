@@ -14,14 +14,6 @@ class APISource: APISourceProtocol {
     static let shared = APISource()
     private init() {}
     
-    func getTimeline(roomId: Int, completion: @escaping ([Mission]) -> Void) -> Disposable? {        
-        return requestDataObject(.get,
-                    .missionList,
-                    parameters: roomId) { (res: MissionListResponse) in
-                        completion(res.data)
-        }
-    }
-    
     func getUserList(roomId: Int, completion: @escaping ([Participant]) -> Void) -> Disposable? {
         return requestDataObject(.get,
                                  .userList,
@@ -30,16 +22,40 @@ class APISource: APISourceProtocol {
         }
     }
     
+    func postRoomMake(room: Room, userId: String, completion: @escaping (String) -> Void) -> Disposable? {
+        let params = [
+            "room" : room,
+            "userId" : userId
+        ] as [String: Any]
+
+        return requestDataObject(.get,
+                                 .userList,
+                                 parameters: params) { (res: RoomStringResponse) in
+                                    completion(res.data)
+        }
+    }
+    
     func getRoomAttend(roomId: Int, userId: String, completion: @escaping (Room) -> Void) -> Disposable? {
-          let params = [
-              "roomId" : roomId,
-              "userId" : userId
-          ] as [String: Any]
-          
-          return requestDataObject(.get,
-                      .roomAttend,
-                      parameters: params) { (res: RoomAttendResponse) in
-                        completion(res.data)
-          }
-      }
+        let params = [
+            "userId" : userId
+        ] as [String: Any]
+        
+        return requestDataObject(.get,
+                                 .roomAttend,
+                                 parameters: params,
+                                 path: roomId) { (res: RoomResponse) in
+                                    completion(res.data)
+        }
+    }
+    
+    func postSignUp(user: User) -> Disposable? {
+        let params = [
+            "user" : user
+        ] as [String: Any]
+        
+        return requestWithoutData(.post,
+                                  .signUp,
+                                  parameters: params,
+                                  completion: {})
+    }
 }

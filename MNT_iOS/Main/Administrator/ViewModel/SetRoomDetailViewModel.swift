@@ -15,24 +15,26 @@ class SetRoomDetailViewModel: ViewModel {
     let maxRelay = BehaviorRelay(value: "")
     let beginDateRelay = BehaviorRelay(value: "")
     let endDateRelay = BehaviorRelay(value: "")
+    var roomIdRelay : String = ""
     
     func presentReadyAction() -> CocoaAction {
         return CocoaAction { action in
-//            let dateFormatter = DateFormatter()
-//            dateFormatter.dateStyle = .short
-//            dateFormatter.timeStyle = .none
-//            let beginDate : Date = dateFormatter.date(from: self.beginDateRelay.value)!
-//            let endDate : Date = dateFormatter.date(from: self.beginDateRelay.value)!
-//            let minEndDate: Date = beginDate + 86400
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .short
+            dateFormatter.timeStyle = .none
+            let beginDate : Date = dateFormatter.date(from: self.beginDateRelay.value)!
+            let endDate : Date = dateFormatter.date(from: self.endDateRelay.value)!
+            let minEndDate: Date = beginDate + 86400
             
-//            if minEndDate > endDate {
-//                let alert = UIAlertController(title: nil, message: "최소 방 유지 기간은 1일입니다.", preferredStyle: .alert)
-//                let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
-//                alert.addAction(okAction)
-//                UIApplication.topViewController()?.present(alert, animated: false)
-//
-//                return Observable.just(action)
-//            }
+            if minEndDate > endDate {
+                let alert = UIAlertController(title: nil, message: "최소 방 유지 기간은 1일입니다.", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
+                alert.addAction(okAction)
+                UIApplication.topViewController()?.present(alert, animated: false)
+
+                return Observable.just(action)
+            }
+            
             if self.beginDateRelay.value == "" || self.endDateRelay.value == "" || self.maxRelay.value == "" {
                 let alert = UIAlertController(title: nil, message: "값을 모두 입력해주세요", preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
@@ -50,12 +52,25 @@ class SetRoomDetailViewModel: ViewModel {
                 return Observable.just(action)
             }
             else {
+                self.makeRoom()
+                
                 let viewModel = ReadyViewModel(title: "대기화면", coordinator: self.coordinator)
                 let scene = MainScene.ready(viewModel)
-                print("begin : \(self.beginDateRelay.value)")
-                print("end : \(self.endDateRelay.value)")
                 return self.coordinator.transition(to: scene, using: .push, animated: true).asObservable().map { _ in }
             }
         }
+    }
+    
+    func makeRoom() {
+        APISource.shared.postRoomMake(room: Room(endDay : "2020-03-20",
+                                                 id : 0,
+                                                 isDone : 0,
+                                                 isStart : 0,
+                                                 maxPeople : 0,
+                                                 name : "하하호호",
+                                                 startDay : "2020-03-20"),
+                                      userId: "1") { (roomId) in
+                                        print("roomId : \(roomId)")
+        }?.disposed(by: rx.disposeBag)
     }
 }

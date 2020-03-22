@@ -22,10 +22,10 @@ struct Participant: Codable {
 }
 
 struct User: Codable {
-    var id: String = ""
-    var name: String = ""
-    var profilePic: String = ""
-    var fcmToken: String = ""
+    var id: String = "poi"
+    var name: String = "string"
+    var profilePic: String = "string"
+    var fcmToken: String = "string"
 }
 
 struct RoomInfo: Codable {

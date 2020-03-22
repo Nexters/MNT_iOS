@@ -35,7 +35,7 @@ extension UserListViewController: ViewModelBindableType {
     }
     
     private func getUserList() {
-        APISource.shared.getUserList(roomId: 86386) { (userlist) in
+        APISource.shared.getUserList(roomId: 53314) { (userlist) in
             self.viewModel?.userlist = userlist
             self.tableView.reloadData()
         }

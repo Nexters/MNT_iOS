@@ -28,16 +28,16 @@ class JoinRoomViewModel: ViewModel {
                 let viewModel = ReadyViewModel(title: "대기화면", coordinator: self.coordinator)
                 let scene = MainScene.ready(viewModel)
                 
-                self.getRoomAttend()
+                self.getRoomAttend(self.codeTextRelay.value)
                 
                 return self.coordinator.transition(to: scene, using: .push, animated: true).asObservable().map { _ in }
             }
         }
     }
     
-    private func getRoomAttend() {
-        APISource.shared.getRoomAttend(roomId: 0, userId: "") { room in
-            print("getRoomAttend() return : \(room)")
+    private func getRoomAttend(_ roomId: String) {
+        APISource.shared.getRoomAttend(roomId: Int(roomId) ?? 0, userId: "3") { room in
+            print("roomId = \(Int(roomId) ?? 0)")
         }?.disposed(by: rx.disposeBag)
     }
 }

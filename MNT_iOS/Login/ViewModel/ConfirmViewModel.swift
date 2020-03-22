@@ -13,6 +13,10 @@ class ConfirmViewModel: ViewModel {
         return CocoaAction { _ in
             let viewModel = MainViewModel(title: "메인", coordinator: self.coordinator)
             let scene = MainScene.main(viewModel)
+            
+            APISource.shared.postSignUp(user: User())?
+                .disposed(by: self.rx.disposeBag)
+            
             return self.coordinator.transition(to: scene, using: .root, animated: true).asObservable().map { _ in }
         }
     }
