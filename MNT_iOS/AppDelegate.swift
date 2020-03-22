@@ -32,7 +32,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         if session.token?.accessToken != nil {
-            transReady()
+            APISource.shared.getRoomExistCheck(userId: "zik") { httpStatus in
+                if httpStatus == 404 {
+                    self.transMain()
+                }
+                else {
+                    self.transReady()
+                }
+            }?.disposed(by: rx.disposeBag)
         } else {
             addObserver() // 로그인,로그아웃 상태 변경 받기
             reloadRootViewController()

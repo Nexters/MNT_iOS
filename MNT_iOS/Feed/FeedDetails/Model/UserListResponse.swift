@@ -22,7 +22,7 @@ struct Participant: Codable {
 }
 
 struct User: Codable {
-    var id: String = "poi"
+    var id: String = "string"
     var name: String = "string"
     var profilePic: String = "string"
     var fcmToken: String = "string"
