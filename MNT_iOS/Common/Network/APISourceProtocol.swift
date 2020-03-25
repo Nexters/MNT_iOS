@@ -24,6 +24,7 @@ enum URLType: String {
     case missionDoneList = "/mission/done"
     case userList = "/room/user-list"
     case roomAttend = "/room/attend"
+    case missionSend = "/mission/send"
 }
 
 // for case handling
@@ -144,8 +145,8 @@ extension APISourceProtocol {
     func requestWithoutData<P: Any>(_ method: HTTPMethod,
                                     _ url: URLType,
                                     parameters: P?,
-                                    encoding: ParameterEncoding,
-                                    headers: [String: String]?,
+                                    encoding: ParameterEncoding = URLEncoding.default,
+                                    headers: [String: String]? = nil,
                                     completion: (() -> Void)?) -> Disposable? {
         let params = (parameters is [String: Any]?) == true ? parameters : nil
         let path = parameters != nil && params == nil ? "/\(String(describing: parameters!))" : ""

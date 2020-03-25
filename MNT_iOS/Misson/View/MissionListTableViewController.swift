@@ -40,6 +40,12 @@ class MissionTableViewController: UITableViewController {
         tableView.registerNib(MissionCell.self)
         tableView.registerNib(MissionMakeCell.self)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        BottomBar.shared.showBottomBar()
+    }
 
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

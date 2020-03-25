@@ -31,6 +31,26 @@ struct UserMission: Codable {
     var userId: UserId = UserId()
 }
 
+struct MissionSendingData {
+    var mission: Mission
+    var content: String = ""
+//    var img: FILE =
+    var asMissionSendPostData: MissionSendingPostData {
+        return MissionSendingPostData(roomId: mission.userMission.roomId,
+                                      userId: mission.userMission.userId.id,
+                                      missionId: mission.missionId,
+                                      content: content)
+    }
+}
+
+struct MissionSendingPostData {
+    var roomId: CLong
+    var userId: String
+    var missionId: CLong
+    var content: String
+//    var img: FIle
+}
+
 struct Manitto: Codable {
     var id: String = ""
     var fruttoId: Int = 0

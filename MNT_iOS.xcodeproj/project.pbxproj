@@ -11,6 +11,8 @@
 		1A01BB6923F64B9B00FF8B7C /* UserListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A01BB6723F64B9B00FF8B7C /* UserListCell.swift */; };
 		1A01BB6A23F64B9B00FF8B7C /* UserListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A01BB6823F64B9B00FF8B7C /* UserListCell.xib */; };
 		1A21D26D242B7CC800FCAC3C /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A21D26C242B7CC800FCAC3C /* UIViewController+.swift */; };
+		1A21D26F242B8ADF00FCAC3C /* MissionDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A21D26E242B8ADF00FCAC3C /* MissionDetail.swift */; };
+		1A21D271242B8B7B00FCAC3C /* MissionPreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A21D270242B8B7B00FCAC3C /* MissionPreviewViewModel.swift */; };
 		1A3022AD23EBDAD800693E22 /* AddNewMissionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3022AC23EBDAD800693E22 /* AddNewMissionViewModel.swift */; };
 		1A3022AF23EBDB5B00693E22 /* AddNewMissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3022AE23EBDB5B00693E22 /* AddNewMissionViewController.swift */; };
 		1A49808523C967C1004B4058 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A49808423C967C1004B4058 /* LoginController.swift */; };
@@ -74,7 +76,6 @@
 		1AB0696E23F232B0000B8D27 /* FeedFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0696D23F232B0000B8D27 /* FeedFilterViewController.swift */; };
 		1AB0697023F232C6000B8D27 /* FeedFilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0696F23F232C6000B8D27 /* FeedFilterViewModel.swift */; };
 		1AD5F7BB23E8762400F96263 /* MissionPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD5F7BA23E8762400F96263 /* MissionPreviewViewController.swift */; };
-		1AD5F7BD23E8771500F96263 /* MissionDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD5F7BC23E8771500F96263 /* MissionDetail.swift */; };
 		1AD6D40523BF9DBC000B1893 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD6D40423BF9DBC000B1893 /* AppDelegate.swift */; };
 		1AD6D40723BF9DBC000B1893 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD6D40623BF9DBC000B1893 /* SceneDelegate.swift */; };
 		1AD6D40923BF9DBC000B1893 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD6D40823BF9DBC000B1893 /* MainViewController.swift */; };
@@ -173,6 +174,8 @@
 		1A01BB6723F64B9B00FF8B7C /* UserListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListCell.swift; sourceTree = "<group>"; };
 		1A01BB6823F64B9B00FF8B7C /* UserListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserListCell.xib; sourceTree = "<group>"; };
 		1A21D26C242B7CC800FCAC3C /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
+		1A21D26E242B8ADF00FCAC3C /* MissionDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionDetail.swift; sourceTree = "<group>"; };
+		1A21D270242B8B7B00FCAC3C /* MissionPreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionPreviewViewModel.swift; sourceTree = "<group>"; };
 		1A3022AC23EBDAD800693E22 /* AddNewMissionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewMissionViewModel.swift; sourceTree = "<group>"; };
 		1A3022AE23EBDB5B00693E22 /* AddNewMissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewMissionViewController.swift; sourceTree = "<group>"; };
 		1A49808423C967C1004B4058 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -239,7 +242,6 @@
 		1AB0697123F27F16000B8D27 /* TabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewModel.swift; sourceTree = "<group>"; };
 		1AB0697223F27F16000B8D27 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		1AD5F7BA23E8762400F96263 /* MissionPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionPreviewViewController.swift; sourceTree = "<group>"; };
-		1AD5F7BC23E8771500F96263 /* MissionDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionDetail.swift; sourceTree = "<group>"; };
 		1AD6D40123BF9DBC000B1893 /* MNT_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MNT_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AD6D40423BF9DBC000B1893 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1AD6D40623BF9DBC000B1893 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -569,6 +571,7 @@
 			isa = PBXGroup;
 			children = (
 				1A4E68A423E474D4005D2CFD /* MissionPostViewModel.swift */,
+				1A21D270242B8B7B00FCAC3C /* MissionPreviewViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -576,8 +579,8 @@
 		1A4E689E23E471BC005D2CFD /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1AD5F7BC23E8771500F96263 /* MissionDetail.swift */,
 				1A595E772425ACBB0080AE61 /* MissionDoneResponse.swift */,
+				1A21D26E242B8ADF00FCAC3C /* MissionDetail.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1417,6 +1420,7 @@
 				1AB0696E23F232B0000B8D27 /* FeedFilterViewController.swift in Sources */,
 				1AFC040223C99841005B7A6F /* Objects+.swift in Sources */,
 				581B160E23EC790D00D0593B /* UICollectionView+.swift in Sources */,
+				1A21D271242B8B7B00FCAC3C /* MissionPreviewViewModel.swift in Sources */,
 				1A01BB6623F6456200FF8B7C /* UserListResponse.swift in Sources */,
 				583659B323E19F4800E2752F /* BaseNavigationController.swift in Sources */,
 				1AECB7D823F14A950018BC16 /* MissionTypeView.swift in Sources */,
@@ -1434,7 +1438,6 @@
 				1A4E688923E40DD3005D2CFD /* MissionViewModel.swift in Sources */,
 				1AD6D40F23BF9DBC000B1893 /* MNT_iOS.xcdatamodeld in Sources */,
 				1A4E68A523E474D4005D2CFD /* MissionPostViewModel.swift in Sources */,
-				1AD5F7BD23E8771500F96263 /* MissionDetail.swift in Sources */,
 				1A81AE5A23E9099A004CADBC /* FeedDetailViewController.swift in Sources */,
 				1AD6D40523BF9DBC000B1893 /* AppDelegate.swift in Sources */,
 				1ADEFD9E23FC5A8E00E3DC49 /* CloseButtonBar.swift in Sources */,
@@ -1496,6 +1499,7 @@
 				1A3022AF23EBDB5B00693E22 /* AddNewMissionViewController.swift in Sources */,
 				1AAB0E2D23DECBDE0003A2C4 /* UIButton+.swift in Sources */,
 				581B161623ECB2CB00D0593B /* UIAlertController+.swift in Sources */,
+				1A21D26F242B8ADF00FCAC3C /* MissionDetail.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

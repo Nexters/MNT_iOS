@@ -10,6 +10,9 @@ import Foundation
 
 class MissionPostViewModel: ViewModel {
     let missionInfo: Mission
+    lazy var missionSendingData: MissionSendingData = {
+        return MissionSendingData(mission: missionInfo, content: "")
+    }()
     
     lazy var missionName: String = {
         let missionName = missionInfo.missionName ?? ""
@@ -26,18 +29,10 @@ class MissionPostViewModel: ViewModel {
         super.init(title: title, coordinator: coordinator)
     }
     
-    func missionPreviewAction(content: String, imageURL: String) -> CocoaAction {
+    func missionPreviewAction() -> CocoaAction {
         return Action { [unowned self] _ in
-            let missionDetail = MissionDetail(mission: self.missionInfo,
-                                               fromId: 1,
-                                               toId: 1,
-                                               fromImageURL: "",
-                                               toImageURL: "",
-                                               text: content,
-                                               imageURL: imageURL)
-            let viewModel = FeedDetailViewModel(title: "미리보기",
-                                                   coordinator: self.coordinator,
-                                                   missionDetail: missionDetail)
+            let viewModel = MissionPreviewViewModel(missionSendingData: self.missionSendingData,
+                                                        coordinator: self.coordinator)
             return self.coordinator.transition(to: MissionScene.missionPreview(viewModel),
                                                using: .push,
                                                animated: true).asObservable().map { _ in}

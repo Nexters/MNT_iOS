@@ -43,7 +43,19 @@ extension SceneCoordinator: SceneCoordinatorType {
         
         return subject.ignoreElements()
     }
+    
+    func transition(using style: TransitionStyle) -> Completable {
+        let subject = PublishSubject<Void>()
+        switch style {
+        case .popToRoot:
+            currentVC.navigationController?.popToRootViewController(animated: true)
+        default:
+            break
+        }
         
+        return subject.ignoreElements()
+    }
+    
     func transition(to scene: SceneType, using style: TransitionStyle, animated: Bool) -> Completable {
         let subject = PublishSubject<Void>()
         let target = scene.instantiate()

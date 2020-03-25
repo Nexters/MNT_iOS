@@ -29,6 +29,8 @@ protocol SceneType {
 protocol SceneCoordinatorType {
     func showAlert(title: String, message: String) -> Completable
     
+    func transition(using style: TransitionStyle) -> Completable
+    
     func transition(to scene: SceneType, using style: TransitionStyle, animated: Bool) -> Completable
     
     func close(animated: Bool) -> Completable

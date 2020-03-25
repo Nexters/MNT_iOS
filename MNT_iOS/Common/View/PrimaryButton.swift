@@ -9,6 +9,12 @@
 import UIKit
 
 class PrimaryButton: UIButton {
+    override var isEnabled: Bool {
+        didSet {
+            setState()
+        }
+    }
+    
     required init(_ text: String) {
         super.init(frame: .zero)
         self.backgroundColor = .primaryColor
@@ -26,5 +32,13 @@ class PrimaryButton: UIButton {
         self.withHeight((superview?.frame.width)! * 0.16)
         self.layer.cornerRadius = 10.0
         self.clipsToBounds = true
+    }
+    
+    fileprivate func setState() {
+        if isEnabled {
+            self.backgroundColor = .primaryColor
+        } else {
+            self.backgroundColor = .lightGray
+        }
     }
 }

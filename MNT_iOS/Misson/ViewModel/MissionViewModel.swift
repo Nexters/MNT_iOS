@@ -10,6 +10,8 @@ class MissionViewModel: ViewModel {
     var missions: [Mission] = []
     
     func missionDetailAction(index: Int) {
+        BottomBar.shared.hideBottomBar()
+        
         if missions[index].userMission.userDone == 1 {
             return
         }
@@ -26,6 +28,8 @@ class MissionViewModel: ViewModel {
     }
     
     func addNewMissionAction(_ gesture: UITapGestureRecognizer) -> Void {
+        BottomBar.shared.hideBottomBar()
+        
         let viewModel = AddNewMissionViewModel(title: "미션 부여하기", coordinator: self.coordinator)
         let scene = MissionScene.addNewMission(viewModel)
         self.coordinator

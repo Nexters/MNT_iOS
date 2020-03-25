@@ -12,13 +12,21 @@ class MissionPostViewController: ViewController {
     var viewModel: MissionPostViewModel?
     fileprivate let titleLabel = UILabel(text: "title", font: .boldSystemFont(ofSize: 20))
     fileprivate let subtitleLabel = UILabel(text: "subtitle", font: .systemFont(ofSize: 16), textColor: .defaultText)
-    fileprivate let button = UIButton(title: "이미지 업로드", titleColor: .black)
+    fileprivate lazy var button: PrimaryButton = {
+        let b = PrimaryButton("미션 등록하기")
+        b.isEnabled = false
+        return b
+    }()
     fileprivate let textfieldContainer = TextFieldContainer()
     
-    fileprivate lazy var textfield: UITextField = {
-        let tf = UITextField(placeholder: "텍스트를 입력해주세요.")
-        tf.textAlignment = .left
-        return tf
+    fileprivate let placeholder = "텍스트를 입력해주세요."
+    fileprivate lazy var textView: UITextView = {
+        let tv = UITextView(frame: .zero)
+        tv.backgroundColor = .clear
+        tv.delegate = self
+        tv.text = placeholder
+        tv.textColor = .lightGray
+        return tv
     }()
     
     fileprivate lazy var titleStackView: UIStackView = {
@@ -49,7 +57,7 @@ class MissionPostViewController: ViewController {
     override func setupLayout() {
         view.backgroundColor = .white
         view.addSubview(wholeStackView)
-        view.addSubview(textfield)
+        view.addSubview(textView)
         view.addSubview(button)
         
         wholeStackView.anchor(
@@ -57,7 +65,7 @@ class MissionPostViewController: ViewController {
             .leading(view.leadingAnchor, constant: 40),
             .trailing(view.trailingAnchor, constant: 40))
             
-        textfield.anchor(.top(textfieldContainer.topAnchor, constant: 19),
+        textView.anchor(.top(textfieldContainer.topAnchor, constant: 19),
                                   .leading(textfieldContainer.leadingAnchor, constant: 24),
                                   .trailing(textfieldContainer.trailingAnchor, constant: 24),
                                   .bottom(textfieldContainer.bottomAnchor, constant: 19))
@@ -79,6 +87,42 @@ extension MissionPostViewController: ViewModelBindableType {
     func bindViewModel(viewModel: MissionPostViewModel) {
         titleLabel.text = viewModel.missionName
         subtitleLabel.text = viewModel.missionDescription
-        
+        button.rx.action = viewModel.missionPreviewAction()
+    }
+}
+
+// Setup Placeholder
+extension MissionPostViewController: UITextViewDelegate {
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text == "" {
+            setupPlaceHolder()
+        }
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        setupPlaceHolder()
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            textView.resignFirstResponder()
+        }
+        return true
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        textfieldContainer.updateLabel(count: textView.text.count)
+        button.isEnabled = !(textView.text.count == 0 || textView.text == placeholder)
+        viewModel?.missionSendingData.content = textView.text
+    }
+    
+    fileprivate func setupPlaceHolder() {
+        if textView.text == placeholder {
+            textView.text = ""
+            textView.textColor = .black
+        } else if textView.text == "" {
+            textView.text = placeholder
+            textView.textColor = .lightGray
+        }
     }
 }
