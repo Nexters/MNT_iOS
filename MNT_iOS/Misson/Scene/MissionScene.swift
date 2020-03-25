@@ -28,6 +28,7 @@ extension MissionScene: SceneType {
             navigationVC.navigationBar.shadowImage = UIImage()
             if var mainVC = navigationVC.viewControllers.first as? MissionParticipantViewController {
                 mainVC.bind(viewModel: viewModel)
+                mainVC.setNaivgationItemsAsDefault()
             }
             return navigationVC
         case .missionAdministrator(let viewModel):
@@ -36,6 +37,7 @@ extension MissionScene: SceneType {
             navigationVC.navigationBar.shadowImage = UIImage()
             if var mainVC = navigationVC.viewControllers.first as? MissionAdministratorViewController {
                 mainVC.bind(viewModel: viewModel)
+                mainVC.setNaivgationItemsAsDefault()
             }
             return navigationVC
         case .missionPost(let viewModel):
