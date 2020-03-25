@@ -62,7 +62,6 @@ class MissionTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section < tableView.numberOfSections-1 {
             // for administrator only
-            print("tagg why...?")
             let cell = tableView.dequeueReusableCell(MissionMakeCell.self)
             return cell
         }

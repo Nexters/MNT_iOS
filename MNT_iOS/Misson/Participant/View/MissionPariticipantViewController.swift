@@ -23,7 +23,6 @@ class MissionParticipantViewController: ViewController {
         )
         
         missionTableController.tableView.rx.itemSelected.subscribe { [weak self] indexPath in
-            print("tagg hihiiii")
             guard let index = indexPath.element?.row else { return }
             self?.viewModel?.missionDetailAction(index: index)
         }
@@ -36,6 +35,12 @@ class MissionParticipantViewController: ViewController {
         super.viewWillAppear(animated)
         
         navigationController?.navigationBar.isHidden = true
+        BottomBar.shared.showBottomBar()
+        
+        if let viewModel = viewModel {
+            getMissionDoneList(viewModel)
+        }
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -47,11 +52,10 @@ class MissionParticipantViewController: ViewController {
 
 extension MissionParticipantViewController: ViewModelBindableType {
     func bindViewModel(viewModel: MissionViewModel) {
-        getMissionDoneList(viewModel)
     }
     
     private func getMissionDoneList(_ viewModel: MissionViewModel) {
-        APISource.shared.getMissionDoneList(roomId: 83550, userId: "182") { [weak self] (missions) in
+        APISource.shared.getMissionDoneList(roomId: 83550, userId: "183") { [weak self] (missions) in
             viewModel.missions = missions
             self?.missionTableController.missions = viewModel.missions
             }?.disposed(by: rx.disposeBag)

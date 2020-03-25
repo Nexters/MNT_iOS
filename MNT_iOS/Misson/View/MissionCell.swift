@@ -9,8 +9,9 @@
 import UIKit
 
 class MissionCell: UITableViewCell {    
-    let label = UILabel(text: "👏🏻 칭찬하기", font: .boldSystemFont(ofSize: 15), numberOfLines: 1)
-    
+    fileprivate let label = UILabel(text: "👏🏻 칭찬하기", font: .boldSystemFont(ofSize: 15), numberOfLines: 1)
+    fileprivate let view = MissionCellButtonForParitipant()
+
     override var frame: CGRect {
         get {
             return super.frame
@@ -26,8 +27,21 @@ class MissionCell: UITableViewCell {
         }
     }
     
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        addSubview(view)
+        addSubview(label)
+        
+        view.centerYToSuperview()
+        view.anchor(.trailing(trailingAnchor, constant: 16))
+        
+        label.centerYToSuperview()
+        label.anchor(.leading(leadingAnchor, constant: 24))
+        let constraint = label.trailingAnchor.constraint(greaterThanOrEqualTo: view.leadingAnchor, constant: 15)
+        constraint.priority = .defaultLow
+        constraint.isActive = true
         
         selectedBackgroundView = .init(backgroundColor: .clear)
     }
@@ -37,9 +51,7 @@ extension MissionCell {
     
     func setup(mission: Mission) {
         // 참여자인지 관리자인지
-        let view = MissionCellButtonForParitipant()
-        addSubview(view)
-        addSubview(label)
+       
         // check is done or not
         if mission.userMission.userDone != 1 {
             view.setupState(state: .yet)
@@ -58,15 +70,6 @@ extension MissionCell {
         }
         
         label.text = mission.missionName
-        
-        view.centerYToSuperview()
-        view.anchor(.trailing(trailingAnchor, constant: 16))
-        
-        label.centerYToSuperview()
-        label.anchor(.leading(leadingAnchor, constant: 24))
-        let constraint = label.trailingAnchor.constraint(greaterThanOrEqualTo: view.leadingAnchor, constant: 15)
-        constraint.priority = .defaultLow
-        constraint.isActive = true
     }
 }
 
