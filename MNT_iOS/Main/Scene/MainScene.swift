@@ -47,9 +47,11 @@ extension MainScene: SceneType {
             return setRoomDetailVC
             
         case .ready(let viewModel):
-            var readyVC = ReadyViewController()
-            readyVC.bind(viewModel: viewModel)
-            return readyVC
+            let navigationVC = UINavigationController(rootViewController: ReadyViewController())
+            if var readyVC = navigationVC.viewControllers.first as? ReadyViewController {
+                readyVC.bind(viewModel: viewModel)
+            }
+            return navigationVC
             
         case .enterRoom(let viewModel):
             var tabBarVC = TabBarViewController()

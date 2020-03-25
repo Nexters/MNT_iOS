@@ -15,10 +15,11 @@ class MainUserListViewController: ViewController {
         let tb = UITableView(backgroundColor: .white)
         tb.delegate = self
         tb.dataSource = self
-        tb.registerNib(MainUserListCell.self)
         tb.separatorStyle = .none
+        tb.allowsSelection = false
+        tb.registerNib(MainUserListCell.self)
         tb.showsVerticalScrollIndicator = false
-        tb.contentInset = .init(top: 20, left: 0, bottom: 0, right: 0)
+        tb.contentInset = .init(top: 0, left: 0, bottom: 0, right: 0)
         return tb
     }()
     
@@ -26,11 +27,20 @@ class MainUserListViewController: ViewController {
         view.addSubview(tableView)
         tableView.fillSuperview()
     }
+    
+    override func setupNavigationController() {
+        navigationItem.titleView = UILabel(text: "참여자 리스트", font: .boldSystemFont(ofSize: 20), textColor: .defaultText)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+    }
 }
 
 extension MainUserListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        viewModel?.userList.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -38,12 +48,12 @@ extension MainUserListViewController: UITableViewDelegate, UITableViewDataSource
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        viewModel?.userlist.count ?? 0
+        1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(UserListCell.self)
-        // bind
+        let cell = tableView.dequeueReusableCell(MainUserListCell.self)
+        cell.nameLabel.text = viewModel?.userList[indexPath.row]
         return cell
     }
 
@@ -62,8 +72,14 @@ extension MainUserListViewController: ViewModelBindableType {
 
         getUserList()
     }
-
-    private func getUserList() {
-        // Call API
+    
+    func getUserList() {
+        APISource.shared.getRoomUserList(roomId: 12768) { participants in
+            for i in 0..<participants.count {
+                print(participants[i].user.name)
+                self.viewModel?.userList.append(participants[i].user.name)
+                self.tableView.reloadData()
+            }
+        }?.disposed(by: self.rx.disposeBag)
     }
 }

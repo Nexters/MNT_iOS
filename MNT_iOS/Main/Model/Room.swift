@@ -13,9 +13,14 @@ struct RoomResponse: Codable {
     let data: Room
 }
 
-struct RoomStringResponse: Codable {
+struct RoomStringResponseTest: Codable {
     let apiStatus: APIStatus
     let data: String
+}
+
+struct RoomStringResponse: Codable {
+    let apiStatus: APIStatus
+    let data: String?
 }
 
 struct RoomUserResponse: Codable {
@@ -25,44 +30,34 @@ struct RoomUserResponse: Codable {
 
 struct RoomCheckResponse: Codable {
     let apiStatus: APIStatus
-    let data: [RoomCheck] = []
+    let data: [RoomCheck]
 }
 
-struct RoomCheck: Codable {
-    let isCreater: Int = 0
-    let manitto: Manitto = Manitto()
-    let room: Room = Room()
-    let user: User = User()
+struct RoomCheck: Codable, ProduceRoomCheckViewModel {
+    let isCreater: Int
+    let manitto: Manitto
+    let room: Room
+    let user: User
     let userFruttoId: Int? = nil
+    
+    var asRoomCheckViewModel: RoomCheckViewModel {
+        return RoomCheckViewModel(datas: self)
+    }
 }
 
 struct Room: Codable, getRoomViewModel {
-    let endDay: String = "2020-03-20"
-    let id: Int = 0
-    let isDone: Int = 0
-    let isStart: Int = 0
-    let maxPeople: Int = 0
-    let name: String = "방이름"
-    let startDay: String = "2020-03-20"
+    let endDay: String
+    let id: Int
+    let isDone: Int
+    let isStart: Int
+    let maxPeople: Int
+    let name: String
+    let startDay: String
 
     var asRoomViewModel: RoomViewModel {
         return RoomViewModel(datas: self)
     }
 }
-
-//struct Room: Codable, getRoomViewModel {
-//    let endDay: String
-//    let id: Int
-//    let isDone: Int
-//    let isStart: Int
-//    let maxPeople: Int
-//    let name: String
-//    let startDay: String
-//
-//    var asRoomViewModel: RoomViewModel {
-//        return RoomViewModel(datas: self)
-//    }
-//}
 
 struct Users : Codable{
     let isCreater: Int

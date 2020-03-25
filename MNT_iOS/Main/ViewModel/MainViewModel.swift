@@ -14,6 +14,16 @@ import RxSwift
 class MainViewModel: ViewModel {
     let textfieldRelay = BehaviorRelay(value: "")
     
+    func test() {
+        APISource.shared.getRoomExistCheck(userId: "zik") { httpStatus in
+            if httpStatus != 404 {
+                let viewModel = ReadyViewModel(title: "", coordinator: self.coordinator)
+                let scene: SceneType = MainScene.ready(viewModel as! ReadyViewModel)
+                self.coordinator.transition(to: scene, using: .root, animated: true).asObservable().map { _ in }
+            }
+        }?.disposed(by: rx.disposeBag)
+    }
+    
     func presentJoinAction() -> CocoaAction {
         return CocoaAction { _ in
             let viewModel = JoinRoomViewModel(title: "참여하기", coordinator: self.coordinator)

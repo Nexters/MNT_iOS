@@ -56,15 +56,25 @@ class SetRoomDetailViewModel: ViewModel {
                 
                 let viewModel = ReadyViewModel(title: "대기화면", coordinator: self.coordinator)
                 let scene = MainScene.ready(viewModel)
-                return self.coordinator.transition(to: scene, using: .push, animated: true).asObservable().map { _ in }
+                return self.coordinator.transition(to: scene, using: .root, animated: true).asObservable().map { _ in }
             }
         }
     }
     
     func makeRoom() {
-//        APISource.shared.postRoomMake(room: Room(),
-//                                      userId: "1") { (roomId) in
-//                                        print("roomId : \(roomId)")
-//        }?.disposed(by: rx.disposeBag)
+        print("fisrt")
+        APISource.shared.postRoomMake(room: Room(endDay: "2020-03-25",
+                                                 id: 0,
+                                                 isDone: 0,
+                                                 isStart: 0,
+                                                 maxPeople: 4,
+                                                 name: "wowwow",
+                                                 startDay: "2020-03-25"),
+                                      userId: "rmt") { (roomId) in
+                                        print("fourth")
+                                        print("roomId : \(roomId)")
+        }?.disposed(by: rx.disposeBag)
     }
 }
+
+

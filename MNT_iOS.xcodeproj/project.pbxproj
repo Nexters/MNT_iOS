@@ -129,8 +129,9 @@
 		58D017BA23FC799600D55DA6 /* DisableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D017B923FC799600D55DA6 /* DisableButton.swift */; };
 		58D017BC23FD6D9700D55DA6 /* MainUserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D017BB23FD6D9700D55DA6 /* MainUserListViewController.swift */; };
 		58D017BE23FD6DC500D55DA6 /* MainUserListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D017BD23FD6DC500D55DA6 /* MainUserListViewModel.swift */; };
-		58D017C023FD6E2A00D55DA6 /* MainUserListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D017BF23FD6E2A00D55DA6 /* MainUserListCell.swift */; };
 		58D017C22427AE9D00D55DA6 /* FruitImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D017C12427AE9C00D55DA6 /* FruitImage.swift */; };
+		58D017C9242A6B3600D55DA6 /* MainUserListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D017C7242A6B3600D55DA6 /* MainUserListCell.swift */; };
+		58D017CA242A6B3600D55DA6 /* MainUserListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58D017C8242A6B3600D55DA6 /* MainUserListCell.xib */; };
 		66B8E3541E3CFB1FAA501496 /* Pods_MNT_iOS_MNT_iOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88EA694FBB02409DA30AB831 /* Pods_MNT_iOS_MNT_iOSUITests.framework */; };
 		6F8C0272B30607E25FC8F8C8 /* Pods_MNT_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95E9A4A6BF4DD4A6D97A4951 /* Pods_MNT_iOS.framework */; };
 		B13A90DE644E5B9587B70BAD /* Pods_MNT_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 186C7888D6F657BF5ED2D930 /* Pods_MNT_iOSTests.framework */; };
@@ -291,8 +292,9 @@
 		58D017B923FC799600D55DA6 /* DisableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisableButton.swift; sourceTree = "<group>"; };
 		58D017BB23FD6D9700D55DA6 /* MainUserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUserListViewController.swift; sourceTree = "<group>"; };
 		58D017BD23FD6DC500D55DA6 /* MainUserListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUserListViewModel.swift; sourceTree = "<group>"; };
-		58D017BF23FD6E2A00D55DA6 /* MainUserListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUserListCell.swift; sourceTree = "<group>"; };
 		58D017C12427AE9C00D55DA6 /* FruitImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitImage.swift; sourceTree = "<group>"; };
+		58D017C7242A6B3600D55DA6 /* MainUserListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUserListCell.swift; sourceTree = "<group>"; };
+		58D017C8242A6B3600D55DA6 /* MainUserListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainUserListCell.xib; sourceTree = "<group>"; };
 		88EA694FBB02409DA30AB831 /* Pods_MNT_iOS_MNT_iOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MNT_iOS_MNT_iOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		95E9A4A6BF4DD4A6D97A4951 /* Pods_MNT_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MNT_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB74A15F01BF71A867A7F874 /* Pods-MNT_iOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MNT_iOSTests.debug.xcconfig"; path = "Target Support Files/Pods-MNT_iOSTests/Pods-MNT_iOSTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -677,7 +679,8 @@
 				583659BC23E32AA300E2752F /* ReadyViewController.swift */,
 				58D017A323FA9DEE00D55DA6 /* TabBarViewController.swift */,
 				58D017BB23FD6D9700D55DA6 /* MainUserListViewController.swift */,
-				58D017BF23FD6E2A00D55DA6 /* MainUserListCell.swift */,
+				58D017C7242A6B3600D55DA6 /* MainUserListCell.swift */,
+				58D017C8242A6B3600D55DA6 /* MainUserListCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1132,6 +1135,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				58D017B623FBA94100D55DA6 /* SFProDisplay-Semibold.ttf in Resources */,
+				58D017CA242A6B3600D55DA6 /* MainUserListCell.xib in Resources */,
 				58D017B423FBA93400D55DA6 /* SFProDisplay-Medium.ttf in Resources */,
 				1A4E689123E40F81005D2CFD /* MissionCell.xib in Resources */,
 				1A01BB6A23F64B9B00FF8B7C /* UserListCell.xib in Resources */,
@@ -1329,7 +1333,6 @@
 				1AD5F7BD23E8771500F96263 /* MissionDetail.swift in Sources */,
 				1A81AE5A23E9099A004CADBC /* MissionDetailViewController.swift in Sources */,
 				1AD6D40523BF9DBC000B1893 /* AppDelegate.swift in Sources */,
-				58D017C023FD6E2A00D55DA6 /* MainUserListCell.swift in Sources */,
 				583659BF23E32B5100E2752F /* ReadyViewModel.swift in Sources */,
 				581B161A23ED6E3000D0593B /* FromToViewController.swift in Sources */,
 				581B15F223EAD04E00D0593B /* AlertExitViewController.swift in Sources */,
@@ -1337,6 +1340,7 @@
 				581B15F023EACE5F00D0593B /* AlertExitViewModel.swift in Sources */,
 				583659A523E146E600E2752F /* SetRoomTitleViewController.swift in Sources */,
 				1A81AE5D23E90A0C004CADBC /* MissionDetailViewModel.swift in Sources */,
+				58D017C9242A6B3600D55DA6 /* MainUserListCell.swift in Sources */,
 				1A4E687D23E404BC005D2CFD /* UICollectionView+.swift in Sources */,
 				1AAB0E3523DED2310003A2C4 /* NSObject+Rx.swift in Sources */,
 				1AECB7D023F0FA510018BC16 /* RxSwift+.swift in Sources */,

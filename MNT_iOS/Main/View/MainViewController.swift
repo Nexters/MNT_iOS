@@ -62,6 +62,8 @@ class MainViewController: ViewController {
 
 extension MainViewController: ViewModelBindableType {
     func bindViewModel(viewModel: MainViewModel) {
+//        viewModel.test()
+        
         joinButton.rx.action = viewModel.presentJoinAction()
         produceButton.rx.action = viewModel.presentSetAction()
     }

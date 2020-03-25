@@ -9,5 +9,7 @@
 import Foundation
 
 class MainUserListViewModel: ViewModel {
-    var userlist: [Participant] = []
+    var userList: [String] = []
+    
+    
 }

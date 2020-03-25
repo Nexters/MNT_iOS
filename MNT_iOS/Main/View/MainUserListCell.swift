@@ -2,15 +2,17 @@
 //  MainUserListCell.swift
 //  MNT_iOS
 //
-//  Created by Jihye on 2020/02/19.
+//  Created by Jihye on 2020/03/25.
 //  Copyright © 2020 최민섭. All rights reserved.
 //
-
 
 import UIKit
 
 class MainUserListCell: UITableViewCell {
-    let profileImage = CircularImageView(width: 40, image: #imageLiteral(resourceName: "group"))
+    
+    var viewModel: RoomCheckViewModel?
+    
+    let profileImage = CircularImageView(width: 60, image: #imageLiteral(resourceName: "profileFace01"))
     let nameLabel = UILabel(text: "마니또",
                             font: .semiBoldFont(ofSize: 15),
                             textColor: .defaultText,
@@ -23,10 +25,10 @@ class MainUserListCell: UITableViewCell {
         nameLabel
        ])
         sv.axis = .horizontal
-        sv.spacing = 30
+        sv.spacing = 0
         return sv
     }()
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -37,7 +39,7 @@ class MainUserListCell: UITableViewCell {
         
         stackView.centerYToSuperview()
         logoutImage.centerYToSuperview()
-        stackView.anchor(.leading(leadingAnchor, constant: 60))
-        logoutImage.anchor(.trailing(trailingAnchor, constant: 60))
+        stackView.anchor(.leading(leadingAnchor, constant: 20))
+        logoutImage.anchor(.trailing(trailingAnchor, constant: 30))
     }
 }

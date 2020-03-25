@@ -14,14 +14,6 @@ class APISource: APISourceProtocol {
     static let shared = APISource()
     private init() {}
     
-    func getUserList(roomId: Int, completion: @escaping ([Participant]) -> Void) -> Disposable? {
-        return requestDataObject(.get,
-                                 .userList,
-                                 parameters: roomId) { (res: UserListResponse) in
-                                    completion(res.data)
-        }
-    }
-    
     func getRoomAttend(roomId: Int, userId: String, completion: @escaping (Room) -> Void) -> Disposable? {
         let params = [
             "userId" : userId
@@ -31,7 +23,6 @@ class APISource: APISourceProtocol {
                                  .roomAttend,
                                  parameters: params,
                                  path: roomId) { (res: RoomResponse) in
-                                    print("label = \(res.apiStatus.label)")
                                     completion(res.data)
         }
     }
@@ -63,15 +54,51 @@ class APISource: APISourceProtocol {
         }
     }
     
+    func getRoomUserListTest(roomId: Int, completion: @escaping (Int) -> Void) -> Disposable? {
+        let params : [String : Any] = [:]
+        
+        return requestDataObject(.get,
+                                 .roomUserList,
+                                 parameters: params,
+                                 path: roomId) { (res : RoomCheckResponse) in
+                                    completion(res.apiStatus.httpStatus)
+        }
+    }
+    
+    func getRoomUserList(roomId: Int, completion: @escaping ([RoomCheck]) -> Void) -> Disposable? {
+        let params : [String : Any] = [:]
+        
+        return requestDataObject(.get,
+                                 .roomUserList,
+                                 parameters: params,
+                                 path: roomId) { (res : RoomCheckResponse) in
+                                    completion(res.data)
+        }
+    }
+    
+    func getRoomStart(roomId: Int, completion: @escaping (String?) -> Void) -> Disposable? {
+        let params : [String : Any] = [:]
+        
+        return requestDataObject(.get,
+                                 .roomStart,
+                                 parameters: params,
+                                 path: roomId) { (res : RoomStringResponse) in
+                                    completion(String(res.data ?? ""))
+        }
+    }
+    
     func postRoomMake(room: Room, userId: String, completion: @escaping (String) -> Void) -> Disposable? {
         let params = [
             "room" : room,
             "userId" : userId
         ] as [String: Any]
+        
+        print("second")
 
         return requestDataObject(.get,
-                                 .userList,
-                                 parameters: params) { (res: RoomStringResponse) in
+                                 .roomMake,
+                                 parameters: params) { (res: RoomStringResponseTest) in
+                                    print("third - \(res.apiStatus.label)")
                                     completion(res.data)
         }
     }

@@ -23,6 +23,7 @@ class UserListViewController: ViewController {
     
     override func setupLayout() {
         view.addSubview(tableView)
+        
         tableView.fillSuperview()
     }
 }
@@ -31,15 +32,15 @@ extension UserListViewController: ViewModelBindableType {
     func bindViewModel(viewModel: UserListViewModel) {
         self.viewModel = viewModel
         
-        getUserList()
+//        getUserList()
     }
     
-    private func getUserList() {
-        APISource.shared.getUserList(roomId: 53314) { (userlist) in
-            self.viewModel?.userlist = userlist
-            self.tableView.reloadData()
-        }
-    }
+//    private func getUserList() {
+//        APISource.shared.getUserList(roomId: 53314) { (userlist) in
+//            self.viewModel?.userlist = userlist
+//            self.tableView.reloadData()
+//        }
+//    }
 }
 
 extension UserListViewController: UITableViewDelegate, UITableViewDataSource {

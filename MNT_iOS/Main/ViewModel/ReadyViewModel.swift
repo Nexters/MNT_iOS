@@ -11,8 +11,10 @@ import Action
 import RxSwift
 
 class ReadyViewModel: ViewModel {
-    func sendKakaoLinkAction(code: Int) -> CocoaAction {
+    func sendKakaoLinkAction() -> CocoaAction {
         return Action { [unowned self] action in
+            let code = 11111
+            
             let template = KMTFeedTemplate { (feedTemplateBuilder) in
                 feedTemplateBuilder.content = KMTContentObject(builderBlock: { (contentBuilder) in
                     contentBuilder.title = "프룻프룻프루또\n초대코드 : \(code)"
@@ -48,21 +50,25 @@ class ReadyViewModel: ViewModel {
         }
     }
     
-    func enterRoom(code: Int) -> CocoaAction {
+    func enterRoom() -> CocoaAction {
         return CocoaAction { _ in
-            let viewModel = TabBarViewModel(title: "모아보기", coordinator: self.coordinator)
-            let scene = MainScene.enterRoom(viewModel)
+            let viewModel = TabBarViewModel(title: "", coordinator: self.coordinator)
+            let scene: SceneType = MainScene.enterRoom(viewModel)
             
-            return self.coordinator.transition(to: scene, using: .push, animated: true).asObservable().map { _ in }
+            APISource.shared.getRoomStart(roomId: 12768) { (request) in
+//                print("지혜짱")
+            }?.disposed(by: self.rx.disposeBag)
+            
+            return self.coordinator.transition(to: scene, using: .root, animated: true).asObservable().map { _ in }
         }
     }
     
-    func presentShowAction(code: Int) -> CocoaAction {
+    func presentShowAction() -> CocoaAction {
         return CocoaAction { _ in
             let viewModel = MainUserListViewModel(title: "참여자 리스트", coordinator: self.coordinator)
-            let scene = MainScene.showParticipant(viewModel)
-            
-            return self.coordinator.transition(to: scene, using: .push, animated: true).asObservable().map { _ in}
+            let scene: SceneType = MainScene.showParticipant(viewModel)
+
+            return self.coordinator.transition(to: scene, using: .push, animated: true).asObservable().map { _ in }
         }
     }
 }
