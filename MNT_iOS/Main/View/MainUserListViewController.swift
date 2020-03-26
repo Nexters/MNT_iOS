@@ -11,7 +11,7 @@ import Foundation
 class MainUserListViewController: ViewController {
     var viewModel: MainUserListViewModel?
     
-    fileprivate lazy var tableView: UITableView = {
+    lazy var tableView: UITableView = {
         let tb = UITableView(backgroundColor: .white)
         tb.delegate = self
         tb.dataSource = self
@@ -54,6 +54,11 @@ extension MainUserListViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(MainUserListCell.self)
         cell.nameLabel.text = viewModel?.userList[indexPath.row]
+        cell.deleteButton.tag = indexPath.row
+        cell.deleteButton.addTarget(self,
+                                    action: #selector(buttonTapped(_:)),
+                                    for: .touchUpInside)
+        
         return cell
     }
 
@@ -63,6 +68,33 @@ extension MainUserListViewController: UITableViewDelegate, UITableViewDataSource
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         UIView(backgroundColor: .clear)
+    }
+    
+    @objc func buttonTapped(_ sender: UIButton) {
+        let name : String = (viewModel?.userList[sender.tag])!
+        let alert = UIAlertController(title: "",
+                                      message: "\(name)님을 내보내시겠습니까?",
+                                      preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "네",
+                                     style: .default) { (action) in
+                                        self.deleteUser()
+        }
+        let cancelAction = UIAlertAction(title: "아니오",
+                                         style: .default,
+                                         handler: nil)
+        
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func deleteUser() {
+        APISource.shared.deleteRoomUser(roomId: 23017,
+                                        userId: "suzy") { (request) in
+                                            print("testing : delete")
+            }?.disposed(by: self.rx.disposeBag)
+        
+        getUserList()
     }
 }
 
@@ -74,10 +106,11 @@ extension MainUserListViewController: ViewModelBindableType {
     }
     
     func getUserList() {
-        APISource.shared.getRoomUserList(roomId: 12768) { participants in
-            for i in 0..<participants.count {
-                print(participants[i].user.name)
-                self.viewModel?.userList.append(participants[i].user.name)
+        
+        // viewModel.userList 초기화 혹은 indexPath.row에 해당하는 사람 userList에서 제외하고 tableView.reloadData()
+        
+        APISource.shared.getRoomUserList(roomId: 23017) { participants in
+            for i in 0..<participants.count { self.viewModel?.userList.append(participants[i].user.name)
                 self.tableView.reloadData()
             }
         }?.disposed(by: self.rx.disposeBag)

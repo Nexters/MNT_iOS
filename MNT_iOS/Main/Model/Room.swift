@@ -33,16 +33,12 @@ struct RoomCheckResponse: Codable {
     let data: [RoomCheck]
 }
 
-struct RoomCheck: Codable, ProduceRoomCheckViewModel {
+struct RoomCheck: Codable {
     let isCreater: Int
     let manitto: Manitto
     let room: Room
     let user: User
     let userFruttoId: Int? = nil
-    
-    var asRoomCheckViewModel: RoomCheckViewModel {
-        return RoomCheckViewModel(datas: self)
-    }
 }
 
 struct Room: Codable, getRoomViewModel {

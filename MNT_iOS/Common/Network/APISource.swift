@@ -14,6 +14,7 @@ class APISource: APISourceProtocol {
     static let shared = APISource()
     private init() {}
     
+    // success
     func getRoomAttend(roomId: Int, userId: String, completion: @escaping (Room) -> Void) -> Disposable? {
         let params = [
             "userId" : userId
@@ -27,6 +28,7 @@ class APISource: APISourceProtocol {
         }
     }
     
+    // success
     func getRoomExistCheck(userId: String, completion: @escaping (Int) -> Void) -> Disposable? {
         let headers = [
             "userId" : userId
@@ -42,29 +44,23 @@ class APISource: APISourceProtocol {
         }
     }
     
+    // success
     func getRoomCheck(userId: String, completion: @escaping ([RoomCheck]) -> Void) -> Disposable? {
-        let params = [
+        let headers = [
             "userId" : userId
-        ] as [String: Any]
+        ] as [String: String]
+        
+        let params : [String : Any] = [:]
         
         return requestDataObject(.get,
                                  .roomCheck,
-                                 parameters: params) { (res: RoomCheckResponse) in
+                                 parameters: params,
+                                 headers: headers) { (res: RoomCheckResponse) in
                                     completion(res.data)
         }
     }
     
-    func getRoomUserListTest(roomId: Int, completion: @escaping (Int) -> Void) -> Disposable? {
-        let params : [String : Any] = [:]
-        
-        return requestDataObject(.get,
-                                 .roomUserList,
-                                 parameters: params,
-                                 path: roomId) { (res : RoomCheckResponse) in
-                                    completion(res.apiStatus.httpStatus)
-        }
-    }
-    
+    // success
     func getRoomUserList(roomId: Int, completion: @escaping ([RoomCheck]) -> Void) -> Disposable? {
         let params : [String : Any] = [:]
         
@@ -76,6 +72,7 @@ class APISource: APISourceProtocol {
         }
     }
     
+    // success
     func getRoomStart(roomId: Int, completion: @escaping (String?) -> Void) -> Disposable? {
         let params : [String : Any] = [:]
         
@@ -86,7 +83,8 @@ class APISource: APISourceProtocol {
                                     completion(String(res.data ?? ""))
         }
     }
-    
+
+    // fail
     func postRoomMake(room: Room, userId: String, completion: @escaping (String) -> Void) -> Disposable? {
         let params = [
             "room" : room,
@@ -103,6 +101,7 @@ class APISource: APISourceProtocol {
         }
     }
     
+    // fail
     func postSignUp(user: User) -> Disposable? {
         let params = [
             "user" : user
@@ -111,6 +110,21 @@ class APISource: APISourceProtocol {
         return requestWithoutData(.post,
                                   .signUp,
                                   parameters: params,
+                                  encoding: JSONEncoding.default,
                                   completion: {})
+    }
+    
+    // fail - requestDatas Error : keyNotFound(CodingKeys(stringValue: "apiStatus", intValue: nil)
+    func deleteRoomUser(roomId: Int, userId: String, completion: @escaping (String?) -> Void) -> Disposable? {
+        let params = [
+            "roomId" : roomId,
+            "userId" : userId
+        ] as [String : Any]
+        
+        return requestDataObject(.delete,
+                                 .roomUser,
+                                 parameters: params) { (res: RoomStringResponse) in
+                                    completion(res.data)
+        }
     }
 }

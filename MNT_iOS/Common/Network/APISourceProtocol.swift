@@ -27,6 +27,7 @@ enum URLType: String {
     case roomCheck = "/room/check"
     case roomUserList = "/room/user-list"
     case roomStart = "/room/start"
+    case roomUser = "/room/delete"
 }
 
 // for case handling

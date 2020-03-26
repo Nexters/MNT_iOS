@@ -10,6 +10,4 @@ import Foundation
 
 class MainUserListViewModel: ViewModel {
     var userList: [String] = []
-    
-    
 }

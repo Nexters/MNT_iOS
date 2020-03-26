@@ -97,12 +97,14 @@ class JoinRoomViewController: ViewController {
 
 extension JoinRoomViewController: ViewModelBindableType {
     func bindViewModel(viewModel: JoinRoomViewModel) {
+        textField.text = viewModel.kakaoLinkParams
+        
         textField.rx.text.orEmpty
             .bind(to: viewModel.codeTextRelay)
             .disposed(by: rx.disposeBag)
-        
+
         nextButton.rx.action = viewModel.presentReadyAction()
-        
+
         textField.rx.controlEvent(.editingChanged)
             .subscribe(onNext: { [unowned self] in
                 if let text = self.textField.text {

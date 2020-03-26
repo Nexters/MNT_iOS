@@ -29,8 +29,8 @@ class ReadyViewModel: ViewModel {
                     buttonBuilder.link = KMTLinkObject(builderBlock: { (linkBuilder) in
                         //linkBuilder.webURL = URL(string: url)!
                         //linkBuilder.mobileWebURL = URL(string: "https://developers.kakao.com")!
-                        linkBuilder.iosExecutionParams = "code=\(code)"
-                        linkBuilder.androidExecutionParams = "code=\(code)"
+                        linkBuilder.iosExecutionParams = "\(code)"
+                        linkBuilder.androidExecutionParams = "\(code)"
                     })
                 }))
             }

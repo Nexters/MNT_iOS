@@ -39,7 +39,7 @@ class ConfirmViewController: ViewController {
     
     lazy var nameStack : UIStackView = {
         let sv = UIStackView(arrangedSubviews: [
-            nameSubLabel, idSubLabel
+            nameSubLabel, nameLabel
         ])
         sv.axis = .vertical
         sv.spacing = 9
@@ -55,8 +55,9 @@ class ConfirmViewController: ViewController {
         return sv
     }()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         requestMe()
     }
     
@@ -89,15 +90,42 @@ class ConfirmViewController: ViewController {
     }
     
     fileprivate func requestMe() {
-        KOSessionTask.userMeTask { [unowned self] (error, me) in
-            guard
-                let me = me,
-                let account = me.account
-                else {return}
-
+//        KOSessionTask.userMeTask { [unowned self] (error, me) in
+//            guard
+//                let me = me,
+//                let account = me.account
+//                else {return}
+//
 //            self.idLabel.text = account.email
-            self.nameLabel.text = me.nickname
-        }
+//            self.nameLabel.text = me.nickname
+//        }
+        
+        KOSessionTask.userMeTask(completion: { (error, me) in
+            if let error = error as NSError? {
+                UIAlertController.showMessage(error.description)
+            } else if let me = me as KOUserMe? {
+                print("nickName: \(String(describing: me.nickname))")
+                print("email: \(String(describing: me.account?.emailNeedsAgreement))")
+                print("id: \(String(describing: me.id))")
+                self.nameLabel.text = me.nickname
+                self.idLabel.text = me.account?.email
+            } else {
+                print("has no id")
+            }
+        })
+        
+//        fileprivate func kakaoLogin() {
+//            guard  let session = KOSession.shared() else {
+//                return
+//            }
+//
+//            if session.token?.accessToken != nil {
+//                self.transMain()
+//            } else {
+//                addObserver() // 로그인,로그아웃 상태 변경 받기
+//                reloadRootViewController()
+//            }
+//        }
     }
 }
 

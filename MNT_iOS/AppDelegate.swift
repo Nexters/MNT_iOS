@@ -49,9 +49,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     fileprivate func testing() {
 //        testingFeed()
 //        testingMission()
-        testingMain()
+//        testingMain()
 //        testingAdminExit()
 //        testingParticipantExit()
+        transMain()
     }
     
     fileprivate func testingMission() {
@@ -120,13 +121,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if KOSession.handleOpen(url) {
             return true
         }
-        return false
         
-//        if KLKTalkLinkCenter.shared().isTalkLinkCallback(url) {
-//            let params = url.query
-//            UIAlertController.showMessage("카카오링크 메시지 액션\n\(params ?? "파라미터 없음")")
-//            return true
-//        }
+        // Called When Execute KaKaoLink
+        if KLKTalkLinkCenter.shared().isTalkLinkCallback(url) {
+            let params = url.query
+            let coordinator = SceneCoordinator(window: window!)
+            let viewModel = MainViewModel(title: "", coordinator: coordinator)
+            let scene: SceneType = MainScene.main(viewModel as! MainViewModel)
+            
+            viewModel.kakaoLinkParams = params
+            coordinator.transition(to: scene, using: .root, animated: true)
+            return true
+        }
         return false
     }
     
@@ -134,12 +140,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if KOSession.handleOpen(url) {
             return true
         }
-        return false
-//        if KLKTalkLinkCenter.shared().isTalkLinkCallback(url) {
-//            let params = url.query
-//            UIAlertController.showMessage("카카오링크 메시지 액션\n\(params ?? "파라미터 없음")")
-//            return true
-//        }
+        
+        // Called When Execute KaKaoLink
+        if KLKTalkLinkCenter.shared().isTalkLinkCallback(url) {
+            let params = url.query
+            let coordinator = SceneCoordinator(window: window!)
+            let viewModel = MainViewModel(title: "", coordinator: coordinator)
+            let scene: SceneType = MainScene.main(viewModel as! MainViewModel)
+            
+            viewModel.kakaoLinkParams = params
+            coordinator.transition(to: scene, using: .root, animated: true)
+            return true
+        }
         return false
     }
 
@@ -151,4 +163,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         KOSession.handleDidBecomeActive()
     }
 }
-

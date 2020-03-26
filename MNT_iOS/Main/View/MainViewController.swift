@@ -46,7 +46,6 @@ class MainViewController: ViewController {
             .top(view.topAnchor, constant: height * 0.217)
         )
         
-        
         logoImage.constrainWidth(height * 0.273)
         logoImage.constrainHeight(height * 0.298)
         label.anchor(.top(logoImage.bottomAnchor, constant: height * 0.179))
@@ -63,6 +62,7 @@ class MainViewController: ViewController {
 extension MainViewController: ViewModelBindableType {
     func bindViewModel(viewModel: MainViewModel) {
 //        viewModel.test()
+        viewModel.checkKakaoLinkParams()
         
         joinButton.rx.action = viewModel.presentJoinAction()
         produceButton.rx.action = viewModel.presentSetAction()

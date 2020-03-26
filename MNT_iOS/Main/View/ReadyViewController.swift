@@ -10,6 +10,9 @@ import UIKit
 
 class ReadyViewController: ViewController {
     
+    var isAdmin : Bool = true
+    var isStarted: Bool = true
+    var dummyDate: String = "2020.01.20. (월)"
     var viewModel: ReadyViewModel?
     let fruitImage = UIImageView(image: #imageLiteral(resourceName: "fruits"))
     let titleLabel = UILabel(text: "방이름글자수제한은열다섯이야",
@@ -17,7 +20,7 @@ class ReadyViewController: ViewController {
                              textColor: .defaultText,
                              textAlignment: .center,
                              numberOfLines: 0)
-    let subLabel = UILabel(text: "프루또방이 생성되었습니다.\n초대코드를 공유해서 친구들을 초대하세요.",
+    let subLabel = UILabel(text: "",
                            font: .systemFont(ofSize: 15),
                            textColor: .subLabelColor,
                            textAlignment: .center,
@@ -45,22 +48,21 @@ class ReadyViewController: ViewController {
         let width = view.frame.width
         let height = view.frame.height
         
+        if isAdmin != true {
+            setUpForParticipant()
+        }
+        else {
+            setUpForAdministrator()
+        }
+        
         view.addSubview(fruitImage)
         view.addSubview(titleLabel)
-        view.addSubview(bubbleImage)
-        view.addSubview(subLabel)
-        view.addSubview(codeSubLabel)
-        view.addSubview(codeLabel)
         view.addSubview(sendButton)
         view.addSubview(startButton)
         view.addSubview(checkButton)
         
         fruitImage.anchor(.top(view.topAnchor, constant: height * 0.2))
-        titleLabel.anchor(.top(view.topAnchor, constant: height * 0.2 + 50))
-        bubbleImage.anchor(.top(view.topAnchor, constant: height * 0.33))
-        subLabel.anchor(.top(view.topAnchor, constant: height * 0.33))
-        codeSubLabel.anchor(.top(view.topAnchor, constant: height * 0.5))
-        codeLabel.anchor(.top(codeSubLabel.topAnchor, constant: 20))
+        titleLabel.anchor(.top(view.topAnchor, constant: height * 0.28))
         sendButton.anchor(.bottom(view.bottomAnchor, constant: height * 0.25))
         startButton.anchor(.bottom(view.bottomAnchor, constant: height * 0.15))
         checkButton.anchor(.bottom(view.bottomAnchor, constant: height * 0.05))
@@ -69,8 +71,6 @@ class ReadyViewController: ViewController {
         titleLabel.centerXToSuperview()
         bubbleImage.centerXToSuperview()
         subLabel.centerXToSuperview()
-        codeSubLabel.centerXToSuperview()
-        codeLabel.centerXToSuperview()
         sendButton.centerXToSuperview()
         startButton.centerXToSuperview()
         checkButton.centerXToSuperview()
@@ -81,6 +81,69 @@ class ReadyViewController: ViewController {
         bubbleImage.constrainHeight(height * 0.15)
         subLabel.constrainWidth(width * 0.75)
         subLabel.constrainHeight(height * 0.14)
+    }
+    
+    func setUpForParticipant() {
+        let width = view.frame.width
+        let height = view.frame.height
+        
+        view.addSubview(bubbleImage)
+        view.addSubview(subLabel)
+        
+        bubbleImage.anchor(.top(view.topAnchor, constant: height * 0.32))
+        subLabel.anchor(.top(view.topAnchor, constant: height * 0.333))
+        
+        bubbleImage.transform = CGAffineTransform(rotationAngle: .pi)
+        
+        setUpDetailForParticipant()
+    }
+    
+    func setUpForAdministrator() {
+        let width = view.frame.width
+        let height = view.frame.height
+        
+        view.addSubview(bubbleImage)
+        view.addSubview(subLabel)
+        view.addSubview(codeSubLabel)
+        view.addSubview(codeLabel)
+        
+        bubbleImage.anchor(.top(view.topAnchor, constant: height * 0.33))
+        subLabel.anchor(.top(view.topAnchor, constant: height * 0.33))
+        codeSubLabel.anchor(.top(view.topAnchor, constant: height * 0.5))
+        codeLabel.anchor(.top(codeSubLabel.topAnchor, constant: 20))
+        
+        codeSubLabel.centerXToSuperview()
+        codeLabel.centerXToSuperview()
+        
+        setUpDetailForAdministrator()
+    }
+    
+    func setUpDetailForAdministrator() {
+        subLabel.text = "프루또방이 생성되었습니다.\n초대코드를 공유해서 친구들을 초대하세요."
+    }
+    
+    func setUpDetailForParticipant() {
+        let frontText = "\(dummyDate) 정오 "
+        var backText = "에 시작되었습니다!\n친구들과 함께 프루또를 해볼까요?👏"
+        
+        if isStarted == false {
+            startButton.backgroundColor = .disableColor
+            backText = "에 시작합니다.\n친구들이 모일 때까지 잠시 기다려주세요👏"
+        }
+        
+        subLabel.text = frontText + backText
+        
+        let attributedStr = NSMutableAttributedString(string: subLabel.text!)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 7
+        paragraphStyle.alignment = .center
+        attributedStr.addAttribute(.foregroundColor,
+                                   value: UIColor.textOnlyColor,
+                                   range: (subLabel.text! as NSString).range(of: frontText))
+        attributedStr.addAttribute(NSAttributedString.Key.paragraphStyle,
+                                   value:paragraphStyle,
+                                   range:NSMakeRange(0, attributedStr.length))
+        subLabel.attributedText = attributedStr
     }
 }
 
