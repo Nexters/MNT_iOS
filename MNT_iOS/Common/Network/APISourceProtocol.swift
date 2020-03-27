@@ -210,6 +210,7 @@ extension APISourceProtocol {
                                        headers: headers)
             .subscribe(
                 onNext: { res in
+                    print("tagg : \(res)")
                     completion?()
             },
                 onError: { err in

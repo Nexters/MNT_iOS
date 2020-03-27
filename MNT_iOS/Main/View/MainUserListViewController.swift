@@ -90,11 +90,12 @@ extension MainUserListViewController: UITableViewDelegate, UITableViewDataSource
     
     func deleteUser() {
         APISource.shared.deleteRoomUser(roomId: 23017,
-                                        userId: "suzy") { (request) in
+                                        userId: "suzy") {
                                             print("testing : delete")
             }?.disposed(by: self.rx.disposeBag)
-        
-        getUserList()
+//
+        // delete in userList TableView
+//        getUserList()
     }
 }
 
@@ -106,8 +107,6 @@ extension MainUserListViewController: ViewModelBindableType {
     }
     
     func getUserList() {
-        
-        // viewModel.userList 초기화 혹은 indexPath.row에 해당하는 사람 userList에서 제외하고 tableView.reloadData()
         
         APISource.shared.getRoomUserList(roomId: 23017) { participants in
             for i in 0..<participants.count { self.viewModel?.userList.append(participants[i].user.name)

@@ -62,16 +62,15 @@ class SetRoomDetailViewModel: ViewModel {
     }
     
     func makeRoom() {
-        print("fisrt")
-        APISource.shared.postRoomMake(room: Room(endDay: "2020-03-25",
-                                                 id: 0,
-                                                 isDone: 0,
-                                                 isStart: 0,
-                                                 maxPeople: 4,
-                                                 name: "wowwow",
-                                                 startDay: "2020-03-25"),
-                                      userId: "rmt") { (roomId) in
-                                        print("fourth")
+        let room : Room = Room(endDay: "2020-03-25",
+                               id: 0,
+                               isDone: 0,
+                               isStart: 0,
+                               maxPeople: 6,
+                               name: "string",
+                               startDay: "2020-03-25")
+        APISource.shared.postRoomMake(room: room,
+                                      userId: "0716") { (roomId) in
                                         print("roomId : \(roomId)")
         }?.disposed(by: rx.disposeBag)
     }

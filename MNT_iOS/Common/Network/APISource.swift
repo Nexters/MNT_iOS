@@ -83,6 +83,18 @@ class APISource: APISourceProtocol {
                                     completion(String(res.data ?? ""))
         }
     }
+    
+    // success
+    func postSignUp(user: User, completion: @escaping () -> Void) -> Disposable? {
+        let params = [
+            "user" : user
+        ] as [String : Any]
+        
+        return requestWithoutData(.post,
+                                  .signUp,
+                                  parameters: params,
+                                  completion: nil)
+    }
 
     // fail
     func postRoomMake(room: Room, userId: String, completion: @escaping (String) -> Void) -> Disposable? {
@@ -91,40 +103,23 @@ class APISource: APISourceProtocol {
             "userId" : userId
         ] as [String: Any]
         
-        print("second")
-
         return requestDataObject(.get,
                                  .roomMake,
-                                 parameters: params) { (res: RoomStringResponseTest) in
-                                    print("third - \(res.apiStatus.label)")
-                                    completion(res.data)
+                                 parameters: params) { (res: RoomStringResponse) in
+                                    completion(res.data ?? "")
         }
     }
     
     // fail
-    func postSignUp(user: User) -> Disposable? {
-        let params = [
-            "user" : user
-        ] as [String: Any]
-        
-        return requestWithoutData(.post,
-                                  .signUp,
-                                  parameters: params,
-                                  encoding: JSONEncoding.default,
-                                  completion: {})
-    }
-    
-    // fail - requestDatas Error : keyNotFound(CodingKeys(stringValue: "apiStatus", intValue: nil)
-    func deleteRoomUser(roomId: Int, userId: String, completion: @escaping (String?) -> Void) -> Disposable? {
+    func deleteRoomUser(roomId: CLong, userId: String, completion: @escaping () -> Void) -> Disposable? {
         let params = [
             "roomId" : roomId,
             "userId" : userId
         ] as [String : Any]
         
-        return requestDataObject(.delete,
-                                 .roomUser,
-                                 parameters: params) { (res: RoomStringResponse) in
-                                    completion(res.data)
-        }
+        return requestWithoutData(.delete,
+                                  .roomUser,
+                                  parameters: params,
+                                  completion: nil)
     }
 }
