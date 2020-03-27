@@ -7,10 +7,10 @@
 //
 
 import UIKit
-
-class MissionCell: UITableViewCell {    
-    fileprivate let label = UILabel(text: "👏🏻 칭찬하기", font: .boldSystemFont(ofSize: 15), numberOfLines: 1)
+class MissionCell: UITableViewCell {
+    fileprivate let label = UILabel(font: .boldSystemFont(ofSize: 15), numberOfLines: 1)
     fileprivate let view = MissionCellButtonForParitipant()
+    fileprivate let countLabel = UILabel(font: .systemFont(ofSize: 13), textColor: .accentColor)
 
     override var frame: CGRect {
         get {
@@ -33,6 +33,7 @@ class MissionCell: UITableViewCell {
         
         addSubview(view)
         addSubview(label)
+        addSubview(countLabel)
         
         view.centerYToSuperview()
         view.anchor(.trailing(trailingAnchor, constant: 16))
@@ -44,32 +45,44 @@ class MissionCell: UITableViewCell {
         constraint.isActive = true
         
         selectedBackgroundView = .init(backgroundColor: .clear)
+        
+        countLabel.centerYToSuperview()
+        countLabel.anchor(.trailing(trailingAnchor, constant: 16))
     }
 }
 
 extension MissionCell {
-    
-    func setup(mission: Mission) {
-        // 참여자인지 관리자인지
-       
-        // check is done or not
-        if mission.userMission.userDone != 1 {
-            view.setupState(state: .yet)
+    func setup<T>(mission: T) {
+        if let mission: Mission = mission as? Mission {
+            // check is done or not
+            if mission.userMission.userDone != 1 {
+                view.setupState(state: .yet)
+                label.alpha = 1
+                view.alpha = 1
+                backgroundColor = .white
+                setupShadow(opacity: 0.07, radius: 10, offset: .init(width: 0, height: 1))
+                alpha = 1
+            } else {
+                view.setupState(state: .done)
+                //backgroundColor = .defaultShadow
+                label.alpha = 0.4
+                view.alpha = 0.4
+                backgroundColor = UIColor.grayColor.withAlphaComponent(0.3)
+                setupShadow(radius: 10, color: .clear)
+            }
+            
+            label.text = mission.missionName
+        }
+        
+        if let orderMission: OrderMission = mission as? OrderMission {
+            label.text = orderMission.name
             label.alpha = 1
-            view.alpha = 1
+            view.isHidden = true
+            countLabel.text = orderMission.countText
             backgroundColor = .white
             setupShadow(opacity: 0.07, radius: 10, offset: .init(width: 0, height: 1))
             alpha = 1
-        } else {
-            view.setupState(state: .done)
-            //backgroundColor = .defaultShadow
-            label.alpha = 0.4
-            view.alpha = 0.4
-            backgroundColor = UIColor.grayColor.withAlphaComponent(0.3)
-            setupShadow(radius: 10, color: .clear)
         }
-        
-        label.text = mission.missionName
     }
 }
 

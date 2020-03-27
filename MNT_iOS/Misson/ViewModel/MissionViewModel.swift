@@ -8,6 +8,7 @@
 
 class MissionViewModel: ViewModel {
     var missions: [Mission] = []
+    var orderMissions: [OrderMission] = []
     
     func missionDetailAction(index: Int) {
         BottomBar.shared.hideBottomBar()
@@ -27,7 +28,7 @@ class MissionViewModel: ViewModel {
             .asObservable().map { _ in }
     }
     
-    func addNewMissionAction(_ gesture: UITapGestureRecognizer) -> Void {
+    func addNewMissionAction() -> Void {
         BottomBar.shared.hideBottomBar()
         
         let viewModel = AddNewMissionViewModel(title: "미션 부여하기", coordinator: self.coordinator)

@@ -55,7 +55,7 @@ extension MissionParticipantViewController: ViewModelBindableType {
     }
     
     private func getMissionDoneList(_ viewModel: MissionViewModel) {
-        APISource.shared.getMissionDoneList(roomId: 83550, userId: "183") { [weak self] (missions) in
+        APISource.shared.getMyMissionDoneList(roomId: 83550, userId: "183") { [weak self] (missions) in
             viewModel.missions = missions
             self?.missionTableController.missions = viewModel.missions
             }?.disposed(by: rx.disposeBag)

@@ -30,21 +30,28 @@ class APISource: APISourceProtocol {
         }
     }
     
-    func getMissionDoneList(roomId: Int, userId: String, completion: @escaping ([Mission]) -> Void) -> Disposable? {
+    func getMyMissionDoneList(roomId: Int, userId: String, completion: @escaping ([Mission]) -> Void) -> Disposable? {
         let params = [
             "roomId": roomId
         ] as [String: Any]
         
         return requestDataObject(.get,
-                                 .missionDoneList,
+                                 .myMissionDoneList,
                                  parameters: params,
                                  path: userId) { (res: MissionListResponse) in
                                     completion(res.data)
         }
     }
     
+    func getMissionDoneList(roomId: Int, completion: @escaping ([OrderMission]) -> Void) -> Disposable? {
+        return requestDataObject(.get,
+                                 .missionDoneList,
+                                 parameters: roomId) { (res: OrderMissionResponse) in
+                                    completion(res.data)
+        }
+    }
+    
     func postMissionSend(missionSendingPostData: MissionSendingPostData, completion: @escaping () -> Void) -> Disposable? {
-        print("tagg asdasdasdasdas!!")
         let params = [
             "roomId": missionSendingPostData.roomId,
             "userId": missionSendingPostData.userId,

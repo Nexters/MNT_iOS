@@ -24,11 +24,12 @@ struct Mission: Codable {
 struct UserMission: Codable {
     var content: String? = nil
 //    var missionId: MissionId = MissionId()
-    var missionImg: String? = nil
+//    var missionImg: AnyObject? = nil
     var roomId: Int = 0
     var userDone: Int? = nil
     var userDoneTime: String? = nil
     var userId: UserId = UserId()
+//    var userMissions: [UserMissions] = []
 }
 
 struct MissionSendingData {
@@ -65,7 +66,11 @@ struct MissionId: Codable {
 }
 
 struct UserMissions: Codable {
-    
+    var manitto: Manitto? = nil
+    var missionId: Int = 0
+    var missionName: String = ""
+    var userFruttoId: Int = 0
+    var userMission: UserMission = UserMission()
 }
 
 struct UserId: Codable {

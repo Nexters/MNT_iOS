@@ -21,10 +21,11 @@ struct API {
 
 enum URLType: String {
     case missionList = "/mission/list"
-    case missionDoneList = "/mission/done"
+    case myMissionDoneList = "/mission/done"
     case userList = "/room/user-list"
     case roomAttend = "/room/attend"
     case missionSend = "/mission/send"
+    case missionDoneList = "/mission/list/order-mission"
 }
 
 // for case handling
@@ -94,7 +95,9 @@ extension APISourceProtocol {
             print("networking - invalid url")
             return nil
         }
-        
+                
+//        print("tagg url \(encodedUrl)")
+//        print("tagg params \(params)")
         return RxAlamofire.requestData(method,
                                        encodedUrl,
                                        parameters: params as? [String : Any],
@@ -104,7 +107,7 @@ extension APISourceProtocol {
             .subscribe(onNext: completion,
                        onError: { err in
                         // err handling
-                        print("reqeustDatas Error : \(err)")
+                        print("tagg reqeustDatas Error : \(err)")
             },
                        onCompleted: {
                         // completion handling

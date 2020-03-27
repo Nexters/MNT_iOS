@@ -10,30 +10,51 @@ import UIKit
 
 class MissionAdministratorViewController: ViewController {
     var viewModel: MissionViewModel?
-    let missionTableController = MissionTableViewController(style: .grouped)
-    let header = MissionHeaderView()
+    let missionTableController: MissionTableViewController = {
+        let mt = MissionTableViewController(style: .grouped)
+        mt.flag = 1
+        return mt
+    }()
     
     override func setupLayout() {
         view.addSubview(missionTableController.view)
         missionTableController.view.fillSuperview()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.navigationBar.isHidden = true
+        BottomBar.shared.showBottomBar()
+        
+        if let viewModel = viewModel {
+            getMissionList(viewModel)
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        navigationController?.navigationBar.isHidden = false
     }
 }
 
 extension MissionAdministratorViewController: ViewModelBindableType {
     func bindViewModel(viewModel: MissionViewModel) {
         // setupDummys
-//        (0...6).forEach { viewModel.missions.append(Mission(id: $0,
-//                                                            text: "메시지 보내기",
-//                                                            missionName: "부제목이지롱",
-//                                                            isDone: $0 % 2 == 0)) }
-        missionTableController.missions = viewModel.missions
         
-        header.rx.tapGesture()
-            .bind(onNext: viewModel.addNewMissionAction(_:))
-            .disposed(by: rx.disposeBag)
+        missionTableController.tableView.rx.itemSelected.subscribe { [weak self] indexPath in
+            if indexPath.element?.section == 0 {
+                viewModel.addNewMissionAction()
+            }
+        }
+    }
+    
+    private func getMissionList(_ viewModel: MissionViewModel) {
+        APISource.shared.getMissionDoneList(roomId: 83550) { [weak self] missions in
+            viewModel.orderMissions = missions
+            self?.missionTableController.ordermissions = missions
+            }?.disposed(by: rx.disposeBag)
     }
 }
 
-class MissionHeaderView: UIView {
-    
-}

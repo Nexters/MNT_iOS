@@ -13,6 +13,7 @@
 		1A21D26D242B7CC800FCAC3C /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A21D26C242B7CC800FCAC3C /* UIViewController+.swift */; };
 		1A21D26F242B8ADF00FCAC3C /* MissionDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A21D26E242B8ADF00FCAC3C /* MissionDetail.swift */; };
 		1A21D271242B8B7B00FCAC3C /* MissionPreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A21D270242B8B7B00FCAC3C /* MissionPreviewViewModel.swift */; };
+		1A21D273242CECCF00FCAC3C /* OrderMissionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A21D272242CECCE00FCAC3C /* OrderMissionResponse.swift */; };
 		1A3022AD23EBDAD800693E22 /* AddNewMissionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3022AC23EBDAD800693E22 /* AddNewMissionViewModel.swift */; };
 		1A3022AF23EBDB5B00693E22 /* AddNewMissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3022AE23EBDB5B00693E22 /* AddNewMissionViewController.swift */; };
 		1A49808523C967C1004B4058 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A49808423C967C1004B4058 /* LoginController.swift */; };
@@ -176,6 +177,7 @@
 		1A21D26C242B7CC800FCAC3C /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		1A21D26E242B8ADF00FCAC3C /* MissionDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionDetail.swift; sourceTree = "<group>"; };
 		1A21D270242B8B7B00FCAC3C /* MissionPreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionPreviewViewModel.swift; sourceTree = "<group>"; };
+		1A21D272242CECCE00FCAC3C /* OrderMissionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderMissionResponse.swift; sourceTree = "<group>"; };
 		1A3022AC23EBDAD800693E22 /* AddNewMissionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewMissionViewModel.swift; sourceTree = "<group>"; };
 		1A3022AE23EBDB5B00693E22 /* AddNewMissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewMissionViewController.swift; sourceTree = "<group>"; };
 		1A49808423C967C1004B4058 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -525,6 +527,7 @@
 			isa = PBXGroup;
 			children = (
 				1A4E688A23E40DF9005D2CFD /* Mission.swift */,
+				1A21D272242CECCE00FCAC3C /* OrderMissionResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1438,6 +1441,7 @@
 				1A4E688923E40DD3005D2CFD /* MissionViewModel.swift in Sources */,
 				1AD6D40F23BF9DBC000B1893 /* MNT_iOS.xcdatamodeld in Sources */,
 				1A4E68A523E474D4005D2CFD /* MissionPostViewModel.swift in Sources */,
+				1A21D273242CECCF00FCAC3C /* OrderMissionResponse.swift in Sources */,
 				1A81AE5A23E9099A004CADBC /* FeedDetailViewController.swift in Sources */,
 				1AD6D40523BF9DBC000B1893 /* AppDelegate.swift in Sources */,
 				1ADEFD9E23FC5A8E00E3DC49 /* CloseButtonBar.swift in Sources */,

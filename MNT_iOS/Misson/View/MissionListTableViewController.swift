@@ -20,6 +20,12 @@ class MissionTableViewController: UITableViewController {
         }
     }
     
+    var ordermissions: [OrderMission] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
     override init(style: UITableView.Style) {
         super.init(style: .grouped)
         view.backgroundColor = .white
@@ -52,7 +58,7 @@ class MissionTableViewController: UITableViewController {
         if section < tableView.numberOfSections-1 {
             return 1
         }
-        return missions.count
+        return flag == 0 ? missions.count : ordermissions.count
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -65,9 +71,12 @@ class MissionTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(MissionMakeCell.self)
             return cell
         }
+        
         let cell = tableView.dequeueReusableCell(MissionCell.self)
-        let mission = missions[indexPath.row]
-        cell.setup(mission: mission)
+        
+        if flag == 0 { cell.setup(mission: missions[indexPath.row])}
+        else { cell.setup(mission: ordermissions[indexPath.row])}
+        
         return cell
     }
     
