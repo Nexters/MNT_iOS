@@ -10,6 +10,8 @@
 		1A01BB6623F6456200FF8B7C /* UserListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A01BB6523F6456200FF8B7C /* UserListResponse.swift */; };
 		1A01BB6923F64B9B00FF8B7C /* UserListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A01BB6723F64B9B00FF8B7C /* UserListCell.swift */; };
 		1A01BB6A23F64B9B00FF8B7C /* UserListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A01BB6823F64B9B00FF8B7C /* UserListCell.xib */; };
+		1A166DDA2467CF3000ACDC89 /* ImageUploadContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A166DD92467CF2F00ACDC89 /* ImageUploadContainer.swift */; };
+		1A166DDC2467D2CF00ACDC89 /* UploadableImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A166DDB2467D2CF00ACDC89 /* UploadableImage.swift */; };
 		1A21D26D242B7CC800FCAC3C /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A21D26C242B7CC800FCAC3C /* UIViewController+.swift */; };
 		1A21D26F242B8ADF00FCAC3C /* MissionDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A21D26E242B8ADF00FCAC3C /* MissionDetail.swift */; };
 		1A21D271242B8B7B00FCAC3C /* MissionPreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A21D270242B8B7B00FCAC3C /* MissionPreviewViewModel.swift */; };
@@ -174,6 +176,8 @@
 		1A01BB6523F6456200FF8B7C /* UserListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListResponse.swift; sourceTree = "<group>"; };
 		1A01BB6723F64B9B00FF8B7C /* UserListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListCell.swift; sourceTree = "<group>"; };
 		1A01BB6823F64B9B00FF8B7C /* UserListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserListCell.xib; sourceTree = "<group>"; };
+		1A166DD92467CF2F00ACDC89 /* ImageUploadContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploadContainer.swift; sourceTree = "<group>"; };
+		1A166DDB2467D2CF00ACDC89 /* UploadableImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadableImage.swift; sourceTree = "<group>"; };
 		1A21D26C242B7CC800FCAC3C /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		1A21D26E242B8ADF00FCAC3C /* MissionDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionDetail.swift; sourceTree = "<group>"; };
 		1A21D270242B8B7B00FCAC3C /* MissionPreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionPreviewViewModel.swift; sourceTree = "<group>"; };
@@ -442,6 +446,7 @@
 			isa = PBXGroup;
 			children = (
 				1A4E687523E3F7FF005D2CFD /* Model.swift */,
+				1A166DDB2467D2CF00ACDC89 /* UploadableImage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -566,6 +571,7 @@
 				1A4E688C23E40E79005D2CFD /* MissionPariticipantViewController.swift */,
 				1A4E68A223E474AE005D2CFD /* MissionPostViewController.swift */,
 				1AD5F7BA23E8762400F96263 /* MissionPreviewViewController.swift */,
+				1A166DD92467CF2F00ACDC89 /* ImageUploadContainer.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1400,6 +1406,7 @@
 				1A8FAF3023E0249C009A92C1 /* SceneCoordinator.swift in Sources */,
 				1AAB0E3823DED4240003A2C4 /* ViewController.swift in Sources */,
 				1AB0696A23F231D8000B8D27 /* UserListViewController.swift in Sources */,
+				1A166DDA2467CF3000ACDC89 /* ImageUploadContainer.swift in Sources */,
 				581B15F423EAD55D00D0593B /* ExitScene.swift in Sources */,
 				1A4E686923E3EA92005D2CFD /* FeedViewModel.swift in Sources */,
 				1AE4C98923FC03C70031EFA6 /* NavigationViewController.swift in Sources */,
@@ -1469,6 +1476,7 @@
 				1AD6D40723BF9DBC000B1893 /* SceneDelegate.swift in Sources */,
 				1AAB0E3C23DED4C50003A2C4 /* ViewModelBindable.swift in Sources */,
 				1A8FAF4623E06952009A92C1 /* MainViewModel.swift in Sources */,
+				1A166DDC2467D2CF00ACDC89 /* UploadableImage.swift in Sources */,
 				581B160023EC70FD00D0593B /* ManittoProfile.swift in Sources */,
 				583659CC23E4AB7100E2752F /* RoomViewModel.swift in Sources */,
 				1A4E687623E3F7FF005D2CFD /* Model.swift in Sources */,

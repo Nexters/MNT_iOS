@@ -10,6 +10,7 @@ import UIKit
 
 class MissionPostViewController: ViewController {
     var viewModel: MissionPostViewModel?
+    
     fileprivate let titleLabel = UILabel(text: "title", font: .boldSystemFont(ofSize: 20))
     fileprivate let subtitleLabel = UILabel(text: "subtitle", font: .systemFont(ofSize: 16), textColor: .defaultText)
     fileprivate lazy var button: PrimaryButton = {
@@ -18,6 +19,8 @@ class MissionPostViewController: ViewController {
         return b
     }()
     fileprivate let textfieldContainer = TextFieldContainer()
+    
+    fileprivate var imageUploadContainer = ImageUploadContainer()
     
     fileprivate let placeholder = "텍스트를 입력해주세요."
     fileprivate lazy var textView: UITextView = {
@@ -59,6 +62,9 @@ class MissionPostViewController: ViewController {
         view.addSubview(wholeStackView)
         view.addSubview(textView)
         view.addSubview(button)
+        view.addSubview(imageUploadContainer)
+        
+        imageUploadContainer.isHidden = viewModel?.missionInfo.isAbleImg == 0
         
         wholeStackView.anchor(
             .top(view.topAnchor, constant: 80),
@@ -73,9 +79,13 @@ class MissionPostViewController: ViewController {
         button.anchor(.bottom(bottomAnchor))
         button.centerXTo(view.centerXAnchor)
         
-        
+        imageUploadContainer.anchor(
+            .leading(wholeStackView.leadingAnchor),
+            .top(wholeStackView.bottomAnchor, constant: 15),
+            .trailing(wholeStackView.trailingAnchor))
+        imageUploadContainer.withHeight(67)
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -88,6 +98,31 @@ extension MissionPostViewController: ViewModelBindableType {
         titleLabel.text = viewModel.missionName
         subtitleLabel.text = viewModel.missionDescription
         button.rx.action = viewModel.missionPreviewAction()
+        
+        imageUploadContainer.rx.tapGesture().bind {[unowned self] _ in
+            let pickerController = UIImagePickerController()
+            pickerController.sourceType = .photoLibrary
+            pickerController.delegate = self
+            self.navigationController?.present(pickerController, animated: true, completion: {
+                
+            })
+        }
+    }
+}
+
+extension MissionPostViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if
+            let image = info[.originalImage] as? UIImage,
+            let path = info[.referenceURL] as? URL
+        {
+            self.viewModel?.imageData = UploadableImage(fileName: path, image: image)
+            imageUploadContainer.updateLabels(imagePath: path.absoluteString)
+        }
+        
+        picker.dismiss(animated: true, completion: nil)
     }
 }
 

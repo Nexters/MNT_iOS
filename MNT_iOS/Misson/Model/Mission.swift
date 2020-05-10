@@ -14,6 +14,7 @@ struct MissionListResponse: Codable {
 }
 
 struct Mission: Codable {
+    var isAbleImg: Int = 0
     var manitto: Manitto? = nil
     var missionId: Int = 0
     var missionName: String? = nil
@@ -25,6 +26,7 @@ struct UserMission: Codable {
     var content: String? = nil
 //    var missionId: MissionId = MissionId()
 //    var missionImg: AnyObject? = nil
+    var missionImg: String? = nil
     var roomId: Int = 0
     var userDone: Int? = nil
     var userDoneTime: String? = nil
@@ -35,7 +37,6 @@ struct UserMission: Codable {
 struct MissionSendingData {
     var mission: Mission
     var content: String = ""
-//    var img: FILE =
     var asMissionSendPostData: MissionSendingPostData {
         return MissionSendingPostData(roomId: mission.userMission.roomId,
                                       userId: mission.userMission.userId.id,
@@ -49,7 +50,7 @@ struct MissionSendingPostData {
     var userId: String
     var missionId: CLong
     var content: String
-//    var img: FIle
+    var img: UploadableImage? = nil
 }
 
 struct Manitto: Codable {

@@ -52,13 +52,17 @@ class APISource: APISourceProtocol {
     }
     
     func postMissionSend(missionSendingPostData: MissionSendingPostData, completion: @escaping () -> Void) -> Disposable? {
-        let params = [
+        
+        var params = [
             "roomId": missionSendingPostData.roomId,
             "userId": missionSendingPostData.userId,
             "missionId": missionSendingPostData.missionId,
-            "content": missionSendingPostData.content
-            //"img": missionSendingPostData.img
+            "content": missionSendingPostData.content,
         ] as [String: Any]
+        
+        if let image = missionSendingPostData.img {
+            params["img"] = image
+        }
         
         return requestWithoutData(.post,
                                   .missionSend,

@@ -68,13 +68,13 @@ class TabBarViewModel: ViewModel, ReactiveViewModelable {
     
     fileprivate lazy var missionVC: UIViewController = {
         let viewModel = MissionViewModel(title: "미션", coordinator: self.coordinator)
-        //let mainScene = MissionScene.missionParticipant(viewModel)
-        let mainScene = MissionScene.missionAdministrator(viewModel)
+        //let missionScene = MissionScene.missionAdministrator(viewModel)
+        let missionScene = MissionScene.missionParticipant(viewModel)
         var target: UIViewController = UIViewController()
         let closer = { (vc: UIViewController) in
             target = vc
         }
-        self.coordinator.transition(to: mainScene, using: .replace(closer), animated: true)
+        self.coordinator.transition(to: missionScene, using: .replace(closer), animated: true)
         return target.navigationController!
     }()
     

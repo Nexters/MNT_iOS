@@ -10,6 +10,8 @@ import Foundation
 
 class MissionPostViewModel: ViewModel {
     let missionInfo: Mission
+    var imageData: UploadableImage?
+    
     lazy var missionSendingData: MissionSendingData = {
         return MissionSendingData(mission: missionInfo, content: "")
     }()
@@ -32,10 +34,13 @@ class MissionPostViewModel: ViewModel {
     func missionPreviewAction() -> CocoaAction {
         return Action { [unowned self] _ in
             let viewModel = MissionPreviewViewModel(missionSendingData: self.missionSendingData,
-                                                        coordinator: self.coordinator)
+                                                    imageData: self.imageData,
+                                                    coordinator: self.coordinator)
             return self.coordinator.transition(to: MissionScene.missionPreview(viewModel),
                                                using: .push,
                                                animated: true).asObservable().map { _ in}
         }
     }
+    
 }
+
