@@ -15,8 +15,9 @@ class GuessViewController: ViewController, UICollectionViewDelegateFlowLayout {
     
     var viewModel: GuessViewModel?
     let descriptionLabel = UILabel(
-        text: "마니또가 종료되었습니다.\n마니또를 공개하기 전에\n~~~님의 마니또를 맞춰보세요!",
+        text: "푸르또가 종료되었습니다.\n마니또를 공개하기 전에\n본인의 마니또를 맞춰보세요!",
         font: .mediumFont(ofSize: 14),
+        textColor: .subLabelColor,
         textAlignment: .center,
         numberOfLines: 0)
     let fruitImage = UIImageView(image: #imageLiteral(resourceName: "group2"))
@@ -82,45 +83,24 @@ class GuessViewController: ViewController, UICollectionViewDelegateFlowLayout {
     }
 }
 
-let dummyFromImage = "https://image.shutterstock.com/image-vector/user-icon-260nw-523867123.jpg"
-let dummyToImage = "https://image.shutterstock.com/image-vector/user-icon-260nw-523867123.jpg"
-let dummyFromLabel = "뚱이"
-let dummyToLabel = "핑핑이"
-
-extension GuessViewController: ViewModelBindableType {
-    func bindViewModel(viewModel: GuessViewModel) {
-        (0...8).forEach {_ in
-            self.viewModel?.profiles.append(ManittoProfile(manittoName: dummyFromLabel,
-                                                           targetName: dummyToLabel,
-                                                           manittoImageURL: dummyFromImage,
-                                                           targetImageURL: dummyToImage))
-        }
-        
-        collectionView.rx.itemSelected
-            .subscribe(viewModel.collectionViewCellTouchedAction(_:))
-            .disposed(by: rx.disposeBag)
-        
-        button.rx.action = viewModel.openAlertAction(isSelected!)
-    }
-}
-
 extension GuessViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return viewModel?.userNameList.count ?? 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(ProfileCollectionViewCell.self, for: indexPath)
+        
+        cell.profileNameLabel.text = viewModel?.userNameList[indexPath.row]
+        cell.profileImageView.image = FruitImage.sharedInstance.getProfileFace((viewModel?.userIdList[indexPath.row])!)
+        return cell
+    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: self.view.frame.width * 0.416 - 10, height: 64)
     }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel?.profiles.count ?? 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        var cell = collectionView.dequeueReusableCell(ProfileCollectionViewCell.self, for: indexPath)
-        guard let item = viewModel?.profiles[indexPath.row] else { return UICollectionViewCell(frame: .zero)}
-        cell.bind(viewModel: item.asProfileCellViewModel)
-        return cell
-    }
-    
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
         let cell : UICollectionViewCell = collectionView.cellForItem(at: indexPath)!
         cell.backgroundColor = UIColor.deSelectedColor
@@ -131,5 +111,36 @@ extension GuessViewController: UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         let cell : UICollectionViewCell = collectionView.cellForItem(at: indexPath)!
         cell.backgroundColor = UIColor.white
+    }
+}
+
+let dummyFromImage = "https://image.shutterstock.com/image-vector/user-icon-260nw-523867123.jpg"
+let dummyToImage = "https://image.shutterstock.com/image-vector/user-icon-260nw-523867123.jpg"
+let dummyFromLabel = "뚱이"
+let dummyToLabel = "핑핑이"
+
+extension GuessViewController: ViewModelBindableType {
+    func bindViewModel(viewModel: GuessViewModel) {
+        self.viewModel = viewModel
+        
+        getUserList()
+        
+        collectionView.rx.itemSelected
+            .subscribe(viewModel.collectionViewCellTouchedAction(_:))
+            .disposed(by: rx.disposeBag)
+        
+        button.rx.action = viewModel.openAlertAction(isSelected!)
+    }
+    
+    func getUserList() {
+        APISource.shared.getRoomUserList(roomId: 28076) { participants in
+            for i in 0..<participants.count {
+                if (participants[i].isCreater == 0) {
+                    self.viewModel?.userNameList.append(participants[i].user.name)
+                    self.viewModel?.userIdList.append(participants[i].userFruttoId!)
+                    self.collectionView.reloadData()
+                }
+            }
+            }?.disposed(by: self.rx.disposeBag)
     }
 }

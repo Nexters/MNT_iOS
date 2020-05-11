@@ -33,12 +33,17 @@ struct RoomCheckResponse: Codable {
     let data: [RoomCheck]
 }
 
+struct ManittoResponse: Codable {
+    let apiStatus: APIStatus
+    let data: Manitto
+}
+
 struct RoomCheck: Codable {
     let isCreater: Int
     let manitto: Manitto
     let room: Room
     let user: User
-    let userFruttoId: Int? = nil
+    let userFruttoId: Int?
 }
 
 struct Room: Codable, getRoomViewModel {
@@ -63,7 +68,8 @@ struct Users : Codable{
 }
 
 struct Manitto: Codable {
-    let fruttoId: Int? = nil
-    let id: String? = nil
-    let name: String? = nil
+    let fruttoId: Int?
+    let id: String?
+    let name: String?
+    let fcmToken: String?
 }

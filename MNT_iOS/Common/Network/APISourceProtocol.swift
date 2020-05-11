@@ -27,7 +27,8 @@ enum URLType: String {
     case roomCheck = "/room/check"
     case roomUserList = "/room/user-list"
     case roomStart = "/room/start"
-    case roomUser = "/room/delete"
+    case roomUser = "/room/user"
+    case userManitto = "/user/manitto"
 }
 
 // for case handling
@@ -210,7 +211,7 @@ extension APISourceProtocol {
                                        headers: headers)
             .subscribe(
                 onNext: { res in
-                    print("tagg : \(res)")
+                    print("resresresres : \(res)")
                     completion?()
             },
                 onError: { err in

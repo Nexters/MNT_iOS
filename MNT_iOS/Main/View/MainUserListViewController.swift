@@ -42,15 +42,7 @@ extension MainUserListViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel?.userList.count ?? 0
     }
-
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        67
-    }
-
-    func numberOfSections(in tableView: UITableView) -> Int {
-        1
-    }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(MainUserListCell.self)
         cell.nameLabel.text = viewModel?.userList[indexPath.row]
@@ -60,6 +52,14 @@ extension MainUserListViewController: UITableViewDelegate, UITableViewDataSource
                                     for: .touchUpInside)
         
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        67
+    }
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        1
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -89,8 +89,8 @@ extension MainUserListViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func deleteUser() {
-        APISource.shared.deleteRoomUser(roomId: 23017,
-                                        userId: "suzy") {
+        APISource.shared.deleteRoomUser(roomId: 23430,
+                                        userId: "05103") {
                                             print("testing : delete")
             }?.disposed(by: self.rx.disposeBag)
 //
@@ -108,7 +108,7 @@ extension MainUserListViewController: ViewModelBindableType {
     
     func getUserList() {
         
-        APISource.shared.getRoomUserList(roomId: 23017) { participants in
+        APISource.shared.getRoomUserList(roomId: 23430) { participants in
             for i in 0..<participants.count { self.viewModel?.userList.append(participants[i].user.name)
                 self.tableView.reloadData()
             }

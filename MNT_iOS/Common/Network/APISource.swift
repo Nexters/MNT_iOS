@@ -95,6 +95,19 @@ class APISource: APISourceProtocol {
                                   parameters: params,
                                   completion: nil)
     }
+    
+    // success
+    func deleteRoomUser(roomId: Int, userId: String, completion: @escaping () -> Void) -> Disposable? {
+        let params = [
+            "roomId" : roomId,
+            "userId" : userId
+        ] as [String : Any]
+        
+        return requestWithoutData(.delete,
+                                  .roomUser,
+                                  parameters: params,
+                                  completion: nil)
+    }
 
     // fail
     func postRoomMake(room: Room, userId: String, completion: @escaping (String) -> Void) -> Disposable? {
@@ -110,16 +123,16 @@ class APISource: APISourceProtocol {
         }
     }
     
-    // fail
-    func deleteRoomUser(roomId: CLong, userId: String, completion: @escaping () -> Void) -> Disposable? {
+    func getUserManitto(roomId: Int, userId: String, completion: @escaping (Manitto) -> Void) -> Disposable? {
         let params = [
             "roomId" : roomId,
             "userId" : userId
         ] as [String : Any]
         
-        return requestWithoutData(.delete,
-                                  .roomUser,
-                                  parameters: params,
-                                  completion: nil)
+        return requestDataObject(.get,
+                                 .userManitto,
+                                 parameters: params) { (res: ManittoResponse) in
+                                    completion(res.data)
+        }
     }
 }
