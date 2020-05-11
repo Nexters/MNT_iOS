@@ -45,7 +45,9 @@ class GuessViewModel: ViewModel {
     }
     
     func createCustomVC(_ manittoName: String, _ manittoFruittoId: Int) -> UIViewController {
-        let nameImage = FruitImage.sharedInstance.getFruitPopUp(3)
+//        let nameImage = FruitImage.sharedInstance.getFruitPopUp(3)
+        
+        let nameImage = UIImageView(image: FruitImage.sharedInstance.getFruitPopUp(3))
         var nameLabel = UILabel(text: manittoName,
                                 font: .mediumFont(ofSize: 16),
                                 textColor: .defaultText,
