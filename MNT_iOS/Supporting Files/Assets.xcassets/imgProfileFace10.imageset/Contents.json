@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "imgProfileFace10.png",
+      "scale" : "1x",
+      "idiom" : "universal"
+    },
+    {
+      "filename" : "imgProfileFace10@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "imgProfileFace10@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}
