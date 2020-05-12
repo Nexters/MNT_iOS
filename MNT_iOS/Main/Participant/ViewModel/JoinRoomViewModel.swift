@@ -37,8 +37,8 @@ class JoinRoomViewModel: ViewModel {
     }
     
     private func getRoomAttend(_ roomId: String) {
-        APISource.shared.getRoomAttend(roomId: Int(roomId) ?? 0, userId: "zik") { room in
-            print("roomId = \(Int(roomId) ?? 0)")
+        APISource.shared.getRoomAttend(roomId: Int(roomId) ?? 0, userId: "05128") { room in
+            
         }?.disposed(by: rx.disposeBag)
     }
 }

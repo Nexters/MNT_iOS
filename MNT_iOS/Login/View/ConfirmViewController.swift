@@ -90,16 +90,6 @@ class ConfirmViewController: ViewController {
     }
     
     fileprivate func requestMe() {
-//        KOSessionTask.userMeTask { [unowned self] (error, me) in
-//            guard
-//                let me = me,
-//                let account = me.account
-//                else {return}
-//
-//            self.idLabel.text = account.email
-//            self.nameLabel.text = me.nickname
-//        }
-        
         KOSessionTask.userMeTask(completion: { (error, me) in
             if let error = error as NSError? {
                 UIAlertController.showMessage(error.description)

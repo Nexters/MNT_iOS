@@ -46,10 +46,10 @@ extension MainUserListViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(MainUserListCell.self)
         cell.nameLabel.text = viewModel?.userList[indexPath.row]
-        cell.deleteButton.tag = indexPath.row
-        cell.deleteButton.addTarget(self,
-                                    action: #selector(buttonTapped(_:)),
-                                    for: .touchUpInside)
+//        cell.deleteButton.tag = indexPath.row
+//        cell.deleteButton.addTarget(self,
+//                                    action: #selector(buttonTapped(_:)),
+//                                    for: .touchUpInside)
         
         return cell
     }

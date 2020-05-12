@@ -24,7 +24,12 @@ class APISource: APISourceProtocol {
                                  .roomAttend,
                                  parameters: params,
                                  path: roomId) { (res: RoomResponse) in
-                                    completion(res.data)
+                                    print("status : \(res.apiStatus.label)")
+                                    if (res.apiStatus.httpStatus == 200) {
+                                        completion(res.data!)
+                                    } else {
+                                        print("제발")
+                                    }
         }
     }
     

@@ -16,11 +16,11 @@ class MainViewController: ViewController {
     let logoImage = UIImageView(image: #imageLiteral(resourceName: "frutto1"))
     let label = UILabel(text: "초대코드를 받았다면 참여하기로 입장해주세요.",
                         font: .mediumFont(ofSize: 13),
-                        textColor: .black,
+                        textColor: .defaultText,
                         textAlignment: .center,
                         numberOfLines: 0)
     var joinButton = PrimaryButton("참여하기🤝")
-    var produceButton = SubButton("방 만들기🙋‍♀️")
+//    var produceButton = SubButton("방 만들기🙋‍♀️")
     let leftButton: UIBarButtonItem = {
         let bt = UIBarButtonItem(image: #imageLiteral(resourceName: "arrowLeft"), style: .plain, target: nil, action: nil)
         bt.tintColor = .defaultText
@@ -40,7 +40,7 @@ class MainViewController: ViewController {
         view.addSubview(logoImage)
         view.addSubview(label)
         view.addSubview(joinButton)
-        view.addSubview(produceButton)
+//        view.addSubview(produceButton)
         
         logoImage.anchor(
             .top(view.topAnchor, constant: height * 0.217)
@@ -50,12 +50,12 @@ class MainViewController: ViewController {
         logoImage.constrainHeight(height * 0.298)
         label.anchor(.top(logoImage.bottomAnchor, constant: height * 0.179))
         joinButton.anchor(.top(logoImage.bottomAnchor, constant: height * 0.214))
-        produceButton.anchor(.top(logoImage.bottomAnchor, constant: height * 0.313))
+//        produceButton.anchor(.top(logoImage.bottomAnchor, constant: height * 0.313))
         
         logoImage.centerXToSuperview()
         label.centerXToSuperview()
         joinButton.centerXToSuperview()
-        produceButton.centerXToSuperview()
+//        produceButton.centerXToSuperview()
     }
 }
 
@@ -65,6 +65,6 @@ extension MainViewController: ViewModelBindableType {
         viewModel.checkKakaoLinkParams()
         
         joinButton.rx.action = viewModel.presentJoinAction()
-        produceButton.rx.action = viewModel.presentSetAction()
+//        produceButton.rx.action = viewModel.presentSetAction()
     }
 }

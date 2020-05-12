@@ -36,38 +36,15 @@ class MainUserListCell: UITableViewCell {
         super.awakeFromNib()
         
         addSubview(stackView)
-        addSubview(deleteButton)
+//        addSubview(deleteButton)
         
         stackView.centerYToSuperview()
-        deleteButton.centerYToSuperview()
+//        deleteButton.centerYToSuperview()
         stackView.anchor(.leading(leadingAnchor, constant: 20))
-        deleteButton.anchor(.trailing(trailingAnchor, constant: 30))
+//        deleteButton.anchor(.trailing(trailingAnchor, constant: 30))
         
 //        self.deleteButton.addTarget(self,
 //                                    action: #selector(buttonTapped(_:)),
 //                                    for: .touchUpInside)
     }
-    
-//    @objc func buttonTapped(_ sender: UIButton) {
-//        let cell = sender.superview as! UITableViewCell
-//        let tableView = cell.superview as! UITableView
-//        let indexPath = tableView.indexPath(for: cell)
-//        let targetCell =
-//
-////        let alert = UIAlertController(title: "진짜",
-////                                      message: "내보낼 거야?",
-////                                      preferredStyle: <#T##UIAlertController.Style#>)
-//
-////        let alert = UIAlertController(title: "Subscribed!", message: "Subscribed to \(youtuber)", preferredStyle: .alert)
-////        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-////        alert.addAction(okAction)
-////
-////        self.present(alert, animated: true, completion: nil)
-//    }
 }
-
-//extension MainUserListCell: ViewModelBindableType {
-//    func bindViewModel(viewModel: MainUserListCellViewModel) {
-//
-//    }
-//}

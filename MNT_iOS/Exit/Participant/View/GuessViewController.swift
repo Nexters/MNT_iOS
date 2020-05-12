@@ -114,11 +114,6 @@ extension GuessViewController: UICollectionViewDelegate, UICollectionViewDataSou
     }
 }
 
-let dummyFromImage = "https://image.shutterstock.com/image-vector/user-icon-260nw-523867123.jpg"
-let dummyToImage = "https://image.shutterstock.com/image-vector/user-icon-260nw-523867123.jpg"
-let dummyFromLabel = "뚱이"
-let dummyToLabel = "핑핑이"
-
 extension GuessViewController: ViewModelBindableType {
     func bindViewModel(viewModel: GuessViewModel) {
         self.viewModel = viewModel
@@ -141,6 +136,6 @@ extension GuessViewController: ViewModelBindableType {
                     self.collectionView.reloadData()
                 }
             }
-            }?.disposed(by: self.rx.disposeBag)
+        }?.disposed(by: self.rx.disposeBag)
     }
 }
