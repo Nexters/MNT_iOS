@@ -64,7 +64,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         testingMain()
 //        testingAdminExit()
 //        testingParticipantExit()
-//        transMain()
     }
     
     fileprivate func testingMission() {

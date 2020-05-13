@@ -144,7 +144,7 @@ class TabBarViewController: UITabBarController {
         let width = view.frame.width
         let height = view.frame.height
         
-        UIView.animate(withDuration: 3.0, delay: 0, options: .curveLinear, animations: {
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveLinear, animations: {
             self.stackView.frame = CGRect(x: (width - 263)/2,
                                      y: height + 100,
                                      width: 263,
@@ -156,7 +156,7 @@ class TabBarViewController: UITabBarController {
         let width = view.frame.width
         let height = view.frame.height
 
-        UIView.animate(withDuration: 1.0, delay: 0, options: .curveLinear, animations: {
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveLinear, animations: {
             self.stackView.frame = CGRect(x: (width - 263)/2,
                                      y: height - 93,
                                      width: 263,
