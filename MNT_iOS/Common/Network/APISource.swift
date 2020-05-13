@@ -31,7 +31,7 @@ class APISource: APISourceProtocol {
                                  .myMissionDoneList,
                                  parameters: params,
                                  path: userId) { (res: MissionListResponse) in
-                                    
+                                    completion(res.data)
         }
         
     }
