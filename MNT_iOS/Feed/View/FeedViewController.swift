@@ -110,6 +110,9 @@ extension FeedViewController: ViewModelBindableType {
             
 //            self.viewModel?.infos = missions.map { $0. }
         }
+//        APISource.shared.getTimeline(roomId: 0) { missions in
+//            print(missions)
+//        }
         
         (0...2).forEach{ [unowned self] i in
             self.viewModel?.infos.append(Feed(id: 1,

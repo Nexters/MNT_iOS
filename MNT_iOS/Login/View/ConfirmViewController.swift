@@ -39,7 +39,7 @@ class ConfirmViewController: ViewController {
     
     lazy var nameStack : UIStackView = {
         let sv = UIStackView(arrangedSubviews: [
-            nameSubLabel, idSubLabel
+            nameSubLabel, nameLabel
         ])
         sv.axis = .vertical
         sv.spacing = 9
@@ -55,8 +55,9 @@ class ConfirmViewController: ViewController {
         return sv
     }()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         requestMe()
     }
     
@@ -67,7 +68,7 @@ class ConfirmViewController: ViewController {
         self.navigationController?.title = "\(nameLabel)님, 반가워요!"
         view.addSubview(profileImage)
         view.addSubview(nameStack)
-        view.addSubview(idStack)
+//        view.addSubview(idStack)
         view.addSubview(button)
         
         profileImage.anchor(
@@ -77,10 +78,10 @@ class ConfirmViewController: ViewController {
             .top(profileImage.bottomAnchor, constant: height * 0.132),
             .leading(view.leadingAnchor, constant: width * 0.096)
         )
-        idStack.anchor(
-            .top(profileImage.bottomAnchor, constant: height * 0.225),
-            .leading(view.leadingAnchor, constant: width * 0.096)
-        )
+//        idStack.anchor(
+//            .top(profileImage.bottomAnchor, constant: height * 0.225),
+//            .leading(view.leadingAnchor, constant: width * 0.096)
+//        )
         button.anchor(
             .top(profileImage.bottomAnchor, constant: height * 0.408)
         )
@@ -89,15 +90,31 @@ class ConfirmViewController: ViewController {
     }
     
     fileprivate func requestMe() {
-        KOSessionTask.userMeTask { [unowned self] (error, me) in
-            guard
-                let me = me,
-                let account = me.account
-                else {return}
-
-//            self.idLabel.text = account.email
-            self.nameLabel.text = me.nickname
-        }
+        KOSessionTask.userMeTask(completion: { (error, me) in
+            if let error = error as NSError? {
+                UIAlertController.showMessage(error.description)
+            } else if let me = me as KOUserMe? {
+                print("nickName: \(String(describing: me.nickname))")
+                print("id: \(String(describing: me.id))")
+                self.nameLabel.text = me.nickname
+//                self.idLabel.text = me.account?.email
+            } else {
+                print("has no id")
+            }
+        })
+        
+//        fileprivate func kakaoLogin() {
+//            guard  let session = KOSession.shared() else {
+//                return
+//            }
+//
+//            if session.token?.accessToken != nil {
+//                self.transMain()
+//            } else {
+//                addObserver() // 로그인,로그아웃 상태 변경 받기
+//                reloadRootViewController()
+//            }
+//        }
     }
 }
 

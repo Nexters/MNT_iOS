@@ -11,26 +11,19 @@ import Action
 import RxSwift
 
 class ReadyViewModel: ViewModel {
-    func sendKakaoLinkAction(code: Int) -> CocoaAction {
+    func sendKakaoLinkAction() -> CocoaAction {
         return Action { [unowned self] action in
-            let template = KMTFeedTemplate { (feedTemplateBuilder) in
-                feedTemplateBuilder.content = KMTContentObject(builderBlock: { (contentBuilder) in
-                    contentBuilder.title = "프룻프룻프루또\n초대코드 : \(code)"
-                    contentBuilder.imageURL = URL(string: "http://mud-kage.kakao.co.kr/dn/NTmhS/btqfEUdFAUf/FjKzkZsnoeE4o19klTOVI1/openlink_640x640s.jpg")!
-                    contentBuilder.link = KMTLinkObject(builderBlock: { (linkBuilder) in
-                        linkBuilder.mobileWebURL = URL(string: "https://developers.kakao.com")!
-                    })
-                })
+            let code = 11111
             
-                feedTemplateBuilder.addButton(KMTButtonObject(builderBlock: { (buttonBuilder) in
-                    buttonBuilder.title = "앱으로 이동"
-                    buttonBuilder.link = KMTLinkObject(builderBlock: { (linkBuilder) in
-                        //linkBuilder.webURL = URL(string: url)!
-                        //linkBuilder.mobileWebURL = URL(string: "https://developers.kakao.com")!
-                        linkBuilder.iosExecutionParams = "code=\(code)"
-                        linkBuilder.androidExecutionParams = "code=\(code)"
-                    })
-                }))
+            let template = KMTTextTemplate { (textTemplateBuilder) in
+                textTemplateBuilder.text = "마니또를 생성하였습니다."
+                textTemplateBuilder.link = KMTLinkObject(builderBlock: { (linkBuilder) in
+                    //linkBuilder.webURL = URL(string: url)!
+                    //linkBuilder.mobileWebURL = URL(string: "https://developers.kakao.com")!
+                    linkBuilder.iosExecutionParams = "\(code)"
+                    linkBuilder.androidExecutionParams = "\(code)"
+                })
+                textTemplateBuilder.buttonTitle = "앱에서 보기"
             }
 
             // 카카오링크 실행
@@ -48,11 +41,24 @@ class ReadyViewModel: ViewModel {
         }
     }
     
-    func enterRoom(code: Int) -> CocoaAction {
+    func enterRoom() -> CocoaAction {
         return CocoaAction { _ in
-            let viewModel = TabBarViewModel(title: "모아보기", coordinator: self.coordinator)
-            let scene = MainScene.enterRoom(viewModel)
+            let viewModel = TabBarViewModel(title: "", coordinator: self.coordinator)
+            let scene: SceneType = MainScene.enterRoom(viewModel)
             
+            APISource.shared.getRoomStart(roomId: 12768) { (request) in
+//                print("지혜짱")
+            }?.disposed(by: self.rx.disposeBag)
+            
+            return self.coordinator.transition(to: scene, using: .root, animated: true).asObservable().map { _ in }
+        }
+    }
+    
+    func presentShowAction() -> CocoaAction {
+        return CocoaAction { _ in
+            let viewModel = MainUserListViewModel(title: "참여자 리스트", coordinator: self.coordinator)
+            let scene: SceneType = MainScene.showParticipant(viewModel)
+
             return self.coordinator.transition(to: scene, using: .push, animated: true).asObservable().map { _ in }
         }
     }

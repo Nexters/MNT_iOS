@@ -12,7 +12,7 @@ class GrayButton: UIButton {
     required init(_ text: String) {
         super.init(frame: .zero)
         self.backgroundColor = .grayColor
-        self.tintColor = .textOnlyColor
+        self.setTitleColor(.textOnlyColor, for: .normal)
         self.setTitle(text, for: .normal)
         self.titleLabel?.font = UIFont.boldFont(ofSize: 18)
     }

@@ -16,16 +16,16 @@ struct UserListResponse: Codable {
 struct Participant: Codable {
     var id: Int = 0
     var room: RoomInfo = RoomInfo()
-    var user: User = User()
+    var user: User 
     var manittoId: String? = nil
     var isCreater: Int = 0
 }
 
 struct User: Codable {
-    var id: String = ""
-    var name: String = ""
-    var profilePic: String = ""
-    var fcmToken: String = ""
+    var id: String
+    var name: String
+    var profilePic: String
+    var fcmToken: String 
 }
 
 struct RoomInfo: Codable {

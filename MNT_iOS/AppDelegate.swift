@@ -44,20 +44,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         if session.token?.accessToken != nil {
-            let coordinator = SceneCoordinator(window: window!)
-            let viewModel = MainViewModel(title: "메인", coordinator: coordinator)
-            let scene: SceneType = MainScene.main(viewModel as! MainViewModel)
-            coordinator.transition(to: scene, using: .root, animated: true)
+            self.transMain()
         } else {
             addObserver() // 로그인,로그아웃 상태 변경 받기
             reloadRootViewController()
         }
     }
     
+    fileprivate func transMain() {
+        let coordinator = SceneCoordinator(window: window!)
+        let viewModel = MainViewModel(title: "", coordinator: coordinator)
+        let scene: SceneType = MainScene.main(viewModel as! MainViewModel)
+        coordinator.transition(to: scene, using: .root, animated: true)
+    }
+    
     fileprivate func testing() {
 //        testingFeed()
 //        testingMission()
-        testingMain()
+//        testingMain()
+//        testingAdminExit()
+        testingParticipantExit()
+//        transMain()
     }
     
     fileprivate func testingMission() {
@@ -82,6 +89,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         coordinator.transition(to: scene, using: .root, animated: true)
     }
     
+    fileprivate func testingAdminExit() {
+        let coordinator = SceneCoordinator(window: window!)
+        let viewModel = AlertExitOrNotViewModel(title: "푸르또 종료", coordinator: coordinator)
+        let scene: SceneType = ExitScene.alertExitOrNot(viewModel)
+        coordinator.transition(to: scene, using: .root, animated: true)
+    }
+    
+    fileprivate func testingParticipantExit() {
+        let coordinator = SceneCoordinator(window: window!)
+        let viewModel = AlertExitViewModel(title: "푸르또 종료", coordinator: coordinator)
+        let scene: SceneType = ExitScene.alertExit(viewModel)
+        coordinator.transition(to: scene, using: .root, animated: true)
+    }
+    
     fileprivate func addObserver() {
         NotificationCenter
             .default
@@ -94,11 +115,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     fileprivate func reloadRootViewController() {
         guard let isOpened = KOSession.shared()?.isOpen() else { return }
         
+//        let coordinator = SceneCoordinator(window: window!)
+//        let viewModel = isOpened ? ConfirmViewModel(title: "확인", coordinator: coordinator) : LoginViewModel(title: "로그인", coordinator: coordinator)
+//        let scene: SceneType = isOpened ? LoginScene.confirm(viewModel as! ConfirmViewModel) : LoginScene.login(viewModel as! LoginViewModel)
+        
         let coordinator = SceneCoordinator(window: window!)
-        let viewModel = isOpened ? ConfirmViewModel(title: "확인", coordinator: coordinator) : LoginViewModel(title: "로그인", coordinator: coordinator)
-        let scene: SceneType = isOpened ? LoginScene.confirm(viewModel as! ConfirmViewModel) : LoginScene.login(viewModel as! LoginViewModel)
-//
-//        coordinator.transition(to: scene, using: .root, animated: true)
+        let viewModel = isOpened ? AgreeViewModel(title: "이용약관", coordinator: coordinator) : LoginViewModel(title: "로그인", coordinator: coordinator)
+        let scene: SceneType = isOpened ? LoginScene.agree(viewModel as! AgreeViewModel) : LoginScene.login(viewModel as! LoginViewModel)
+
+        coordinator.transition(to: scene, using: .root, animated: true)
     }
     
     @objc fileprivate func kakaoSessionDidChangeWithNotification() {
@@ -109,13 +134,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if KOSession.handleOpen(url) {
             return true
         }
-        return false
         
-//        if KLKTalkLinkCenter.shared().isTalkLinkCallback(url) {
-//            let params = url.query
-//            UIAlertController.showMessage("카카오링크 메시지 액션\n\(params ?? "파라미터 없음")")
-//            return true
-//        }
+        // Called When Execute KaKaoLink
+        if KLKTalkLinkCenter.shared().isTalkLinkCallback(url) {
+            let params = url.query
+            let coordinator = SceneCoordinator(window: window!)
+            let viewModel = MainViewModel(title: "", coordinator: coordinator)
+            let scene: SceneType = MainScene.main(viewModel as! MainViewModel)
+            
+            viewModel.kakaoLinkParams = params
+            coordinator.transition(to: scene, using: .root, animated: true)
+            return true
+        }
         return false
     }
     
@@ -123,12 +153,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if KOSession.handleOpen(url) {
             return true
         }
-        return false
-//        if KLKTalkLinkCenter.shared().isTalkLinkCallback(url) {
-//            let params = url.query
-//            UIAlertController.showMessage("카카오링크 메시지 액션\n\(params ?? "파라미터 없음")")
-//            return true
-//        }
+        
+        // Called When Execute KaKaoLink
+        if KLKTalkLinkCenter.shared().isTalkLinkCallback(url) {
+            let params = url.query
+            let coordinator = SceneCoordinator(window: window!)
+            let viewModel = MainViewModel(title: "", coordinator: coordinator)
+            let scene: SceneType = MainScene.main(viewModel as! MainViewModel)
+            
+            viewModel.kakaoLinkParams = params
+            coordinator.transition(to: scene, using: .root, animated: true)
+            return true
+        }
         return false
     }
 
@@ -140,4 +176,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         KOSession.handleDidBecomeActive()
     }
 }
-

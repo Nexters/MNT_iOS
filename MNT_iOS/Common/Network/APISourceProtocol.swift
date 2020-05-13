@@ -26,6 +26,13 @@ enum URLType: String {
     case roomAttend = "/room/attend"
     case missionSend = "/mission/send"
     case missionDoneList = "/mission/list/order-mission"
+    case signUp = "/user/sign-up"
+    case roomMake = "/room/make"
+    case roomCheck = "/room/check"
+    case roomUserList = "/room/user-list"
+    case roomStart = "/room/start"
+    case roomUser = "/room/user"
+    case userManitto = "/user/manitto"
 }
 
 // for case handling
@@ -43,6 +50,7 @@ protocol APISourceProtocol {
                                                encoding: ParameterEncoding,
                                                headers: [String: String]?,
                                                completion: ((T) -> Void)?) -> Disposable?
+    
     // for SingleObject with Path & Param
     func requestDataObject<T: Codable, P: Any>(_ method: HTTPMethod,
                                                _ url: URLType,
@@ -51,6 +59,15 @@ protocol APISourceProtocol {
                                                encoding: ParameterEncoding,
                                                headers: [String: String]?,
                                                completion: ((T) -> Void)?) -> Disposable?
+    
+    func requestDataObject<T: Codable, P: Any>(_ method: HTTPMethod,
+                                               _ url: URLType,
+                                               parameters: P?,
+                                               path: Int,
+                                               encoding: ParameterEncoding,
+                                               headers: [String: String]?,
+                                               completion: ((T) -> Void)?) -> Disposable?
+    
     // for Non-Response
     func requestWithoutData<P: Any>(_ method: HTTPMethod,
                                     _ url: URLType,
@@ -166,6 +183,103 @@ extension APISourceProtocol {
                                        headers: headers)
             .subscribe(
                 onNext: { res in
+                    completion?()
+            },
+                onError: { err in
+                    // err handling
+                    print("reqeustDatas Error : \(err)")
+            },
+                onCompleted: {
+                    // completion handling
+            })
+    }
+    
+    func requestDataObject<T: Codable, P: Any>(_ method: HTTPMethod,
+                                               _ url: URLType,
+                                               parameters: P,
+                                               path: String,
+                                               encoding: ParameterEncoding = URLEncoding.default,
+                                               headers: [String: String]? = nil, completion: ((T) -> Void)?) -> Disposable? {
+        let params = parameters
+        let path = "/\(path)"
+        
+        guard let encodedUrl = (API.baseURL+url.rawValue+path).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+            print("networking - invalid url")
+            return nil
+        }
+        
+        return RxAlamofire.requestData(method,
+                                       encodedUrl,
+                                       parameters: params as? [String : Any],
+                                       encoding: encoding,
+                                       headers: headers)
+            .mapObject(type: T.self)
+            .subscribe(
+              onNext: completion,
+              onError: { err in
+                  // err handling
+                  print("reqeustDatas Error : \(err)")
+            },
+              onCompleted: {
+                  // completion handling
+            })
+      
+    }
+    
+    func requestDataObject<T: Codable, P: Any>(_ method: HTTPMethod,
+                                               _ url: URLType,
+                                               parameters: P,
+                                               path: Int,
+                                               encoding: ParameterEncoding = URLEncoding.default,
+                                               headers: [String: String]? = nil, completion: ((T) -> Void)?) -> Disposable? {
+        let params = parameters
+        let path = "/\(path)"
+        
+        guard let encodedUrl = (API.baseURL+url.rawValue+path).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+            print("networking - invalid url")
+            return nil
+        }
+        
+        return RxAlamofire.requestData(method,
+                                       encodedUrl,
+                                       parameters: params as? [String : Any],
+                                       encoding: encoding,
+                                       headers: headers)
+            .mapObject(type: T.self)
+            .subscribe(
+              onNext: completion,
+              onError: { err in
+                  // err handling
+                  print("reqeustDatas Error : \(err)")
+            },
+              onCompleted: { 
+                  // completion handling
+            })
+      
+    }
+    
+    func requestWithoutData<P: Any>(_ method: HTTPMethod,
+                                    _ url: URLType,
+                                    parameters: P?,
+                                    encoding: ParameterEncoding = URLEncoding.default,
+                                    headers: [String: String]? = nil,
+                                    completion: (() -> Void)?) -> Disposable? {
+        let params = (parameters is [String: Any]?) == true ? parameters : nil
+        let path = parameters != nil && params == nil ? "/\(String(describing: parameters!))" : ""
+        
+        guard let encodedUrl = (API.baseURL+url.rawValue+path).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+            print("networking - invalid url")
+            return nil
+        }
+        
+        return RxAlamofire.requestData(method,
+                                       encodedUrl,
+                                       parameters: params as? [String : Any],
+                                       encoding: encoding,
+                                       headers: headers)
+            .subscribe(
+                onNext: { res in
+                    print("resresresres : \(res)")
                     completion?()
             },
                 onError: { err in

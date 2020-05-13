@@ -13,6 +13,7 @@ import RxSwift
 
 class JoinRoomViewModel: ViewModel {
     let codeTextRelay = BehaviorRelay(value: "")
+    var kakaoLinkParams : String?
     
     func presentReadyAction() -> CocoaAction {
         return CocoaAction { action in
@@ -28,16 +29,16 @@ class JoinRoomViewModel: ViewModel {
                 let viewModel = ReadyViewModel(title: "대기화면", coordinator: self.coordinator)
                 let scene = MainScene.ready(viewModel)
                 
-                self.getRoomAttend()
+                self.getRoomAttend(self.codeTextRelay.value)
                 
-                return self.coordinator.transition(to: scene, using: .push, animated: true).asObservable().map { _ in }
+                return self.coordinator.transition(to: scene, using: .root, animated: true).asObservable().map { _ in }
             }
         }
     }
     
-    private func getRoomAttend() {
-        APISource.shared.getRoomAttend(roomId: 0, userId: "") { room in
-            print("getRoomAttend() return : \(room)")
+    private func getRoomAttend(_ roomId: String) {
+        APISource.shared.getRoomAttend(roomId: Int(roomId) ?? 0, userId: "05129") { room in
+            
         }?.disposed(by: rx.disposeBag)
     }
 }

@@ -134,6 +134,8 @@
 		583659BD23E32AA300E2752F /* ReadyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583659BC23E32AA300E2752F /* ReadyViewController.swift */; };
 		583659BF23E32B5100E2752F /* ReadyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583659BE23E32B5100E2752F /* ReadyViewModel.swift */; };
 		583659CC23E4AB7100E2752F /* RoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583659CB23E4AB7100E2752F /* RoomViewModel.swift */; };
+		58C56FFD246AF1A7000FEDC7 /* AgreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C56FFC246AF1A7000FEDC7 /* AgreeViewController.swift */; };
+		58C56FFF246AF1B6000FEDC7 /* AgreeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C56FFE246AF1B6000FEDC7 /* AgreeViewModel.swift */; };
 		58D0178C23FA9CA300D55DA6 /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D0178B23FA9CA200D55DA6 /* ConfirmViewController.swift */; };
 		58D0178E23FA9CB400D55DA6 /* ConfirmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D0178D23FA9CB300D55DA6 /* ConfirmViewModel.swift */; };
 		58D0179523FA9CE600D55DA6 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D0178F23FA9CE600D55DA6 /* PrimaryButton.swift */; };
@@ -149,6 +151,16 @@
 		58D017A423FA9DEE00D55DA6 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D017A323FA9DEE00D55DA6 /* TabBarViewController.swift */; };
 		58D017A623FA9E1500D55DA6 /* TabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D017A523FA9E1500D55DA6 /* TabBarViewModel.swift */; };
 		58D017AC23FAB90D00D55DA6 /* LoginScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D017AB23FAB90D00D55DA6 /* LoginScene.swift */; };
+		58D017AE23FB083F00D55DA6 /* AlertToAdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D017AD23FB083F00D55DA6 /* AlertToAdminViewController.swift */; };
+		58D017B223FBA90500D55DA6 /* Font in Resources */ = {isa = PBXBuildFile; fileRef = 58D017B123FBA90500D55DA6 /* Font */; };
+		58D017B423FBA93400D55DA6 /* SFProDisplay-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 58D017B323FBA93400D55DA6 /* SFProDisplay-Medium.ttf */; };
+		58D017B623FBA94100D55DA6 /* SFProDisplay-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 58D017B523FBA94100D55DA6 /* SFProDisplay-Semibold.ttf */; };
+		58D017BA23FC799600D55DA6 /* DisableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D017B923FC799600D55DA6 /* DisableButton.swift */; };
+		58D017BC23FD6D9700D55DA6 /* MainUserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D017BB23FD6D9700D55DA6 /* MainUserListViewController.swift */; };
+		58D017BE23FD6DC500D55DA6 /* MainUserListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D017BD23FD6DC500D55DA6 /* MainUserListViewModel.swift */; };
+		58D017C22427AE9D00D55DA6 /* FruitImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D017C12427AE9C00D55DA6 /* FruitImage.swift */; };
+		58D017C9242A6B3600D55DA6 /* MainUserListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D017C7242A6B3600D55DA6 /* MainUserListCell.swift */; };
+		58D017CA242A6B3600D55DA6 /* MainUserListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58D017C8242A6B3600D55DA6 /* MainUserListCell.xib */; };
 		66B8E3541E3CFB1FAA501496 /* Pods_MNT_iOS_MNT_iOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88EA694FBB02409DA30AB831 /* Pods_MNT_iOS_MNT_iOSUITests.framework */; };
 		6F8C0272B30607E25FC8F8C8 /* Pods_MNT_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95E9A4A6BF4DD4A6D97A4951 /* Pods_MNT_iOS.framework */; };
 		B13A90DE644E5B9587B70BAD /* Pods_MNT_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 186C7888D6F657BF5ED2D930 /* Pods_MNT_iOSTests.framework */; };
@@ -316,8 +328,8 @@
 		583659BC23E32AA300E2752F /* ReadyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyViewController.swift; sourceTree = "<group>"; };
 		583659BE23E32B5100E2752F /* ReadyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyViewModel.swift; sourceTree = "<group>"; };
 		583659CB23E4AB7100E2752F /* RoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomViewModel.swift; sourceTree = "<group>"; };
-		58D0178723FA9AC400D55DA6 /* SFProDisplay-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SFProDisplay-Medium.ttf"; path = "../../../../../Downloads/SFProDisplay-Medium.ttf"; sourceTree = "<group>"; };
-		58D0178823FA9AC400D55DA6 /* SFProDisplay-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SFProDisplay-Semibold.ttf"; path = "../../../../../Downloads/SFProDisplay-Semibold.ttf"; sourceTree = "<group>"; };
+		58C56FFC246AF1A7000FEDC7 /* AgreeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreeViewController.swift; sourceTree = "<group>"; };
+		58C56FFE246AF1B6000FEDC7 /* AgreeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreeViewModel.swift; sourceTree = "<group>"; };
 		58D0178B23FA9CA200D55DA6 /* ConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
 		58D0178D23FA9CB300D55DA6 /* ConfirmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmViewModel.swift; sourceTree = "<group>"; };
 		58D0178F23FA9CE600D55DA6 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
@@ -333,6 +345,16 @@
 		58D017A323FA9DEE00D55DA6 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		58D017A523FA9E1500D55DA6 /* TabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewModel.swift; sourceTree = "<group>"; };
 		58D017AB23FAB90D00D55DA6 /* LoginScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScene.swift; sourceTree = "<group>"; };
+		58D017AD23FB083F00D55DA6 /* AlertToAdminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertToAdminViewController.swift; sourceTree = "<group>"; };
+		58D017B123FBA90500D55DA6 /* Font */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Font; sourceTree = "<group>"; };
+		58D017B323FBA93400D55DA6 /* SFProDisplay-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SFProDisplay-Medium.ttf"; path = "MNT_iOS/Supporting Files/Font/SFProDisplay-Medium.ttf"; sourceTree = "<group>"; };
+		58D017B523FBA94100D55DA6 /* SFProDisplay-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SFProDisplay-Semibold.ttf"; path = "MNT_iOS/Supporting Files/Font/SFProDisplay-Semibold.ttf"; sourceTree = "<group>"; };
+		58D017B923FC799600D55DA6 /* DisableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisableButton.swift; sourceTree = "<group>"; };
+		58D017BB23FD6D9700D55DA6 /* MainUserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUserListViewController.swift; sourceTree = "<group>"; };
+		58D017BD23FD6DC500D55DA6 /* MainUserListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUserListViewModel.swift; sourceTree = "<group>"; };
+		58D017C12427AE9C00D55DA6 /* FruitImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitImage.swift; sourceTree = "<group>"; };
+		58D017C7242A6B3600D55DA6 /* MainUserListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUserListCell.swift; sourceTree = "<group>"; };
+		58D017C8242A6B3600D55DA6 /* MainUserListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainUserListCell.xib; sourceTree = "<group>"; };
 		88EA694FBB02409DA30AB831 /* Pods_MNT_iOS_MNT_iOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MNT_iOS_MNT_iOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		95E9A4A6BF4DD4A6D97A4951 /* Pods_MNT_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MNT_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB74A15F01BF71A867A7F874 /* Pods-MNT_iOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MNT_iOSTests.debug.xcconfig"; path = "Target Support Files/Pods-MNT_iOSTests/Pods-MNT_iOSTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -447,6 +469,7 @@
 			children = (
 				1A4E687523E3F7FF005D2CFD /* Model.swift */,
 				1A166DDB2467D2CF00ACDC89 /* UploadableImage.swift */,
+				58D017C12427AE9C00D55DA6 /* FruitImage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -465,6 +488,7 @@
 				58D0179223FA9CE600D55DA6 /* TextOnlyButton.swift */,
 				1ADEFD9D23FC5A8E00E3DC49 /* CloseButtonBar.swift */,
 				1A595E802425F6670080AE61 /* TextFieldContainer.swift */,
+				58D017B923FC799600D55DA6 /* DisableButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -742,6 +766,7 @@
 			children = (
 				1A8FAF4323E0612C009A92C1 /* LoginViewModel.swift */,
 				58D0178D23FA9CB300D55DA6 /* ConfirmViewModel.swift */,
+				58C56FFE246AF1B6000FEDC7 /* AgreeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -751,6 +776,7 @@
 			children = (
 				1A49808423C967C1004B4058 /* LoginController.swift */,
 				58D0178B23FA9CA200D55DA6 /* ConfirmViewController.swift */,
+				58C56FFC246AF1A7000FEDC7 /* AgreeViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -770,6 +796,9 @@
 				1AD6D40823BF9DBC000B1893 /* MainViewController.swift */,
 				583659BC23E32AA300E2752F /* ReadyViewController.swift */,
 				58D017A323FA9DEE00D55DA6 /* TabBarViewController.swift */,
+				58D017BB23FD6D9700D55DA6 /* MainUserListViewController.swift */,
+				58D017C7242A6B3600D55DA6 /* MainUserListCell.swift */,
+				58D017C8242A6B3600D55DA6 /* MainUserListCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -782,6 +811,7 @@
 				583659BE23E32B5100E2752F /* ReadyViewModel.swift */,
 				583659CB23E4AB7100E2752F /* RoomViewModel.swift */,
 				58D017A523FA9E1500D55DA6 /* TabBarViewModel.swift */,
+				58D017BD23FD6DC500D55DA6 /* MainUserListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -797,9 +827,9 @@
 		1A8FAF4023E05FCF009A92C1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				58D0178623FA9A0700D55DA6 /* Font */,
 				1AD6D40623BF9DBC000B1893 /* SceneDelegate.swift */,
 				1AD6D41023BF9DBF000B1893 /* Assets.xcassets */,
+				58D017B123FBA90500D55DA6 /* Font */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -821,6 +851,8 @@
 			isa = PBXGroup;
 			children = (
 				1AE4C97A23FBAC8F0031EFA6 /* Font */,
+				58D017B523FBA94100D55DA6 /* SFProDisplay-Semibold.ttf */,
+				58D017B323FBA93400D55DA6 /* SFProDisplay-Medium.ttf */,
 				1A49808623C96925004B4058 /* KakaoOpenSDK-Bridging-Header.h */,
 				1A49808023C962F8004B4058 /* Frameworks */,
 				1AD6D40323BF9DBC000B1893 /* MNT_iOS */,
@@ -968,6 +1000,7 @@
 			isa = PBXGroup;
 			children = (
 				581B161D23ED809C00D0593B /* AlertExitOrNotViewController.swift */,
+				58D017AD23FB083F00D55DA6 /* AlertToAdminViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1111,15 +1144,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		58D0178623FA9A0700D55DA6 /* Font */ = {
-			isa = PBXGroup;
-			children = (
-				58D0178723FA9AC400D55DA6 /* SFProDisplay-Medium.ttf */,
-				58D0178823FA9AC400D55DA6 /* SFProDisplay-Semibold.ttf */,
-			);
-			path = Font;
-			sourceTree = "<group>";
-		};
 		A6288BC690BACDCA5EA794E6 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1243,6 +1267,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A595E7C2425C57B0080AE61 /* MissionMakeCell.xib in Resources */,
+				58D017B623FBA94100D55DA6 /* SFProDisplay-Semibold.ttf in Resources */,
+				58D017CA242A6B3600D55DA6 /* MainUserListCell.xib in Resources */,
+				58D017B423FBA93400D55DA6 /* SFProDisplay-Medium.ttf in Resources */,
 				1A4E689123E40F81005D2CFD /* MissionCell.xib in Resources */,
 				1ADEFD9823FC3C9900E3DC49 /* FeedFilterSubmenuCell.xib in Resources */,
 				1A01BB6A23F64B9B00FF8B7C /* UserListCell.xib in Resources */,
@@ -1250,6 +1277,7 @@
 				1A595E6E242599AB0080AE61 /* DashboardGridMenuCell.xib in Resources */,
 				1AD6D41423BF9DBF000B1893 /* LaunchScreen.storyboard in Resources */,
 				1A595E72242599D80080AE61 /* DashboardProfileCell.xib in Resources */,
+				58D017B223FBA90500D55DA6 /* Font in Resources */,
 				1A4E687123E3ED49005D2CFD /* FeedCell.xib in Resources */,
 				1AD6D41123BF9DBF000B1893 /* Assets.xcassets in Resources */,
 				1ADEFD9223FC295600E3DC49 /* FeedFilterCell.xib in Resources */,
@@ -1386,6 +1414,7 @@
 				58D017A623FA9E1500D55DA6 /* TabBarViewModel.swift in Sources */,
 				58D017A423FA9DEE00D55DA6 /* TabBarViewController.swift in Sources */,
 				58D017A223FA9DDD00D55DA6 /* Room.swift in Sources */,
+				58D017BA23FC799600D55DA6 /* DisableButton.swift in Sources */,
 				58D017A023FA9DA400D55DA6 /* UIFont+.swift in Sources */,
 				58D0179E23FA9D6300D55DA6 /* OpenNittoViewModel.swift in Sources */,
 				58D0179C23FA9D5100D55DA6 /* OpenNittoViewController.swift in Sources */,
@@ -1420,10 +1449,12 @@
 				1A4E689023E40F81005D2CFD /* MissionCell.swift in Sources */,
 				1A8FAF4C23E0755D009A92C1 /* UITextField+.swift in Sources */,
 				583659B523E1B9FE00E2752F /* SetRoomDetailViewController.swift in Sources */,
+				58D017BE23FD6DC500D55DA6 /* MainUserListViewModel.swift in Sources */,
 				1AAB0E2F23DECBFF0003A2C4 /* UILabel+.swift in Sources */,
 				1A3022AD23EBDAD800693E22 /* AddNewMissionViewModel.swift in Sources */,
 				1A595E782425ACBB0080AE61 /* MissionDoneResponse.swift in Sources */,
 				1A4E689323E40FAB005D2CFD /* MissionCellViewModel.swift in Sources */,
+				58D017BC23FD6D9700D55DA6 /* MainUserListViewController.swift in Sources */,
 				1A4E688B23E40DF9005D2CFD /* Mission.swift in Sources */,
 				1A8FAF4823E06A81009A92C1 /* MainScene.swift in Sources */,
 				1ADEFDA023FC64EE00E3DC49 /* BottomBar.swift in Sources */,
@@ -1439,6 +1470,7 @@
 				581B161E23ED809C00D0593B /* AlertExitOrNotViewController.swift in Sources */,
 				1A593D6E23FCF0D90009CDC0 /* DashboardViewController.swift in Sources */,
 				1A595E7524259A030080AE61 /* DashboardListMenuCell.swift in Sources */,
+				58C56FFF246AF1B6000FEDC7 /* AgreeViewModel.swift in Sources */,
 				581B161823ECB58F00D0593B /* UIApplication+.swift in Sources */,
 				1AD5F7BB23E8762400F96263 /* MissionPreviewViewController.swift in Sources */,
 				1A81AE5F23E90C38004CADBC /* FromToView.swift in Sources */,
@@ -1450,6 +1482,9 @@
 				1A4E68A523E474D4005D2CFD /* MissionPostViewModel.swift in Sources */,
 				1A21D273242CECCF00FCAC3C /* OrderMissionResponse.swift in Sources */,
 				1A81AE5A23E9099A004CADBC /* FeedDetailViewController.swift in Sources */,
+				1AD5F7BD23E8771500F96263 /* MissionDetail.swift in Sources */,
+				58C56FFD246AF1A7000FEDC7 /* AgreeViewController.swift in Sources */,
+				1A81AE5A23E9099A004CADBC /* MissionDetailViewController.swift in Sources */,
 				1AD6D40523BF9DBC000B1893 /* AppDelegate.swift in Sources */,
 				1ADEFD9E23FC5A8E00E3DC49 /* CloseButtonBar.swift in Sources */,
 				583659BF23E32B5100E2752F /* ReadyViewModel.swift in Sources */,
@@ -1459,6 +1494,8 @@
 				581B15F023EACE5F00D0593B /* AlertExitViewModel.swift in Sources */,
 				583659A523E146E600E2752F /* SetRoomTitleViewController.swift in Sources */,
 				1A81AE5D23E90A0C004CADBC /* FeedDetailViewModel.swift in Sources */,
+				1A81AE5D23E90A0C004CADBC /* MissionDetailViewModel.swift in Sources */,
+				58D017C9242A6B3600D55DA6 /* MainUserListCell.swift in Sources */,
 				1A4E687D23E404BC005D2CFD /* UICollectionView+.swift in Sources */,
 				1AAB0E3523DED2310003A2C4 /* NSObject+Rx.swift in Sources */,
 				1AECB7D023F0FA510018BC16 /* RxSwift+.swift in Sources */,
@@ -1469,6 +1506,8 @@
 				1AAB0E3123DECC2C0003A2C4 /* CircularImageView.swift in Sources */,
 				581B160223EC735400D0593B /* GuessViewModel.swift in Sources */,
 				1AAB0E2B23DECA080003A2C4 /* UIView+.swift in Sources */,
+				58D017AE23FB083F00D55DA6 /* AlertToAdminViewController.swift in Sources */,
+				1AAB0E2B23DECA080003A2C4 /* View+.swift in Sources */,
 				583659B723E1BA2500E2752F /* SetRoomDetailViewModel.swift in Sources */,
 				1A01BB6923F64B9B00FF8B7C /* UserListCell.swift in Sources */,
 				581B160C23EC760D00D0593B /* GuessViewController.swift in Sources */,
@@ -1484,6 +1523,8 @@
 				1A4E687323E3F471005D2CFD /* FeedCellViewModel.swift in Sources */,
 				1A595E812425F6670080AE61 /* TextFieldContainer.swift in Sources */,
 				1AAB0E2B23DECA080003A2C4 /* UIView+.swift in Sources */,
+				1AAB0E2B23DECA080003A2C4 /* View+.swift in Sources */,
+				58D017C22427AE9D00D55DA6 /* FruitImage.swift in Sources */,
 				1A4E68A323E474AE005D2CFD /* MissionPostViewController.swift in Sources */,
 				1A595E6D242599AB0080AE61 /* DashboardGridMenuCell.swift in Sources */,
 				1AB0697023F232C6000B8D27 /* FeedFilterViewModel.swift in Sources */,
@@ -1686,7 +1727,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CJ9DCX3V4H;
+				DEVELOPMENT_TEAM = WF8UF5VWG6;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",

@@ -7,42 +7,39 @@
 //
 
 import UIKit
-import Kingfisher
-import RxSwift
-import RxCocoa
 
 class AlertExitOrNotViewController: ViewController {
     
     var viewModel: AlertExitOrNotViewModel?
-    let label = UILabel(text: "마니또 종료", numberOfLines: 0)
-    var button = UIButton(title: "버튼", titleColor: .black)
+    var cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+    var exitAction = UIAlertAction(title: "종료하기", style: .default, handler: nil)
+    
+    override func setupNavigationController() {
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+    }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+    override func viewDidAppear(_ animated: Bool) {
+        alertMessage()
     }
     
-    override func setupLayout() {
-        view.stack(label,
-                   button.withHeight(50),
-                   alignment: .center,
-                   distribution: .fillEqually)
-            .withMargins(.init(top: 100,
-                               left: 0,
-                               bottom: 100,
-                               right: 0))
+    func alertMessage() {
+        let alert = UIAlertController(title: "", message: nil, preferredStyle: .alert)
+        let VC = AlertToAdminViewController()
+    
+        VC.preferredContentSize.width = 270
+        VC.preferredContentSize.height = 200
         
-//        let alert = UIAlertController(title: "Alert", message: nil, preferredStyle: .alert)
-//        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-//        alert.addAction(action)
-//        present(alert, animated: true, completion: nil)
-        
+        alert.addAction(cancelAction)
+        alert.addAction(exitAction)
+        alert.setValue(VC, forKey: "contentViewController")
+        present(alert, animated: true, completion: nil)
     }
 }
 
 extension AlertExitOrNotViewController: ViewModelBindableType {
     func bindViewModel(viewModel: AlertExitOrNotViewModel) {
-    
-        //button.rx.action = viewModel.openAlertAction()
+        self.cancelAction.rx.action = viewModel.cancelAction()
+        exitAction.rx.action = viewModel.exitAction()
     }
 }

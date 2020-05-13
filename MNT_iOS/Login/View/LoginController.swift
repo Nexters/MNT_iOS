@@ -12,10 +12,13 @@ import KakaoOpenSDK
 class LoginController: ViewController {
     
     var viewModel: LoginViewModel?
+    var confirmViewModel: ConfirmViewModel?
     let logoImage = UIImageView(image: #imageLiteral(resourceName: "frutto1"))
     private let loginButton: PrimaryButton = {
         let button = PrimaryButton("카카오 ID로 로그인")
-        button.addTarget(self, action: #selector(touchUpLoginButton(_:)), for: .touchUpInside)
+        button.addTarget(self,
+                         action: #selector(touchUpLoginButton(_:)),
+                         for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -53,17 +56,16 @@ class LoginController: ViewController {
         
         session.open { (error) in
             if error != nil || !session.isOpen() { return }
-            KOSessionTask.userMeTask(completion: { (error, user) in
-                guard let user = user,
-                    let email = user.account?.email,
-                    let nickname = user.nickname else { return }
-                
-                let confirmVC = ConfirmViewController()
-                confirmVC.nameLabel.text = nickname
-                confirmVC.modalPresentationStyle = .fullScreen
-                
-                self.present(confirmVC, animated: false, completion: nil)
-            })
+//            KOSessionTask.userMeTask(completion: { (error, me) in
+//                if let error = error as NSError? {
+//                    UIAlertController.showMessage(error.description)
+//                } else if let me = me as KOUserMe? {
+//                    self.confirmViewModel?.name = me.nickname
+//                    self.confirmViewModel?.email = me.account?.email
+//                } else {
+//                    print("has no id")
+//                }
+//            })
         }
     }
 }
