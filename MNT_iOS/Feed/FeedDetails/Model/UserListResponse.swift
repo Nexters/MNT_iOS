@@ -15,7 +15,7 @@ struct UserListResponse: Codable {
 
 struct Participant: Codable {
     var id: Int = 0
-    var room: RoomInfo = RoomInfo()
+    var room: Room = Room()
     var user: User 
     var manittoId: String? = nil
     var isCreater: Int = 0
@@ -26,14 +26,4 @@ struct User: Codable {
     var name: String = ""
     var profilePic: String = ""
     var fcmToken: String  = ""
-}
-
-struct RoomInfo: Codable {
-    var id: Int = 0
-    var name: String = ""
-    var maxPeople: Int = 0
-    var endDay: String = ""
-    var startDay: String = ""
-    var isDone: Int = 0
-    var isStart: Int = 0
 }

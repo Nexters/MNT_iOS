@@ -52,7 +52,7 @@ class SetRoomDetailViewModel: ViewModel {
                 return Observable.just(action)
             }
             else {
-                self.makeRoom()
+//                self.makeRoom()
                 
                 let viewModel = ReadyViewModel(title: "대기화면", coordinator: self.coordinator)
                 let scene = MainScene.ready(viewModel)
@@ -61,19 +61,13 @@ class SetRoomDetailViewModel: ViewModel {
         }
     }
     
-    func makeRoom() {
-        let room : Room = Room(endDay: "2020-03-25",
-                               id: 0,
-                               isDone: 0,
-                               isStart: 0,
-                               maxPeople: 6,
-                               name: "string",
-                               startDay: "2020-03-25")
-        APISource.shared.postRoomMake(room: room,
-                                      userId: "0716") { (roomId) in
-                                        print("roomId : \(roomId)")
-        }?.disposed(by: rx.disposeBag)
-    }
+//    func makeRoom() {
+//        let room : Room = Room()
+//        APISource.shared.postRoomMake(room: room,
+//                                      userId: "0716") { (roomId) in
+//                                        print("roomId : \(roomId)")
+//        }?.disposed(by: rx.disposeBag)
+//    }
 }
 
 

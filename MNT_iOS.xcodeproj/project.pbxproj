@@ -134,6 +134,7 @@
 		583659BD23E32AA300E2752F /* ReadyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583659BC23E32AA300E2752F /* ReadyViewController.swift */; };
 		583659BF23E32B5100E2752F /* ReadyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583659BE23E32B5100E2752F /* ReadyViewModel.swift */; };
 		583659CC23E4AB7100E2752F /* RoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583659CB23E4AB7100E2752F /* RoomViewModel.swift */; };
+		583EBDAA246C616B0076C68F /* UserDefaults+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583EBDA9246C616B0076C68F /* UserDefaults+.swift */; };
 		58C56FFD246AF1A7000FEDC7 /* AgreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C56FFC246AF1A7000FEDC7 /* AgreeViewController.swift */; };
 		58C56FFF246AF1B6000FEDC7 /* AgreeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C56FFE246AF1B6000FEDC7 /* AgreeViewModel.swift */; };
 		58D0178C23FA9CA300D55DA6 /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D0178B23FA9CA200D55DA6 /* ConfirmViewController.swift */; };
@@ -328,6 +329,7 @@
 		583659BC23E32AA300E2752F /* ReadyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyViewController.swift; sourceTree = "<group>"; };
 		583659BE23E32B5100E2752F /* ReadyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyViewModel.swift; sourceTree = "<group>"; };
 		583659CB23E4AB7100E2752F /* RoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomViewModel.swift; sourceTree = "<group>"; };
+		583EBDA9246C616B0076C68F /* UserDefaults+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+.swift"; sourceTree = "<group>"; };
 		58C56FFC246AF1A7000FEDC7 /* AgreeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreeViewController.swift; sourceTree = "<group>"; };
 		58C56FFE246AF1B6000FEDC7 /* AgreeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreeViewModel.swift; sourceTree = "<group>"; };
 		58D0178B23FA9CA200D55DA6 /* ConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
@@ -954,6 +956,7 @@
 				1AECB7D323F0FF780018BC16 /* RxAlamofire+.swift */,
 				1AECB7D523F137000018BC16 /* UIColor+.swift */,
 				1A21D26C242B7CC800FCAC3C /* UIViewController+.swift */,
+				583EBDA9246C616B0076C68F /* UserDefaults+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1482,9 +1485,8 @@
 				1A4E68A523E474D4005D2CFD /* MissionPostViewModel.swift in Sources */,
 				1A21D273242CECCF00FCAC3C /* OrderMissionResponse.swift in Sources */,
 				1A81AE5A23E9099A004CADBC /* FeedDetailViewController.swift in Sources */,
-				1AD5F7BD23E8771500F96263 /* MissionDetail.swift in Sources */,
 				58C56FFD246AF1A7000FEDC7 /* AgreeViewController.swift in Sources */,
-				1A81AE5A23E9099A004CADBC /* MissionDetailViewController.swift in Sources */,
+				1A81AE5A23E9099A004CADBC /* FeedDetailViewController.swift in Sources */,
 				1AD6D40523BF9DBC000B1893 /* AppDelegate.swift in Sources */,
 				1ADEFD9E23FC5A8E00E3DC49 /* CloseButtonBar.swift in Sources */,
 				583659BF23E32B5100E2752F /* ReadyViewModel.swift in Sources */,
@@ -1494,7 +1496,7 @@
 				581B15F023EACE5F00D0593B /* AlertExitViewModel.swift in Sources */,
 				583659A523E146E600E2752F /* SetRoomTitleViewController.swift in Sources */,
 				1A81AE5D23E90A0C004CADBC /* FeedDetailViewModel.swift in Sources */,
-				1A81AE5D23E90A0C004CADBC /* MissionDetailViewModel.swift in Sources */,
+				1A81AE5D23E90A0C004CADBC /* FeedDetailViewModel.swift in Sources */,
 				58D017C9242A6B3600D55DA6 /* MainUserListCell.swift in Sources */,
 				1A4E687D23E404BC005D2CFD /* UICollectionView+.swift in Sources */,
 				1AAB0E3523DED2310003A2C4 /* NSObject+Rx.swift in Sources */,
@@ -1507,7 +1509,7 @@
 				581B160223EC735400D0593B /* GuessViewModel.swift in Sources */,
 				1AAB0E2B23DECA080003A2C4 /* UIView+.swift in Sources */,
 				58D017AE23FB083F00D55DA6 /* AlertToAdminViewController.swift in Sources */,
-				1AAB0E2B23DECA080003A2C4 /* View+.swift in Sources */,
+				1AAB0E2B23DECA080003A2C4 /* UIView+.swift in Sources */,
 				583659B723E1BA2500E2752F /* SetRoomDetailViewModel.swift in Sources */,
 				1A01BB6923F64B9B00FF8B7C /* UserListCell.swift in Sources */,
 				581B160C23EC760D00D0593B /* GuessViewController.swift in Sources */,
@@ -1517,13 +1519,14 @@
 				1A8FAF4623E06952009A92C1 /* MainViewModel.swift in Sources */,
 				1A166DDC2467D2CF00ACDC89 /* UploadableImage.swift in Sources */,
 				581B160023EC70FD00D0593B /* ManittoProfile.swift in Sources */,
+				583EBDAA246C616B0076C68F /* UserDefaults+.swift in Sources */,
 				583659CC23E4AB7100E2752F /* RoomViewModel.swift in Sources */,
 				1A4E687623E3F7FF005D2CFD /* Model.swift in Sources */,
 				1AAB0E3123DECC2C0003A2C4 /* CircularImageView.swift in Sources */,
 				1A4E687323E3F471005D2CFD /* FeedCellViewModel.swift in Sources */,
 				1A595E812425F6670080AE61 /* TextFieldContainer.swift in Sources */,
 				1AAB0E2B23DECA080003A2C4 /* UIView+.swift in Sources */,
-				1AAB0E2B23DECA080003A2C4 /* View+.swift in Sources */,
+				1AAB0E2B23DECA080003A2C4 /* UIView+.swift in Sources */,
 				58D017C22427AE9D00D55DA6 /* FruitImage.swift in Sources */,
 				1A4E68A323E474AE005D2CFD /* MissionPostViewController.swift in Sources */,
 				1A595E6D242599AB0080AE61 /* DashboardGridMenuCell.swift in Sources */,

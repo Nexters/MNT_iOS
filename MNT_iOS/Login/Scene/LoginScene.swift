@@ -30,7 +30,7 @@ extension LoginScene: SceneType {
         case .agree(let viewModel):
             var agreeVC = AgreeViewController()
             agreeVC.bind(viewModel: viewModel)
-            return UINavigationController(rootViewController: agreeVC)
+            return NavigationController(rootViewController: agreeVC)
         }
     }
 }
