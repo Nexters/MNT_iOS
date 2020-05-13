@@ -106,9 +106,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     fileprivate func reloadRootViewController() {
         guard let isOpened = KOSession.shared()?.isOpen() else { return }
         
+//        let coordinator = SceneCoordinator(window: window!)
+//        let viewModel = isOpened ? ConfirmViewModel(title: "확인", coordinator: coordinator) : LoginViewModel(title: "로그인", coordinator: coordinator)
+//        let scene: SceneType = isOpened ? LoginScene.confirm(viewModel as! ConfirmViewModel) : LoginScene.login(viewModel as! LoginViewModel)
+        
         let coordinator = SceneCoordinator(window: window!)
-        let viewModel = isOpened ? ConfirmViewModel(title: "확인", coordinator: coordinator) : LoginViewModel(title: "로그인", coordinator: coordinator)
-        let scene: SceneType = isOpened ? LoginScene.confirm(viewModel as! ConfirmViewModel) : LoginScene.login(viewModel as! LoginViewModel)
+        let viewModel = isOpened ? AgreeViewModel(title: "이용약관", coordinator: coordinator) : LoginViewModel(title: "로그인", coordinator: coordinator)
+        let scene: SceneType = isOpened ? LoginScene.agree(viewModel as! AgreeViewModel) : LoginScene.login(viewModel as! LoginViewModel)
 
         coordinator.transition(to: scene, using: .root, animated: true)
     }

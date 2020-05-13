@@ -26,9 +26,10 @@ class APISource: APISourceProtocol {
                                  path: roomId) { (res: RoomResponse) in
                                     print("status : \(res.apiStatus.label)")
                                     if (res.apiStatus.httpStatus == 200) {
+                                        print("200")
                                         completion(res.data!)
                                     } else {
-                                        print("제발")
+                                        print("200 아님")
                                     }
         }
     }

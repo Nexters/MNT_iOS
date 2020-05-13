@@ -107,6 +107,8 @@
 		583659BD23E32AA300E2752F /* ReadyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583659BC23E32AA300E2752F /* ReadyViewController.swift */; };
 		583659BF23E32B5100E2752F /* ReadyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583659BE23E32B5100E2752F /* ReadyViewModel.swift */; };
 		583659CC23E4AB7100E2752F /* RoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583659CB23E4AB7100E2752F /* RoomViewModel.swift */; };
+		58C56FFD246AF1A7000FEDC7 /* AgreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C56FFC246AF1A7000FEDC7 /* AgreeViewController.swift */; };
+		58C56FFF246AF1B6000FEDC7 /* AgreeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C56FFE246AF1B6000FEDC7 /* AgreeViewModel.swift */; };
 		58D0178C23FA9CA300D55DA6 /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D0178B23FA9CA200D55DA6 /* ConfirmViewController.swift */; };
 		58D0178E23FA9CB400D55DA6 /* ConfirmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D0178D23FA9CB300D55DA6 /* ConfirmViewModel.swift */; };
 		58D0179523FA9CE600D55DA6 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D0178F23FA9CE600D55DA6 /* PrimaryButton.swift */; };
@@ -270,6 +272,8 @@
 		583659BC23E32AA300E2752F /* ReadyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyViewController.swift; sourceTree = "<group>"; };
 		583659BE23E32B5100E2752F /* ReadyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyViewModel.swift; sourceTree = "<group>"; };
 		583659CB23E4AB7100E2752F /* RoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomViewModel.swift; sourceTree = "<group>"; };
+		58C56FFC246AF1A7000FEDC7 /* AgreeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreeViewController.swift; sourceTree = "<group>"; };
+		58C56FFE246AF1B6000FEDC7 /* AgreeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreeViewModel.swift; sourceTree = "<group>"; };
 		58D0178B23FA9CA200D55DA6 /* ConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
 		58D0178D23FA9CB300D55DA6 /* ConfirmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmViewModel.swift; sourceTree = "<group>"; };
 		58D0178F23FA9CE600D55DA6 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
@@ -650,6 +654,7 @@
 			children = (
 				1A8FAF4323E0612C009A92C1 /* LoginViewModel.swift */,
 				58D0178D23FA9CB300D55DA6 /* ConfirmViewModel.swift */,
+				58C56FFE246AF1B6000FEDC7 /* AgreeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -659,6 +664,7 @@
 			children = (
 				1A49808423C967C1004B4058 /* LoginController.swift */,
 				58D0178B23FA9CA200D55DA6 /* ConfirmViewController.swift */,
+				58C56FFC246AF1A7000FEDC7 /* AgreeViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1321,6 +1327,7 @@
 				581B160923EC741C00D0593B /* ProfileCollectionViewCell.swift in Sources */,
 				581B161C23ED808600D0593B /* AlertExitOrNotViewModel.swift in Sources */,
 				581B161E23ED809C00D0593B /* AlertExitOrNotViewController.swift in Sources */,
+				58C56FFF246AF1B6000FEDC7 /* AgreeViewModel.swift in Sources */,
 				581B161823ECB58F00D0593B /* UIApplication+.swift in Sources */,
 				1AD5F7BB23E8762400F96263 /* MissionPreviewViewController.swift in Sources */,
 				1A81AE5F23E90C38004CADBC /* FromToView.swift in Sources */,
@@ -1331,6 +1338,7 @@
 				1AD6D40F23BF9DBC000B1893 /* MNT_iOS.xcdatamodeld in Sources */,
 				1A4E68A523E474D4005D2CFD /* MissionPostViewModel.swift in Sources */,
 				1AD5F7BD23E8771500F96263 /* MissionDetail.swift in Sources */,
+				58C56FFD246AF1A7000FEDC7 /* AgreeViewController.swift in Sources */,
 				1A81AE5A23E9099A004CADBC /* MissionDetailViewController.swift in Sources */,
 				1AD6D40523BF9DBC000B1893 /* AppDelegate.swift in Sources */,
 				583659BF23E32B5100E2752F /* ReadyViewModel.swift in Sources */,

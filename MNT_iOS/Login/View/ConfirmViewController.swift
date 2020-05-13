@@ -68,7 +68,7 @@ class ConfirmViewController: ViewController {
         self.navigationController?.title = "\(nameLabel)님, 반가워요!"
         view.addSubview(profileImage)
         view.addSubview(nameStack)
-        view.addSubview(idStack)
+//        view.addSubview(idStack)
         view.addSubview(button)
         
         profileImage.anchor(
@@ -78,10 +78,10 @@ class ConfirmViewController: ViewController {
             .top(profileImage.bottomAnchor, constant: height * 0.132),
             .leading(view.leadingAnchor, constant: width * 0.096)
         )
-        idStack.anchor(
-            .top(profileImage.bottomAnchor, constant: height * 0.225),
-            .leading(view.leadingAnchor, constant: width * 0.096)
-        )
+//        idStack.anchor(
+//            .top(profileImage.bottomAnchor, constant: height * 0.225),
+//            .leading(view.leadingAnchor, constant: width * 0.096)
+//        )
         button.anchor(
             .top(profileImage.bottomAnchor, constant: height * 0.408)
         )
@@ -95,10 +95,9 @@ class ConfirmViewController: ViewController {
                 UIAlertController.showMessage(error.description)
             } else if let me = me as KOUserMe? {
                 print("nickName: \(String(describing: me.nickname))")
-                print("email: \(String(describing: me.account?.emailNeedsAgreement))")
                 print("id: \(String(describing: me.id))")
                 self.nameLabel.text = me.nickname
-                self.idLabel.text = me.account?.email
+//                self.idLabel.text = me.account?.email
             } else {
                 print("has no id")
             }
