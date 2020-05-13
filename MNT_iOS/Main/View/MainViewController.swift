@@ -21,17 +21,17 @@ class MainViewController: ViewController {
                         numberOfLines: 0)
     var joinButton = PrimaryButton("참여하기🤝")
 //    var produceButton = SubButton("방 만들기🙋‍♀️")
-    let leftButton: UIBarButtonItem = {
-        let bt = UIBarButtonItem(image: #imageLiteral(resourceName: "arrowLeft"), style: .plain, target: nil, action: nil)
-        bt.tintColor = .defaultText
-        return bt
-    }()
-        
-    override func setupNavigationController() {
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        navigationItem.leftBarButtonItem = leftButton
-    }
+//    let leftButton: UIBarButtonItem = {
+//        let bt = UIBarButtonItem(image: #imageLiteral(resourceName: "arrowLeft"), style: .plain, target: nil, action: nil)
+//        bt.tintColor = .defaultText
+//        return bt
+//    }()
+//
+//    override func setupNavigationController() {
+//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+//        self.navigationController?.navigationBar.shadowImage = UIImage()
+//        navigationItem.leftBarButtonItem = leftButton
+//    }
     
     override func setupLayout() {
         let width = view.frame.width
