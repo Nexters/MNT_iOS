@@ -94,6 +94,7 @@ extension UIColor {
     
     open class var lightPink: UIColor {
         return .init(red: 255/255, green: 242/255, blue: 242/255, alpha: 1)
+    }
     open class var disableColor: UIColor {
         return .init(red: 222/255, green: 222/255, blue: 222/255, alpha: 1)
     }

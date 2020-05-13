@@ -66,10 +66,3 @@ struct Users : Codable{
     let user: User?
     let userFruttoId: Int?
 }
-
-struct Manitto: Codable {
-    let fruttoId: Int?
-    let id: String?
-    let name: String?
-    let fcmToken: String?
-}

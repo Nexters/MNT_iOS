@@ -1,11 +1,3 @@
-//
-//  APISource.swift
-//  MNT_iOS
-//
-//  Created by 최민섭 on 2020/02/10.
-//  Copyright © 2020 최민섭. All rights reserved.
-//
-
 import Foundation
 import Alamofire
 
@@ -14,7 +6,7 @@ class APISource: APISourceProtocol {
     static let shared = APISource()
     private init() {}
     
-    func getTimeline(roomId: Int, completion: @escaping ([Mission]) -> Void) -> Disposable? {        
+    func getTimeline(roomId: Int, completion: @escaping ([Mission]) -> Void) -> Disposable? {
         return requestDataObject(.get,
                     .missionList,
                     parameters: roomId) { (res: MissionListResponse) in
@@ -24,19 +16,59 @@ class APISource: APISourceProtocol {
     
     func getUserList(roomId: Int, completion: @escaping ([Participant]) -> Void) -> Disposable? {
         return requestDataObject(.get,
-                                 .userList,
+                                 .roomUserList,
                                  parameters: roomId) { (res: UserListResponse) in
                                     completion(res.data)
         }
     }
     
     func getMyMissionDoneList(roomId: Int, userId: String, completion: @escaping ([Mission]) -> Void) -> Disposable? {
+        let params = [
+            "roomId": roomId
+        ] as [String: Any]
+        
+        return requestDataObject(.get,
+                                 .myMissionDoneList,
+                                 parameters: params,
+                                 path: userId) { (res: MissionListResponse) in
+                                    
+        }
+        
+    }
+    
+    func getMissionDoneList(roomId: Int, completion: @escaping ([OrderMission]) -> Void) -> Disposable? {
+        return requestDataObject(.get,
+                                 .missionDoneList,
+                                 parameters: roomId) { (res: OrderMissionResponse) in
+                                    completion(res.data)
+        }
+    }
+    
+    func postMissionSend(missionSendingPostData: MissionSendingPostData, completion: @escaping () -> Void) -> Disposable? {
+        
+        var params = [
+            "roomId": missionSendingPostData.roomId,
+            "userId": missionSendingPostData.userId,
+            "missionId": missionSendingPostData.missionId,
+            "content": missionSendingPostData.content,
+        ] as [String: Any]
+        
+        if let image = missionSendingPostData.img {
+            params["img"] = image
+        }
+        
+        return requestWithoutData(.post,
+                                  .missionSend,
+                                  parameters: params) {
+                                    completion()
+        }
+    }
+    
     // success
     func getRoomAttend(roomId: Int, userId: String, completion: @escaping (Room) -> Void) -> Disposable? {
         let params = [
-            "roomId": roomId
             "userId" : userId
-        ] as [String: Any]
+            ] as [String: Any]
         
         return requestDataObject(.get,
                                  .roomAttend,
@@ -56,7 +88,7 @@ class APISource: APISourceProtocol {
     func getRoomExistCheck(userId: String, completion: @escaping (Int) -> Void) -> Disposable? {
         let headers = [
             "userId" : userId
-        ] as [String: String]
+            ] as [String: String]
         
         let params : [String : Any] = [:]
         
@@ -72,7 +104,7 @@ class APISource: APISourceProtocol {
     func getRoomCheck(userId: String, completion: @escaping ([RoomCheck]) -> Void) -> Disposable? {
         let headers = [
             "userId" : userId
-        ] as [String: String]
+            ] as [String: String]
         
         let params : [String : Any] = [:]
         
@@ -101,34 +133,8 @@ class APISource: APISourceProtocol {
         let params : [String : Any] = [:]
         
         return requestDataObject(.get,
-                                 .myMissionDoneList,
                                  .roomStart,
                                  parameters: params,
-                                 path: userId) { (res: MissionListResponse) in
-                                    completion(res.data)
-        }
-    }
-    
-    func getMissionDoneList(roomId: Int, completion: @escaping ([OrderMission]) -> Void) -> Disposable? {
-        return requestDataObject(.get,
-                                 .missionDoneList,
-                                 parameters: roomId) { (res: OrderMissionResponse) in
-                                    completion(res.data)
-        }
-    }
-    
-    func postMissionSend(missionSendingPostData: MissionSendingPostData, completion: @escaping () -> Void) -> Disposable? {
-        
-        var params = [
-            "roomId": missionSendingPostData.roomId,
-            "userId": missionSendingPostData.userId,
-            "missionId": missionSendingPostData.missionId,
-            "content": missionSendingPostData.content,
-        ] as [String: Any]
-        
-        if let image = missionSendingPostData.img {
-            params["img"] = image
-        }
                                  path: roomId) { (res : RoomStringResponse) in
                                     completion(String(res.data ?? ""))
         }
@@ -138,12 +144,9 @@ class APISource: APISourceProtocol {
     func postSignUp(user: User, completion: @escaping () -> Void) -> Disposable? {
         let params = [
             "user" : user
-        ] as [String : Any]
+            ] as [String : Any]
         
         return requestWithoutData(.post,
-                                  .missionSend,
-                                  parameters: params) {
-                                    completion()
                                   .signUp,
                                   parameters: params,
                                   completion: nil)
@@ -154,20 +157,20 @@ class APISource: APISourceProtocol {
         let params = [
             "roomId" : roomId,
             "userId" : userId
-        ] as [String : Any]
+            ] as [String : Any]
         
         return requestWithoutData(.delete,
                                   .roomUser,
                                   parameters: params,
                                   completion: nil)
     }
-
+    
     // fail
     func postRoomMake(room: Room, userId: String, completion: @escaping (String) -> Void) -> Disposable? {
         let params = [
             "room" : room,
             "userId" : userId
-        ] as [String: Any]
+            ] as [String: Any]
         
         return requestDataObject(.get,
                                  .roomMake,
@@ -176,18 +179,13 @@ class APISource: APISourceProtocol {
         }
     }
     
-    func getRoomAttend(roomId: Int, userId: String, completion: @escaping ([Room]) -> Void) -> Disposable? {
     func getUserManitto(roomId: Int, userId: String, completion: @escaping (Manitto) -> Void) -> Disposable? {
         let params = [
             "roomId" : roomId,
             "userId" : userId
-            ] as [String: Any]
-        ] as [String : Any]
+            ] as [String : Any]
         
         return requestDataObject(.get,
-                                 .roomAttend,
-                                 parameters: params) { (res: RoomAttendResponse) in
-                                    completion([res.data])
                                  .userManitto,
                                  parameters: params) { (res: ManittoResponse) in
                                     completion(res.data)
