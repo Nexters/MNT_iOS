@@ -23,6 +23,13 @@ struct Feed: Codable, ProducesFeedCellViewModel {
     let userDoneTime: String
     let userId: String
     
+    /// added
+    let userFruttoId: Int
+    let userName: String
+    let manittoId: String
+    let manittoFruttoId: Int
+    let manittoName: String
+    
     var asFeedCellViewModel: FeedCellViewModel {
         return FeedCellViewModel(datas: self)
     }

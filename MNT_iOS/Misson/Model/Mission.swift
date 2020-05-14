@@ -61,8 +61,9 @@ struct Manitto: Codable {
 
 struct MissionId: Codable {
     var isAbleImg: Int = 0
-    var name: String = ""
-    var roodId: Int = 0
+    var name: String? = ""
+    var roodId: Int? = 0
+    var missionId: Int = 0
     var userMissions: [UserMissions] = []
 }
 

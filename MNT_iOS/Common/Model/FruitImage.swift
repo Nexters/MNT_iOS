@@ -30,7 +30,7 @@ class FruitImage {
     ]
     
     private var fruitChatForIndex: [Int: UIImage] = [1:UIImage(#imageLiteral(resourceName: "imgProfileChatTropical")),
-                                                     2:UIImage(#imageLiteral(resourceName: "imgProfileChatAvocado")),
+                                                     2:UIImage(#imageLiteral(resourceName: "profileChatAvocado")),
                                                      3:UIImage(#imageLiteral(resourceName: "imgProfileChatKiwi")),
                                                      4:UIImage(#imageLiteral(resourceName: "imgProfileChatPear")),
                                                      5:UIImage(#imageLiteral(resourceName: "imgProfileChatGreenapple")),
