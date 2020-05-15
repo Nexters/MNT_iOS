@@ -10,7 +10,7 @@ import Foundation
 
 struct RoomResponse: Codable {
     let apiStatus: APIStatus
-    let data: Room?
+    let data: Room
 }
 
 struct RoomStringResponseTest: Codable {
@@ -47,13 +47,13 @@ struct RoomCheck: Codable {
 }
 
 struct Room: Codable, getRoomViewModel {
-    let endDay: String = ""
-    let id: Int = 0
-    let isDone: Int = 0
-    let isStart: Int = 0
-    let maxPeople: Int = 0
-    let name: String = ""
-    let startDay: String = ""
+    let endDay: String
+    let id: Int
+    let isDone: Int
+    let isStart: Int
+    let maxPeople: Int
+    let name: String
+    let startDay: String
 
     var asRoomViewModel: RoomViewModel {
         return RoomViewModel(datas: self)

@@ -8,8 +8,10 @@
 
 extension UserDefaults {
     enum UserDefaultKeys: String {
-        case user
-        case manitto
+        case user // struct User
+        case manitto // struct Manitto
+        case room // struct Room
+        case userFruttoId // userFruttoId: Int
     }
     
     func setObject<T: Codable>(object: T, key: UserDefaultKeys) {
@@ -18,22 +20,34 @@ extension UserDefaults {
             let encodedData = NSKeyedArchiver.archivedData(withRootObject: data)
             self.set(encodedData, forKey: key.rawValue)
         } catch {
-            print(error.localizedDescription)
+            print("Error setObject : \(error.localizedDescription)")
         }
         self.synchronize()
     }
     
+    func setIntValue(value: Int, key: UserDefaultKeys) {
+        self.set(value, forKey: key.rawValue)
+        
+        self.synchronize()
+    }
+    
     func getObject<T: Codable>(key: UserDefaultKeys) -> T? {
-        guard let decoded  = self.data(forKey: key.rawValue) else {return nil}
-        guard let data = NSKeyedUnarchiver.unarchiveObject(with: decoded) as? Data else {return nil}
+        guard let decodedData  = self.data(forKey: key.rawValue) else {return nil}
+        guard let data = NSKeyedUnarchiver.unarchiveObject(with: decodedData) as? Data else {return nil}
         
         do {
             let output = try PropertyListDecoder().decode(T.self, from: data)
             return output
         } catch {
-            print(error.localizedDescription)
+            print("Error getObject : \(error.localizedDescription)")
         }
         
         return nil
+    }
+    
+    func getIntValue(key: UserDefaultKeys) -> Int {
+        let output = self.value(forKey: key.rawValue) as! Int
+        
+        return output
     }
 }

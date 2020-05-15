@@ -43,14 +43,10 @@ class ReadyViewModel: ViewModel {
     
     func enterRoom() -> CocoaAction {
         return CocoaAction { _ in
-            let viewModel = TabBarViewModel(title: "", coordinator: self.coordinator)
-            let scene: SceneType = MainScene.enterRoom(viewModel)
+            let viewModel = OpenNittoViewModel(title: "내 푸르또는 누구일까요?", coordinator: self.coordinator)
+            let scene: SceneType = MainScene.openNitto(viewModel)
             
-            APISource.shared.getRoomStart(roomId: 12768) { (request) in
-//                print("지혜짱")
-            }?.disposed(by: self.rx.disposeBag)
-            
-            return self.coordinator.transition(to: scene, using: .root, animated: true).asObservable().map { _ in }
+            return self.coordinator.transition(to: scene, using: .push, animated: true).asObservable().map { _ in }
         }
     }
     

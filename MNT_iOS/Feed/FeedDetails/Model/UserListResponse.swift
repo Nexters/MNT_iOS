@@ -15,7 +15,7 @@ struct UserListResponse: Codable {
 
 struct Participant: Codable {
     var id: Int = 0
-    var room: Room = Room()
+    var room: Room = Room(endDay: "", id: 0, isDone: 0, isStart: 0, maxPeople: 0, name: "", startDay: "")
     var user: User 
     var manittoId: String? = nil
     var isCreater: Int = 0

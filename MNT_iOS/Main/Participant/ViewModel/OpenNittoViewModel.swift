@@ -12,9 +12,14 @@ class OpenNittoViewModel: ViewModel {
     
     func presentTabBarAction() -> CocoaAction {
         return CocoaAction { action in
-            let viewModel = TabBarViewModel(title: "피드", coordinator: self.coordinator)
-            let scene = MainScene.enterRoom(viewModel)
-            return self.coordinator.transition(to: scene, using: .push, animated: true).asObservable().map { _ in }
+            let viewModel = TabBarViewModel(title: "", coordinator: self.coordinator)
+            let scene: SceneType = MainScene.enterRoom(viewModel)
+            
+            APISource.shared.getRoomStart(roomId: 12768) { (request) in
+                print("지혜짱")
+            }?.disposed(by: self.rx.disposeBag)
+            
+            return self.coordinator.transition(to: scene, using: .root, animated: true).asObservable().map { _ in }
         }
     }
 }

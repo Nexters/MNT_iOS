@@ -43,6 +43,8 @@ class ConfirmViewController: ViewController {
     }
     
     override func setupLayout() {
+        
+        
         let width = view.frame.width
         let height = view.frame.height
         

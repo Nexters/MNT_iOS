@@ -68,19 +68,14 @@ class APISource: APISourceProtocol {
     func getRoomAttend(roomId: Int, userId: String, completion: @escaping (Room) -> Void) -> Disposable? {
         let params = [
             "userId" : userId
-            ] as [String: Any]
+        ] as [String: Any]
         
-        return requestDataObject(.get,
+        return requestIntDataObject(.get,
                                  .roomAttend,
                                  parameters: params,
                                  path: roomId) { (res: RoomResponse) in
-                                    print("status : \(res.apiStatus.label)")
-                                    if (res.apiStatus.httpStatus == 200) {
-                                        print("200")
-                                        completion(res.data!)
-                                    } else {
-                                        print("200 아님")
-                                    }
+                                    print("response : \(res)")
+                                    completion(res.data)
         }
     }
     
@@ -120,7 +115,7 @@ class APISource: APISourceProtocol {
     func getRoomUserList(roomId: Int, completion: @escaping ([RoomCheck]) -> Void) -> Disposable? {
         let params : [String : Any] = [:]
         
-        return requestDataObject(.get,
+        return requestIntDataObject(.get,
                                  .roomUserList,
                                  parameters: params,
                                  path: roomId) { (res : RoomCheckResponse) in
@@ -132,7 +127,7 @@ class APISource: APISourceProtocol {
     func getRoomStart(roomId: Int, completion: @escaping (String?) -> Void) -> Disposable? {
         let params : [String : Any] = [:]
         
-        return requestDataObject(.get,
+        return requestIntDataObject(.get,
                                  .roomStart,
                                  parameters: params,
                                  path: roomId) { (res : RoomStringResponse) in
@@ -143,13 +138,20 @@ class APISource: APISourceProtocol {
     // success
     func postSignUp(user: User, completion: @escaping () -> Void) -> Disposable? {
         let params = [
-            "user" : user
-            ] as [String : Any]
+            "user" : [
+                "id" : "5374289",
+                "fcmToken" : "string",
+                "name" : "string",
+                "profilePic" : "string"
+                ]
+        ] as [String : Any]
         
         return requestWithoutData(.post,
                                   .signUp,
                                   parameters: params,
-                                  completion: nil)
+                                  headers: ["Content-Type" : "application/json"]) {
+                                    completion()
+        }
     }
     
     // success

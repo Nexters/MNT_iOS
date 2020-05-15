@@ -10,7 +10,8 @@ import UIKit
 
 class ReadyViewController: ViewController {
     
-    var isAdmin : Bool = true
+    let room : Room = UserDefaults.standard.getObject(key: .room)!
+    var isAdmin : Bool = false
     var isStarted: Bool = true
     var dummyDate: String = "2020.01.20. (월)"
     var viewModel: ReadyViewModel?
@@ -44,16 +45,37 @@ class ReadyViewController: ViewController {
         navigationController?.navigationBar.isHidden = true
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let user : User = UserDefaults.standard.getObject(key: .user) {
+            APISource.shared.getRoomCheck(userId: user.id) { (roomCheck) in
+                print("Success : getRoomCheck")
+                if (roomCheck[0].userFruttoId == nil) {
+                    self.isStarted = false
+                    
+                } else {
+                    self.isStarted = true
+                    UserDefaults.standard.setObject(object: roomCheck[0].manitto, key: .manitto)
+                    UserDefaults.standard.setIntValue(value: roomCheck[0].userFruttoId!, key: .userFruttoId)
+                }
+                self.setUpForParticipant()
+            }
+        } else {
+            print("Fail : getObject(key: .user)")
+        }
+    }
+    
     override func setupLayout() {
         let width = view.frame.width
         let height = view.frame.height
         
-        if isAdmin != true {
-            setUpForParticipant()
-        }
-        else {
-            setUpForAdministrator()
-        }
+//        if isAdmin != true {
+//            setUpForParticipant()
+//        }
+//        else {
+//            setUpForAdministrator()
+//        }
         
         view.addSubview(fruitImage)
         view.addSubview(titleLabel)
@@ -93,6 +115,9 @@ class ReadyViewController: ViewController {
         bubbleImage.anchor(.top(view.topAnchor, constant: height * 0.32))
         subLabel.anchor(.top(view.topAnchor, constant: height * 0.333))
         
+        bubbleImage.centerXToSuperview()
+        subLabel.centerXToSuperview()
+        
         bubbleImage.transform = CGAffineTransform(rotationAngle: .pi)
         
         setUpDetailForParticipant()
@@ -123,15 +148,21 @@ class ReadyViewController: ViewController {
     }
     
     func setUpDetailForParticipant() {
-        let frontText = "\(dummyDate) 정오 "
-        var backText = "에 시작되었습니다!\n친구들과 함께 프루또를 해볼까요?👏"
+        var frontText : String?
+        var backText : String?
+        
+        titleLabel.text = room.name
         
         if isStarted == false {
+            startButton.isUserInteractionEnabled = false
             startButton.backgroundColor = .disableColor
             backText = "에 시작합니다.\n친구들이 모일 때까지 잠시 기다려주세요👏"
+        } else {
+            frontText = "\(room.startDay) 정오"
+            backText = "에 시작되었습니다!\n친구들과 함께 프루또를 해볼까요?👏"
         }
         
-        subLabel.text = frontText + backText
+        subLabel.text = frontText! + backText!
         
         let attributedStr = NSMutableAttributedString(string: subLabel.text!)
         let paragraphStyle = NSMutableParagraphStyle()
@@ -139,7 +170,7 @@ class ReadyViewController: ViewController {
         paragraphStyle.alignment = .center
         attributedStr.addAttribute(.foregroundColor,
                                    value: UIColor.textOnlyColor,
-                                   range: (subLabel.text! as NSString).range(of: frontText))
+                                   range: (subLabel.text! as NSString).range(of: frontText!))
         attributedStr.addAttribute(NSAttributedString.Key.paragraphStyle,
                                    value:paragraphStyle,
                                    range:NSMakeRange(0, attributedStr.length))

@@ -8,6 +8,8 @@
 
 import UIKit
 import CoreData
+import RxAlamofire
+import Alamofire
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,8 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
             
         // Override point for customization after application launch.
-        kakaoLogin() // 로그인,로그아웃 상태 받기
-//        testing()
+//        kakaoLogin() // 로그인,로그아웃 상태 받기
+        testing()
         
         return true
     }
@@ -61,9 +63,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     fileprivate func testing() {
 //        testingFeed()
 //        testingMission()
-        testingMain()
+//        testingMain()
 //        testingAdminExit()
 //        testingParticipantExit()
+//        testingReady()
+        testingSignUp()
+    }
+    
+    fileprivate func testingReady() {
+        let coordinator = SceneCoordinator(window: window!)
+        let viewModel = ReadyViewModel(title: "", coordinator: coordinator)
+        let scene: SceneType = MainScene.ready(viewModel)
+        
+        UserDefaults.standard.setObject(object: User(id: "2005162",
+                                                     name: "string",
+                                                     profilePic: "string",
+                                                     fcmToken: "string"), key: .user)
+        
+        UserDefaults.standard.setObject(object: Room(endDay: "2020-05-12",
+                                                     id: 48275,
+                                                     isDone: 0,
+                                                     isStart: 0,
+                                                     maxPeople: 0,
+                                                     name: "string",
+                                                     startDay: "2020-05-12"),
+                                        key: .room)
+        
+        coordinator.transition(to: scene, using: .root, animated: true)
     }
     
     fileprivate func testingMission() {
@@ -100,6 +126,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let viewModel = AlertExitViewModel(title: "푸르또 종료", coordinator: coordinator)
         let scene: SceneType = ExitScene.alertExit(viewModel)
         coordinator.transition(to: scene, using: .root, animated: true)
+    }
+    
+    fileprivate func testingSignUp() {
+        APISource.shared.postSignUp(user: User(),
+                                    completion: {
+        })
     }
     
     fileprivate func addObserver() {

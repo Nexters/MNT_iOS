@@ -59,7 +59,7 @@ protocol APISourceProtocol {
                                                headers: [String: String]?,
                                                completion: ((T) -> Void)?) -> Disposable?
     
-    func requestDataObject<T: Codable, P: Any>(_ method: HTTPMethod,
+    func requestIntDataObject<T: Codable, P: Any>(_ method: HTTPMethod,
                                                _ url: URLType,
                                                parameters: P?,
                                                path: Int,
@@ -182,6 +182,7 @@ extension APISourceProtocol {
                                        headers: headers)
             .subscribe(
                 onNext: { res in
+                    print("res = \(res)")
                     completion?()
             },
                 onError: { err in
@@ -193,7 +194,7 @@ extension APISourceProtocol {
             })
     }
     
-    func requestDataObject<T: Codable, P: Any>(_ method: HTTPMethod,
+    func requestIntDataObject<T: Codable, P: Any>(_ method: HTTPMethod,
                                                _ url: URLType,
                                                parameters: P,
                                                path: Int,

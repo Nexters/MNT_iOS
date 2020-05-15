@@ -10,6 +10,11 @@ import UIKit
 
 class OpenNittoViewController: ViewController {
 
+    let user: User = UserDefaults.standard.getObject(key: .user)!
+    let manitto: Manitto = UserDefaults.standard.getObject(key: .manitto)!
+    let room: Room = UserDefaults.standard.getObject(key: .room)!
+    let userFruttoID: Int = UserDefaults.standard.getIntValue(key: .userFruttoId)
+    
     var viewModel: OpenNittoViewModel?
     let label = UILabel(text: "",
                         font: .boldFont(ofSize: 18),
@@ -39,9 +44,9 @@ class OpenNittoViewController: ViewController {
                            numberOfLines: 0)
     let subLabelString = " 정오 까지 프루또 친구를\n많이 많이 챙겨주세요! 💌"
     var button = PrimaryButton("확인")
-    var dummyMyName : String?
-    var dummyNittoName : String?
-    var dummyDate : String?
+    var myName : String?
+    var nittoName : String?
+    var date : String?
     
     var backButton: UIBarButtonItem = {
         let bt = UIBarButtonItem(image: #imageLiteral(resourceName: "close"), style: .plain, target: nil, action: nil)
@@ -76,6 +81,7 @@ class OpenNittoViewController: ViewController {
         let width = view.frame.width
         
         setupLabel()
+        setupImages()
         
         view.addSubview(label)
         view.addSubview(relationStack)
@@ -96,10 +102,10 @@ class OpenNittoViewController: ViewController {
         nittoNameLabel.centerXTo(nittoProfileImage.centerXAnchor)
         subLabelView.centerXToSuperview()
         button.centerXToSuperview()
-        myProfileImage.constrainWidth(55)
-        myProfileImage.constrainHeight(55)
-        nittoProfileImage.constrainWidth(55)
-        nittoProfileImage.constrainHeight(55)
+        myProfileImage.constrainWidth(80)
+        myProfileImage.constrainHeight(80)
+        nittoProfileImage.constrainWidth(80)
+        nittoProfileImage.constrainHeight(80)
         arrowImage.constrainWidth(60)
         arrowImage.constrainHeight(30)
         subLabelView.constrainWidth(width * 0.84)
@@ -109,14 +115,14 @@ class OpenNittoViewController: ViewController {
     
     func setupLabel() {
         // TODO : 내 이름, 니또 이름, 종료 날짜 받아오기
-        dummyMyName = "더미나"
-        dummyNittoName = "더미니또"
-        dummyDate = "더미날짜"
+        myName = user.name
+        nittoName = manitto.name
+        date = room.endDay
         
-        label.text = dummyMyName! + frontLabelString + dummyNittoName! + backLabelString
-        subLabel.text = dummyDate! + subLabelString
-        myNameLabel.text = dummyMyName
-        nittoNameLabel.text = dummyNittoName
+        label.text = myName! + frontLabelString + nittoName! + backLabelString
+        subLabel.text = date! + subLabelString
+        myNameLabel.text = myName
+        nittoNameLabel.text = nittoName
         
         var attributedStr = NSMutableAttributedString(string: label.text!)
         let paragraphStyle = NSMutableParagraphStyle()
@@ -146,6 +152,11 @@ class OpenNittoViewController: ViewController {
         subLabelView.setupShadow(opacity: 0.15,
                                  radius: 20,
                                  offset: .init(width: 0, height: 3))
+    }
+    
+    func setupImages() {
+        myProfileImage.image = FruitImage.sharedInstance.getFruitCircle(userFruttoID)
+        nittoProfileImage.image = FruitImage.sharedInstance.getProfileFace(manitto.fruttoId!)
     }
 }
 
