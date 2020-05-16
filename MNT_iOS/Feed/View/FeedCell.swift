@@ -28,12 +28,10 @@ class FeedCell: UITableViewCell {
         labelContainer.withMargins(.init(top: 20, left: 22, bottom: 20, right: 22))
     }
     
-    
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         
-        
-        let isAbleImage: Bool = (viewModel?.datas.missionId?.isAbleImg == 1)
+        let isAbleImage: Bool = (viewModel?.datas.missionId?.isAbleImg == 1 && viewModel?.datas.missionImg != nil)
         labelContainer.roundedBorder(corners: isAbleImage ? [.bottomLeft, .bottomRight] : [.allCorners], radius: 10)
         feedImageView.roundedCorner(corners: [.topLeft, .topRight], radius: 10)
     }
@@ -47,5 +45,12 @@ extension FeedCell: ViewModelBindableType {
         
         feedImageView.isHidden = !isAbleImage
         feedImageView.kf.setImage(with: viewModel.postURL)
+        //
+        senderImageView.image = viewModel.manittoImage
+        receiverImageView.image = viewModel.targetImage
+        titleLabel.text = viewModel.contentTitle
+        contentLabel.text = viewModel.content
+        dateLabel.text = viewModel.date
+        fromtoLabel.text = viewModel.fromToLabel
     }
 }

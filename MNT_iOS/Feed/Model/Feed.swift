@@ -15,6 +15,7 @@ struct FeedResponse: Codable {
 
 struct Feed: Codable, ProducesFeedCellViewModel {
     let id: Int
+    let contentTitle: String
     let content: String
     let missionId: MissionId?
     let missionImg: String

@@ -47,6 +47,25 @@ class FruitImage {
                                                      16:UIImage(#imageLiteral(resourceName: "imgProfileChatOrange"))
     ]
     
+    private var fruitNameForIndex: [Int: String] = [
+        1: "관리자",
+        2: "보카도",
+        3: "키위링",
+        4: "말론",
+        5: "그린애플",
+        6: "배에",
+        7: "레드애플",
+        8: "워터말론",
+        9: "베리",
+        10: "숭아",
+        11: "포도링",
+        12: "체리또",
+        13: "나나",
+        14: "레모니",
+        15: "파이리",
+        16: "오랑지"
+    ]
+    
     private var fruitForIndex: [Int: UIImage] = [1:UIImage(#imageLiteral(resourceName: "imgProfileIconTropical")),
                                                      2:UIImage(#imageLiteral(resourceName: "imgProfileIconAvocado")),
                                                      3:UIImage(#imageLiteral(resourceName: "imgProfileIconKiwi")),
@@ -119,5 +138,9 @@ class FruitImage {
     
     func getProfileFace(_ index: Int) -> UIImage {
         return profileFaceForIndex[index]!
+    }
+    
+    func getFruitName(_ index: Int) -> String {
+        return fruitNameForIndex[index]!
     }
 }
