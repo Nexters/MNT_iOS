@@ -111,9 +111,7 @@ extension APISourceProtocol {
             print("networking - invalid url")
             return nil
         }
-                
-//        print("tagg url \(encodedUrl)")
-//        print("tagg params \(params)")
+        
         return RxAlamofire.requestData(method,
                                        encodedUrl,
                                        parameters: params as? [String : Any],
@@ -177,12 +175,11 @@ extension APISourceProtocol {
         
         return RxAlamofire.requestData(method,
                                        encodedUrl,
-                                       parameters: params as? [String : Any],
+                                       parameters: params as! [String : Any],
                                        encoding: encoding,
                                        headers: headers)
             .subscribe(
                 onNext: { res in
-                    print("res = \(res)")
                     completion?()
             },
                 onError: { err in

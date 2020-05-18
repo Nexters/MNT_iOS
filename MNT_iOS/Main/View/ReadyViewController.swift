@@ -41,12 +41,11 @@ class ReadyViewController: ViewController {
     var startButton = PrimaryButton("시작하기 🙋‍♀️")
     var checkButton = TextOnlyButton("참여자 보기 👭")
     
-    override func setupNavigationController() {
-        navigationController?.navigationBar.isHidden = true
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        navigationController?.navigationBar.isHidden = true
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         if let user : User = UserDefaults.standard.getObject(key: .user) {
             APISource.shared.getRoomCheck(userId: user.id) { (roomCheck) in
@@ -64,6 +63,12 @@ class ReadyViewController: ViewController {
         } else {
             print("Fail : getObject(key: .user)")
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        navigationController?.navigationBar.isHidden = false
     }
     
     override func setupLayout() {

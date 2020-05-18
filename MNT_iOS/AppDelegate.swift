@@ -24,8 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
             
         // Override point for customization after application launch.
-//        kakaoLogin() // 로그인,로그아웃 상태 받기
-        testing()
+        kakaoLogin() // 로그인,로그아웃 상태 받기
+//        testing()
         
         return true
     }
@@ -63,11 +63,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     fileprivate func testing() {
 //        testingFeed()
 //        testingMission()
-//        testingMain()
+        testingMain()
 //        testingAdminExit()
 //        testingParticipantExit()
 //        testingReady()
-        testingSignUp()
     }
     
     fileprivate func testingReady() {
@@ -111,6 +110,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let coordinator = SceneCoordinator(window: window!)
         let viewModel = TabBarViewModel(title: "Tabbar", coordinator: coordinator)
         let scene: SceneType = MainScene.enterRoom(viewModel)
+        
+        
+        
         coordinator.transition(to: scene, using: .root, animated: true)
     }
     
@@ -126,12 +128,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let viewModel = AlertExitViewModel(title: "푸르또 종료", coordinator: coordinator)
         let scene: SceneType = ExitScene.alertExit(viewModel)
         coordinator.transition(to: scene, using: .root, animated: true)
-    }
-    
-    fileprivate func testingSignUp() {
-        APISource.shared.postSignUp(user: User(),
-                                    completion: {
-        })
     }
     
     fileprivate func addObserver() {

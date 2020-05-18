@@ -1,5 +1,6 @@
 import Foundation
 import Alamofire
+import RxAlamofire
 
 // MARK:- Singleton Object for Networking API
 class APISource: APISourceProtocol {
@@ -138,18 +139,17 @@ class APISource: APISourceProtocol {
     // success
     func postSignUp(user: User, completion: @escaping () -> Void) -> Disposable? {
         let params = [
-            "user" : [
-                "id" : "5374289",
-                "fcmToken" : "string",
-                "name" : "string",
-                "profilePic" : "string"
-                ]
-        ] as [String : Any]
-        
+            "fcmToken" : user.fcmToken,
+            "id" : user.id,
+            "name" : user.name,
+            "profilePic" : user.profilePic
+        ]
+
         return requestWithoutData(.post,
                                   .signUp,
                                   parameters: params,
-                                  headers: ["Content-Type" : "application/json"]) {
+                                  encoding: JSONEncoding.default,
+                                  headers: ["Content-Type": "application/json; charset=utf-8"]) {
                                     completion()
         }
     }
@@ -170,13 +170,21 @@ class APISource: APISourceProtocol {
     // fail
     func postRoomMake(room: Room, userId: String, completion: @escaping (String) -> Void) -> Disposable? {
         let params = [
-            "room" : room,
-            "userId" : userId
+            "room" : ["endDay" : "2020-05-20",
+                      "id" : 0,
+                      "isDone" : 0,
+                      "isStart" : 0,
+                      "maxPeople" : 0,
+                      "name" : "string",
+                      "startDay" : "2020-05-20"
+                ],
+            "userId" : "645654"
             ] as [String: Any]
         
-        return requestDataObject(.get,
+        return requestDataObject(.post,
                                  .roomMake,
                                  parameters: params) { (res: RoomStringResponse) in
+                                    print("\(res)")
                                     completion(res.data ?? "")
         }
     }

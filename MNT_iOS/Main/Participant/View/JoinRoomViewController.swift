@@ -43,7 +43,6 @@ class JoinRoomViewController: ViewController {
     override func setupNavigationController() {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
-        navigationItem.leftBarButtonItem = leftButton
     }
 
     override func setupLayout() {

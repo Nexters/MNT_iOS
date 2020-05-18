@@ -29,7 +29,9 @@ class MainUserListViewController: ViewController {
     }
     
     override func setupNavigationController() {
-        navigationItem.titleView = UILabel(text: "참여자 리스트", font: .boldSystemFont(ofSize: 20), textColor: .defaultText)
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.title = "참여자 리스트"
     }
     
     override func viewWillAppear(_ animated: Bool) {
