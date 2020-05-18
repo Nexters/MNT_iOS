@@ -35,7 +35,7 @@ class MainViewModel: ViewModel {
             // 방이 종료되었으면..?
             
             APISource.shared.getRoomCheck(userId: "zik") { roomCheck in
-                if roomCheck[0].userFruttoId == nil { // 방 시작 안 함
+                if roomCheck![0].userFruttoId == nil { // 방 시작 안 함
                     let viewModel = JoinRoomViewModel(title: "", coordinator: self.coordinator)
                     let scene: SceneType = MainScene.joinRoom(viewModel as! JoinRoomViewModel)
                     viewModel.kakaoLinkParams = self.kakaoLinkParams

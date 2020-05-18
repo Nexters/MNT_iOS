@@ -40,11 +40,6 @@ class ConfirmViewModel: ViewModel {
                 APISource.shared.postSignUp(user: user!,
                                             completion: {
                                                 UserDefaults.standard.setObject(object: user!, key: .user)
-                                                if let u: User = UserDefaults.standard.getObject(key: .user) {
-                                                    print("UserDefaults에 저장되어있는 user 값 : \(u)")
-                                                } else {
-                                                    print("UserDefaults에 user가 저장되지 않음")
-                                                }
                 })
                 
 //                user = User(id: me.id!,

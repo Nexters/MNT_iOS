@@ -141,17 +141,49 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     fileprivate func reloadRootViewController() {
         guard let isOpened = KOSession.shared()?.isOpen() else { return }
-        
-//        let coordinator = SceneCoordinator(window: window!)
-//        let viewModel = isOpened ? ConfirmViewModel(title: "확인", coordinator: coordinator) : LoginViewModel(title: "로그인", coordinator: coordinator)
-//        let scene: SceneType = isOpened ? LoginScene.confirm(viewModel as! ConfirmViewModel) : LoginScene.login(viewModel as! LoginViewModel)
-        
         let coordinator = SceneCoordinator(window: window!)
-        let viewModel = isOpened ? AgreeViewModel(title: "이용약관", coordinator: coordinator) : LoginViewModel(title: "로그인", coordinator: coordinator)
-        let scene: SceneType = isOpened ? LoginScene.agree(viewModel as! AgreeViewModel) : LoginScene.login(viewModel as! LoginViewModel)
+        var viewModel: ViewModel?
+        var scene: SceneType?
+//        var viewModel = isOpened ? AgreeViewModel(title: "이용약관", coordinator: coordinator) : LoginViewModel(title: "로그인", coordinator: coordinator)
+//        var scene: SceneType = isOpened ? LoginScene.agree(viewModel as! AgreeViewModel) : LoginScene.login(viewModel as! LoginViewModel)
         
-        
-        coordinator.transition(to: scene, using: .root, animated: true)
+        if (isOpened) {
+            KOSessionTask.userMeTask(completion: { (error, me) in
+                if let error = error as NSError? {
+                    UIAlertController.showMessage(error.description)
+                } else if let me = me as KOUserMe? {
+                    APISource.shared.getRoomCheck(userId: "372052730") { (roomCheck) in
+                        if (roomCheck != nil) {
+                            print("roomCheck = \(roomCheck)")
+                            
+                            UserDefaults.standard.setObject(object: roomCheck![0].user, key: .user)
+                            UserDefaults.standard.setObject(object: roomCheck![0].room, key: .room)
+                            
+                            if (roomCheck![0].userFruttoId != nil) {
+                                UserDefaults.standard.setObject(object: roomCheck![0].manitto, key: .manitto)
+                                UserDefaults.standard.setObject(object: roomCheck![0].userFruttoId, key: .userFruttoId)
+                                
+                                viewModel = TabBarViewModel(title: "Tabbar", coordinator: coordinator)
+                                scene = MainScene.enterRoom(viewModel as! TabBarViewModel)
+                            } else { 
+                                viewModel = ReadyViewModel(title: "", coordinator: coordinator)
+                                scene = MainScene.ready(viewModel as! ReadyViewModel)
+                            }
+                        } else {
+                            viewModel = AgreeViewModel(title: "이용약관", coordinator: coordinator)
+                            scene = LoginScene.agree(viewModel as! AgreeViewModel)
+                        }
+                        coordinator.transition(to: scene!, using: .root, animated: true)
+                    }
+                } else {
+                    print("has no id")
+                }
+            })
+        } else {
+            viewModel = LoginViewModel(title: "로그인", coordinator: coordinator)
+            scene = LoginScene.login(viewModel as! LoginViewModel)
+            coordinator.transition(to: scene!, using: .root, animated: true)
+        }
     }
     
     @objc fileprivate func kakaoSessionDidChangeWithNotification() {

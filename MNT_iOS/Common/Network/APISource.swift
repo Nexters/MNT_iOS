@@ -97,7 +97,7 @@ class APISource: APISourceProtocol {
     }
     
     // success
-    func getRoomCheck(userId: String, completion: @escaping ([RoomCheck]) -> Void) -> Disposable? {
+    func getRoomCheck(userId: String, completion: @escaping ([RoomCheck]?) -> Void) -> Disposable? {
         let headers = [
             "userId" : userId
             ] as [String: String]
@@ -120,7 +120,7 @@ class APISource: APISourceProtocol {
                                  .roomUserList,
                                  parameters: params,
                                  path: roomId) { (res : RoomCheckResponse) in
-                                    completion(res.data)
+                                    completion(res.data ?? [])
         }
     }
     

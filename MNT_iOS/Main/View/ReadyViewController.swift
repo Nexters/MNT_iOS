@@ -50,13 +50,13 @@ class ReadyViewController: ViewController {
         if let user : User = UserDefaults.standard.getObject(key: .user) {
             APISource.shared.getRoomCheck(userId: user.id) { (roomCheck) in
                 print("Success : getRoomCheck")
-                if (roomCheck[0].userFruttoId == nil) {
+                if (roomCheck![0].userFruttoId == nil) {
                     self.isStarted = false
                     
                 } else {
                     self.isStarted = true
-                    UserDefaults.standard.setObject(object: roomCheck[0].manitto, key: .manitto)
-                    UserDefaults.standard.setIntValue(value: roomCheck[0].userFruttoId!, key: .userFruttoId)
+                    UserDefaults.standard.setObject(object: roomCheck![0].manitto, key: .manitto)
+                    UserDefaults.standard.setIntValue(value: roomCheck![0].userFruttoId!, key: .userFruttoId)
                 }
                 self.setUpForParticipant()
             }
@@ -153,7 +153,7 @@ class ReadyViewController: ViewController {
     }
     
     func setUpDetailForParticipant() {
-        var frontText : String?
+        var frontText = "\(room.startDay) 정오"
         var backText : String?
         
         titleLabel.text = room.name
@@ -163,11 +163,10 @@ class ReadyViewController: ViewController {
             startButton.backgroundColor = .disableColor
             backText = "에 시작합니다.\n친구들이 모일 때까지 잠시 기다려주세요👏"
         } else {
-            frontText = "\(room.startDay) 정오"
             backText = "에 시작되었습니다!\n친구들과 함께 프루또를 해볼까요?👏"
         }
         
-        subLabel.text = frontText! + backText!
+        subLabel.text = frontText + backText!
         
         let attributedStr = NSMutableAttributedString(string: subLabel.text!)
         let paragraphStyle = NSMutableParagraphStyle()
@@ -175,7 +174,7 @@ class ReadyViewController: ViewController {
         paragraphStyle.alignment = .center
         attributedStr.addAttribute(.foregroundColor,
                                    value: UIColor.textOnlyColor,
-                                   range: (subLabel.text! as NSString).range(of: frontText!))
+                                   range: (subLabel.text! as NSString).range(of: frontText))
         attributedStr.addAttribute(NSAttributedString.Key.paragraphStyle,
                                    value:paragraphStyle,
                                    range:NSMakeRange(0, attributedStr.length))
