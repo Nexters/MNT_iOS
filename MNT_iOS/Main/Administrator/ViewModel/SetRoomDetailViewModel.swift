@@ -65,7 +65,6 @@ class SetRoomDetailViewModel: ViewModel {
 //        let room : Room = Room()
 //        APISource.shared.postRoomMake(room: room,
 //                                      userId: "0716") { (roomId) in
-//                                        print("roomId : \(roomId)")
 //        }?.disposed(by: rx.disposeBag)
 //    }
 }

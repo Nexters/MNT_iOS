@@ -43,12 +43,9 @@ class ConfirmViewController: ViewController {
     }
     
     override func setupLayout() {
-        
-        
         let width = view.frame.width
         let height = view.frame.height
         
-        self.navigationController?.title = "\(nameLabel)님, 반가워요!"
         view.addSubview(profileImage)
         view.addSubview(nameStack)
         view.addSubview(button)
@@ -73,23 +70,11 @@ class ConfirmViewController: ViewController {
                 UIAlertController.showMessage(error.description)
             } else if let me = me as KOUserMe? {
                 self.nameLabel.text = me.nickname
+                self.title = "\(self.nameLabel.text as! String)님, 반가워요!"
             } else {
                 print("has no id")
             }
         })
-        
-//        fileprivate func kakaoLogin() {
-//            guard  let session = KOSession.shared() else {
-//                return
-//            }
-//
-//            if session.token?.accessToken != nil {
-//                self.transMain()
-//            } else {
-//                addObserver() // 로그인,로그아웃 상태 변경 받기
-//                reloadRootViewController()
-//            }
-//        }
     }
 }
 

@@ -10,7 +10,7 @@ import Foundation
 
 struct RoomResponse: Codable {
     let apiStatus: APIStatus
-    let data: Room
+    let data: Room?
 }
 
 struct RoomStringResponseTest: Codable {

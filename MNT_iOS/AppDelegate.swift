@@ -41,16 +41,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     fileprivate func kakaoLogin() {
-        guard  let session = KOSession.shared() else {
-            return
-        }
-        
-        if session.token?.accessToken != nil {
-            self.transMain()
-        } else {
-            addObserver() // 로그인,로그아웃 상태 변경 받기
-            reloadRootViewController()
-        }
+        addObserver() // 로그인,로그아웃 상태 변경 받기
+        reloadRootViewController()
     }
     
     fileprivate func transMain() {
@@ -144,18 +136,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let coordinator = SceneCoordinator(window: window!)
         var viewModel: ViewModel?
         var scene: SceneType?
-//        var viewModel = isOpened ? AgreeViewModel(title: "이용약관", coordinator: coordinator) : LoginViewModel(title: "로그인", coordinator: coordinator)
-//        var scene: SceneType = isOpened ? LoginScene.agree(viewModel as! AgreeViewModel) : LoginScene.login(viewModel as! LoginViewModel)
         
         if (isOpened) {
             KOSessionTask.userMeTask(completion: { (error, me) in
                 if let error = error as NSError? {
                     UIAlertController.showMessage(error.description)
                 } else if let me = me as KOUserMe? {
-                    APISource.shared.getRoomCheck(userId: "372052730") { (roomCheck) in
+//                    APISource.shared.getRoomCheck(userId: me.id!) { (roomCheck) in
+                    APISource.shared.getRoomCheck(userId: "2579483") { (roomCheck) in
                         if (roomCheck != nil) {
-                            print("roomCheck = \(roomCheck)")
-                            
                             UserDefaults.standard.setObject(object: roomCheck![0].user, key: .user)
                             UserDefaults.standard.setObject(object: roomCheck![0].room, key: .room)
                             
@@ -201,7 +190,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let coordinator = SceneCoordinator(window: window!)
             let viewModel = MainViewModel(title: "", coordinator: coordinator)
             let scene: SceneType = MainScene.main(viewModel as! MainViewModel)
-            
+
             viewModel.kakaoLinkParams = params
             coordinator.transition(to: scene, using: .root, animated: true)
             return true
@@ -220,7 +209,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let coordinator = SceneCoordinator(window: window!)
             let viewModel = MainViewModel(title: "", coordinator: coordinator)
             let scene: SceneType = MainScene.main(viewModel as! MainViewModel)
-            
+
             viewModel.kakaoLinkParams = params
             coordinator.transition(to: scene, using: .root, animated: true)
             return true

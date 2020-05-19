@@ -93,7 +93,6 @@ extension MainUserListViewController: UITableViewDelegate, UITableViewDataSource
     func deleteUser() {
         APISource.shared.deleteRoomUser(roomId: 23430,
                                         userId: "05103") {
-                                            print("testing : delete")
             }?.disposed(by: self.rx.disposeBag)
 //
         // delete in userList TableView

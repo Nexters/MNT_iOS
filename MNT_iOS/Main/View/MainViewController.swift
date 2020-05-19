@@ -64,7 +64,6 @@ class MainViewController: ViewController {
 
 extension MainViewController: ViewModelBindableType {
     func bindViewModel(viewModel: MainViewModel) {
-//        viewModel.test()
         viewModel.checkKakaoLinkParams()
         
         joinButton.rx.action = viewModel.presentJoinAction()

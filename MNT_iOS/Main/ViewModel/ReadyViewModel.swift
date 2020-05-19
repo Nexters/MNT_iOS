@@ -28,12 +28,9 @@ class ReadyViewModel: ViewModel {
 
             // 카카오링크 실행
             KLKTalkLinkCenter.shared().sendDefault(with: template, success: { (warningMsg, argumentMsg) in
-                // 성공
                 print("warning message: \(String(describing: warningMsg))")
                 print("argument message: \(String(describing: argumentMsg))")
             }, failure: { (error) in
-                // 실패
-                //self.alert(error.localizedDescription)
                 print("error \(error)")
             })
             

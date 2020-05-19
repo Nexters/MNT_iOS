@@ -25,6 +25,12 @@ class AgreeViewController: ViewController {
         return l
     }()
     
+    override func setupNavigationController() {
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.title = "이용약관"
+    }
+    
     override func setupLayout() {
         setupScrollView()
         setupViews()

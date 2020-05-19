@@ -65,8 +65,7 @@ class APISource: APISourceProtocol {
         }
     }
     
-    // success
-    func getRoomAttend(roomId: Int, userId: String, completion: @escaping (Room) -> Void) -> Disposable? {
+    func getRoomAttend(roomId: Int, userId: String, completion: @escaping (Room?) -> Void) -> Disposable? {
         let params = [
             "userId" : userId
         ] as [String: Any]
@@ -75,12 +74,11 @@ class APISource: APISourceProtocol {
                                  .roomAttend,
                                  parameters: params,
                                  path: roomId) { (res: RoomResponse) in
-                                    print("response : \(res)")
-                                    completion(res.data)
+                                    if (res.apiStatus.httpStatus == 200) { completion(res.data!) }
+                                    else { completion(nil) }
         }
     }
     
-    // success
     func getRoomExistCheck(userId: String, completion: @escaping (Int) -> Void) -> Disposable? {
         let headers = [
             "userId" : userId
@@ -96,7 +94,6 @@ class APISource: APISourceProtocol {
         }
     }
     
-    // success
     func getRoomCheck(userId: String, completion: @escaping ([RoomCheck]?) -> Void) -> Disposable? {
         let headers = [
             "userId" : userId
@@ -112,7 +109,6 @@ class APISource: APISourceProtocol {
         }
     }
     
-    // success
     func getRoomUserList(roomId: Int, completion: @escaping ([RoomCheck]) -> Void) -> Disposable? {
         let params : [String : Any] = [:]
         
@@ -124,7 +120,6 @@ class APISource: APISourceProtocol {
         }
     }
     
-    // success
     func getRoomStart(roomId: Int, completion: @escaping (String?) -> Void) -> Disposable? {
         let params : [String : Any] = [:]
         
@@ -136,7 +131,6 @@ class APISource: APISourceProtocol {
         }
     }
     
-    // success
     func postSignUp(user: User, completion: @escaping () -> Void) -> Disposable? {
         let params = [
             "fcmToken" : user.fcmToken,
@@ -154,7 +148,6 @@ class APISource: APISourceProtocol {
         }
     }
     
-    // success
     func deleteRoomUser(roomId: Int, userId: String, completion: @escaping () -> Void) -> Disposable? {
         let params = [
             "roomId" : roomId,
@@ -167,7 +160,6 @@ class APISource: APISourceProtocol {
                                   completion: nil)
     }
     
-    // fail
     func postRoomMake(room: Room, userId: String, completion: @escaping (String) -> Void) -> Disposable? {
         let params = [
             "room" : ["endDay" : "2020-05-20",

@@ -30,13 +30,13 @@ class ConfirmViewModel: ViewModel {
                 UIAlertController.showMessage(error.description)
             } else if let me = me as KOUserMe? {
                 
-                // 아래 주석 해제할 때 삭제할 것
-                user = User(id: "748078",
+//                 아래 주석 해제할 때 삭제할 것
+                user = User(id: "2579483",
                             name: "name",
                             profilePic: "string",
                             fcmToken: "string")
                 
-                // 아래 주석 해제할 때 삭제할 것
+//                 아래 주석 해제할 때 삭제할 것
                 APISource.shared.postSignUp(user: user!,
                                             completion: {
                                                 UserDefaults.standard.setObject(object: user!, key: .user)
@@ -44,11 +44,10 @@ class ConfirmViewModel: ViewModel {
                 
 //                user = User(id: me.id!,
 //                            name: me.nickname!,
-//                            profilePic: me.profileImageURL as? String ?? "string",
+//                            profilePic: me.profileImageURL?.absoluteString ?? "",
 //                            fcmToken: "string")
 //
 //                APISource.shared.postSignUp(user: user!){
-//                    print("testing : signUp")
 //                    UserDefaults.standard.setObject(object: user!, key: .user)
 //                }?.disposed(by: self.rx.disposeBag)
             } else {

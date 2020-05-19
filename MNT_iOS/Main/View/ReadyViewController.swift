@@ -49,7 +49,6 @@ class ReadyViewController: ViewController {
         
         if let user : User = UserDefaults.standard.getObject(key: .user) {
             APISource.shared.getRoomCheck(userId: user.id) { (roomCheck) in
-                print("Success : getRoomCheck")
                 if (roomCheck![0].userFruttoId == nil) {
                     self.isStarted = false
                     

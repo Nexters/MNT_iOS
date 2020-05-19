@@ -16,7 +16,7 @@ class OpenNittoViewModel: ViewModel {
             let scene: SceneType = MainScene.enterRoom(viewModel)
             
             APISource.shared.getRoomStart(roomId: 12768) { (request) in
-                print("지혜짱")
+                
             }?.disposed(by: self.rx.disposeBag)
             
             return self.coordinator.transition(to: scene, using: .root, animated: true).asObservable().map { _ in }
