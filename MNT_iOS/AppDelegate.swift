@@ -186,14 +186,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Called When Execute KaKaoLink
         if KLKTalkLinkCenter.shared().isTalkLinkCallback(url) {
-            let params = url.query
-            let coordinator = SceneCoordinator(window: window!)
-            let viewModel = MainViewModel(title: "", coordinator: coordinator)
-            let scene: SceneType = MainScene.main(viewModel as! MainViewModel)
+            if UserDefaults.standard.getIntValue(key: .userFruttoId) == nil {
+                let params = url.query
+                let coordinator = SceneCoordinator(window: window!)
+                let viewModel = MainViewModel(title: "", coordinator: coordinator)
+                let scene: SceneType = MainScene.main(viewModel as! MainViewModel)
 
-            viewModel.kakaoLinkParams = params
-            coordinator.transition(to: scene, using: .root, animated: true)
-            return true
+                viewModel.kakaoLinkParams = params
+                coordinator.transition(to: scene, using: .root, animated: true)
+                return true
+            }
         }
         return false
     }
@@ -205,14 +207,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Called When Execute KaKaoLink
         if KLKTalkLinkCenter.shared().isTalkLinkCallback(url) {
-            let params = url.query
-            let coordinator = SceneCoordinator(window: window!)
-            let viewModel = MainViewModel(title: "", coordinator: coordinator)
-            let scene: SceneType = MainScene.main(viewModel as! MainViewModel)
+            if UserDefaults.standard.getIntValue(key: .userFruttoId) == nil {
+                let params = url.query
+                let coordinator = SceneCoordinator(window: window!)
+                let viewModel = MainViewModel(title: "", coordinator: coordinator)
+                let scene: SceneType = MainScene.main(viewModel as! MainViewModel)
 
-            viewModel.kakaoLinkParams = params
-            coordinator.transition(to: scene, using: .root, animated: true)
-            return true
+                viewModel.kakaoLinkParams = params
+                coordinator.transition(to: scene, using: .root, animated: true)
+                return true
+            }
         }
         return false
     }
