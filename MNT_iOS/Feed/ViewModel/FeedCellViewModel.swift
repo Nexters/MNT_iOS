@@ -20,7 +20,7 @@ class FeedCellViewModel {
     }
     
     var manittoImage: UIImage? {
-        return imageInstance.getFruitChat(datas.userFruttoId+1)
+        return imageInstance.getFruitChat(datas.userFruttoId)
     }
     var targetImage: UIImage? {
         return imageInstance.getProfileFace(datas.manittoFruttoId)
@@ -40,7 +40,7 @@ class FeedCellViewModel {
         return datas.content
     }
     var fromToLabel: String {
-        return "\(imageInstance.getFruitName(datas.userFruttoId+1))님이 \(datas.manittoName)에게 "
+        return "\(imageInstance.getFruitName(datas.userFruttoId))님이 \(datas.manittoName)에게 "
     }
     var date: String {
         return datas.userDoneTime

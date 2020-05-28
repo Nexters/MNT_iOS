@@ -101,21 +101,21 @@ class FruitImage {
                                                       16:UIImage(#imageLiteral(resourceName: "imgPopupEndOrange"))
     ]
     
-    private var profileFaceForIndex: [Int: UIImage] = [2:UIImage(named: "imgProfileFace01")!,
-                                                       3:UIImage(named: "imgProfileFace02")!,
-                                                       4:UIImage(named: "imgProfileFace03")!,
-                                                       5:UIImage(named: "imgProfileFace04")!,
-                                                       6:UIImage(named: "imgProfileFace05")!,
-                                                       7:UIImage(named: "imgProfileFace06")!,
-                                                       8:UIImage(named: "imgProfileFace07")!,
-                                                       9:UIImage(named: "imgProfileFace08")!,
-                                                       10:UIImage(named: "imgProfileFace09")!,
-                                                       11:UIImage(named: "imgProfileFace10")!,
-                                                       12:UIImage(named: "imgProfileFace11")!,
-                                                       13:UIImage(named: "imgProfileFace12")!,
-                                                       14:UIImage(named: "imgProfileFace13")!,
-                                                       15:UIImage(named: "imgProfileFace14")!,
-                                                       16:UIImage(named: "imgProfileFace15")!
+    private var profileFaceForIndex: [Int: UIImage] = [1:UIImage(named: "imgProfileFace01")!,
+                                                       2:UIImage(named: "imgProfileFace02")!,
+                                                       3:UIImage(named: "imgProfileFace03")!,
+                                                       4:UIImage(named: "imgProfileFace04")!,
+                                                       5:UIImage(named: "imgProfileFace05")!,
+                                                       6:UIImage(named: "imgProfileFace06")!,
+                                                       7:UIImage(named: "imgProfileFace07")!,
+                                                       8:UIImage(named: "imgProfileFace08")!,
+                                                       9:UIImage(named: "imgProfileFace09")!,
+                                                       10:UIImage(named: "imgProfileFace10")!,
+                                                       11:UIImage(named: "imgProfileFace11")!,
+                                                       12:UIImage(named: "imgProfileFace12")!,
+                                                       13:UIImage(named: "imgProfileFace13")!,
+                                                       14:UIImage(named: "imgProfileFace14")!,
+                                                       15:UIImage(named: "imgProfileFace15")!
     ]
     
     
@@ -123,15 +123,15 @@ class FruitImage {
     private init() {}
     
     func getFruitCircle(_ index: Int) -> UIImage {
-        return fruitCircleForIndex[index]!
+        return fruitCircleForIndex[index+1]!
     }
     
     func getFruitChat(_ index: Int) -> UIImage {
-        return fruitChatForIndex[index]!
+        return fruitChatForIndex[index+1]!
     }
     
     func getFruit(_ index: Int) -> UIImage {
-        return fruitForIndex[index]!
+        return fruitForIndex[index+1]!
     }
     
     func getFruitPopUp(_ index: Int) -> UIImage {
@@ -139,10 +139,10 @@ class FruitImage {
     }
     
     func getProfileFace(_ index: Int) -> UIImage {
-        return profileFaceForIndex[index]!
+        return profileFaceForIndex[index+1]!
     }
 
     func getFruitName(_ index: Int) -> String {
-        return fruitNameForIndex[index]!
+        return fruitNameForIndex[index+1]!
     }
 }

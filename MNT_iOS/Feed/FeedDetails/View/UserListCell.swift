@@ -16,7 +16,7 @@ class UserListCell: UITableViewCell {
     }()
     let manittoLabel: UILabel = {
         let label = UILabel(text: "마니또", font: .boldSystemFont(ofSize: 15), textColor: .defaultText)
-        label.withWidth(40)
+        label.withWidth(60)
         label.numberOfLines = 1
         return label
     }()
@@ -25,20 +25,21 @@ class UserListCell: UITableViewCell {
         img.withSize(.init(width: 64, height: 64))
         return img
     }()
-    let targetLabel = UILabel(text: "타겟", font: .boldSystemFont(ofSize: 15))
+    let targetLabel: UILabel = UILabel(text: "타겟", font: .boldSystemFont(ofSize: 15))
     let arrowImageView = UIImageView(image: #imageLiteral(resourceName: "arrowRelation"), contentMode: .scaleToFill).withSize(.init(width: 43, height: 24))
     lazy var lStackView: UIStackView = {
         let sv = UIStackView(arrangedSubviews: [
             manittoImageView,
             manittoLabel
         ])
+        
         sv.axis = .horizontal
         return sv
     }()
     lazy var rStackView: UIStackView = {
         let sv = UIStackView(arrangedSubviews: [
             targetImageView,
-            targetLabel
+            targetLabel.withWidth(70)
         ])
         sv.axis = .horizontal
         return sv
@@ -53,8 +54,9 @@ class UserListCell: UITableViewCell {
         arrowImageView.centerInSuperview()
         
         lStackView.anchor(
-            .trailing(arrowImageView.leadingAnchor, constant: 20)
+            .trailing(arrowImageView.leadingAnchor, constant: 10)
         )
+        
         lStackView.centerYToSuperview()
         
         rStackView.anchor(
@@ -68,9 +70,9 @@ class UserListCell: UITableViewCell {
         print(participant)
         let instance = FruitImage.sharedInstance
         // TODO index error....
-        manittoImageView.image =  instance.getFruit(participant.userFruttoId ?? 0 + 1)
-        manittoLabel.text = instance.getFruitName(participant.userFruttoId ?? 0 + 1)
-        targetImageView.image = instance.getProfileFace((participant.manitto?.fruttoId ?? 1 ) + 1)
+        manittoImageView.image =  instance.getFruitCircle(participant.userFruttoId ?? 0)
+        manittoLabel.text = instance.getFruitName(participant.userFruttoId ?? 0)
+        targetImageView.image = instance.getProfileFace((participant.manitto?.fruttoId ?? 0))
         targetLabel.text = participant.manitto?.name ?? ""
     }
 }

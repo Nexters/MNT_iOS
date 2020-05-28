@@ -120,7 +120,7 @@ extension FeedViewController: ViewModelBindableType {
                                                         userName: $0.userMission.userId.name,
                                                         manittoId: $0.manitto?.id ?? "",
                                                         manittoFruttoId: $0.manitto?.fruttoId ?? 0,
-                                                        manittoName: $0.manitto?.name ?? "") }
+                                                        manittoName: $0.manitto?.name ?? "") }.reversed()
             self.tableView.reloadData()
         }
     }
@@ -157,7 +157,7 @@ extension FeedViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        FeedHeaderView(user: User())
+        FeedHeaderView()
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

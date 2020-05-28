@@ -24,7 +24,7 @@ class UserListViewController: ViewController {
     
     override func setupLayout() {
         view.addSubview(tableView)
-        tableView.fillSuperview(padding: .init(top: 0, left: 26, bottom: 0, right: 26))
+        tableView.fillSuperview(padding: .init(top: 0, left: 0, bottom: 0, right: 0))
     }
     
     override func setupNavigationController() {
@@ -46,7 +46,8 @@ extension UserListViewController: ViewModelBindableType {
     }
     
     private func getUserList() {
-        APISource.shared.getUserList(roomId: 83550) { (userlist) in
+        let room: Room = UserDefaults.standard.getObject(key: .room) ?? Room()
+        APISource.shared.getUserList(roomId: room.id) { (userlist) in
             self.viewModel?.userlist = userlist
             self.tableView.reloadData()
         }
@@ -59,7 +60,7 @@ extension UserListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        67
+        75
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -72,10 +73,6 @@ extension UserListViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        10
-    }
-
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         UIView(backgroundColor: .clear)
     }

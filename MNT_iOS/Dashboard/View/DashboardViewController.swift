@@ -82,9 +82,9 @@ extension DashboardViewController: UICollectionViewDelegate, UICollectionViewDat
         case .profile:
             return 1
         case .gridMenu:
-            return 6
+            return viewModel?.gridMenu.count ?? 0
         case .listMenu:
-            return 2
+            return viewModel?.listMenu.count ?? 0
         case .none:
             return 0
         }

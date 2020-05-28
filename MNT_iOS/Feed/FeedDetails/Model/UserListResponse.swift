@@ -19,7 +19,7 @@ struct Participant: Codable {
     var user: User? = User()
     var manittoId: String? = nil
     var manitto: Manitto? = Manitto()
-    var userFruttoId: Int? = 1
+    var userFruttoId: Int? = 0
     var isCreater: Int? = 0
 }
 

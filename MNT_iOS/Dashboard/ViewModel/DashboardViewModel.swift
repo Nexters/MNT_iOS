@@ -18,7 +18,7 @@ class DashboardViewModel: ViewModel {
     
     var gridMenu: [DashboardGridMenu] {
         return [
-            DashboardGridMenu(image: FruitImage.sharedInstance.getProfileFace(manitto.fruttoId! + 1), subText: "내 푸르또는?", mainText: manitto.name!, type: .normal),
+            DashboardGridMenu(image: FruitImage.sharedInstance.getProfileFace(manitto.fruttoId!), subText: "내 푸르또는?", mainText: manitto.name!, type: .normal),
             DashboardGridMenu(image: #imageLiteral(resourceName: "dashboardImage2"), subText: "종료일?", mainText: room.endDay, type: .normal),
             DashboardGridMenu(image: #imageLiteral(resourceName: "dashboardImage3"), subText: "내가 보낸 미션", mainText: "\(missionSent)개/\(missionAll)개", type: .normal),
             DashboardGridMenu(image: #imageLiteral(resourceName: "dashboardImage4"), subText: "나에게 온 미션", mainText: "\(missionReceived)개", type: .normal),
@@ -30,12 +30,12 @@ class DashboardViewModel: ViewModel {
     }
     
     var listMenu: [DashboardListMenu] = [
-        DashboardListMenu(image: #imageLiteral(resourceName: "dev"), text: "개발자 정보", action: {
-            
-        }),
-        DashboardListMenu(image: #imageLiteral(resourceName: "logOut"), text: "방 나가기", action: {
-            
-        })
+//        DashboardListMenu(image: #imageLiteral(resourceName: "dev"), text: "개발자 정보", action: {
+//            
+//        }),
+//        DashboardListMenu(image: #imageLiteral(resourceName: "logOut"), text: "방 나가기", action: {
+//            
+//        })
     ]
 }
 
