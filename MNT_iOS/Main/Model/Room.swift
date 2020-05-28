@@ -47,13 +47,13 @@ struct RoomCheck: Codable {
 }
 
 struct Room: Codable, getRoomViewModel {
-    let endDay: String
-    let id: Int
-    let isDone: Int
-    let isStart: Int
-    let maxPeople: Int
-    let name: String
-    let startDay: String
+    var endDay: String = ""
+    var id: Int = 83550
+    var isDone: Int = 0
+    var isStart: Int = 0
+    var maxPeople: Int = 0
+    var name: String = ""
+    var startDay: String = ""
 
     var asRoomViewModel: RoomViewModel {
         return RoomViewModel(datas: self)

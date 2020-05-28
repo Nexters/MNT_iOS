@@ -37,6 +37,18 @@ class DashboardViewController: ViewController {
 
 extension DashboardViewController: ViewModelBindableType {
     func bindViewModel(viewModel: DashboardViewModel) {
+        APISource.shared.getDashboard(roomId: viewModel.room.id,
+                                      userId: viewModel.user.id) { [unowned self] (res) in
+                                        
+                                        print("tagg  \(res)")
+                                        viewModel.room = res.room ?? Room()
+                                        viewModel.missionSent = res.missionCountOfUserSend ?? 0
+                                        viewModel.missionReceived = res.missionCountOfUserReceive ?? 0
+                                        viewModel.missionAll = res.missionCountOfAll ?? 0
+                                        
+                                        self.collectionView.reloadData()
+        }
+        
         
     }
 }

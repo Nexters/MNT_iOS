@@ -193,4 +193,17 @@ class APISource: APISourceProtocol {
                                     completion(res.data)
         }
     }
+    
+    func getDashboard(roomId: Int, userId: String, completion: @escaping (DashboardInfo) -> Void) -> Disposable? {
+        let params = [
+            "roomId": roomId,
+            "userId": userId
+        ] as [String : Any]
+        
+        return requestDataObject(.get,
+                                 .dashboard,
+                                 parameters: params) { (res: DashboardResponse) in
+                                    completion(res.data)
+        }
+    }
 }

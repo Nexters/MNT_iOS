@@ -118,6 +118,8 @@ class FruitImage {
                                                        16:UIImage(named: "imgProfileFace15")!
     ]
     
+    
+    
     private init() {}
     
     func getFruitCircle(_ index: Int) -> UIImage {

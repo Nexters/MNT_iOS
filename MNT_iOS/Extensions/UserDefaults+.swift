@@ -46,7 +46,7 @@ extension UserDefaults {
     }
     
     func getIntValue(key: UserDefaultKeys) -> Int {
-        let output = self.value(forKey: key.rawValue) as! Int
+        let output = self.value(forKey: key.rawValue) as? Int ?? 1
         
         return output
     }
