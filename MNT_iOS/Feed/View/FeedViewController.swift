@@ -106,6 +106,7 @@ extension FeedViewController: ViewModelBindableType {
     
     private func getTimeline() {
         APISource.shared.getTimeline(roomId: 83550) { missions in
+                        
             self.viewModel?.infos = missions.map { Feed(id: 0,
                                                         contentTitle: $0.missionName ?? "",
                                                         content: $0.userMission.content ?? "",

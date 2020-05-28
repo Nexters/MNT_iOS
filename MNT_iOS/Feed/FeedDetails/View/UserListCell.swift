@@ -14,14 +14,19 @@ class UserListCell: UITableViewCell {
         img.withSize(.init(width: 64, height: 64))
         return img
     }()
-    let manittoLabel = UILabel(text: "마니또", font: .boldSystemFont(ofSize: 15), textColor: .defaultText)
-      let targetImageView: UIImageView = {
-          let img = UIImageView(image: #imageLiteral(resourceName: "imgProfileWatermelon"))
-          img.withSize(.init(width: 64, height: 64))
-          return img
-      }()
+    let manittoLabel: UILabel = {
+        let label = UILabel(text: "마니또", font: .boldSystemFont(ofSize: 15), textColor: .defaultText)
+        label.withWidth(40)
+        label.numberOfLines = 1
+        return label
+    }()
+    let targetImageView: UIImageView = {
+        let img = UIImageView(image: #imageLiteral(resourceName: "imgProfileWatermelon"))
+        img.withSize(.init(width: 64, height: 64))
+        return img
+    }()
     let targetLabel = UILabel(text: "타겟", font: .boldSystemFont(ofSize: 15))
-    let arrowImageView = UIImageView(image: #imageLiteral(resourceName: "arrowRelation"), contentMode: .scaleAspectFit).withSize(.init(width: 43, height: 24))
+    let arrowImageView = UIImageView(image: #imageLiteral(resourceName: "arrowRelation"), contentMode: .scaleToFill).withSize(.init(width: 43, height: 24))
     lazy var lStackView: UIStackView = {
         let sv = UIStackView(arrangedSubviews: [
             manittoImageView,
@@ -39,8 +44,6 @@ class UserListCell: UITableViewCell {
         return sv
     }()
     
-    
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -50,15 +53,24 @@ class UserListCell: UITableViewCell {
         arrowImageView.centerInSuperview()
         
         lStackView.anchor(
-            .leading(leadingAnchor, constant: 0),
-            .trailing(arrowImageView.leadingAnchor, constant: 5)
+            .trailing(arrowImageView.leadingAnchor, constant: 20)
         )
         lStackView.centerYToSuperview()
         
         rStackView.anchor(
-            .leading(arrowImageView.trailingAnchor),
+            .leading(arrowImageView.trailingAnchor, constant: 10),
             .trailing(trailingAnchor)
         )
         rStackView.centerYToSuperview()
+    }
+    
+    func setupView(participant: Participant) {
+        print(participant)
+        let instance = FruitImage.sharedInstance
+        // TODO index error....
+        manittoImageView.image =  instance.getFruit(participant.userFruttoId ?? 0 + 1)
+        manittoLabel.text = instance.getFruitName(participant.userFruttoId ?? 0 + 1)
+        targetImageView.image = instance.getProfileFace((participant.manitto?.fruttoId ?? 1 ) + 1)
+        targetLabel.text = participant.manitto?.name ?? ""
     }
 }

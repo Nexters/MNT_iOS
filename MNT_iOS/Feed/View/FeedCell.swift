@@ -34,6 +34,7 @@ class FeedCell: UITableViewCell {
         let isAbleImage: Bool = (viewModel?.datas.missionId?.isAbleImg == 1 && viewModel?.datas.missionImg != nil)
         labelContainer.roundedBorder(corners: isAbleImage ? [.bottomLeft, .bottomRight] : [.allCorners], radius: 10)
         feedImageView.roundedCorner(corners: [.topLeft, .topRight], radius: 10)
+        feedImageView.backgroundColor = .lightGrayBackgroundColor
     }
 }
 

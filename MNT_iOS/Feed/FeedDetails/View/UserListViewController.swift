@@ -42,33 +42,33 @@ extension UserListViewController: ViewModelBindableType {
     func bindViewModel(viewModel: UserListViewModel) {
         self.viewModel = viewModel
         
-//        getUserList()
+        getUserList()
     }
     
-//    private func getUserList() {
-//        APISource.shared.getUserList(roomId: 53314) { (userlist) in
-//            self.viewModel?.userlist = userlist
-//            self.tableView.reloadData()
-//        }
-//    }
+    private func getUserList() {
+        APISource.shared.getUserList(roomId: 83550) { (userlist) in
+            self.viewModel?.userlist = userlist
+            self.tableView.reloadData()
+        }
+    }
 }
 
 extension UserListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        viewModel?.userlist.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         67
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        viewModel?.userlist.count ?? 0
-    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(UserListCell.self)
-        // bind
+        
+        if let participant = viewModel?.userlist[indexPath.row] {
+            cell.setupView(participant: participant)
+        }
+        
         return cell
     }
     
@@ -80,3 +80,4 @@ extension UserListViewController: UITableViewDelegate, UITableViewDataSource {
         UIView(backgroundColor: .clear)
     }
 }
+ 

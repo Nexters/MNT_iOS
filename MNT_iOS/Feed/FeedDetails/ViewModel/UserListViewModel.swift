@@ -10,6 +10,4 @@ import Foundation
 
 class UserListViewModel: ViewModel {
     var userlist: [Participant] = []
-    
-    
 }

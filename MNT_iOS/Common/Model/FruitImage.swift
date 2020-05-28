@@ -139,7 +139,7 @@ class FruitImage {
     func getProfileFace(_ index: Int) -> UIImage {
         return profileFaceForIndex[index]!
     }
-    
+
     func getFruitName(_ index: Int) -> String {
         return fruitNameForIndex[index]!
     }

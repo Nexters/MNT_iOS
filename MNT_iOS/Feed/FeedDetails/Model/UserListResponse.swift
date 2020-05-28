@@ -14,11 +14,13 @@ struct UserListResponse: Codable {
 }
 
 struct Participant: Codable {
-    var id: Int = 0
-    var room: RoomInfo = RoomInfo()
-    var user: User 
+    var id: Int? = 0
+    var room: RoomInfo? = RoomInfo()
+    var user: User? = User()
     var manittoId: String? = nil
-    var isCreater: Int = 0
+    var manitto: Manitto? = Manitto()
+    var userFruttoId: Int? = 1
+    var isCreater: Int? = 0
 }
 
 struct User: Codable {

@@ -30,7 +30,11 @@ class FeedCellViewModel {
     }
     var contentTitle: String {
         // TODO: 앞에꺼 잘라야함.
-        return datas.contentTitle
+        let str = datas.contentTitle
+        let start = str.index(after: str.startIndex)
+        let end = str.index(before: str.endIndex)
+        let substring = str[start...end]
+        return "#" + String(substring)
     }
     var content: String {
         return datas.content
