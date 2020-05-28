@@ -38,7 +38,7 @@ class TabBarViewModel: ViewModel, ReactiveViewModelable {
     
     public lazy var viewControllers: [UIViewController] = {
         return [
-            dashVC,
+            dashVC, 
             feedVC,
             missionVC
         ]

@@ -1,5 +1,6 @@
 import Foundation
 import Alamofire
+import RxAlamofire
 
 // MARK:- Singleton Object for Networking API
 class APISource: APISourceProtocol {
@@ -64,27 +65,20 @@ class APISource: APISourceProtocol {
         }
     }
     
-    // success
-    func getRoomAttend(roomId: Int, userId: String, completion: @escaping (Room) -> Void) -> Disposable? {
+    func getRoomAttend(roomId: Int, userId: String, completion: @escaping (Room?) -> Void) -> Disposable? {
         let params = [
             "userId" : userId
-            ] as [String: Any]
+        ] as [String: Any]
         
-        return requestDataObject(.get,
+        return requestIntDataObject(.get,
                                  .roomAttend,
                                  parameters: params,
                                  path: roomId) { (res: RoomResponse) in
-                                    print("status : \(res.apiStatus.label)")
-                                    if (res.apiStatus.httpStatus == 200) {
-                                        print("200")
-                                        completion(res.data!)
-                                    } else {
-                                        print("200 아님")
-                                    }
+                                    if (res.apiStatus.httpStatus == 200) { completion(res.data!) }
+                                    else { completion(nil) }
         }
     }
     
-    // success
     func getRoomExistCheck(userId: String, completion: @escaping (Int) -> Void) -> Disposable? {
         let headers = [
             "userId" : userId
@@ -100,8 +94,7 @@ class APISource: APISourceProtocol {
         }
     }
     
-    // success
-    func getRoomCheck(userId: String, completion: @escaping ([RoomCheck]) -> Void) -> Disposable? {
+    func getRoomCheck(userId: String, completion: @escaping ([RoomCheck]?) -> Void) -> Disposable? {
         let headers = [
             "userId" : userId
             ] as [String: String]
@@ -116,23 +109,21 @@ class APISource: APISourceProtocol {
         }
     }
     
-    // success
     func getRoomUserList(roomId: Int, completion: @escaping ([RoomCheck]) -> Void) -> Disposable? {
         let params : [String : Any] = [:]
         
-        return requestDataObject(.get,
+        return requestIntDataObject(.get,
                                  .roomUserList,
                                  parameters: params,
                                  path: roomId) { (res : RoomCheckResponse) in
-                                    completion(res.data)
+                                    completion(res.data ?? [])
         }
     }
     
-    // success
     func getRoomStart(roomId: Int, completion: @escaping (String?) -> Void) -> Disposable? {
         let params : [String : Any] = [:]
         
-        return requestDataObject(.get,
+        return requestIntDataObject(.get,
                                  .roomStart,
                                  parameters: params,
                                  path: roomId) { (res : RoomStringResponse) in
@@ -140,19 +131,23 @@ class APISource: APISourceProtocol {
         }
     }
     
-    // success
     func postSignUp(user: User, completion: @escaping () -> Void) -> Disposable? {
         let params = [
-            "user" : user
-            ] as [String : Any]
-        
+            "fcmToken" : user.fcmToken,
+            "id" : user.id,
+            "name" : user.name,
+            "profilePic" : user.profilePic
+        ]
+
         return requestWithoutData(.post,
                                   .signUp,
                                   parameters: params,
-                                  completion: nil)
+                                  encoding: JSONEncoding.default,
+                                  headers: ["Content-Type": "application/json; charset=utf-8"]) {
+                                    completion()
+        }
     }
     
-    // success
     func deleteRoomUser(roomId: Int, userId: String, completion: @escaping () -> Void) -> Disposable? {
         let params = [
             "roomId" : roomId,
@@ -165,16 +160,23 @@ class APISource: APISourceProtocol {
                                   completion: nil)
     }
     
-    // fail
     func postRoomMake(room: Room, userId: String, completion: @escaping (String) -> Void) -> Disposable? {
         let params = [
-            "room" : room,
-            "userId" : userId
+            "room" : ["endDay" : "2020-05-20",
+                      "id" : 0,
+                      "isDone" : 0,
+                      "isStart" : 0,
+                      "maxPeople" : 0,
+                      "name" : "string",
+                      "startDay" : "2020-05-20"
+                ],
+            "userId" : "645654"
             ] as [String: Any]
         
-        return requestDataObject(.get,
+        return requestDataObject(.post,
                                  .roomMake,
                                  parameters: params) { (res: RoomStringResponse) in
+                                    print("\(res)")
                                     completion(res.data ?? "")
         }
     }

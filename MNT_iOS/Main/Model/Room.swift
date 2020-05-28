@@ -30,7 +30,7 @@ struct RoomUserResponse: Codable {
 
 struct RoomCheckResponse: Codable {
     let apiStatus: APIStatus
-    let data: [RoomCheck]
+    let data: [RoomCheck]?
 }
 
 struct ManittoResponse: Codable {

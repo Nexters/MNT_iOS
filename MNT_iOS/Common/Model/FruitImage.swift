@@ -15,7 +15,7 @@ class FruitImage {
                                                        2:UIImage(#imageLiteral(resourceName: "imgProfileAvocado")),
                                                        3:UIImage(#imageLiteral(resourceName: "imgProfileKiwi")),
                                                        4:UIImage(#imageLiteral(resourceName: "imgProfileMelon")),
-                                                       5:UIImage(#imageLiteral(resourceName: "imgProfileChatGreenapple")),
+                                                       5:UIImage(#imageLiteral(resourceName: "imgProfileGreenapple")),
                                                        6:UIImage(#imageLiteral(resourceName: "imgProfilePear")),
                                                        7:UIImage(#imageLiteral(resourceName: "imgProfileRedapple")),
                                                        8:UIImage(#imageLiteral(resourceName: "imgProfileWatermelon")),
@@ -67,38 +67,38 @@ class FruitImage {
     ]
     
     private var fruitForIndex: [Int: UIImage] = [1:UIImage(#imageLiteral(resourceName: "imgProfileIconTropical")),
-                                                     2:UIImage(#imageLiteral(resourceName: "imgProfileIconAvocado")),
-                                                     3:UIImage(#imageLiteral(resourceName: "imgProfileIconKiwi")),
-                                                     4:UIImage(#imageLiteral(resourceName: "imgProfileIconMelon")),
-                                                     5:UIImage(#imageLiteral(resourceName: "imgProfileIconGreenapple")),
-                                                     6:UIImage(#imageLiteral(resourceName: "imgProfileIconPear")),
-                                                     7:UIImage(#imageLiteral(resourceName: "imgProfileIconRedapple")),
-                                                     8:UIImage(#imageLiteral(resourceName: "imgProfileIconWatermelon")),
-                                                     9:UIImage(#imageLiteral(resourceName: "imgProfileIconStrawberry")),
-                                                     10:UIImage(#imageLiteral(resourceName: "imgProfileIconPeach")),
-                                                     11:UIImage(#imageLiteral(resourceName: "imgProfileIconGrape")),
-                                                     12:UIImage(#imageLiteral(resourceName: "imgProfileIconCherry")),
-                                                     13:UIImage(#imageLiteral(resourceName: "imgProfileIconBanana")),
-                                                     14:UIImage(#imageLiteral(resourceName: "imgProfileIconLemon")),
-                                                     15:UIImage(#imageLiteral(resourceName: "imgProfileIconPineapple")),
-                                                     16:UIImage(#imageLiteral(resourceName: "imgProfileIconOrange"))
+                                                 2:UIImage(#imageLiteral(resourceName: "imgProfileIconAvocado")),
+                                                 3:UIImage(#imageLiteral(resourceName: "imgProfileIconKiwi")),
+                                                 4:UIImage(#imageLiteral(resourceName: "imgProfileIconMelon")),
+                                                 5:UIImage(#imageLiteral(resourceName: "imgProfileIconGreenapple")),
+                                                 6:UIImage(#imageLiteral(resourceName: "imgProfileIconPear")),
+                                                 7:UIImage(#imageLiteral(resourceName: "imgProfileIconRedapple")),
+                                                 8:UIImage(#imageLiteral(resourceName: "imgProfileIconWatermelon")),
+                                                 9:UIImage(#imageLiteral(resourceName: "imgProfileIconStrawberry")),
+                                                 10:UIImage(#imageLiteral(resourceName: "imgProfileIconPeach")),
+                                                 11:UIImage(#imageLiteral(resourceName: "imgProfileIconGrape")),
+                                                 12:UIImage(#imageLiteral(resourceName: "imgProfileIconCherry")),
+                                                 13:UIImage(#imageLiteral(resourceName: "imgProfileIconBanana")),
+                                                 14:UIImage(#imageLiteral(resourceName: "imgProfileIconLemon")),
+                                                 15:UIImage(#imageLiteral(resourceName: "imgProfileIconPineapple")),
+                                                 16:UIImage(#imageLiteral(resourceName: "imgProfileIconOrange"))
     ]
     
     private var fruitPopUpForIndex: [Int: UIImage] = [2:UIImage(#imageLiteral(resourceName: "imgPopupEndAvocado")),
-                                                  3:UIImage(#imageLiteral(resourceName: "imgPopupEndKiwi")),
-                                                  4:UIImage(#imageLiteral(resourceName: "imgPopupEndMelon")),
-                                                  5:UIImage(#imageLiteral(resourceName: "imgPopupEndGreenapple")),
-                                                  6:UIImage(#imageLiteral(resourceName: "imgPopupEndPear")),
-                                                  7:UIImage(#imageLiteral(resourceName: "imgPopupEndRedapple")),
-                                                  8:UIImage(#imageLiteral(resourceName: "imgPopupEndWatermelon")),
-                                                  9:UIImage(#imageLiteral(resourceName: "imgPopupEndStrawberry")),
-                                                  10:UIImage(#imageLiteral(resourceName: "imgPopupEndPeach")),
-                                                  11:UIImage(#imageLiteral(resourceName: "imgPopupEndGrape")),
-                                                  12:UIImage(#imageLiteral(resourceName: "endCherry")),
-                                                  13:UIImage(#imageLiteral(resourceName: "imgPopupEndBanana")),
-                                                  14:UIImage(#imageLiteral(resourceName: "imgPopupEndLemon")),
-                                                  15:UIImage(#imageLiteral(resourceName: "imgPopupEndPineapple")),
-                                                  16:UIImage(#imageLiteral(resourceName: "imgPopupEndOrange"))
+                                                      3:UIImage(#imageLiteral(resourceName: "imgPopupEndKiwi")),
+                                                      4:UIImage(#imageLiteral(resourceName: "imgPopupEndMelon")),
+                                                      5:UIImage(#imageLiteral(resourceName: "imgPopupEndGreenapple")),
+                                                      6:UIImage(#imageLiteral(resourceName: "imgPopupEndPear")),
+                                                      7:UIImage(#imageLiteral(resourceName: "imgPopupEndRedapple")),
+                                                      8:UIImage(#imageLiteral(resourceName: "imgPopupEndWatermelon")),
+                                                      9:UIImage(#imageLiteral(resourceName: "imgPopupEndStrawberry")),
+                                                      10:UIImage(#imageLiteral(resourceName: "imgPopupEndPeach")),
+                                                      11:UIImage(#imageLiteral(resourceName: "imgPopupEndGrape")),
+                                                      12:UIImage(#imageLiteral(resourceName: "endCherry")),
+                                                      13:UIImage(#imageLiteral(resourceName: "imgPopupEndBanana")),
+                                                      14:UIImage(#imageLiteral(resourceName: "imgPopupEndLemon")),
+                                                      15:UIImage(#imageLiteral(resourceName: "imgPopupEndPineapple")),
+                                                      16:UIImage(#imageLiteral(resourceName: "imgPopupEndOrange"))
     ]
     
     private var profileFaceForIndex: [Int: UIImage] = [2:UIImage(named: "imgProfileFace01")!,
@@ -131,7 +131,7 @@ class FruitImage {
     func getFruit(_ index: Int) -> UIImage {
         return fruitForIndex[index]!
     }
-        
+    
     func getFruitPopUp(_ index: Int) -> UIImage {
         return fruitPopUpForIndex[index]!
     }

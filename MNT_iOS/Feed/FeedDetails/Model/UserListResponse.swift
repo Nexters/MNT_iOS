@@ -29,13 +29,3 @@ struct User: Codable {
     var profilePic: String = ""
     var fcmToken: String  = ""
 }
-
-struct RoomInfo: Codable {
-    var id: Int = 0
-    var name: String = ""
-    var maxPeople: Int = 0
-    var endDay: String = ""
-    var startDay: String = ""
-    var isDone: Int = 0
-    var isStart: Int = 0
-}

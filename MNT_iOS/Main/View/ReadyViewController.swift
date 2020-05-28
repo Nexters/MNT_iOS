@@ -10,7 +10,8 @@ import UIKit
 
 class ReadyViewController: ViewController {
     
-    var isAdmin : Bool = true
+    let room : Room = UserDefaults.standard.getObject(key: .room)!
+    var isAdmin : Bool = false
     var isStarted: Bool = true
     var dummyDate: String = "2020.01.20. (월)"
     var viewModel: ReadyViewModel?
@@ -40,20 +41,45 @@ class ReadyViewController: ViewController {
     var startButton = PrimaryButton("시작하기 🙋‍♀️")
     var checkButton = TextOnlyButton("참여자 보기 👭")
     
-    override func setupNavigationController() {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         navigationController?.navigationBar.isHidden = true
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
+        if let user : User = UserDefaults.standard.getObject(key: .user) {
+            APISource.shared.getRoomCheck(userId: user.id) { (roomCheck) in
+                if (roomCheck![0].userFruttoId == nil) {
+                    self.isStarted = false
+                    
+                } else {
+                    self.isStarted = true
+                    UserDefaults.standard.setObject(object: roomCheck![0].manitto, key: .manitto)
+                    UserDefaults.standard.setIntValue(value: roomCheck![0].userFruttoId!, key: .userFruttoId)
+                }
+                self.setUpForParticipant()
+            }
+        } else {
+            print("Fail : getObject(key: .user)")
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        navigationController?.navigationBar.isHidden = false
     }
     
     override func setupLayout() {
         let width = view.frame.width
         let height = view.frame.height
         
-        if isAdmin != true {
-            setUpForParticipant()
-        }
-        else {
-            setUpForAdministrator()
-        }
+//        if isAdmin != true {
+//            setUpForParticipant()
+//        }
+//        else {
+//            setUpForAdministrator()
+//        }
         
         view.addSubview(fruitImage)
         view.addSubview(titleLabel)
@@ -93,6 +119,9 @@ class ReadyViewController: ViewController {
         bubbleImage.anchor(.top(view.topAnchor, constant: height * 0.32))
         subLabel.anchor(.top(view.topAnchor, constant: height * 0.333))
         
+        bubbleImage.centerXToSuperview()
+        subLabel.centerXToSuperview()
+        
         bubbleImage.transform = CGAffineTransform(rotationAngle: .pi)
         
         setUpDetailForParticipant()
@@ -123,15 +152,20 @@ class ReadyViewController: ViewController {
     }
     
     func setUpDetailForParticipant() {
-        let frontText = "\(dummyDate) 정오 "
-        var backText = "에 시작되었습니다!\n친구들과 함께 프루또를 해볼까요?👏"
+        var frontText = "\(room.startDay) 정오"
+        var backText : String?
+        
+        titleLabel.text = room.name
         
         if isStarted == false {
+            startButton.isUserInteractionEnabled = false
             startButton.backgroundColor = .disableColor
             backText = "에 시작합니다.\n친구들이 모일 때까지 잠시 기다려주세요👏"
+        } else {
+            backText = "에 시작되었습니다!\n친구들과 함께 프루또를 해볼까요?👏"
         }
         
-        subLabel.text = frontText + backText
+        subLabel.text = frontText + backText!
         
         let attributedStr = NSMutableAttributedString(string: subLabel.text!)
         let paragraphStyle = NSMutableParagraphStyle()

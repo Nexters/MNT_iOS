@@ -59,7 +59,7 @@ protocol APISourceProtocol {
                                                headers: [String: String]?,
                                                completion: ((T) -> Void)?) -> Disposable?
     
-    func requestDataObject<T: Codable, P: Any>(_ method: HTTPMethod,
+    func requestIntDataObject<T: Codable, P: Any>(_ method: HTTPMethod,
                                                _ url: URLType,
                                                parameters: P?,
                                                path: Int,
@@ -111,9 +111,7 @@ extension APISourceProtocol {
             print("networking - invalid url")
             return nil
         }
-                
-//        print("tagg url \(encodedUrl)")
-//        print("tagg params \(params)")
+        
         return RxAlamofire.requestData(method,
                                        encodedUrl,
                                        parameters: params as? [String : Any],
@@ -177,7 +175,7 @@ extension APISourceProtocol {
         
         return RxAlamofire.requestData(method,
                                        encodedUrl,
-                                       parameters: params as? [String : Any],
+                                       parameters: params as! [String : Any],
                                        encoding: encoding,
                                        headers: headers)
             .subscribe(
@@ -193,7 +191,7 @@ extension APISourceProtocol {
             })
     }
     
-    func requestDataObject<T: Codable, P: Any>(_ method: HTTPMethod,
+    func requestIntDataObject<T: Codable, P: Any>(_ method: HTTPMethod,
                                                _ url: URLType,
                                                parameters: P,
                                                path: Int,

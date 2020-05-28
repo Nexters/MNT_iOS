@@ -30,20 +30,10 @@ class JoinRoomViewController: ViewController {
                              font: .mediumFont(ofSize: 13),
                              textColor: .lightGray)
     var nextButton = PrimaryButton("입장하기")
-    
-    let leftButton: UIBarButtonItem = {
-        let bt = UIBarButtonItem(image: #imageLiteral(resourceName: "close"),
-                                 style: .plain,
-                                 target: self,
-                                 action: #selector(backButtonPressed(_:)))
-        bt.tintColor = .defaultText
-        return bt
-    }()
         
     override func setupNavigationController() {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
-        navigationItem.leftBarButtonItem = leftButton
     }
 
     override func setupLayout() {
@@ -87,11 +77,6 @@ class JoinRoomViewController: ViewController {
         border.borderWidth = width
         textField.layer.addSublayer(border)
         textField.layer.masksToBounds = true
-    }
-    
-    @objc private func backButtonPressed(_ sender: Any) {
-        print("clicked back")
-        self.navigationController?.popViewController(animated: true)
     }
 }
 

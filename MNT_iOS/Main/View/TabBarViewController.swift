@@ -96,26 +96,28 @@ class TabBarViewController: UITabBarController {
                               offset: .init(width: 0, height: 3))
     }
     
-    func changeIndex(to: Int) {
-        self.stackIndex = to
-    }
-    
-    func bringTabBarToFront() {
-        setItemColor()
-        view.addSubview(stackView)
-        view.bringSubviewToFront(stackView)
-    }
-    
-    func setItemColor() {
+    func setItemColor(_ selectedIndex: Int) {
 
-        switch stackIndex {
+        switch selectedIndex {
         case 0:
             dashBoardButton.tintColor = UIColor.accentColor
             dashBoardLabel.textColor = UIColor.accentColor
+            feedButton.tintColor = UIColor.contentText
+            feedLabel.textColor = UIColor.contentText
+            missionButton.tintColor = UIColor.contentText
+            missionLabel.textColor = UIColor.contentText
         case 1:
+            dashBoardButton.tintColor = UIColor.contentText
+            dashBoardLabel.textColor = UIColor.contentText
             feedButton.tintColor = UIColor.accentColor
             feedLabel.textColor = UIColor.accentColor
+            missionButton.tintColor = UIColor.contentText
+            missionLabel.textColor = UIColor.contentText
         case 2:
+            dashBoardButton.tintColor = UIColor.contentText
+            dashBoardLabel.textColor = UIColor.contentText
+            feedButton.tintColor = UIColor.contentText
+            feedLabel.textColor = UIColor.contentText
             missionButton.tintColor = UIColor.accentColor
             missionLabel.textColor = UIColor.accentColor
         default:
@@ -144,7 +146,7 @@ class TabBarViewController: UITabBarController {
         let width = view.frame.width
         let height = view.frame.height
         
-        UIView.animate(withDuration: 3.0, delay: 0, options: .curveLinear, animations: {
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveLinear, animations: {
             self.stackView.frame = CGRect(x: (width - 263)/2,
                                      y: height + 100,
                                      width: 263,
@@ -156,7 +158,7 @@ class TabBarViewController: UITabBarController {
         let width = view.frame.width
         let height = view.frame.height
 
-        UIView.animate(withDuration: 1.0, delay: 0, options: .curveLinear, animations: {
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveLinear, animations: {
             self.stackView.frame = CGRect(x: (width - 263)/2,
                                      y: height - 93,
                                      width: 263,
@@ -179,6 +181,7 @@ extension TabBarViewController: ViewModelBindableType {
                 guard let self = self else { return }
                 self.selectedIndex = selectedNumber
                 self.viewModel?.coordinator.changeCurrentVC(self.viewControllers![selectedNumber].sceneViewController)
+                self.setItemColor(selectedNumber)
             }).disposed(by: bag)
     }
 }

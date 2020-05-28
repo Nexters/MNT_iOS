@@ -56,16 +56,6 @@ class LoginController: ViewController {
         
         session.open { (error) in
             if error != nil || !session.isOpen() { return }
-//            KOSessionTask.userMeTask(completion: { (error, me) in
-//                if let error = error as NSError? {
-//                    UIAlertController.showMessage(error.description)
-//                } else if let me = me as KOUserMe? {
-//                    self.confirmViewModel?.name = me.nickname
-//                    self.confirmViewModel?.email = me.account?.email
-//                } else {
-//                    print("has no id")
-//                }
-//            })
         }
     }
 }
