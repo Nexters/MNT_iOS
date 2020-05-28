@@ -330,6 +330,7 @@
 		583659BE23E32B5100E2752F /* ReadyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyViewModel.swift; sourceTree = "<group>"; };
 		583659CB23E4AB7100E2752F /* RoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomViewModel.swift; sourceTree = "<group>"; };
 		583EBDA9246C616B0076C68F /* UserDefaults+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+.swift"; sourceTree = "<group>"; };
+		586E24AB247FF55600D8DA75 /* MNT_iOSDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MNT_iOSDebug.entitlements; sourceTree = "<group>"; };
 		58C56FFC246AF1A7000FEDC7 /* AgreeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreeViewController.swift; sourceTree = "<group>"; };
 		58C56FFE246AF1B6000FEDC7 /* AgreeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreeViewModel.swift; sourceTree = "<group>"; };
 		58D0178B23FA9CA200D55DA6 /* ConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
@@ -878,6 +879,7 @@
 		1AD6D40323BF9DBC000B1893 /* MNT_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				586E24AB247FF55600D8DA75 /* MNT_iOSDebug.entitlements */,
 				1A593D6423FCF0110009CDC0 /* Dashboard */,
 				1A4E688123E40D75005D2CFD /* Misson */,
 				1A4E686123E3E9C3005D2CFD /* Feed */,
@@ -1729,6 +1731,7 @@
 			baseConfigurationReference = 5814FD539E707AB76982D861 /* Pods-MNT_iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MNT_iOS/MNT_iOSDebug.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WF8UF5VWG6;
 				FRAMEWORK_SEARCH_PATHS = (

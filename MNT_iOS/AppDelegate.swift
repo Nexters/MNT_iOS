@@ -24,8 +24,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
             
         // Override point for customization after application launch.
-        kakaoLogin() // 로그인,로그아웃 상태 받기
 //        testing()
+        
+        let coordinator = SceneCoordinator(window: window!)
+        var viewModel: ViewModel?
+        var scene: SceneType?
+        let user: User? = UserDefaults.standard.getObject(key: .user)
+        
+        if user == nil {
+            kakaoLogin()
+        } else {
+            let room: Room? = UserDefaults.standard.getObject(key: .room)
+            if room == nil {
+                viewModel = MainViewModel(title: "", coordinator: coordinator)
+                scene = MainScene.main(viewModel as! MainViewModel)
+                coordinator.transition(to: scene!, using: .root, animated: true)
+            } else {
+                let userFruttoId: Int? = UserDefaults.standard.getIntValue(key: .userFruttoId)
+                if userFruttoId == nil {
+                    viewModel = ReadyViewModel(title: "", coordinator: coordinator)
+                    scene = MainScene.ready(viewModel as! ReadyViewModel)
+                    coordinator.transition(to: scene!, using: .root, animated: true)
+                } else {
+                    viewModel = TabBarViewModel(title: "Tabbar", coordinator: coordinator)
+                    scene = MainScene.enterRoom(viewModel as! TabBarViewModel)
+                    coordinator.transition(to: scene!, using: .root, animated: true)
+                }
+            }
+        }
         
         return true
     }
@@ -41,6 +67,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     fileprivate func kakaoLogin() {
+        if UserDefaults.standard.getStringValue(key: .socialLogin) == "Kakao" {
+            guard let session = KOSession.shared() else { return }
+            session.logoutAndClose { (success, error) in
+              if success {
+                print("logout success.")
+              } else {
+                print("logout fail")
+              }
+            }
+        }
+        
         addObserver() // 로그인,로그아웃 상태 변경 받기
         reloadRootViewController()
     }
@@ -140,30 +177,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if (isOpened) {
             KOSessionTask.userMeTask(completion: { (error, me) in
                 if let error = error as NSError? {
-                    UIAlertController.showMessage(error.description)
+                    print(error.description)
                 } else if let me = me as KOUserMe? {
-//                    APISource.shared.getRoomCheck(userId: me.id!) { (roomCheck) in
-                    APISource.shared.getRoomCheck(userId: "2579483") { (roomCheck) in
-                        if (roomCheck != nil) {
-                            UserDefaults.standard.setObject(object: roomCheck![0].user, key: .user)
-                            UserDefaults.standard.setObject(object: roomCheck![0].room, key: .room)
-                            
-                            if (roomCheck![0].userFruttoId != nil) {
-                                UserDefaults.standard.setObject(object: roomCheck![0].manitto, key: .manitto)
-                                UserDefaults.standard.setObject(object: roomCheck![0].userFruttoId, key: .userFruttoId)
-                                
-                                viewModel = TabBarViewModel(title: "Tabbar", coordinator: coordinator)
-                                scene = MainScene.enterRoom(viewModel as! TabBarViewModel)
-                            } else { 
-                                viewModel = ReadyViewModel(title: "", coordinator: coordinator)
-                                scene = MainScene.ready(viewModel as! ReadyViewModel)
-                            }
-                        } else {
-                            viewModel = AgreeViewModel(title: "이용약관", coordinator: coordinator)
-                            scene = LoginScene.agree(viewModel as! AgreeViewModel)
-                        }
-                        coordinator.transition(to: scene!, using: .root, animated: true)
-                    }
+                    viewModel = AgreeViewModel(title: "이용약관", coordinator: coordinator)
+                    scene = LoginScene.agree(viewModel as! AgreeViewModel)
+                    UserDefaults.standard.setStringValue(value: "Kakao", key: .socialLogin)
+                    coordinator.transition(to: scene!, using: .root, animated: true)
                 } else {
                     print("has no id")
                 }

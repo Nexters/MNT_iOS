@@ -52,13 +52,6 @@ class JoinRoomViewModel: ViewModel {
                 } else {
                     print("user getObject 실패")
                 }
-                
-                
-                
-                
-                
-                
-        
             }
             
             return Observable.just(action)

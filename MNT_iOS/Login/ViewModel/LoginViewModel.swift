@@ -10,4 +10,10 @@ import Foundation
 
 class LoginViewModel: ViewModel {
     
+    func presentAgreeAction() {
+        let viewModel = AgreeViewModel(title: "이용약관", coordinator: self.coordinator)
+        let scene: SceneType = LoginScene.agree(viewModel as! AgreeViewModel)
+        
+        self.coordinator.transition(to: scene, using: .root, animated: true).asObservable().map { _ in }
+    }
 }
