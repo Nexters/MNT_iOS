@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import RxAlamofire
 import Alamofire
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -25,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
         // Override point for customization after application launch.
 //        testing()
+        FirebaseApp.configure()
         
         let coordinator = SceneCoordinator(window: window!)
         var viewModel: ViewModel?
@@ -179,10 +181,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 if let error = error as NSError? {
                     print(error.description)
                 } else if let me = me as KOUserMe? {
-                    viewModel = AgreeViewModel(title: "이용약관", coordinator: coordinator)
-                    scene = LoginScene.agree(viewModel as! AgreeViewModel)
-                    UserDefaults.standard.setStringValue(value: "Kakao", key: .socialLogin)
-                    coordinator.transition(to: scene!, using: .root, animated: true)
+                    APISource.shared.getRoomCheck(userId: me.id!) { (roomCheck) in
+                        if (roomCheck != nil) {
+                            UserDefaults.standard.setObject(object: roomCheck![0].user, key: .user)
+                            UserDefaults.standard.setObject(object: roomCheck![0].room, key: .room)
+                            
+                            if (roomCheck![0].userFruttoId != nil) {
+                                UserDefaults.standard.setObject(object: roomCheck![0].manitto, key: .manitto)
+                                UserDefaults.standard.setObject(object: roomCheck![0].userFruttoId, key: .userFruttoId)
+                                
+                                viewModel = TabBarViewModel(title: "Tabbar", coordinator: coordinator)
+                                scene = MainScene.enterRoom(viewModel as! TabBarViewModel)
+                            } else {
+                                viewModel = ReadyViewModel(title: "", coordinator: coordinator)
+                                scene = MainScene.ready(viewModel as! ReadyViewModel)
+                            }
+                        } else {
+                            viewModel = AgreeViewModel(title: "이용약관", coordinator: coordinator)
+                            scene = LoginScene.agree(viewModel as! AgreeViewModel)
+                            UserDefaults.standard.setStringValue(value: "Kakao", key: .socialLogin)
+                        }
+                        coordinator.transition(to: scene!, using: .root, animated: true)
+                    }
                 } else {
                     print("has no id")
                 }

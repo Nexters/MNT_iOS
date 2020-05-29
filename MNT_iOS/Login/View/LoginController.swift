@@ -102,8 +102,25 @@ class LoginController: ViewController, ASAuthorizationControllerDelegate, ASAuth
             UserDefaults.standard.setStringValue(value: credential.user, key: .appleUserId)
             UserDefaults.standard.setStringValue(value: credential.fullName?.givenName ?? credential.fullName?.familyName ?? "프루또",
                                                  key: .appleUserName)
+            
+            APISource.shared.getRoomCheck(userId: credential.user) { (roomCheck) in
+                if (roomCheck != nil) {
+                    UserDefaults.standard.setObject(object: roomCheck![0].user, key: .user)
+                    UserDefaults.standard.setObject(object: roomCheck![0].room, key: .room)
+                    
+                    if (roomCheck![0].userFruttoId != nil) {
+                        UserDefaults.standard.setObject(object: roomCheck![0].manitto, key: .manitto)
+                        UserDefaults.standard.setObject(object: roomCheck![0].userFruttoId, key: .userFruttoId)
+                        self.viewModel?.presentTabbarAction()
+                    } else {
+                        self.viewModel?.presentReadyAction()
+                    }
+                } else {
+                    self.viewModel?.presentAgreeAction()
+                }
+            }
         }
-        viewModel?.presentAgreeAction()
+        
     }
 }
 

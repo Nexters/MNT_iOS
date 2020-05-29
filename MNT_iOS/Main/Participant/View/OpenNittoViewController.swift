@@ -13,7 +13,7 @@ class OpenNittoViewController: ViewController {
     let user: User = UserDefaults.standard.getObject(key: .user)!
     let manitto: Manitto = UserDefaults.standard.getObject(key: .manitto)!
     let room: Room = UserDefaults.standard.getObject(key: .room)!
-    let userFruttoID: Int = UserDefaults.standard.getIntValue(key: .userFruttoId)
+    let userFruttoID: Int = UserDefaults.standard.getIntValue(key: .userFruttoId)!
     
     var viewModel: OpenNittoViewModel?
     let label = UILabel(text: "",

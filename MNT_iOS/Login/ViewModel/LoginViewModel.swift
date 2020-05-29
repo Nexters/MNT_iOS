@@ -16,4 +16,18 @@ class LoginViewModel: ViewModel {
         
         self.coordinator.transition(to: scene, using: .root, animated: true).asObservable().map { _ in }
     }
+    
+    func presentReadyAction() {
+        let viewModel = ReadyViewModel(title: "", coordinator: self.coordinator)
+        let scene: SceneType = MainScene.ready(viewModel as! ReadyViewModel)
+        
+        self.coordinator.transition(to: scene, using: .root, animated: true).asObservable().map { _ in }
+    }
+    
+    func presentTabbarAction() {
+        let viewModel = TabBarViewModel(title: "", coordinator: self.coordinator)
+        let scene: SceneType = MainScene.enterRoom(viewModel)
+        
+        self.coordinator.transition(to: scene, using: .root, animated: true).asObservable().map { _ in }
+    }
 }

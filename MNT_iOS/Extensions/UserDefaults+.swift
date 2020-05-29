@@ -54,8 +54,8 @@ extension UserDefaults {
         return nil
     }
     
-    func getIntValue(key: UserDefaultKeys) -> Int {
-        let output = self.value(forKey: key.rawValue) as! Int
+    func getIntValue(key: UserDefaultKeys) -> Int? {
+        let output = self.value(forKey: key.rawValue) as? Int
         
         return output
     }

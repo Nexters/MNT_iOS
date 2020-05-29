@@ -32,6 +32,7 @@ class ConfirmViewModel: ViewModel {
         
         APISource.shared.postSignUp(user: user){
             UserDefaults.standard.setObject(object: user, key: .user)
-        }?.disposed(by: self.rx.disposeBag)
+            print(user)
+        }
     }
 }

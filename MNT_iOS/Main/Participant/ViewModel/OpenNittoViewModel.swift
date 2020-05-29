@@ -15,9 +15,9 @@ class OpenNittoViewModel: ViewModel {
             let viewModel = TabBarViewModel(title: "", coordinator: self.coordinator)
             let scene: SceneType = MainScene.enterRoom(viewModel)
             
-            APISource.shared.getRoomStart(roomId: 12768) { (request) in
-                
-            }?.disposed(by: self.rx.disposeBag)
+//            APISource.shared.getRoomStart(roomId: 12768) { (request) in
+//
+//            }?.disposed(by: self.rx.disposeBag)
             
             return self.coordinator.transition(to: scene, using: .root, animated: true).asObservable().map { _ in }
         }

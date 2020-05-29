@@ -108,8 +108,9 @@ extension MainUserListViewController: ViewModelBindableType {
     }
     
     func getUserList() {
+        let room: Room = UserDefaults.standard.getObject(key: .room)!
         
-        APISource.shared.getRoomUserList(roomId: 23430) { participants in
+        APISource.shared.getRoomUserList(roomId: room.id) { participants in
             for i in 0..<participants.count { self.viewModel?.userList.append(participants[i].user.name)
                 self.tableView.reloadData()
             }
