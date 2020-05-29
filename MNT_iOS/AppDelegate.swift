@@ -11,9 +11,11 @@ import CoreData
 import RxAlamofire
 import Alamofire
 import Firebase
+import FirebaseMessaging
+import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, MessagingDelegate {
 
     var window: UIWindow?
 
@@ -23,10 +25,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var mainViewController: UIViewController?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        FirebaseApp.configure()
+        
+        UNUserNotificationCenter.current().delegate = self
+        Messaging.messaging().delegate = self
+        
+        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+        UNUserNotificationCenter
+          .current()
+          .requestAuthorization(
+            options: authOptions,
+            completionHandler: { (_, _) in }
+          )
+        
+        application.registerForRemoteNotifications()
             
         // Override point for customization after application launch.
 //        testing()
-        FirebaseApp.configure()
+        
         
         let coordinator = SceneCoordinator(window: window!)
         var viewModel: ViewModel?
@@ -56,6 +73,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         return true
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+      Messaging.messaging().apnsToken = deviceToken
+    }
+    
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+      print("Firebase registration token: \(fcmToken)")
+
+      let dataDict:[String: String] = ["token": fcmToken]
+      NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
     }
     
     private func setNavigationbarAppearance() {
