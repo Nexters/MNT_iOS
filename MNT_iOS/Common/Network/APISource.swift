@@ -54,18 +54,17 @@ class APISource: APISourceProtocol {
             "content": missionSendingPostData.content,
         ] as [String: Any]
         
-//        if let image = missionSendingPostData.img {
-//            params["img"] = image
-//        }
-        
         guard
             let image = missionSendingPostData.img?.image,
+            let fileName = missionSendingPostData.img?.fileName.absoluteString,
             let imgData = image.jpegData(compressionQuality: 0.2),
             let encodedUrl = (API.baseURL + URLType.missionSend.rawValue).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         else { return nil}
         
         Alamofire.upload(multipartFormData: { multipartFormData in
-            multipartFormData.append(imgData, withName: "img", fileName: "img", mimeType: "image/jpg")
+            multipartFormData.append(imgData, withName: "img",
+                                     fileName: self.randomString(length: 7),
+                                     mimeType: "image/jpg")
             
             for (key, value) in params {
                 multipartFormData.append("\(value)".data(using: String.Encoding.utf8)!, withName: key)
@@ -75,12 +74,11 @@ class APISource: APISourceProtocol {
         }
         
         return nil
-
-//        return requestWithoutData(.post,
-//                                  .missionSend,
-//                                  parameters: params) {
-//                                    completion()
-//        }
+    }
+    
+    func randomString(length: Int) -> String {
+        let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        return String((0..<length).map{ _ in letters.randomElement()! })
     }
     
     func getRoomAttend(roomId: Int, userId: String, completion: @escaping (Room?) -> Void) -> Disposable? {
