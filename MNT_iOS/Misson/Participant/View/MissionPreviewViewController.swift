@@ -73,7 +73,8 @@ extension MissionPreviewViewController: ViewModelBindableType {
             })
         }.disposed(by: rx.disposeBag)
         
-        imageView.image = viewModel.imageData?.image
+//        imageView.image = viewModel.imageData?.image
+        imageView.image = viewModel.missionSendingPostData.img!.image
         titleLabel.text = viewModel.missionSendingData.mission.missionName
         label.text = viewModel.missionSendingData.content
     }

@@ -46,7 +46,6 @@ extension FeedCell: ViewModelBindableType {
         
         feedImageView.isHidden = !isAbleImage
         feedImageView.kf.setImage(with: viewModel.postURL)
-        //
         senderImageView.image = viewModel.manittoImage
         receiverImageView.image = viewModel.targetImage
         titleLabel.text = viewModel.contentTitle

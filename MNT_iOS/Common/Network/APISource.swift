@@ -47,22 +47,40 @@ class APISource: APISourceProtocol {
     
     func postMissionSend(missionSendingPostData: MissionSendingPostData, completion: @escaping () -> Void) -> Disposable? {
         
-        var params = [
+        let params = [
             "roomId": missionSendingPostData.roomId,
             "userId": missionSendingPostData.userId,
             "missionId": missionSendingPostData.missionId,
             "content": missionSendingPostData.content,
         ] as [String: Any]
         
-        if let image = missionSendingPostData.img {
-            params["img"] = image
+//        if let image = missionSendingPostData.img {
+//            params["img"] = image
+//        }
+        
+        guard
+            let image = missionSendingPostData.img?.image,
+            let imgData = image.jpegData(compressionQuality: 0.2),
+            let encodedUrl = (API.baseURL + URLType.missionSend.rawValue).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        else { return nil}
+        
+        Alamofire.upload(multipartFormData: { multipartFormData in
+            multipartFormData.append(imgData, withName: "img", fileName: "img", mimeType: "image/jpg")
+            
+            for (key, value) in params {
+                multipartFormData.append("\(value)".data(using: String.Encoding.utf8)!, withName: key)
+            }
+        }, to: encodedUrl) { (res) in
+            completion()
         }
         
-        return requestWithoutData(.post,
-                                  .missionSend,
-                                  parameters: params) {
-                                    completion()
-        }
+        return nil
+
+//        return requestWithoutData(.post,
+//                                  .missionSend,
+//                                  parameters: params) {
+//                                    completion()
+//        }
     }
     
     func getRoomAttend(roomId: Int, userId: String, completion: @escaping (Room?) -> Void) -> Disposable? {

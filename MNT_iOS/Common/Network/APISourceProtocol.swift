@@ -112,7 +112,7 @@ extension APISourceProtocol {
             print("networking - invalid url")
             return nil
         }
-        
+                
         return RxAlamofire.requestData(method,
                                        encodedUrl,
                                        parameters: params as? [String : Any],
