@@ -15,6 +15,7 @@ extension UserDefaults {
         case socialLogin // socialLogin: String
         case appleUserId
         case appleUserName
+        case fcmToken
     }
     
     func setObject<T: Codable>(object: T, key: UserDefaultKeys) {

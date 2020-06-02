@@ -28,11 +28,10 @@ class ConfirmViewModel: ViewModel {
         let user = User(id: self.id!,
                         name: self.name!,
                         profilePic: "string",
-                        fcmToken: "string")
+                        fcmToken: UserDefaults.standard.getStringValue(key: .fcmToken)!)
         
         APISource.shared.postSignUp(user: user){
             UserDefaults.standard.setObject(object: user, key: .user)
-            print(user)
         }
     }
 }

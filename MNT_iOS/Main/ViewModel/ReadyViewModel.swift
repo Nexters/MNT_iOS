@@ -13,17 +13,27 @@ import RxSwift
 class ReadyViewModel: ViewModel {
     func sendKakaoLinkAction() -> CocoaAction {
         return Action { [unowned self] action in
-            let code = 11111
+            let room: Room? = UserDefaults.standard.getObject(key: .room)
+            let code = room!.id
             
-            let template = KMTTextTemplate { (textTemplateBuilder) in
-                textTemplateBuilder.text = "마니또를 생성하였습니다."
-                textTemplateBuilder.link = KMTLinkObject(builderBlock: { (linkBuilder) in
-                    //linkBuilder.webURL = URL(string: url)!
-                    //linkBuilder.mobileWebURL = URL(string: "https://developers.kakao.com")!
-                    linkBuilder.iosExecutionParams = "\(code)"
-                    linkBuilder.androidExecutionParams = "\(code)"
+            let template = KMTFeedTemplate { (feedTemplateBuilder) in
+                feedTemplateBuilder.content = KMTContentObject(builderBlock: { (contentBuilder) in
+                    contentBuilder.title = "프룻프룻프루또\n초대코드 : \(code)"
+                    contentBuilder.imageURL = URL(string: "http://mud-kage.kakao.co.kr/dn/NTmhS/btqfEUdFAUf/FjKzkZsnoeE4o19klTOVI1/openlink_640x640s.jpg")!
+                    contentBuilder.link = KMTLinkObject(builderBlock: { (linkBuilder) in
+                        linkBuilder.mobileWebURL = URL(string: "https://developers.kakao.com")!
+                    })
                 })
-                textTemplateBuilder.buttonTitle = "앱에서 보기"
+                
+                feedTemplateBuilder.addButton(KMTButtonObject(builderBlock: { (buttonBuilder) in
+                    buttonBuilder.title = "앱으로 이동"
+                    buttonBuilder.link = KMTLinkObject(builderBlock: { (linkBuilder) in
+                        linkBuilder.webURL = URL(string: "https://developers.kakao.com")!
+                        linkBuilder.mobileWebURL = URL(string: "https://developers.kakao.com")!
+                        linkBuilder.iosExecutionParams = "\(code)"
+                        linkBuilder.androidExecutionParams = "\(code)"
+                    })
+                }))
             }
 
             // 카카오링크 실행
