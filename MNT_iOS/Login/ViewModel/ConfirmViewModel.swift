@@ -10,6 +10,8 @@ import Foundation
 import Alamofire
 
 class ConfirmViewModel: ViewModel {
+    var id: String?
+    var name: String?
     
     func presentMainAction() -> CocoaAction {
         return CocoaAction { _ in
@@ -23,36 +25,13 @@ class ConfirmViewModel: ViewModel {
     }
     
     func requestMe() {
-        var user: User?
+        let user = User(id: self.id!,
+                        name: self.name!,
+                        profilePic: "string",
+                        fcmToken: UserDefaults.standard.getStringValue(key: .fcmToken)!)
         
-        KOSessionTask.userMeTask(completion: { (error, me) in
-            if let error = error as NSError? {
-                UIAlertController.showMessage(error.description)
-            } else if let me = me as KOUserMe? {
-                
-//                 아래 주석 해제할 때 삭제할 것
-                user = User(id: "2579483",
-                            name: "name",
-                            profilePic: "string",
-                            fcmToken: "string")
-                
-//                 아래 주석 해제할 때 삭제할 것
-                APISource.shared.postSignUp(user: user!,
-                                            completion: {
-                                                UserDefaults.standard.setObject(object: user!, key: .user)
-                })
-                
-//                user = User(id: me.id!,
-//                            name: me.nickname!,
-//                            profilePic: me.profileImageURL?.absoluteString ?? "",
-//                            fcmToken: "string")
-//
-//                APISource.shared.postSignUp(user: user!){
-//                    UserDefaults.standard.setObject(object: user!, key: .user)
-//                }?.disposed(by: self.rx.disposeBag)
-            } else {
-                print("has no id")
-            }
-        })
+        APISource.shared.postSignUp(user: user){
+            UserDefaults.standard.setObject(object: user, key: .user)
+        }
     }
 }

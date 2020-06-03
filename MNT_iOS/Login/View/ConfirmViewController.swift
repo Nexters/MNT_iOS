@@ -7,9 +7,9 @@
 //
 
 import UIKit
+import AuthenticationServices
 
-class ConfirmViewController: ViewController {
-    
+class ConfirmViewController: ViewController{
     var viewModel: ConfirmViewModel?
     let profileImage = UIImageView(image: #imageLiteral(resourceName: "profileFace01"))
     var userId: String?
@@ -65,16 +65,25 @@ class ConfirmViewController: ViewController {
     }
     
     fileprivate func requestMe() {
-        KOSessionTask.userMeTask(completion: { (error, me) in
-            if let error = error as NSError? {
-                UIAlertController.showMessage(error.description)
-            } else if let me = me as KOUserMe? {
-                self.nameLabel.text = me.nickname
-                self.title = "\(self.nameLabel.text as! String)님, 반가워요!"
-            } else {
-                print("has no id")
-            }
-        })
+        if UserDefaults.standard.getStringValue(key: .socialLogin) == "Kakao" {
+            KOSessionTask.userMeTask(completion: { (error, me) in
+                if let error = error as NSError? {
+                    UIAlertController.showMessage(error.description)
+                } else if let me = me as KOUserMe? {
+                    self.nameLabel.text = me.nickname
+                    self.title = "\(me.nickname as! String)님, 반가워요!"
+                    self.viewModel?.id = me.id
+                    self.viewModel?.name = me.nickname
+                } else {
+                    print("has no id")
+                }
+            })
+        } else {
+            self.nameLabel.text = UserDefaults.standard.getStringValue(key: .appleUserName)!
+            self.title = "\(UserDefaults.standard.getStringValue(key: .appleUserName)!)님, 반가워요!"
+            self.viewModel?.id = UserDefaults.standard.getStringValue(key: .appleUserId)
+            self.viewModel?.name = UserDefaults.standard.getStringValue(key: .appleUserName)
+        }
     }
 }
 

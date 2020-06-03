@@ -9,7 +9,6 @@
 import Foundation
 
 class AgreeViewModel: ViewModel {
-    
     func presentConfirmAction() -> CocoaAction {
         return CocoaAction { _ in
             let viewModel = ConfirmViewModel(title: "반가워요!", coordinator: self.coordinator)

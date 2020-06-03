@@ -15,15 +15,6 @@ class MainViewModel: ViewModel {
     let textfieldRelay = BehaviorRelay(value: "")
     var kakaoLinkParams : String? = nil
     
-    func checkKakaoLinkParams() {
-        if kakaoLinkParams != nil {
-            let viewModel = JoinRoomViewModel(title: "", coordinator: self.coordinator)
-            let scene: SceneType = MainScene.joinRoom(viewModel as! JoinRoomViewModel)
-            viewModel.kakaoLinkParams = self.kakaoLinkParams
-            self.coordinator.transition(to: scene, using: .push, animated: true).asObservable().map { _ in }
-        }
-    }
-    
     func presentJoinAction() -> CocoaAction {
         return CocoaAction { _ in
             let viewModel = JoinRoomViewModel(title: "참여하기", coordinator: self.coordinator)

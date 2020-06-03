@@ -13,6 +13,9 @@ target 'MNT_iOS' do
   pod 'Action'
   pod 'RxGesture'
   pod 'RxAlamofire'
+  pod 'Firebase/Core'
+  pod 'Firebase/Messaging'
+  pod 'Firebase/Analytics'
 
   target 'MNT_iOSTests' do
     inherit! :search_paths

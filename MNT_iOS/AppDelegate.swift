@@ -10,24 +10,54 @@ import UIKit
 import CoreData
 import RxAlamofire
 import Alamofire
+import Firebase
+import FirebaseMessaging
+import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, MessagingDelegate {
+    
     var window: UIWindow?
-
+    
     // MARK:- APP Lifecycle
     
     var loginViewController: UIViewController?
     var mainViewController: UIViewController?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-            
+        
+        FirebaseApp.configure()
+        
+        UNUserNotificationCenter.current().delegate = self
+        Messaging.messaging().delegate = self
+        
+        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+        UNUserNotificationCenter
+            .current()
+            .requestAuthorization(
+                options: authOptions,
+                completionHandler: { (_, _) in }
+        )
+        
+        application.registerForRemoteNotifications()
+        
         // Override point for customization after application launch.
-//        kakaoLogin() // 로그인,로그아웃 상태 받기
-        testing()
+        //        testing()
+        
+        login()
         
         return true
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        Messaging.messaging().apnsToken = deviceToken
+    }
+    
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+        UserDefaults.standard.setStringValue(value: fcmToken, key: .fcmToken)
+        
+        let dataDict:[String: String] = ["token": fcmToken]
+        NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
     }
     
     private func setNavigationbarAppearance() {
@@ -40,7 +70,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    private func login() {
+        let coordinator = SceneCoordinator(window: window!)
+//        var viewModel: ViewModel?
+//        var scene: SceneType?
+        let user: User? = UserDefaults.standard.getObject(key: .user)
+        
+        if user == nil {
+            kakaoLogin()
+        } else {
+            let room: Room? = UserDefaults.standard.getObject(key: .room)
+            if room == nil {
+                let viewModel = MainViewModel(title: "", coordinator: coordinator)
+                let scene = MainScene.main(viewModel as! MainViewModel)
+                coordinator.transition(to: scene, using: .root, animated: true)
+            } else {
+                let userFruttoId: Int? = UserDefaults.standard.getIntValue(key: .userFruttoId)
+                if userFruttoId == nil {
+                    let viewModel = ReadyViewModel(title: "", coordinator: coordinator)
+                    let scene = MainScene.ready(viewModel as! ReadyViewModel)
+                    coordinator.transition(to: scene, using: .root, animated: true)
+                } else {
+                    let viewModel = TabBarViewModel(title: "Tabbar", coordinator: coordinator)
+                    let scene = MainScene.enterRoom(viewModel as! TabBarViewModel)
+                    coordinator.transition(to: scene, using: .root, animated: true)
+                }
+            }
+        }
+    }
+    
     fileprivate func kakaoLogin() {
+        if UserDefaults.standard.getStringValue(key: .socialLogin) == "Kakao" {
+            guard let session = KOSession.shared() else { return }
+            session.logoutAndClose { (success, error) in
+                if success {
+                    print("logout success.")
+                } else {
+                    print("logout fail")
+                }
+            }
+        }
+        
         addObserver() // 로그인,로그아웃 상태 변경 받기
         reloadRootViewController()
     }
@@ -53,12 +123,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     fileprivate func testing() {
-//        testingFeed()
-//        testingMission()
+        //        testingFeed()
+        //        testingMission()
         testingMain()
-//        testingAdminExit()
-//        testingParticipantExit()
-//        testingReady()
+        //        testingAdminExit()
+        //        testingParticipantExit()
+        //        testingReady()
     }
     
     fileprivate func testingReady() {
@@ -87,7 +157,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let coordinator = SceneCoordinator(window: window!)
         let viewModel = MissionViewModel(title: "미션", coordinator: coordinator)
         let scene: SceneType = MissionScene.missionParticipant(viewModel)
-//        let scene: SceneType = MissionScene.missionAdministrator(viewModel)
+        //        let scene: SceneType = MissionScene.missionAdministrator(viewModel)
         coordinator.transition(to: scene, using: .root, animated: true)
     }
     
@@ -102,9 +172,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let coordinator = SceneCoordinator(window: window!)
         let viewModel = TabBarViewModel(title: "Tabbar", coordinator: coordinator)
         let scene: SceneType = MainScene.enterRoom(viewModel)
-        
-        
-        
         coordinator.transition(to: scene, using: .root, animated: true)
     }
     
@@ -134,44 +201,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     fileprivate func reloadRootViewController() {
         guard let isOpened = KOSession.shared()?.isOpen() else { return }
         let coordinator = SceneCoordinator(window: window!)
-        var viewModel: ViewModel?
-        var scene: SceneType?
         
         if (isOpened) {
             KOSessionTask.userMeTask(completion: { (error, me) in
                 if let error = error as NSError? {
-                    UIAlertController.showMessage(error.description)
+                    print(error.description)
                 } else if let me = me as KOUserMe? {
-//                    APISource.shared.getRoomCheck(userId: me.id!) { (roomCheck) in
-                    APISource.shared.getRoomCheck(userId: "2579483") { (roomCheck) in
+                    APISource.shared.getRoomCheck(userId: me.id!) { (roomCheck) in
                         if (roomCheck != nil) {
                             UserDefaults.standard.setObject(object: roomCheck![0].user, key: .user)
                             UserDefaults.standard.setObject(object: roomCheck![0].room, key: .room)
                             
                             if (roomCheck![0].userFruttoId != nil) {
+                                let viewModel = TabBarViewModel(title: "Tabbar", coordinator: coordinator)
+                                let scene: SceneType = MainScene.enterRoom(viewModel)
                                 UserDefaults.standard.setObject(object: roomCheck![0].manitto, key: .manitto)
                                 UserDefaults.standard.setObject(object: roomCheck![0].userFruttoId, key: .userFruttoId)
-                                
-                                viewModel = TabBarViewModel(title: "Tabbar", coordinator: coordinator)
-                                scene = MainScene.enterRoom(viewModel as! TabBarViewModel)
-                            } else { 
-                                viewModel = ReadyViewModel(title: "", coordinator: coordinator)
-                                scene = MainScene.ready(viewModel as! ReadyViewModel)
+                                coordinator.transition(to: scene, using: .root, animated: true)
+                            } else {
+                                let viewModel = ReadyViewModel(title: "", coordinator: coordinator)
+                                let scene: SceneType = MainScene.ready(viewModel)
+                                coordinator.transition(to: scene, using: .root, animated: true)
                             }
                         } else {
-                            viewModel = AgreeViewModel(title: "이용약관", coordinator: coordinator)
-                            scene = LoginScene.agree(viewModel as! AgreeViewModel)
+                            let viewModel = AgreeViewModel(title: "이용약관", coordinator: coordinator)
+                            let scene: SceneType = LoginScene.agree(viewModel as! AgreeViewModel)
+                            UserDefaults.standard.setStringValue(value: "Kakao", key: .socialLogin)
+                            coordinator.transition(to: scene, using: .root, animated: true)
                         }
-                        coordinator.transition(to: scene!, using: .root, animated: true)
                     }
                 } else {
                     print("has no id")
                 }
             })
         } else {
-            viewModel = LoginViewModel(title: "로그인", coordinator: coordinator)
-            scene = LoginScene.login(viewModel as! LoginViewModel)
-            coordinator.transition(to: scene!, using: .root, animated: true)
+            let viewModel = LoginViewModel(title: "로그인", coordinator: coordinator)
+            let scene = LoginScene.login(viewModel as! LoginViewModel)
+            coordinator.transition(to: scene, using: .root, animated: true)
         }
     }
     
@@ -186,14 +252,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Called When Execute KaKaoLink
         if KLKTalkLinkCenter.shared().isTalkLinkCallback(url) {
-            if UserDefaults.standard.getIntValue(key: .userFruttoId) == nil {
+            let room : Room? = UserDefaults.standard.getObject(key: .room)
+            if room == nil {
                 let params = url.query
                 let coordinator = SceneCoordinator(window: window!)
-                let viewModel = MainViewModel(title: "", coordinator: coordinator)
-                let scene: SceneType = MainScene.main(viewModel as! MainViewModel)
-
-                viewModel.kakaoLinkParams = params
-                coordinator.transition(to: scene, using: .root, animated: true)
+                let mainViewModel = MainViewModel(title: "", coordinator: coordinator)
+                let mainScene: SceneType = MainScene.main(mainViewModel as! MainViewModel)
+                
+                coordinator.transition(to: mainScene, using: .root, animated: true)
+                
+                let joinViewModel = JoinRoomViewModel(title: "", coordinator: coordinator)
+                let joinScene = MainScene.joinRoom(joinViewModel)
+                joinViewModel.kakaoLinkParams = params
+                coordinator.transition(to: joinScene, using: .push, animated: true).asObservable().map { _ in }
+                
                 return true
             }
         }
@@ -207,24 +279,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Called When Execute KaKaoLink
         if KLKTalkLinkCenter.shared().isTalkLinkCallback(url) {
-            if UserDefaults.standard.getIntValue(key: .userFruttoId) == nil {
+            let room : Room? = UserDefaults.standard.getObject(key: .room)
+            if room == nil {
                 let params = url.query
                 let coordinator = SceneCoordinator(window: window!)
-                let viewModel = MainViewModel(title: "", coordinator: coordinator)
-                let scene: SceneType = MainScene.main(viewModel as! MainViewModel)
+                let mainViewModel = MainViewModel(title: "", coordinator: coordinator)
+                let mainScene: SceneType = MainScene.main(mainViewModel as! MainViewModel)
+                
+                coordinator.transition(to: mainScene, using: .root, animated: true)
+                
+                let joinViewModel = JoinRoomViewModel(title: "", coordinator: coordinator)
+                let joinScene = MainScene.joinRoom(joinViewModel)
+                joinViewModel.kakaoLinkParams = params
+                coordinator.transition(to: joinScene, using: .push, animated: true).asObservable().map { _ in }
 
-                viewModel.kakaoLinkParams = params
-                coordinator.transition(to: scene, using: .root, animated: true)
                 return true
             }
         }
         return false
     }
-
+    
     func applicationDidEnterBackground(_ application: UIApplication) {
         KOSession.handleDidEnterBackground()
     }
-
+    
     func applicationDidBecomeActive(_ application: UIApplication) {
         KOSession.handleDidBecomeActive()
     }

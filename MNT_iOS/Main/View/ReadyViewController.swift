@@ -13,7 +13,6 @@ class ReadyViewController: ViewController {
     let room : Room = UserDefaults.standard.getObject(key: .room)!
     var isAdmin : Bool = false
     var isStarted: Bool = true
-    var dummyDate: String = "2020.01.20. (월)"
     var viewModel: ReadyViewModel?
     let fruitImage = UIImageView(image: #imageLiteral(resourceName: "fruits"))
     let titleLabel = UILabel(text: "방이름글자수제한은열다섯이야",
@@ -54,8 +53,6 @@ class ReadyViewController: ViewController {
                     
                 } else {
                     self.isStarted = true
-                    UserDefaults.standard.setObject(object: roomCheck![0].manitto, key: .manitto)
-                    UserDefaults.standard.setIntValue(value: roomCheck![0].userFruttoId!, key: .userFruttoId)
                 }
                 self.setUpForParticipant()
             }

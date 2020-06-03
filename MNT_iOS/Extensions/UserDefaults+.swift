@@ -12,6 +12,10 @@ extension UserDefaults {
         case manitto // struct Manitto
         case room // struct Room
         case userFruttoId // userFruttoId: Int
+        case socialLogin // socialLogin: String
+        case appleUserId
+        case appleUserName
+        case fcmToken
     }
     
     func setObject<T: Codable>(object: T, key: UserDefaultKeys) {
@@ -26,6 +30,12 @@ extension UserDefaults {
     }
     
     func setIntValue(value: Int, key: UserDefaultKeys) {
+        self.set(value, forKey: key.rawValue)
+        
+        self.synchronize()
+    }
+    
+    func setStringValue(value: String, key: UserDefaultKeys) {
         self.set(value, forKey: key.rawValue)
         
         self.synchronize()

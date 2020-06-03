@@ -15,9 +15,12 @@ class OpenNittoViewModel: ViewModel {
             let viewModel = TabBarViewModel(title: "", coordinator: self.coordinator)
             let scene: SceneType = MainScene.enterRoom(viewModel)
             
-            APISource.shared.getRoomStart(roomId: 12768) { (request) in
-                
-            }?.disposed(by: self.rx.disposeBag)
+            if let user : User = UserDefaults.standard.getObject(key: .user) {
+                APISource.shared.getRoomCheck(userId: user.id) { (roomCheck) in
+                    UserDefaults.standard.setObject(object: roomCheck![0].manitto, key: .manitto)
+                    UserDefaults.standard.setIntValue(value: roomCheck![0].userFruttoId!, key: .userFruttoId)
+                }
+            }
             
             return self.coordinator.transition(to: scene, using: .root, animated: true).asObservable().map { _ in }
         }
