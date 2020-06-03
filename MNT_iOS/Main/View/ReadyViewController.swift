@@ -59,9 +59,9 @@ class ReadyViewController: ViewController {
                 } else {
                     self.isStarted = true
                 }
-                self.setUpForParticipant()
             }
         }
+        self.setUpForParticipant()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
