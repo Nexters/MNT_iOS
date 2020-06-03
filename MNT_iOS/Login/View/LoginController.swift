@@ -103,6 +103,8 @@ class LoginController: ViewController, ASAuthorizationControllerDelegate, ASAuth
             UserDefaults.standard.setStringValue(value: credential.fullName?.givenName ?? credential.fullName?.familyName ?? "프루또",
                                                  key: .appleUserName)
             
+            print("야야야야ㅑ야야야야양ㅇ = \(credential.user)")
+            
             APISource.shared.getRoomCheck(userId: credential.user) { (roomCheck) in
                 if (roomCheck != nil) {
                     UserDefaults.standard.setObject(object: roomCheck![0].user, key: .user)
