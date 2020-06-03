@@ -44,7 +44,7 @@ class FeedDetailViewController: ViewController {
     }
     
     @objc fileprivate func tapShare() {
-        
+        // TODO tap share button
     }
 }
 
