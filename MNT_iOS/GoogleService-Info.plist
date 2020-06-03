@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>794438639222-guqp9qlcm7mu20b5uls7uccbmpov4u13.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.794438639222-guqp9qlcm7mu20b5uls7uccbmpov4u13</string>
+	<key>API_KEY</key>
+	<string>AIzaSyClv_vYnNQUIXaoAzREFOm7f_GCZ6EBrvE</string>
+	<key>GCM_SENDER_ID</key>
+	<string>794438639222</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>nexters.MNT-iOS</string>
+	<key>PROJECT_ID</key>
+	<string>manito-1650f</string>
+	<key>STORAGE_BUCKET</key>
+	<string>manito-1650f.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:794438639222:ios:d4b81898a1e913d7b40957</string>
+	<key>DATABASE_URL</key>
+	<string>https://manito-1650f.firebaseio.com</string>
+</dict>
+</plist>
