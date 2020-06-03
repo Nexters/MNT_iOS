@@ -91,9 +91,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                     let scene = MainScene.ready(viewModel as! ReadyViewModel)
                     coordinator.transition(to: scene, using: .root, animated: true)
                 } else {
-                    let viewModel = TabBarViewModel(title: "Tabbar", coordinator: coordinator)
-                    let scene = MainScene.enterRoom(viewModel as! TabBarViewModel)
-                    coordinator.transition(to: scene, using: .root, animated: true)
+                    let isEntered: Int? = UserDefaults.standard.getIntValue(key: .isEntered)
+                    if isEntered == nil {
+                        let viewModel = ReadyViewModel(title: "", coordinator: coordinator)
+                        let scene = MainScene.ready(viewModel as! ReadyViewModel)
+                        coordinator.transition(to: scene, using: .root, animated: true)
+                    } else {
+                        let viewModel = TabBarViewModel(title: "Tabbar", coordinator: coordinator)
+                        let scene = MainScene.enterRoom(viewModel as! TabBarViewModel)
+//                        if let user : User = UserDefaults.standard.getObject(key: .user) {
+//                            APISource.shared.getRoomCheck(userId: user.id) { (roomCheck) in
+//                                UserDefaults.standard.setObject(object: roomCheck![0].manitto, key: .manitto)
+//                                UserDefaults.standard.setIntValue(value: roomCheck![0].userFruttoId!, key: .userFruttoId)
+//                            }
+//                        }
+                        coordinator.transition(to: scene, using: .root, animated: true)
+                    }
                 }
             }
         }
@@ -213,11 +226,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                             UserDefaults.standard.setObject(object: roomCheck![0].room, key: .room)
                             
                             if (roomCheck![0].userFruttoId != nil) {
-                                let viewModel = TabBarViewModel(title: "Tabbar", coordinator: coordinator)
-                                let scene: SceneType = MainScene.enterRoom(viewModel)
-                                UserDefaults.standard.setObject(object: roomCheck![0].manitto, key: .manitto)
-                                UserDefaults.standard.setObject(object: roomCheck![0].userFruttoId, key: .userFruttoId)
-                                coordinator.transition(to: scene, using: .root, animated: true)
+                                let isEntered: Int? = UserDefaults.standard.getIntValue(key: .isEntered)
+                                if isEntered == nil {
+                                    let viewModel = ReadyViewModel(title: "", coordinator: coordinator)
+                                    let scene = MainScene.ready(viewModel as! ReadyViewModel)
+                                    coordinator.transition(to: scene, using: .root, animated: true)
+                                } else {
+                                    let viewModel = TabBarViewModel(title: "Tabbar", coordinator: coordinator)
+                                    let scene = MainScene.enterRoom(viewModel as! TabBarViewModel)
+                                    if let user : User = UserDefaults.standard.getObject(key: .user) {
+                                        APISource.shared.getRoomCheck(userId: user.id) { (roomCheck) in
+                                            UserDefaults.standard.setObject(object: roomCheck![0].manitto, key: .manitto)
+                                            UserDefaults.standard.setIntValue(value: roomCheck![0].userFruttoId!, key: .userFruttoId)
+                                        }
+                                    }
+                                    coordinator.transition(to: scene, using: .root, animated: true)
+                                }
                             } else {
                                 let viewModel = ReadyViewModel(title: "", coordinator: coordinator)
                                 let scene: SceneType = MainScene.ready(viewModel)

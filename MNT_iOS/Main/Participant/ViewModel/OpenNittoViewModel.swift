@@ -19,6 +19,7 @@ class OpenNittoViewModel: ViewModel {
                 APISource.shared.getRoomCheck(userId: user.id) { (roomCheck) in
                     UserDefaults.standard.setObject(object: roomCheck![0].manitto, key: .manitto)
                     UserDefaults.standard.setIntValue(value: roomCheck![0].userFruttoId!, key: .userFruttoId)
+                    UserDefaults.standard.setIntValue(value: 1, key: .isEntered)
                 }
             }
             
