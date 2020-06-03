@@ -60,4 +60,10 @@ extension UserDefaults {
         
         return output
     }
+    
+    func getStringValue(key: UserDefaultKeys) -> String? {
+        let output = self.value(forKey: key.rawValue) as? String
+        
+        return output
+    }
 }

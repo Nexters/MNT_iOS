@@ -11,9 +11,9 @@ import Foundation
 class FeedDetailViewController: ViewController {
     var viewModel: FeedDetailViewModel?
     
-    let imageView = UIImageView(image: #imageLiteral(resourceName: "frutto1") , contentMode: .scaleAspectFill)
-    let titleLabel = UILabel(text: "# 닮은꼴 사진 보내기", font: .boldSystemFont(ofSize: 15), textColor: .defaultText)
-    let contentLabel = UILabel(text: "ㅁ나어ㅗㅁ나ㅣ옴나어ㅁ나어ㅗㅁ나ㅣ옴나어ㅁ나어ㅗㅁ나ㅣ옴나어ㅁ나어ㅗㅁ나ㅣ옴나어ㅁ나어ㅗㅁ나ㅣ옴나어ㅁ나어ㅗㅁ나ㅣ옴나어ㅁ나어ㅗㅁ나ㅣ옴나어ㅁ나어ㅗㅁ나ㅣ옴나어ㅁ나어ㅗㅁ나ㅣ옴나어ㅁ나어ㅗㅁ나ㅣ옴나어ㅁ나어ㅗㅁ나ㅣ옴나어ㅁ나어ㅗㅁ나ㅣ옴나어ㅁ나어ㅗㅁ나ㅣ옴나어ㅁ나어ㅗㅁ나ㅣ옴나어",
+    private let imageView = UIImageView(image: #imageLiteral(resourceName: "frutto1") , contentMode: .scaleAspectFill)
+    private let titleLabel = UILabel(text: "# 닮은꼴 사진 보내기", font: .boldSystemFont(ofSize: 15), textColor: .defaultText)
+    private let contentLabel = UILabel(text: "ㅁ나어ㅗㅁ나ㅣ옴나어ㅁ나어ㅗㅁ나ㅣ옴나어ㅁ나어ㅗㅁ나ㅣ옴나어ㅁ나어ㅗㅁ나ㅣ옴나어ㅁ나어ㅗㅁ나ㅣ옴나어ㅁ나어ㅗㅁ나ㅣ옴나어ㅁ나어ㅗㅁ나ㅣ옴나어ㅁ나어ㅗㅁ나ㅣ옴나어ㅁ나어ㅗㅁ나ㅣ옴나어ㅁ나어ㅗㅁ나ㅣ옴나어ㅁ나어ㅗㅁ나ㅣ옴나어ㅁ나어ㅗㅁ나ㅣ옴나어ㅁ나어ㅗㅁ나ㅣ옴나어ㅁ나어ㅗㅁ나ㅣ옴나어",
                                font: .systemFont(ofSize: 14), textColor: .lightGray, numberOfLines: 0)
     let fromToView = FromToView()
     
@@ -37,10 +37,10 @@ class FeedDetailViewController: ViewController {
     }
     
     override func setupNavigationController() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "share"),
-                                                            style: .plain,
-                                                            target: self,
-                                                            action: #selector(tapShare))
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "share"),
+//                                                            style: .plain,
+//                                                            target: self,
+//                                                            action: #selector(tapShare))
     }
     
     @objc fileprivate func tapShare() {
@@ -50,6 +50,8 @@ class FeedDetailViewController: ViewController {
 
 extension FeedDetailViewController: ViewModelBindableType {
     func bindViewModel(viewModel: FeedDetailViewModel) {
-        
+        imageView.kf.setImage(with: viewModel.feedDetail?.asFeedCellViewModel.postURL)
+        titleLabel.text = viewModel.feedDetail?.contentTitle
+        contentLabel.text = viewModel.feedDetail?.content
     }
 }

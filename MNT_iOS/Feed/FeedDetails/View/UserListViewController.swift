@@ -49,6 +49,7 @@ extension UserListViewController: ViewModelBindableType {
         let room: Room = UserDefaults.standard.getObject(key: .room) ?? Room()
         APISource.shared.getUserList(roomId: room.id) { (userlist) in
             self.viewModel?.userlist = userlist
+            self.viewModel?.userlist.removeFirst()
             self.tableView.reloadData()
         }
     }

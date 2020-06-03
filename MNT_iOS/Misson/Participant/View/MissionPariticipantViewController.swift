@@ -40,7 +40,6 @@ class MissionParticipantViewController: ViewController {
         if let viewModel = viewModel {
             getMissionDoneList(viewModel)
         }
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {

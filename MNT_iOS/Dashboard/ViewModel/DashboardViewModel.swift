@@ -9,7 +9,7 @@
 class DashboardViewModel: ViewModel {
     let user: User = UserDefaults.standard.getObject(key: .user) ?? User()
     private let manitto: Manitto = UserDefaults.standard.getObject(key: .manitto) ?? Manitto()
-    var room = Room()
+    var room = UserDefaults.standard.getObject(key: .room) ?? Room()
     private let userFruttoID: Int = UserDefaults.standard.getIntValue(key: .userFruttoId)
     var missionSent: Int = 0
     var missionReceived: Int = 0

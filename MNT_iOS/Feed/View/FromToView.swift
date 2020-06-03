@@ -13,11 +13,21 @@ enum ArrowStyle {
 }
 
 class FromToView: UIView {
-    let fromImageView = UIImageView(image: #imageLiteral(resourceName: "imgProfileChatCherry"))
-    let toImageView = UIImageView(image: #imageLiteral(resourceName: "imgProfileCherry"))
-    let fromtoLabel = UILabel(text: "진유진님이 지현우에게",
-                              font: .boldSystemFont(ofSize: 15),
-                              textColor: .defaultText)
+    private let user: User = UserDefaults.standard.getObject(key: .user) ?? User()
+    private let userFruttoID: Int = UserDefaults.standard.getIntValue(key: .userFruttoId)
+    private let manitto: Manitto = UserDefaults.standard.getObject(key: .manitto) ?? Manitto()
+    
+    lazy var fromImageView: UIImageView = {
+        return UIImageView(image: FruitImage.sharedInstance.getFruitChat(userFruttoID))
+    }()
+    lazy var toImageView: UIImageView = {
+        return UIImageView(image: FruitImage.sharedInstance.getProfileFace(manitto.fruttoId ?? 0))
+    }()
+    lazy var fromtoLabel: UILabel = {
+        return UILabel(text: "\(FruitImage.sharedInstance.getFruitName(userFruttoID))님이 \(manitto.name ?? "")에게",
+                       font: .boldSystemFont(ofSize: 15),
+                       textColor: .defaultText)
+    }()
     let dateLabel = UILabel(text: "오늘",
                             font: .systemFont(ofSize: 11),
                             textColor: .lightGray)
