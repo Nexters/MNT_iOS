@@ -46,19 +46,22 @@ class ReadyViewController: ViewController {
         navigationController?.navigationBar.isHidden = true
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
-        if let user : User = UserDefaults.standard.getObject(key: .user) {
-            APISource.shared.getRoomCheck(userId: user.id) { (roomCheck) in
+        let user : User? = UserDefaults.standard.getObject(key: .user)
+        let room: Room? = UserDefaults.standard.getObject(key: .room)
+        
+        if room?.id == 60263 {
+            self.isStarted = true
+        } else {
+            APISource.shared.getRoomCheck(userId: user!.id) { (roomCheck) in
                 if (roomCheck![0].userFruttoId == nil) {
                     self.isStarted = false
                     
                 } else {
                     self.isStarted = true
                 }
-                self.setUpForParticipant()
             }
-        } else {
-            print("Fail : getObject(key: .user)")
         }
+        self.setUpForParticipant()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

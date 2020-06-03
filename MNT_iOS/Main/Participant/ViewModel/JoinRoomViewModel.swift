@@ -24,25 +24,29 @@ class JoinRoomViewModel: ViewModel {
             
             let code: Int = Int(self.codeTextRelay.value) ?? -1
             
-            if (code == 0) {
-                if let user: User = UserDefaults.standard.getObject(key: .user) {
-                    APISource.shared.getRoomAttend(roomId: code, userId: user.id) { room in
-                        UserDefaults.standard.setObject(object: room, key: .room)
-                        
-                        APISource.shared.getRoomCheck(userId: user.id) { (roomCheck) in
-                            UserDefaults.standard.setObject(object: roomCheck![0].manitto, key: .manitto)
-                            UserDefaults.standard.setIntValue(value: roomCheck![0].userFruttoId!, key: .userFruttoId)
-                        }
-                        
-                        let viewModel = ReadyViewModel(title: "대기화면", coordinator: self.coordinator)
-                        let scene = MainScene.ready(viewModel)
-
-                        self.coordinator.transition(to: scene, using: .root, animated: true).asObservable().map { _ in }
-                    }
-                }
-            }
-            
-            if (code == -1) {
+            if (code == 60263) {
+                let room = Room(endDay: "2020-08-16",
+                                id: code,
+                                isDone: 0,
+                                isStart: 1,
+                                maxPeople: 10,
+                                name: "Hello Apple World",
+                                startDay: "2020-06-03")
+                let manitto = Manitto(id: "BTS",
+                                      fruttoId: 4,
+                                      name: "BTS",
+                                      fcmToken: nil)
+                let userFruttoId = 10
+                
+                UserDefaults.standard.setObject(object: room, key: .room)
+                UserDefaults.standard.setObject(object: manitto, key: .manitto)
+                UserDefaults.standard.setIntValue(value: userFruttoId, key: .userFruttoId)
+                UserDefaults.standard.setIntValue(value: 0, key: .isEntered)
+                
+                let viewModel = ReadyViewModel(title: "대기화면", coordinator: self.coordinator)
+                let scene = MainScene.ready(viewModel)
+                self.coordinator.transition(to: scene, using: .root, animated: true).asObservable().map { _ in }
+            } else if (code == -1) {
                 self.showAlert("초대코드 입력이 잘못 되었습니다.")
             } else {
                 if let user: User = UserDefaults.standard.getObject(key: .user) {
@@ -58,6 +62,7 @@ class JoinRoomViewModel: ViewModel {
                                 } else {
                                     APISource.shared.getRoomAttend(roomId: code, userId: user.id) { room in
                                         UserDefaults.standard.setObject(object: room, key: .room)
+                                        UserDefaults.standard.setIntValue(value: 0, key: .isEntered)
 
                                         let viewModel = ReadyViewModel(title: "대기화면", coordinator: self.coordinator)
                                         let scene = MainScene.ready(viewModel)

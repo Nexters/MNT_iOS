@@ -85,27 +85,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 let scene = MainScene.main(viewModel as! MainViewModel)
                 coordinator.transition(to: scene, using: .root, animated: true)
             } else {
-                let userFruttoId: Int? = UserDefaults.standard.getIntValue(key: .userFruttoId)
-                if userFruttoId == nil {
-                    let viewModel = ReadyViewModel(title: "", coordinator: coordinator)
-                    let scene = MainScene.ready(viewModel as! ReadyViewModel)
-                    coordinator.transition(to: scene, using: .root, animated: true)
-                } else {
+                if room?.id == 60263 {
                     let isEntered: Int? = UserDefaults.standard.getIntValue(key: .isEntered)
-                    if isEntered == nil {
+                    if isEntered == 0 {
                         let viewModel = ReadyViewModel(title: "", coordinator: coordinator)
                         let scene = MainScene.ready(viewModel as! ReadyViewModel)
                         coordinator.transition(to: scene, using: .root, animated: true)
                     } else {
                         let viewModel = TabBarViewModel(title: "Tabbar", coordinator: coordinator)
                         let scene = MainScene.enterRoom(viewModel as! TabBarViewModel)
-//                        if let user : User = UserDefaults.standard.getObject(key: .user) {
-//                            APISource.shared.getRoomCheck(userId: user.id) { (roomCheck) in
-//                                UserDefaults.standard.setObject(object: roomCheck![0].manitto, key: .manitto)
-//                                UserDefaults.standard.setIntValue(value: roomCheck![0].userFruttoId!, key: .userFruttoId)
-//                            }
-//                        }
                         coordinator.transition(to: scene, using: .root, animated: true)
+                    }
+                } else {
+                    let userFruttoId: Int? = UserDefaults.standard.getIntValue(key: .userFruttoId)
+                    if userFruttoId == nil {
+                        let viewModel = ReadyViewModel(title: "", coordinator: coordinator)
+                        let scene = MainScene.ready(viewModel as! ReadyViewModel)
+                        coordinator.transition(to: scene, using: .root, animated: true)
+                    } else {
+                        let isEntered: Int? = UserDefaults.standard.getIntValue(key: .isEntered)
+                        if isEntered == 0 {
+                            let viewModel = ReadyViewModel(title: "", coordinator: coordinator)
+                            let scene = MainScene.ready(viewModel as! ReadyViewModel)
+                            coordinator.transition(to: scene, using: .root, animated: true)
+                        } else {
+                            let viewModel = TabBarViewModel(title: "Tabbar", coordinator: coordinator)
+                            let scene = MainScene.enterRoom(viewModel as! TabBarViewModel)
+                            coordinator.transition(to: scene, using: .root, animated: true)
+                        }
                     }
                 }
             }
