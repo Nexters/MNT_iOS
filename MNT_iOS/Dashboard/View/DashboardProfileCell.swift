@@ -9,15 +9,17 @@
 import UIKit
 
 class DashboardProfileCell: UICollectionViewCell {
-
+    private let user: User = UserDefaults.standard.getObject(key: .user) ?? User()
+    private let userFruttoID: Int = UserDefaults.standard.getIntValue(key: .userFruttoId)
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
     
     func setupView() {
-        let imageview = UIImageView(image: #imageLiteral(resourceName: "imgProfileFace08"))
-        let label = UILabel(text: "\("name")님,\n니또를 챙겨줄 때입니다!", font: .boldFont(ofSize: 20), textColor: .defaultText, numberOfLines: 2)
+        let imageview = UIImageView(image: FruitImage.sharedInstance.getProfileFace(userFruttoID+1))
+        let label = UILabel(text: "\(user.name)님,\n니또를 챙겨줄 때입니다!", font: .boldFont(ofSize: 20), textColor: .defaultText, numberOfLines: 2)
         
         addSubview(imageview)
         addSubview(label)

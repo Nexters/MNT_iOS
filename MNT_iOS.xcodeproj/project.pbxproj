@@ -10,6 +10,8 @@
 		1A01BB6623F6456200FF8B7C /* UserListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A01BB6523F6456200FF8B7C /* UserListResponse.swift */; };
 		1A01BB6923F64B9B00FF8B7C /* UserListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A01BB6723F64B9B00FF8B7C /* UserListCell.swift */; };
 		1A01BB6A23F64B9B00FF8B7C /* UserListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A01BB6823F64B9B00FF8B7C /* UserListCell.xib */; };
+		1A1354B7247FE7C800144B8D /* EmptyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1354B6247FE7C800144B8D /* EmptyPageView.swift */; };
+		1A1354B9247FEFF400144B8D /* DashboardInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1354B8247FEFF400144B8D /* DashboardInfo.swift */; };
 		1A166DDA2467CF3000ACDC89 /* ImageUploadContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A166DD92467CF2F00ACDC89 /* ImageUploadContainer.swift */; };
 		1A166DDC2467D2CF00ACDC89 /* UploadableImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A166DDB2467D2CF00ACDC89 /* UploadableImage.swift */; };
 		1A21D26D242B7CC800FCAC3C /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A21D26C242B7CC800FCAC3C /* UIViewController+.swift */; };
@@ -189,6 +191,8 @@
 		1A01BB6523F6456200FF8B7C /* UserListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListResponse.swift; sourceTree = "<group>"; };
 		1A01BB6723F64B9B00FF8B7C /* UserListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListCell.swift; sourceTree = "<group>"; };
 		1A01BB6823F64B9B00FF8B7C /* UserListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserListCell.xib; sourceTree = "<group>"; };
+		1A1354B6247FE7C800144B8D /* EmptyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyPageView.swift; sourceTree = "<group>"; };
+		1A1354B8247FEFF400144B8D /* DashboardInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardInfo.swift; sourceTree = "<group>"; };
 		1A166DD92467CF2F00ACDC89 /* ImageUploadContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploadContainer.swift; sourceTree = "<group>"; };
 		1A166DDB2467D2CF00ACDC89 /* UploadableImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadableImage.swift; sourceTree = "<group>"; };
 		1A21D26C242B7CC800FCAC3C /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
@@ -499,6 +503,7 @@
 				1ADEFD9D23FC5A8E00E3DC49 /* CloseButtonBar.swift */,
 				1A595E802425F6670080AE61 /* TextFieldContainer.swift */,
 				58D017B923FC799600D55DA6 /* DisableButton.swift */,
+				1A1354B6247FE7C800144B8D /* EmptyPageView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -660,6 +665,7 @@
 				1A593D6823FCF02C0009CDC0 /* Scene */,
 				1A593D6723FCF0260009CDC0 /* ViewModel */,
 				1A593D6523FCF01A0009CDC0 /* View */,
+				1A1354B8247FEFF400144B8D /* DashboardInfo.swift */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
@@ -1507,6 +1513,7 @@
 				58D017C9242A6B3600D55DA6 /* MainUserListCell.swift in Sources */,
 				1AAB0E3523DED2310003A2C4 /* NSObject+Rx.swift in Sources */,
 				1AECB7D023F0FA510018BC16 /* RxSwift+.swift in Sources */,
+				1A1354B9247FEFF400144B8D /* DashboardInfo.swift in Sources */,
 				1A4E688723E40DA1005D2CFD /* MissionScene.swift in Sources */,
 				1A8FAF3523E02563009A92C1 /* CoordinatorType.swift in Sources */,
 				581B15FE23EC705100D0593B /* ProfileCellViewModel.swift in Sources */,
@@ -1546,6 +1553,7 @@
 				1A4E688D23E40E79005D2CFD /* MissionPariticipantViewController.swift in Sources */,
 				1A8FAF4A23E0737E009A92C1 /* UIStackView+.swift in Sources */,
 				1A4E687923E3FFC3005D2CFD /* RoundedImageView.swift in Sources */,
+				1A1354B7247FE7C800144B8D /* EmptyPageView.swift in Sources */,
 				1ADEFD9A23FC4D4E00E3DC49 /* FeedFilterCellFooterView.swift in Sources */,
 				1AECB7D623F137000018BC16 /* UIColor+.swift in Sources */,
 				1A8FAF4423E0612C009A92C1 /* LoginViewModel.swift in Sources */,

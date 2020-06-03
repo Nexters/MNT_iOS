@@ -55,15 +55,16 @@ struct MissionSendingPostData {
 
 struct Manitto: Codable {
     var id: String? = ""
-    var fruttoId: Int? = 0
-    var name: String? = ""
+    var fruttoId: Int? = 2
+    var name: String? = "183"
     var fcmToken: String? = ""
 }
 
 struct MissionId: Codable {
     var isAbleImg: Int = 0
-    var name: String = ""
-    var roodId: Int = 0
+    var name: String? = ""
+    var roodId: Int? = 0
+    var missionId: Int = 0
     var userMissions: [UserMissions] = []
 }
 

@@ -51,7 +51,8 @@ extension MissionAdministratorViewController: ViewModelBindableType {
     }
     
     private func getMissionList(_ viewModel: MissionViewModel) {
-        APISource.shared.getMissionDoneList(roomId: 83550) { [weak self] missions in
+        let roomId = (UserDefaults.standard.getObject(key: .room) ?? Room()).id
+        APISource.shared.getMissionDoneList(roomId: roomId) { [weak self] missions in
             viewModel.orderMissions = missions
             self?.missionTableController.ordermissions = missions
             }?.disposed(by: rx.disposeBag)

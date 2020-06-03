@@ -14,17 +14,36 @@ protocol ProducesFeedCellViewModel {
 
 class FeedCellViewModel {
     let datas: Feed
+    let imageInstance = FruitImage.sharedInstance
     init(datas: Feed) {
         self.datas = datas
     }
     
-    var manittoImageURL: URL? {
-        return URL(string: "")
+    var manittoImage: UIImage? {
+        return imageInstance.getFruitChat(datas.userFruttoId)
     }
-    var targetImageURL: URL? {
-        return URL(string: "")
+    var targetImage: UIImage? {
+        return imageInstance.getProfileFace(datas.manittoFruttoId)
     }
     var postURL: URL? {
+        print("tagg \(datas.missionImg)")
         return URL(string: datas.missionImg)
+    }
+    var contentTitle: String {
+        // TODO: 앞에꺼 잘라야함.
+        let str = datas.contentTitle
+        let start = str.index(after: str.startIndex)
+        let end = str.index(before: str.endIndex)
+        let substring = str[start...end]
+        return "#" + String(substring)
+    }
+    var content: String {
+        return datas.content
+    }
+    var fromToLabel: String {
+        return "\(imageInstance.getFruitName(datas.userFruttoId))님이 \(datas.manittoName)에게 "
+    }
+    var date: String {
+        return datas.userDoneTime
     }
 }

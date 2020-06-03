@@ -33,11 +33,26 @@ class DashboardViewController: ViewController {
         
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        guard let viewModel = viewModel else { return }
+        APISource.shared.getDashboard(roomId: viewModel.room.id,
+                                      userId: viewModel.user.id) { [unowned self] (res) in
+                                        
+                                        viewModel.room = res.room ?? Room()
+                                        viewModel.missionSent = res.missionCountOfUserSend ?? 0
+                                        viewModel.missionReceived = res.missionCountOfUserReceive ?? 0
+                                        viewModel.missionAll = res.missionCountOfAll ?? 0
+                                        
+                                        self.collectionView.reloadData()
+        }
+    }
 }
 
 extension DashboardViewController: ViewModelBindableType {
     func bindViewModel(viewModel: DashboardViewModel) {
-        
     }
 }
 
@@ -70,9 +85,9 @@ extension DashboardViewController: UICollectionViewDelegate, UICollectionViewDat
         case .profile:
             return 1
         case .gridMenu:
-            return 6
+            return viewModel?.gridMenu.count ?? 0
         case .listMenu:
-            return 2
+            return viewModel?.listMenu.count ?? 0
         case .none:
             return 0
         }

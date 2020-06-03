@@ -24,7 +24,7 @@ class UserListViewController: ViewController {
     
     override func setupLayout() {
         view.addSubview(tableView)
-        tableView.fillSuperview(padding: .init(top: 0, left: 26, bottom: 0, right: 26))
+        tableView.fillSuperview(padding: .init(top: 0, left: 0, bottom: 0, right: 0))
     }
     
     override func setupNavigationController() {
@@ -42,41 +42,40 @@ extension UserListViewController: ViewModelBindableType {
     func bindViewModel(viewModel: UserListViewModel) {
         self.viewModel = viewModel
         
-//        getUserList()
+        getUserList()
     }
     
-//    private func getUserList() {
-//        APISource.shared.getUserList(roomId: 53314) { (userlist) in
-//            self.viewModel?.userlist = userlist
-//            self.tableView.reloadData()
-//        }
-//    }
+    private func getUserList() {
+        let room: Room = UserDefaults.standard.getObject(key: .room) ?? Room()
+        APISource.shared.getUserList(roomId: room.id) { (userlist) in
+            self.viewModel?.userlist = userlist
+            self.viewModel?.userlist.removeFirst()
+            self.tableView.reloadData()
+        }
+    }
 }
 
 extension UserListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        viewModel?.userlist.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        67
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        viewModel?.userlist.count ?? 0
+        75
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(UserListCell.self)
-        // bind
+        
+        if let participant = viewModel?.userlist[indexPath.row] {
+            cell.setupView(participant: participant)
+        }
+        
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        10
-    }
-
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         UIView(backgroundColor: .clear)
     }
 }
+ 

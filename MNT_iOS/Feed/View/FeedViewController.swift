@@ -86,7 +86,7 @@ class FeedViewController: ViewController {
     override func setupNavigationController() {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationItem.setRightBarButtonItems([filterBarButton, userlistBarButton], animated: true)
+        self.navigationItem.setRightBarButtonItems([userlistBarButton], animated: true)
     }
 }
 
@@ -105,37 +105,24 @@ extension FeedViewController: ViewModelBindableType {
     }
     
     private func getTimeline() {
-        APISource.shared.getTimeline(roomId: 83550) { missions in
-            print(missions)
-            
-//            self.viewModel?.infos = missions.map { $0. }
+        let roomId = (UserDefaults.standard.getObject(key: .room) ?? Room()).id
+        APISource.shared.getTimeline(roomId: roomId) { missions in
+            self.viewModel?.infos = missions.map { Feed(id: 0,
+                                                        contentTitle: $0.missionName ?? "",
+                                                        content: $0.userMission.content ?? "",
+                                                        missionId: MissionId(isAbleImg: $0.isAbleImg, name: $0.missionName, missionId:  $0.missionId),
+                                                        missionImg: $0.userMission.missionImg ?? "",
+                                                        roodId: 1,
+                                                        userDone: 0,
+                                                        userDoneTime: $0.userMission.userDoneTime ?? "",
+                                                        userId: $0.userMission.userId.id,
+                                                        userFruttoId: $0.userFruttoId ?? 0,
+                                                        userName: $0.userMission.userId.name,
+                                                        manittoId: $0.manitto?.id ?? "",
+                                                        manittoFruttoId: $0.manitto?.fruttoId ?? 0,
+                                                        manittoName: $0.manitto?.name ?? "") }.reversed()
+            self.tableView.reloadData()
         }
-//        APISource.shared.getTimeline(roomId: 0) { missions in
-//            print(missions)
-//        }
-        
-        (0...2).forEach{ [unowned self] i in
-            self.viewModel?.infos.append(Feed(id: 1,
-                                              content: String(i),
-                                              missionId: MissionId(isAbleImg: 1),
-                                              missionImg: "https://img.huffingtonpost.com/asset/5c6a1b8a250000be00c88cae.png?cache=41JoK4KsMg&ops=scalefit_630_noupscale",
-                                              roodId: 1,
-                                              userDone: 0,
-                                              userDoneTime: "12:30",
-                                              userId: "its me"))
-        }
-        (0...5).forEach{ [unowned self] i in
-            self.viewModel?.infos.append(Feed(id: 1,
-                                              content: String(i),
-                                              missionId: nil,
-                                              missionImg: "https://img.huffingtonpost.com/asset/5c6a1b8a250000be00c88cae.png?cache=41JoK4KsMg&ops=scalefit_630_noupscale",
-                                              roodId: 1,
-                                              userDone: 0,
-                                              userDoneTime: "12:30",
-                                              userId: "its me"))
-        }
-        
-        self.tableView.reloadData()
     }
     
     func addFeedButtonObserver() {
@@ -170,7 +157,7 @@ extension FeedViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        FeedHeaderView(user: User())
+        FeedHeaderView()
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

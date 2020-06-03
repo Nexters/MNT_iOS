@@ -14,16 +14,28 @@ struct UserListResponse: Codable {
 }
 
 struct Participant: Codable {
-    var id: Int = 0
-    var room: Room = Room(endDay: "", id: 0, isDone: 0, isStart: 0, maxPeople: 0, name: "", startDay: "")
-    var user: User 
+    var id: Int? = 0
+    var room: RoomInfo? = RoomInfo()
+    var user: User? = User()
     var manittoId: String? = nil
-    var isCreater: Int = 0
+    var manitto: Manitto? = Manitto()
+    var userFruttoId: Int? = 0
+    var isCreater: Int? = 0
+}
+
+struct RoomInfo: Codable {
+    var id: Int? = 83550
+    var name: String? = ""
+    var maxPeople: Int? = 0
+    var endDay: String? = ""
+    var startDay: String? = ""
+    var isDone: Int = 0
+    var isStart: Int = 0
 }
 
 struct User: Codable {
-    var id: String = ""
-    var name: String = ""
+    var id: String = "182"
+    var name: String = "182"
     var profilePic: String = ""
     var fcmToken: String  = ""
 }

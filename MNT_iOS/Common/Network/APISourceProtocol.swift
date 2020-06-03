@@ -32,6 +32,7 @@ enum URLType: String {
     case roomStart = "/room/start"
     case roomUser = "/room/user"
     case userManitto = "/user/manitto"
+    case dashboard = "/mission/dashBoard/user"
 }
 
 // for case handling
@@ -111,7 +112,7 @@ extension APISourceProtocol {
             print("networking - invalid url")
             return nil
         }
-        
+                
         return RxAlamofire.requestData(method,
                                        encodedUrl,
                                        parameters: params as? [String : Any],

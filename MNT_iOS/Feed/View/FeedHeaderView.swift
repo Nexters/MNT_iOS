@@ -9,13 +9,15 @@
 import Foundation
 
 class FeedHeaderView: UIView {
-    init(user: User) {
+    init() {
         super.init(frame: .zero)
         
-        let label = UILabel(text: "포도링님,\n안녕하세요!", font: .boldFont(ofSize: 20), textColor: .defaultText, numberOfLines: 2)
+        let user = UserDefaults.standard.getObject(key: .user) ?? User()
+        let userFruitId = UserDefaults.standard.getObject(key: .userFruttoId) ?? 1
+        let label = UILabel(text: "\(user.name),\n안녕하세요!", font: .boldFont(ofSize: 20), textColor: .defaultText, numberOfLines: 2)
         label.setLineSpacing(lineSpacing: 5)
-        let profileImageview = UIImageView(image: #imageLiteral(resourceName: "imgProfileOrange"))
-        let randomImageviews = [UIImageView(image: #imageLiteral(resourceName: "imgProfileIconRedapple")), UIImageView(image: #imageLiteral(resourceName: "imgProfileIconCherry"))]
+        let profileImageview = UIImageView(image: FruitImage.sharedInstance.getFruitCircle(userFruitId))
+        let randomImageviews = getDummyFruits(fruitId: userFruitId)
         
         addSubview(label)
         
@@ -42,4 +44,24 @@ class FeedHeaderView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    private func getDummyFruits(fruitId: Int) -> [UIImageView] {
+        let fruit1 = FruitImage.sharedInstance.getFruit(dummys[fruitId]?.0 ?? 0)
+        let fruit2 = FruitImage.sharedInstance.getFruit(dummys[fruitId]?.1 ?? 0)
+        return [UIImageView(image: fruit1), UIImageView(image: fruit2)]
+    }
+    
+    private let dummys = [
+        0: (14,13),
+        1: (2,3),
+        2: (1,3),
+        3: (2,4),
+        4: (5,2),
+        5: (1,4),
+        6: (7,11),
+        7: (11, 9),
+        8: (8, 6),
+        9: (6, 8),
+        10: (6, 7)
+        ] as [Int : (Int,Int)]
 }

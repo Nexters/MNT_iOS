@@ -47,22 +47,38 @@ class APISource: APISourceProtocol {
     
     func postMissionSend(missionSendingPostData: MissionSendingPostData, completion: @escaping () -> Void) -> Disposable? {
         
-        var params = [
+        let params = [
             "roomId": missionSendingPostData.roomId,
             "userId": missionSendingPostData.userId,
             "missionId": missionSendingPostData.missionId,
             "content": missionSendingPostData.content,
         ] as [String: Any]
         
-        if let image = missionSendingPostData.img {
-            params["img"] = image
+        guard
+            let image = missionSendingPostData.img?.image,
+            let fileName = missionSendingPostData.img?.fileName.absoluteString,
+            let imgData = image.jpegData(compressionQuality: 0.2),
+            let encodedUrl = (API.baseURL + URLType.missionSend.rawValue).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        else { return nil}
+        
+        Alamofire.upload(multipartFormData: { multipartFormData in
+            multipartFormData.append(imgData, withName: "img",
+                                     fileName: self.randomString(length: 7),
+                                     mimeType: "image/jpg")
+            
+            for (key, value) in params {
+                multipartFormData.append("\(value)".data(using: String.Encoding.utf8)!, withName: key)
+            }
+        }, to: encodedUrl) { (res) in
+            completion()
         }
         
-        return requestWithoutData(.post,
-                                  .missionSend,
-                                  parameters: params) {
-                                    completion()
-        }
+        return nil
+    }
+    
+    func randomString(length: Int) -> String {
+        let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        return String((0..<length).map{ _ in letters.randomElement()! })
     }
     
     func getRoomAttend(roomId: Int, userId: String, completion: @escaping (Room?) -> Void) -> Disposable? {
@@ -190,6 +206,19 @@ class APISource: APISourceProtocol {
         return requestDataObject(.get,
                                  .userManitto,
                                  parameters: params) { (res: ManittoResponse) in
+                                    completion(res.data)
+        }
+    }
+    
+    func getDashboard(roomId: Int, userId: String, completion: @escaping (DashboardInfo) -> Void) -> Disposable? {
+        let params = [
+            "roomId": roomId,
+            "userId": userId
+        ] as [String : Any]
+        
+        return requestDataObject(.get,
+                                 .dashboard,
+                                 parameters: params) { (res: DashboardResponse) in
                                     completion(res.data)
         }
     }

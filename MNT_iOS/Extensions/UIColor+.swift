@@ -102,4 +102,8 @@ extension UIColor {
     open class var deSelectedColor: UIColor {
         return .init(red: 255/255, green: 214/255, blue: 217/255, alpha: 1)
     }
+    
+    open class var lightGrayBackgroundColor: UIColor {
+        return .init(red: 243/255, green: 243/255, blue: 243/255, alpha: 1)
+    }
 }
