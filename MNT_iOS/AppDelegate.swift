@@ -87,7 +87,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             } else {
                 if room?.id == 60263 {
                     let isEntered: Int? = UserDefaults.standard.getIntValue(key: .isEntered)
-                    if isEntered == nil {
+                    if isEntered == 0 {
                         let viewModel = ReadyViewModel(title: "", coordinator: coordinator)
                         let scene = MainScene.ready(viewModel as! ReadyViewModel)
                         coordinator.transition(to: scene, using: .root, animated: true)
@@ -104,7 +104,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                         coordinator.transition(to: scene, using: .root, animated: true)
                     } else {
                         let isEntered: Int? = UserDefaults.standard.getIntValue(key: .isEntered)
-                        if isEntered == nil {
+                        if isEntered == 0 {
                             let viewModel = ReadyViewModel(title: "", coordinator: coordinator)
                             let scene = MainScene.ready(viewModel as! ReadyViewModel)
                             coordinator.transition(to: scene, using: .root, animated: true)
