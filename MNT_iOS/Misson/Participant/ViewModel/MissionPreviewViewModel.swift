@@ -24,9 +24,13 @@ class MissionPreviewViewModel: ViewModel {
     }
     
     func confirmAction() {
+        NotificationCenter.default.post(
+            name: .init("MissionPosted"),
+            object: nil)
         self.coordinator.transition(using: .popToRoot)
     }
-//
+    
+    //
 //    fileprivate func uploadImage(completion: @escaping () -> Void) {
 //
 //        guard let imageData = imageData else { return }

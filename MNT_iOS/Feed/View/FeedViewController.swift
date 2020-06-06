@@ -94,7 +94,7 @@ extension FeedViewController: ViewModelBindableType {
     func bindViewModel(viewModel: FeedViewModel) {
         // setup Dummys
         self.viewModel = viewModel
-        
+            
         userlistBarButton.rx.action = viewModel.userListAction()
         filterBarButton.rx.action = viewModel.feedFilterAction()
         tableView.rx.itemSelected

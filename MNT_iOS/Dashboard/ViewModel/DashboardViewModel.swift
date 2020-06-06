@@ -24,7 +24,6 @@ class DashboardViewModel: ViewModel {
             DashboardGridMenu(image: #imageLiteral(resourceName: "dashboardImage4"), subText: "나에게 온 미션", mainText: "\(missionReceived)개", type: .normal),
             DashboardGridMenu(image: #imageLiteral(resourceName: "dashboardImage5"), subText: "방 이름", mainText: room.name, type: .normal),
             DashboardGridMenu(image: #imageLiteral(resourceName: "dashboardImage6"), subText: "알람 설정", type: .togglable, tapAction: { selected in
-                
             })
         ]
     }
