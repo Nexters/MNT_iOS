@@ -14,7 +14,7 @@ class LoginController: ViewController, ASAuthorizationControllerDelegate, ASAuth
     var viewModel: LoginViewModel?
     var confirmViewModel: ConfirmViewModel?
     let logoImage = UIImageView(image: #imageLiteral(resourceName: "frutto1"))
-    private let loginButton: PrimaryButton = {
+    private let KakaoLoginButton: PrimaryButton = {
         let button = PrimaryButton("카카오 ID로 로그인")
         button.addTarget(self,
                          action: #selector(touchUpLoginButton(_:)),
@@ -34,7 +34,7 @@ class LoginController: ViewController, ASAuthorizationControllerDelegate, ASAuth
     @available(iOS 13.0, *)
     @objc fileprivate func appleLogin() {
         let appleIdRequest = ASAuthorizationAppleIDProvider().createRequest()
-        appleIdRequest.requestedScopes = [.email, .fullName]
+        appleIdRequest.requestedScopes = [.fullName]
 
         let controller = ASAuthorizationController(authorizationRequests: [appleIdRequest])
         controller.delegate = self
@@ -57,7 +57,7 @@ class LoginController: ViewController, ASAuthorizationControllerDelegate, ASAuth
         let height = view.frame.height
         
         view.addSubview(logoImage)
-        view.addSubview(loginButton)
+        view.addSubview(KakaoLoginButton)
         if #available(iOS 13.0, *) {
             view.addSubview(appleLoginButton)
         } else {
@@ -68,13 +68,16 @@ class LoginController: ViewController, ASAuthorizationControllerDelegate, ASAuth
             .top(view.topAnchor, constant: height * 0.217),
             .leading(view.leadingAnchor, constant: (width - (height * 0.273)) * 3 / 5)
         )
-        loginButton.anchor(.top(logoImage.bottomAnchor, constant: height * 0.265))
+        KakaoLoginButton.anchor(.top(logoImage.bottomAnchor, constant: height * 0.2))
         logoImage.constrainWidth(height * 0.273)
         logoImage.constrainHeight(height * 0.298)
-        loginButton.centerXToSuperview()
+        KakaoLoginButton.centerXToSuperview()
         if #available(iOS 13.0, *) {
-            appleLoginButton.anchor(.top(logoImage.bottomAnchor, constant: height * 0.05))
+            appleLoginButton.anchor(.top(KakaoLoginButton.bottomAnchor, constant: 10))
             appleLoginButton.centerXToSuperview()
+            appleLoginButton.constrainWidth(width * 0.893)
+            appleLoginButton.constrainHeight(width * 0.13)
+            KakaoLoginButton.constrainHeight(width * 0.13)
         } else {
             // Fallback on earlier versions
         }
@@ -100,8 +103,6 @@ class LoginController: ViewController, ASAuthorizationControllerDelegate, ASAuth
         if let credential = authorization.credential as? ASAuthorizationAppleIDCredential {
             UserDefaults.standard.setStringValue(value: "Apple", key: .socialLogin)
             UserDefaults.standard.setStringValue(value: credential.user, key: .appleUserId)
-            UserDefaults.standard.setStringValue(value: credential.fullName?.givenName ?? credential.fullName?.familyName ?? "프루또",
-                                                 key: .appleUserName)
             
             APISource.shared.getRoomCheck(userId: credential.user) { (roomCheck) in
                 if (roomCheck != nil) {

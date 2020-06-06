@@ -11,9 +11,7 @@ import UIKit
 class OpenNittoViewController: ViewController {
 
     let user: User = UserDefaults.standard.getObject(key: .user)!
-    let manitto: Manitto = UserDefaults.standard.getObject(key: .manitto)!
     let room: Room = UserDefaults.standard.getObject(key: .room)!
-    let userFruttoID: Int = UserDefaults.standard.getIntValue(key: .userFruttoId)
     
     var viewModel: OpenNittoViewModel?
     let label = UILabel(text: "",
@@ -81,7 +79,6 @@ class OpenNittoViewController: ViewController {
         let width = view.frame.width
         
         setupLabel()
-        setupImages()
         
         view.addSubview(label)
         view.addSubview(relationStack)
@@ -115,48 +112,47 @@ class OpenNittoViewController: ViewController {
     
     func setupLabel() {
         // TODO : 내 이름, 니또 이름, 종료 날짜 받아오기
-        myName = user.name
-        nittoName = manitto.name
-        date = room.endDay
-        
-        label.text = myName! + frontLabelString + nittoName! + backLabelString
-        subLabel.text = date! + subLabelString
-        myNameLabel.text = myName
-        nittoNameLabel.text = nittoName
-        
-        var attributedStr = NSMutableAttributedString(string: label.text!)
-        let paragraphStyle = NSMutableParagraphStyle()
-        attributedStr.addAttribute(.foregroundColor,
-                                   value: UIColor.defaultText,
-                                   range: (label.text! as NSString).range(of: frontLabelString))
-        attributedStr.addAttribute(.foregroundColor,
-                                   value: UIColor.defaultText,
-                                   range: (label.text! as NSString).range(of: backLabelString))
-        label.attributedText = attributedStr
-        
-        attributedStr = NSMutableAttributedString(string: subLabel.text!)
-        paragraphStyle.lineSpacing = 7
-        paragraphStyle.alignment = .center
-        attributedStr.addAttribute(.foregroundColor,
-                                   value: UIColor.subLabelColor,
-                                   range: (subLabel.text! as NSString).range(of: subLabelString))
-        attributedStr.addAttribute(NSAttributedString.Key.paragraphStyle,
-                                   value:paragraphStyle,
-                                   range:NSMakeRange(0, attributedStr.length))
-        subLabel.attributedText = attributedStr
-        
-        subLabelView.stack(subLabel)
-        subLabelView.layer.masksToBounds = false
-        subLabelView.backgroundColor = .white
-        subLabelView.layer.cornerRadius = 20
-        subLabelView.setupShadow(opacity: 0.15,
-                                 radius: 20,
-                                 offset: .init(width: 0, height: 3))
-    }
-    
-    func setupImages() {
-        myProfileImage.image = FruitImage.sharedInstance.getFruitCircle(userFruttoID)
-        nittoProfileImage.image = FruitImage.sharedInstance.getProfileFace(manitto.fruttoId!)
+        APISource.shared.getRoomCheck(userId: user.id) { (roomCheck) in
+            self.nittoName = roomCheck![0].manitto.name
+            self.myName = self.user.name
+            self.date = self.room.endDay
+            self.myProfileImage.image = FruitImage.sharedInstance.getFruitCircle(roomCheck![0].userFruttoId ?? 2)
+            self.nittoProfileImage.image = FruitImage.sharedInstance.getProfileFace(roomCheck![0].manitto.fruttoId ?? 2)
+            
+            self.label.text = self.myName! + self.frontLabelString + self.nittoName! + self.backLabelString
+            self.subLabel.text = self.date! + self.subLabelString
+            self.myNameLabel.text = self.myName
+            self.nittoNameLabel.text = self.nittoName
+            
+            var attributedStr = NSMutableAttributedString(string: self.label.text!)
+            let paragraphStyle = NSMutableParagraphStyle()
+            attributedStr.addAttribute(.foregroundColor,
+                                       value: UIColor.defaultText,
+                                       range: (self.label.text! as NSString).range(of: self.frontLabelString))
+            attributedStr.addAttribute(.foregroundColor,
+                                       value: UIColor.defaultText,
+                                       range: (self.label.text! as NSString).range(of: self.backLabelString))
+            self.label.attributedText = attributedStr
+            
+            attributedStr = NSMutableAttributedString(string: self.subLabel.text!)
+            paragraphStyle.lineSpacing = 7
+            paragraphStyle.alignment = .center
+            attributedStr.addAttribute(.foregroundColor,
+                                       value: UIColor.subLabelColor,
+                                       range: (self.subLabel.text! as NSString).range(of: self.subLabelString))
+            attributedStr.addAttribute(NSAttributedString.Key.paragraphStyle,
+                                       value:paragraphStyle,
+                                       range:NSMakeRange(0, attributedStr.length))
+            self.subLabel.attributedText = attributedStr
+            
+            self.subLabelView.stack(self.subLabel)
+            self.subLabelView.layer.masksToBounds = false
+            self.subLabelView.backgroundColor = .white
+            self.subLabelView.layer.cornerRadius = 20
+            self.subLabelView.setupShadow(opacity: 0.15,
+                                     radius: 20,
+                                     offset: .init(width: 0, height: 3))
+        }
     }
 }
 

@@ -29,6 +29,8 @@ class UserListViewController: ViewController {
     
     override func setupNavigationController() {
         navigationItem.titleView = UILabel(text: "참여자 리스트", font: .boldSystemFont(ofSize: 20), textColor: .defaultText)
+        navigationController?.navigationBar.tintColor = .defaultText
+        navigationController?.navigationBar.topItem?.title = ""
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -85,35 +85,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 let scene = MainScene.main(viewModel as! MainViewModel)
                 coordinator.transition(to: scene, using: .root, animated: true)
             } else {
-                if room?.id == 60263 {
-                    let isEntered: Int? = UserDefaults.standard.getIntValue(key: .isEntered)
-                    if isEntered == 0 {
-                        let viewModel = ReadyViewModel(title: "", coordinator: coordinator)
-                        let scene = MainScene.ready(viewModel as! ReadyViewModel)
-                        coordinator.transition(to: scene, using: .root, animated: true)
-                    } else {
-                        let viewModel = TabBarViewModel(title: "Tabbar", coordinator: coordinator)
-                        let scene = MainScene.enterRoom(viewModel as! TabBarViewModel)
-                        coordinator.transition(to: scene, using: .root, animated: true)
-                    }
+                let isEntered: Int? = UserDefaults.standard.getIntValue(key: .isEntered)
+                if isEntered == 0 {
+                    let viewModel = ReadyViewModel(title: "", coordinator: coordinator)
+                    let scene = MainScene.ready(viewModel as! ReadyViewModel)
+                    coordinator.transition(to: scene, using: .root, animated: true)
                 } else {
-                    let userFruttoId: Int? = UserDefaults.standard.getIntValue(key: .userFruttoId)
-                    if userFruttoId == nil {
-                        let viewModel = ReadyViewModel(title: "", coordinator: coordinator)
-                        let scene = MainScene.ready(viewModel as! ReadyViewModel)
-                        coordinator.transition(to: scene, using: .root, animated: true)
-                    } else {
-                        let isEntered: Int? = UserDefaults.standard.getIntValue(key: .isEntered)
-                        if isEntered == 0 {
-                            let viewModel = ReadyViewModel(title: "", coordinator: coordinator)
-                            let scene = MainScene.ready(viewModel as! ReadyViewModel)
-                            coordinator.transition(to: scene, using: .root, animated: true)
-                        } else {
-                            let viewModel = TabBarViewModel(title: "Tabbar", coordinator: coordinator)
-                            let scene = MainScene.enterRoom(viewModel as! TabBarViewModel)
-                            coordinator.transition(to: scene, using: .root, animated: true)
-                        }
-                    }
+                    let viewModel = TabBarViewModel(title: "Tabbar", coordinator: coordinator)
+                    let scene = MainScene.enterRoom(viewModel as! TabBarViewModel)
+                    coordinator.transition(to: scene, using: .root, animated: true)
                 }
             }
         }

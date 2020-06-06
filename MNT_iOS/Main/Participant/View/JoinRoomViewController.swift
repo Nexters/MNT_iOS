@@ -30,6 +30,12 @@ class JoinRoomViewController: ViewController {
                              font: .mediumFont(ofSize: 13),
                              textColor: .lightGray)
     var nextButton = PrimaryButton("입장하기")
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        activateTapGesture()
+    }
         
     override func setupNavigationController() {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
