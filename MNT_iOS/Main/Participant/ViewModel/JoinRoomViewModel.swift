@@ -32,16 +32,12 @@ class JoinRoomViewModel: ViewModel {
                                 maxPeople: 10,
                                 name: "Hello Apple World",
                                 startDay: "2020-06-03")
-                let manitto = Manitto(id: "BTS",
-                                      fruttoId: 4,
-                                      name: "BTS",
-                                      fcmToken: nil)
-                let userFruttoId = 10
-                
+                let user = User(id: "IU",
+                                name: "IU",
+                                profilePic: "nope",
+                                fcmToken: "string")
                 UserDefaults.standard.setObject(object: room, key: .room)
-                UserDefaults.standard.setObject(object: manitto, key: .manitto)
-                UserDefaults.standard.setIntValue(value: userFruttoId, key: .userFruttoId)
-                UserDefaults.standard.setIntValue(value: 0, key: .isEntered)
+                UserDefaults.standard.setObject(object: user, key: .user)
                 
                 let viewModel = ReadyViewModel(title: "대기화면", coordinator: self.coordinator)
                 let scene = MainScene.ready(viewModel)

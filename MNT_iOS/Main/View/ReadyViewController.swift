@@ -48,18 +48,15 @@ class ReadyViewController: ViewController {
         let user : User? = UserDefaults.standard.getObject(key: .user)
         let room: Room? = UserDefaults.standard.getObject(key: .room)
         
-        if room?.id == 60263 {
-            self.isStarted = true
-        } else {
-            APISource.shared.getRoomCheck(userId: user!.id) { (roomCheck) in
-                if (roomCheck![0].userFruttoId == nil) {
-                    self.isStarted = false
-                    
-                } else {
-                    self.isStarted = true
-                }
+        APISource.shared.getRoomCheck(userId: user!.id) { (roomCheck) in
+            if (roomCheck![0].userFruttoId == nil) {
+                self.isStarted = false
+                
+            } else {
+                self.isStarted = true
             }
         }
+        
         self.setUpForParticipant()
     }
     
