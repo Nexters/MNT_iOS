@@ -54,6 +54,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
     
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+        var user: User? = UserDefaults.standard.getObject(key: .user)
+        
+        if user != nil {
+            let editedUser: User = User(id: user!.id,
+                                        name: user!.name,
+                                        profilePic: "string",
+                                        fcmToken: fcmToken)
+            
+            APISource.shared.postSignUp(user: editedUser) {
+                UserDefaults.standard.setObject(object: user, key: .user)
+            }
+        }
+        
         UserDefaults.standard.setStringValue(value: fcmToken, key: .fcmToken)
         
         let dataDict:[String: String] = ["token": fcmToken]
@@ -209,8 +222,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 } else if let me = me as KOUserMe? {
                     APISource.shared.getRoomCheck(userId: me.id!) { (roomCheck) in
                         if (roomCheck != nil) {
-                            UserDefaults.standard.setObject(object: roomCheck![0].user, key: .user)
+                            var user = roomCheck![0].user
+                            user.fcmToken = UserDefaults.standard.getStringValue(key: .fcmToken) ?? "string"
+                            
+                            UserDefaults.standard.setObject(object: user, key: .user)
                             UserDefaults.standard.setObject(object: roomCheck![0].room, key: .room)
+                            
+                            APISource.shared.postSignUp(user: user) {
+                                UserDefaults.standard.setObject(object: user, key: .user)
+                            }
                             
                             if (roomCheck![0].userFruttoId != nil) {
                                 let isEntered: Int? = UserDefaults.standard.getIntValue(key: .isEntered)
