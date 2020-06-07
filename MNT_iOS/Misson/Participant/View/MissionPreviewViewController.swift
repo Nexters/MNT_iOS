@@ -58,7 +58,8 @@ class MissionPreviewViewController: ViewController {
              .leading(imageView.leadingAnchor))
         label.anchor(
             .top(titleLabel.bottomAnchor, constant: 10),
-            .leading(imageView.leadingAnchor)
+            .leading(imageView.leadingAnchor),
+            .trailing(imageView.trailingAnchor)
         )
     }
 }

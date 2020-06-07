@@ -26,14 +26,6 @@ class DashboardGridMenuCell: UICollectionViewCell {
         }
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-        backgroundColor = .white
-        isUserInteractionEnabled = true
-        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapAction)))
-    }
-    
     @objc private func tapAction() {
         isSelected = !isSelected
         toggle.image = isSelected ? #imageLiteral(resourceName: "toggleOff") : #imageLiteral(resourceName: "toggleOn")
@@ -48,26 +40,41 @@ class DashboardGridMenuCell: UICollectionViewCell {
     
     let toggle = UIImageView(image: #imageLiteral(resourceName: "toggleOn"))
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+        backgroundColor = .white
+        isUserInteractionEnabled = true
+        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapAction)))
+        
+        addSubview(stackView)
+        addSubview(arrow)
+    }
+    
+    private let imageview = UIImageView()
+    private let subLabel = UILabel(text: "", font: .systemFont(ofSize: 12), textColor: .lightGray)
+    private let mainLabel = UILabel(text: "", font: .systemFont(ofSize: 17), textColor: .defaultText)
+    private lazy var stackView = UIStackView(arrangedSubviews: [imageview, subLabel, mainLabel, toggle])
+    private let arrow = UIImageView(image: #imageLiteral(resourceName: "chevronRight"))
+    
     func setupView(gridMenu: DashboardGridMenu) {
         self.gridMenu = gridMenu
         
-        let imageview = UIImageView(image: gridMenu.image)
+        imageview.image = gridMenu.image
         imageview.withSize(.init(width: 87, height: 87))
-        let subLabel = UILabel(text: gridMenu.subText, font: .systemFont(ofSize: 12), textColor: .lightGray)
-        let mainLabel = UILabel(text: gridMenu.mainText, font: .systemFont(ofSize: 17), textColor: .defaultText)
+        
+        subLabel.text = gridMenu.subText
+        mainLabel.text = gridMenu.mainText
+        mainLabel.isHidden = (gridMenu.type == .togglable)
         toggle.withSize(.init(width: 46, height: 23))
         toggle.isHidden = !(gridMenu.type == .togglable)
-        mainLabel.isHidden = (gridMenu.type == .togglable)
-        let stackView = UIStackView(arrangedSubviews: [imageview, subLabel, mainLabel, toggle])
+        
         stackView.axis = .vertical
         stackView.alignment = .center
         stackView.spacing = 5
-        addSubview(stackView)
         stackView.centerInSuperview()
         
-        let arrow = UIImageView(image: #imageLiteral(resourceName: "chevronRight"))
         arrow.isHidden = !(gridMenu.type == .touchable)
-        addSubview(arrow)
         arrow.anchor(.leading(mainLabel.trailingAnchor, constant: 5))
         arrow.withSize(.init(width: 16, height: 16))
         arrow.centerYTo(mainLabel.centerYAnchor)

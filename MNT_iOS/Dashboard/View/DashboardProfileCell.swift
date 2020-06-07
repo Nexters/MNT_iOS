@@ -18,7 +18,7 @@ class DashboardProfileCell: UICollectionViewCell {
     }
     
     func setupView() {
-        let imageview = UIImageView(image: FruitImage.sharedInstance.getProfileFace(userFruttoID+1))
+        let imageview = UIImageView(image: FruitImage.sharedInstance.getProfileFace(userFruttoID))
         let label = UILabel(text: "\(user.name)님,\n니또를 챙겨줄 때입니다!", font: .boldFont(ofSize: 20), textColor: .defaultText, numberOfLines: 2)
         
         addSubview(imageview)

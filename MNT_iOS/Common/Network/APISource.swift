@@ -59,7 +59,11 @@ class APISource: APISourceProtocol {
             let fileName = missionSendingPostData.img?.fileName.absoluteString,
             let imgData = image.jpegData(compressionQuality: 0.2),
             let encodedUrl = (API.baseURL + URLType.missionSend.rawValue).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-        else { return nil}
+            else {
+                return  requestWithoutData(.post,
+                                           .missionSend,
+                                           parameters: params) { completion() }
+        }
         
         Alamofire.upload(multipartFormData: { multipartFormData in
             multipartFormData.append(imgData, withName: "img",

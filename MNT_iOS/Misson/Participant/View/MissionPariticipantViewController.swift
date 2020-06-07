@@ -27,19 +27,16 @@ class MissionParticipantViewController: ViewController {
             self?.viewModel?.missionDetailAction(index: index)
         }
     }
-    
-    
+
     // MARK:- View Life Cycle
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+                
         navigationController?.navigationBar.isHidden = true
         BottomBar.shared.showBottomBar()
         
-        if let viewModel = viewModel {
-            getMissionDoneList(viewModel)
-        }
+        getMissionDoneList()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -51,9 +48,17 @@ class MissionParticipantViewController: ViewController {
 
 extension MissionParticipantViewController: ViewModelBindableType {
     func bindViewModel(viewModel: MissionViewModel) {
+        NotificationCenter.default.addObserver(self, selector: #selector(notifyMissionPosted), name: .init("MissionPosted"), object: nil)
     }
     
-    private func getMissionDoneList(_ viewModel: MissionViewModel) {
+    @objc private func notifyMissionPosted() {
+        getMissionDoneList()
+    }
+    
+    private func getMissionDoneList() {
+        
+        guard let viewModel = viewModel else { return }
+        
         let userId = (UserDefaults.standard.getObject(key: .user) ?? User()).id
         let roomId = (UserDefaults.standard.getObject(key: .room) ?? Room()).id
         APISource.shared.getMyMissionDoneList(roomId: roomId, userId: userId) { [weak self] (missions) in

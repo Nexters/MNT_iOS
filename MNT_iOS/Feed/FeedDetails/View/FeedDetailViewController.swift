@@ -18,12 +18,10 @@ class FeedDetailViewController: ViewController {
     let fromToView = FromToView()
     
     override func setupLayout() {
-    
         view.addSubview(fromToView)
         view.addSubview(imageView)
         view.addSubview(titleLabel)
         view.addSubview(contentLabel)
-        
         
         fromToView.anchor(.top(topAnchor, constant: 5), .leading(view.leadingAnchor, constant: 15), .height(64), .width(200))
         
@@ -34,6 +32,10 @@ class FeedDetailViewController: ViewController {
         titleLabel.anchor(.top(imageView.bottomAnchor, constant: 24), .leading(imageView.leadingAnchor))
         
         contentLabel.anchor(.top(titleLabel.bottomAnchor, constant: 10), .leading(imageView.leadingAnchor), .trailing(imageView.trailingAnchor))
+        
+        if viewModel?.feedDetail?.missionId?.isAbleImg == 0 {
+            imageView.withHeight(0)
+        }
     }
     
     override func setupNavigationController() {
@@ -50,6 +52,7 @@ class FeedDetailViewController: ViewController {
 
 extension FeedDetailViewController: ViewModelBindableType {
     func bindViewModel(viewModel: FeedDetailViewModel) {
+        print("tagg \(viewModel.feedDetail?.missionId?.isAbleImg == 0)")
         imageView.kf.setImage(with: viewModel.feedDetail?.asFeedCellViewModel.postURL)
         titleLabel.text = viewModel.feedDetail?.contentTitle
         contentLabel.text = viewModel.feedDetail?.content

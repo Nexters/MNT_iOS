@@ -40,7 +40,7 @@ class ConfirmViewModel: ViewModel {
                         profilePic: "string",
                         fcmToken: UserDefaults.standard.getStringValue(key: .fcmToken) ?? "string")
         
-        APISource.shared.postSignUp(user: user){
+        APISource.shared.postSignUp(user: user) {
             UserDefaults.standard.setObject(object: user, key: .user)
         }
     }
