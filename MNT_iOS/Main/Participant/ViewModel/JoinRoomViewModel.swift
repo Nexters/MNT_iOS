@@ -61,13 +61,17 @@ class JoinRoomViewModel: ViewModel {
                                     self.showAlert("이미 시작된 방입니다.")
                                 } else {
                                     APISource.shared.getRoomAttend(roomId: code, userId: user.id) { room in
-                                        UserDefaults.standard.setObject(object: room, key: .room)
-                                        UserDefaults.standard.setIntValue(value: 0, key: .isEntered)
-
-                                        let viewModel = ReadyViewModel(title: "대기화면", coordinator: self.coordinator)
-                                        let scene = MainScene.ready(viewModel)
-
-                                        self.coordinator.transition(to: scene, using: .root, animated: true).asObservable().map { _ in }
+                                        if room == nil {
+                                            self.showAlert("유효하지 않은 방입니다.")
+                                        } else {
+                                            UserDefaults.standard.setObject(object: room, key: .room)
+                                            UserDefaults.standard.setIntValue(value: 0, key: .isEntered)
+                                            
+                                            let viewModel = ReadyViewModel(title: "대기화면", coordinator: self.coordinator)
+                                            let scene = MainScene.ready(viewModel)
+                                            
+                                            self.coordinator.transition(to: scene, using: .root, animated: true).asObservable().map { _ in }
+                                        }
                                     }
                                 }
                             }

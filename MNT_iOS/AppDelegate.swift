@@ -265,7 +265,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         if KLKTalkLinkCenter.shared().isTalkLinkCallback(url) {
             let room : Room? = UserDefaults.standard.getObject(key: .room)
             if room == nil {
-                let params = url.query
+                //                let params = url.query
+                let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)
+                let queryItems = urlComponents?.queryItems
+                let param = queryItems?.filter({$0.name == "roomnum"}).first
+                let value = param?.value ?? ""
+                
                 let coordinator = SceneCoordinator(window: window!)
                 let mainViewModel = MainViewModel(title: "", coordinator: coordinator)
                 let mainScene: SceneType = MainScene.main(mainViewModel as! MainViewModel)
@@ -274,7 +279,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 
                 let joinViewModel = JoinRoomViewModel(title: "", coordinator: coordinator)
                 let joinScene = MainScene.joinRoom(joinViewModel)
-                joinViewModel.kakaoLinkParams = params
+                joinViewModel.kakaoLinkParams = value
                 coordinator.transition(to: joinScene, using: .push, animated: true).asObservable().map { _ in }
                 
                 return true
@@ -288,11 +293,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             return true
         }
         
+//        let urlComponents = NSURLComponents(string: url)
+//        let queryItems = urlComponents?.queryItems
+//        let param = queryItems?.filter({$0.name == "param1"}).first
+//
+//        let value = param?.value ?? ""
+//
+//        return value
+        
         // Called When Execute KaKaoLink
         if KLKTalkLinkCenter.shared().isTalkLinkCallback(url) {
             let room : Room? = UserDefaults.standard.getObject(key: .room)
             if room == nil {
-                let params = url.query
+//                let params = url.query
+                let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)
+                let queryItems = urlComponents?.queryItems
+                let param = queryItems?.filter({$0.name == "roomnum"}).first
+                let value = param?.value ?? ""
+                
                 let coordinator = SceneCoordinator(window: window!)
                 let mainViewModel = MainViewModel(title: "", coordinator: coordinator)
                 let mainScene: SceneType = MainScene.main(mainViewModel as! MainViewModel)
@@ -301,7 +319,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 
                 let joinViewModel = JoinRoomViewModel(title: "", coordinator: coordinator)
                 let joinScene = MainScene.joinRoom(joinViewModel)
-                joinViewModel.kakaoLinkParams = params
+                joinViewModel.kakaoLinkParams = value
                 coordinator.transition(to: joinScene, using: .push, animated: true).asObservable().map { _ in }
 
                 return true

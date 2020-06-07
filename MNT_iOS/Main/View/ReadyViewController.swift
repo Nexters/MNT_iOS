@@ -10,7 +10,6 @@ import UIKit
 
 class ReadyViewController: ViewController {
     
-    let room : Room = UserDefaults.standard.getObject(key: .room)!
     var isAdmin : Bool = false
     var isStarted: Bool = true
     var viewModel: ReadyViewModel?
@@ -152,10 +151,12 @@ class ReadyViewController: ViewController {
     }
     
     func setUpDetailForParticipant() {
-        var frontText = "\(room.startDay) 정오"
+        let room: Room? = UserDefaults.standard.getObject(key: .room)
+        let roomStartDay: String = room?.startDay ?? ""
+        var frontText = "\(roomStartDay) 정오"
         var backText : String?
         
-        titleLabel.text = room.name
+        titleLabel.text = room?.name
         
         if isStarted == false {
             startButton.isUserInteractionEnabled = false
