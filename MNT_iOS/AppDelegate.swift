@@ -68,6 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
         
         UserDefaults.standard.setStringValue(value: fcmToken, key: .fcmToken)
+        print("fcmToken is \(fcmToken)")
         
         let dataDict:[String: String] = ["token": fcmToken]
         NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
@@ -99,8 +100,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 coordinator.transition(to: scene, using: .root, animated: true)
             } else {
                 let isEntered: Int? = UserDefaults.standard.getIntValue(key: .isEntered)
-                print("isEntered is \(isEntered)")
-                if isEntered == nil {
+                if isEntered == nil || isEntered == 0 {
                     let viewModel = ReadyViewModel(title: "", coordinator: coordinator)
                     let scene = MainScene.ready(viewModel as! ReadyViewModel)
                     coordinator.transition(to: scene, using: .root, animated: true)

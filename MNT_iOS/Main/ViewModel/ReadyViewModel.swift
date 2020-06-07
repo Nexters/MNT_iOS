@@ -14,11 +14,11 @@ class ReadyViewModel: ViewModel {
     func sendKakaoLinkAction() -> CocoaAction {
         return Action { [unowned self] action in
             let room: Room? = UserDefaults.standard.getObject(key: .room)
-            let code = room!.id
+            let code = room?.id ?? 0
             
             let template = KMTFeedTemplate { (feedTemplateBuilder) in
                 feedTemplateBuilder.content = KMTContentObject(builderBlock: { (contentBuilder) in
-                    contentBuilder.title = "프룻프룻프루또\n초대코드 : \(code)"
+                    contentBuilder.title = "'\(room?.name ?? "")'방을 생성했습니다.\n초대코드 : \(code)"
                     contentBuilder.imageURL = URL(string: "https://frutto-s3-storage.s3.ap-northeast-2.amazonaws.com/%E1%84%8B%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%8F%E1%85%A9%E1%86%AB.png")!
                     contentBuilder.link = KMTLinkObject(builderBlock: { (linkBuilder) in
                         linkBuilder.mobileWebURL = URL(string: "https://developers.kakao.com")!
