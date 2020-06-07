@@ -15,7 +15,7 @@ class FeedDetailViewController: ViewController {
     private let titleLabel = UILabel(text: "# 닮은꼴 사진 보내기", font: .boldSystemFont(ofSize: 15), textColor: .defaultText)
     private let contentLabel = UILabel(text: "ㅁ나어ㅗㅁ나ㅣ옴나어ㅁ나어ㅗㅁ나ㅣ옴나어ㅁ나어ㅗㅁ나ㅣ옴나어ㅁ나어ㅗㅁ나ㅣ옴나어ㅁ나어ㅗㅁ나ㅣ옴나어ㅁ나어ㅗㅁ나ㅣ옴나어ㅁ나어ㅗㅁ나ㅣ옴나어ㅁ나어ㅗㅁ나ㅣ옴나어ㅁ나어ㅗㅁ나ㅣ옴나어ㅁ나어ㅗㅁ나ㅣ옴나어ㅁ나어ㅗㅁ나ㅣ옴나어ㅁ나어ㅗㅁ나ㅣ옴나어ㅁ나어ㅗㅁ나ㅣ옴나어ㅁ나어ㅗㅁ나ㅣ옴나어",
                                font: .systemFont(ofSize: 14), textColor: .lightGray, numberOfLines: 0)
-    let fromToView = FromToView()
+    private lazy var fromToView = FromToView()
     
     override func setupLayout() {
         view.addSubview(fromToView)
@@ -52,9 +52,9 @@ class FeedDetailViewController: ViewController {
 
 extension FeedDetailViewController: ViewModelBindableType {
     func bindViewModel(viewModel: FeedDetailViewModel) {
-        print("tagg \(viewModel.feedDetail?.missionId?.isAbleImg == 0)")
         imageView.kf.setImage(with: viewModel.feedDetail?.asFeedCellViewModel.postURL)
         titleLabel.text = viewModel.feedDetail?.contentTitle
         contentLabel.text = viewModel.feedDetail?.content
+        fromToView.setupData(viewModel.feedDetail?.asFeedCellViewModel)
     }
 }

@@ -49,6 +49,12 @@ class FromToView: UIView {
         stackView.spacing = 3
         stackView.anchor(.leading(toImageView.trailingAnchor))
         stackView.centerYToSuperview()
-        
+    }
+    
+    func setupData(_ infos: FeedCellViewModel?) {
+        fromImageView.image = infos?.manittoImage
+        toImageView.image = infos?.targetImage
+        fromtoLabel.text = infos?.fromToLabel
+        dateLabel.text = infos?.date
     }
 }
