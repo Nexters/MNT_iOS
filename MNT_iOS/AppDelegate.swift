@@ -99,7 +99,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 coordinator.transition(to: scene, using: .root, animated: true)
             } else {
                 let isEntered: Int? = UserDefaults.standard.getIntValue(key: .isEntered)
-                if isEntered == 0 {
+                print("isEntered is \(isEntered)")
+                if isEntered == nil {
                     let viewModel = ReadyViewModel(title: "", coordinator: coordinator)
                     let scene = MainScene.ready(viewModel as! ReadyViewModel)
                     coordinator.transition(to: scene, using: .root, animated: true)
