@@ -60,7 +60,7 @@ class UserListCell: UITableViewCell {
         lStackView.centerYToSuperview()
         
         rStackView.anchor(
-            .leading(arrowImageView.trailingAnchor, constant: 10),
+            .leading(arrowImageView.trailingAnchor, constant: 0),
             .trailing(trailingAnchor)
         )
         rStackView.centerYToSuperview()
