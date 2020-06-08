@@ -56,6 +56,7 @@ extension MainScene: SceneType {
         case .enterRoom(let viewModel):
             var tabBarVC = TabBarViewController()
             tabBarVC.bind(viewModel: viewModel)
+            UserDefaults.standard.setIntValue(value: 1, key: .isEntered)
             return tabBarVC
             
         case .openNitto(let viewModel):
