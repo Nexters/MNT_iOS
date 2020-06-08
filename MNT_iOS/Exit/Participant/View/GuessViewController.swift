@@ -20,7 +20,7 @@ class GuessViewController: ViewController, UICollectionViewDelegateFlowLayout {
         textColor: .subLabelColor,
         textAlignment: .center,
         numberOfLines: 0)
-    let fruitImage = UIImageView(image: #imageLiteral(resourceName: "group2"))
+    let fruitImage = UIImageView(image: #imageLiteral(resourceName: "fruits_2"))
     let bubbleImage = UIImageView(image: #imageLiteral(resourceName: "combinedShape"))
     var button = DisableButton("선택완료")
     var isSelected : Bool?
@@ -128,9 +128,13 @@ extension GuessViewController: ViewModelBindableType {
     }
     
     func getUserList() {
-        APISource.shared.getRoomUserList(roomId: 28076) { participants in
+        let room: Room? = UserDefaults.standard.getObject(key: .room)
+        
+        APISource.shared.getRoomUserList(roomId: room!.id) { participants in
+            let user: User? = UserDefaults.standard.getObject(key: .user)
+            
             for i in 0..<participants.count {
-                if (participants[i].isCreater == 0) {
+                if (participants[i].isCreater == 0 && participants[i].user.id != user?.id) {
                     self.viewModel?.userNameList.append(participants[i].user.name)
                     self.viewModel?.userIdList.append(participants[i].userFruttoId!)
                     self.collectionView.reloadData()

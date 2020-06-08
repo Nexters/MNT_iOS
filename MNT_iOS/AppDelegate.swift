@@ -105,9 +105,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                     let scene = MainScene.ready(viewModel as! ReadyViewModel)
                     coordinator.transition(to: scene, using: .root, animated: true)
                 } else {
-                    let viewModel = TabBarViewModel(title: "Tabbar", coordinator: coordinator)
-                    let scene = MainScene.enterRoom(viewModel as! TabBarViewModel)
-                    coordinator.transition(to: scene, using: .root, animated: true)
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyy-MM-dd"
+                    let endDate = dateFormatter.date(from: room!.endDay)!
+                    let expirationDate = Date(timeInterval: 75600, since: endDate)
+                    let today = Date(timeInterval: 32400, since: Date())
+                    let interval = expirationDate.timeIntervalSince(today)
+                    
+                    if interval < 0 {
+                        let coordinator = SceneCoordinator(window: window!)
+                        let viewModel = AlertExitViewModel(title: "프루또 종료", coordinator: coordinator)
+                        let scene: SceneType = ExitScene.alertExit(viewModel)
+                        coordinator.transition(to: scene, using: .root, animated: true)
+                    } else {
+                        let viewModel = TabBarViewModel(title: "Tabbar", coordinator: coordinator)
+                        let scene = MainScene.enterRoom(viewModel as! TabBarViewModel)
+                        coordinator.transition(to: scene, using: .root, animated: true)
+                    }
                 }
             }
         }

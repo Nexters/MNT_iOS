@@ -66,4 +66,16 @@ extension UserDefaults {
         
         return output
     }
+    
+    func deleteObject(key: UserDefaultKeys) {
+        self.removeObject(forKey: key.rawValue)
+        
+        self.synchronize()
+    }
+    
+    func deleteIntValue(key: UserDefaultKeys) {
+        self.removeObject(forKey: key.rawValue)
+        
+        self.synchronize()
+    }
 }

@@ -110,4 +110,10 @@ class TabBarViewModel: ViewModel, ReactiveViewModelable {
     func bindMissionAction() {
         output.selectedIndexNumber.accept(2)
     }
+    
+    func exitAction() {
+        let viewModel = AlertExitViewModel(title: "프루또 종료", coordinator: self.coordinator)
+        let scene: SceneType = ExitScene.alertExit(viewModel)
+        coordinator.transition(to: scene, using: .root, animated: true)
+    }
 }
