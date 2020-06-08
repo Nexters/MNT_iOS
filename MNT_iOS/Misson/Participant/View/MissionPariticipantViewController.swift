@@ -12,9 +12,12 @@ class MissionParticipantViewController: ViewController {
     
     var viewModel: MissionViewModel?
     let missionTableController = MissionTableViewController(style: .grouped)
-
+    fileprivate var emptyView = EmptyPageView()
+    
     override func setupLayout() {
         view.addSubview(missionTableController.view)
+        view.addSubview(emptyView)
+        
         missionTableController.view.anchor(
             .top(topAnchor),
             .leading(view.leadingAnchor),
@@ -26,6 +29,8 @@ class MissionParticipantViewController: ViewController {
             guard let index = indexPath.element?.row else { return }
             self?.viewModel?.missionDetailAction(index: index)
         }
+        
+        emptyView.setType(type: .missionParticipant)
     }
 
     // MARK:- View Life Cycle
@@ -63,6 +68,7 @@ extension MissionParticipantViewController: ViewModelBindableType {
         let roomId = (UserDefaults.standard.getObject(key: .room) ?? Room()).id
         APISource.shared.getMyMissionDoneList(roomId: roomId, userId: userId) { [weak self] (missions) in
             viewModel.missions = missions
+            self?.emptyView.isHidden = missions.count > 0
             self?.missionTableController.missions = viewModel.missions
             }?.disposed(by: rx.disposeBag)
     }

@@ -86,8 +86,6 @@ extension DashboardViewController: UICollectionViewDelegate, UICollectionViewDat
         case .profile:
             return 1
         case .gridMenu:
-            print("tagg \(viewModel?.gridMenu.count)")
-            print("tagg \(viewModel?.gridMenu)")
             return viewModel?.gridMenu.count ?? 0
         case .listMenu:
             return viewModel?.listMenu.count ?? 0

@@ -44,7 +44,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Override point for customization after application launch.
         //        testing()
         
-        login()
+//        login()
+        testingMNTRoomWith(member: .bestchoi)
         
         return true
     }
@@ -215,6 +216,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         let viewModel = AlertExitViewModel(title: "푸르또 종료", coordinator: coordinator)
         let scene: SceneType = ExitScene.alertExit(viewModel)
         coordinator.transition(to: scene, using: .root, animated: true)
+    }
+    
+    
+    enum MNTMember {
+        case bestchoi
+    }
+    
+    fileprivate func testingMNTRoomWith(member: MNTMember) {
+        switch member {
+        case .bestchoi:
+            let userId = "Bestchoi"
+            APISource.shared.getRoomCheck(userId: userId) { [weak self] (rooms) in
+                for room in rooms ?? [] {
+                    
+                    UserDefaults.standard.setObject(object: room.room, key: .room)
+                    UserDefaults.standard.setObject(object: room.manitto, key: .manitto)
+                    UserDefaults.standard.setObject(object: room.user, key: .user)
+                    UserDefaults.standard.setIntValue(value: room.userFruttoId!, key: .userFruttoId)
+                    
+                    self?.testingMain()
+                }
+            }
+        default:
+            break
+        }
     }
     
     fileprivate func addObserver() {

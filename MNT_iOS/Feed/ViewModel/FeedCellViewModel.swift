@@ -26,7 +26,6 @@ class FeedCellViewModel {
         return imageInstance.getProfileFace(datas.manittoFruttoId)
     }
     var postURL: URL? {
-        print("tagg \(datas.missionImg)")
         return URL(string: datas.missionImg)
     }
     var contentTitle: String {

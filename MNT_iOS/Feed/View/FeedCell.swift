@@ -41,7 +41,7 @@ class FeedCell: UITableViewCell {
 extension FeedCell: ViewModelBindableType {
     func bindViewModel(viewModel: FeedCellViewModel) {
         self.viewModel = viewModel
-        let isAbleImage: Bool = (viewModel.datas.missionId?.isAbleImg == 1)
+        let isAbleImage: Bool = viewModel.postURL?.absoluteString.count ?? 0 > 2
         labelContainer.roundedBorder(corners: isAbleImage ? [.bottomLeft, .bottomRight] : [.allCorners], radius: 10, borderWidth: 1)
         
         feedImageView.isHidden = !isAbleImage

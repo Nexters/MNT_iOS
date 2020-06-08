@@ -47,10 +47,13 @@ class FeedViewController: ViewController {
         refreshControl.tintColor = UIColor.accentColor
         return refreshControl
     }()
+    
+    fileprivate var emptyView = EmptyPageView()
 
     // MARK:- View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         addFeedButtonObserver()
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
@@ -71,6 +74,10 @@ class FeedViewController: ViewController {
     
     override func setupLayout() {
         view.addSubview(tableView)
+        view.addSubview(emptyView)
+        view.backgroundColor = .white
+        emptyView.setType(type: .feed)
+        
         tableView.anchor(.top(view.topAnchor),
                          .bottom(view.bottomAnchor),
                          .leading(view.leadingAnchor),
@@ -106,7 +113,7 @@ extension FeedViewController: ViewModelBindableType {
     
     private func getTimeline() {
         let roomId = (UserDefaults.standard.getObject(key: .room) ?? Room()).id
-        APISource.shared.getTimeline(roomId: roomId) { missions in
+        APISource.shared.getTimeline(roomId: roomId) { [unowned self] missions in
             self.viewModel?.infos = missions.map { Feed(id: 0,
                                                         contentTitle: $0.missionName ?? "",
                                                         content: $0.userMission.content ?? "",
@@ -121,6 +128,7 @@ extension FeedViewController: ViewModelBindableType {
                                                         manittoId: $0.manitto?.id ?? "",
                                                         manittoFruttoId: $0.manitto?.fruttoId ?? 0,
                                                         manittoName: $0.manitto?.name ?? "") }.reversed()
+            self.emptyView.isHidden =  missions.count > 0
             self.tableView.reloadData()
         }
     }
@@ -165,7 +173,6 @@ extension FeedViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        
         if velocity.y > 0 {
             BottomBar.shared.hideBottomBar()
             hideNavigationBar()

@@ -49,7 +49,7 @@
                         </subviews>
                     </stackView>
                     <stackView opaque="NO" userInteractionEnabled="NO" contentMode="top" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="jkc-hf-3Iw">
-                        <rect key="frame" x="26" y="64" width="359" height="236"/>
+                        <rect key="frame" x="26" y="64" width="359" height="252"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PMl-Gk-grV">
                                 <rect key="frame" x="0.0" y="0.0" width="359" height="141"/>
@@ -58,7 +58,7 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Ib7-x4-a7g">
-                                <rect key="frame" x="0.0" y="141" width="359" height="95"/>
+                                <rect key="frame" x="0.0" y="141" width="359" height="111"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Dz-BF-xNp">
                                         <rect key="frame" x="0.0" y="0.0" width="359" height="14"/>
@@ -70,7 +70,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2lk-gY-lKv">
-                                        <rect key="frame" x="0.0" y="22" width="359" height="73"/>
+                                        <rect key="frame" x="0.0" y="22" width="359" height="89"/>
                                         <string key="text">asdaslkdjaslkdjaslkdjaslkdjklqdjlkajdlasjldjaskldjklasjkdlasjkld213lejlk312jlk1j2312u31298371289jlkasdjasdjklasd!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <nil key="textColor"/>
@@ -87,7 +87,7 @@
                     <constraint firstItem="Ucq-lq-9Wl" firstAttribute="leading" secondItem="43o-AP-KTZ" secondAttribute="trailing" constant="8" symbolic="YES" id="QWF-nw-c9i"/>
                     <constraint firstItem="43o-AP-KTZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="V0E-42-Rb8"/>
                     <constraint firstItem="43o-AP-KTZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="46" id="dHq-8b-VfW"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="jkc-hf-3Iw" secondAttribute="bottom" constant="21" id="fE9-Ra-4Ck"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="jkc-hf-3Iw" secondAttribute="bottom" constant="5" id="fE9-Ra-4Ck"/>
                     <constraint firstItem="jkc-hf-3Iw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="26" id="gdp-Ih-iTw"/>
                     <constraint firstItem="VzH-Ar-10Q" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="ibd-tj-hAc"/>
                     <constraint firstItem="jkc-hf-3Iw" firstAttribute="top" secondItem="43o-AP-KTZ" secondAttribute="bottom" id="l7W-VY-bgq"/>

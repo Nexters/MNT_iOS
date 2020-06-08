@@ -53,7 +53,7 @@ class DashboardGridMenuCell: UICollectionViewCell {
     
     private let imageview = UIImageView()
     private let subLabel = UILabel(text: "", font: .systemFont(ofSize: 12), textColor: .lightGray)
-    private let mainLabel = UILabel(text: "", font: .systemFont(ofSize: 17), textColor: .defaultText)
+    private let mainLabel = UILabel(text: "", font: .systemFont(ofSize: 17), textColor: .defaultText, numberOfLines: 1)
     private lazy var stackView = UIStackView(arrangedSubviews: [imageview, subLabel, mainLabel, toggle])
     private let arrow = UIImageView(image: #imageLiteral(resourceName: "chevronRight"))
     
@@ -73,6 +73,7 @@ class DashboardGridMenuCell: UICollectionViewCell {
         stackView.alignment = .center
         stackView.spacing = 5
         stackView.centerInSuperview()
+        stackView.anchor(.leading(leadingAnchor, constant: 17), .trailing(trailingAnchor, constant: 17))
         
         arrow.isHidden = !(gridMenu.type == .touchable)
         arrow.anchor(.leading(mainLabel.trailingAnchor, constant: 5))
