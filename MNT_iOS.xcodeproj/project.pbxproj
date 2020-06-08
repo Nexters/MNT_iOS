@@ -135,6 +135,7 @@
 		583659BF23E32B5100E2752F /* ReadyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583659BE23E32B5100E2752F /* ReadyViewModel.swift */; };
 		583659CC23E4AB7100E2752F /* RoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583659CB23E4AB7100E2752F /* RoomViewModel.swift */; };
 		583EBDAA246C616B0076C68F /* UserDefaults+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583EBDA9246C616B0076C68F /* UserDefaults+.swift */; };
+		58423436248BCF8B00920EEC /* agreement.txt in Resources */ = {isa = PBXBuildFile; fileRef = 58423435248BCF8B00920EEC /* agreement.txt */; };
 		58938B582481155F00BECE51 /* TabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0697123F27F16000B8D27 /* TabBarViewModel.swift */; };
 		58938B59248115C300BECE51 /* MissionMakeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A595E792425C57B0080AE61 /* MissionMakeCell.swift */; };
 		58938B62248150D000BECE51 /* PushKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58938B61248150D000BECE51 /* PushKit.framework */; };
@@ -335,6 +336,7 @@
 		583659BE23E32B5100E2752F /* ReadyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyViewModel.swift; sourceTree = "<group>"; };
 		583659CB23E4AB7100E2752F /* RoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomViewModel.swift; sourceTree = "<group>"; };
 		583EBDA9246C616B0076C68F /* UserDefaults+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+.swift"; sourceTree = "<group>"; };
+		58423435248BCF8B00920EEC /* agreement.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = agreement.txt; sourceTree = "<group>"; };
 		586E24AB247FF55600D8DA75 /* MNT_iOSDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MNT_iOSDebug.entitlements; sourceTree = "<group>"; };
 		58938B61248150D000BECE51 /* PushKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PushKit.framework; path = System/Library/Frameworks/PushKit.framework; sourceTree = SDKROOT; };
 		58938B692481586000BECE51 /* GoogleUtilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GoogleUtilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -844,6 +846,7 @@
 			isa = PBXGroup;
 			children = (
 				1AD6D40623BF9DBC000B1893 /* SceneDelegate.swift */,
+				58423435248BCF8B00920EEC /* agreement.txt */,
 				1AD6D41023BF9DBF000B1893 /* Assets.xcassets */,
 				58D017B123FBA90500D55DA6 /* Font */,
 			);
@@ -1291,6 +1294,7 @@
 				58D017B423FBA93400D55DA6 /* SFProDisplay-Medium.ttf in Resources */,
 				1A4E689123E40F81005D2CFD /* MissionCell.xib in Resources */,
 				1ADEFD9823FC3C9900E3DC49 /* FeedFilterSubmenuCell.xib in Resources */,
+				58423436248BCF8B00920EEC /* agreement.txt in Resources */,
 				1A01BB6A23F64B9B00FF8B7C /* UserListCell.xib in Resources */,
 				1A595E7624259A030080AE61 /* DashboardListMenuCell.xib in Resources */,
 				1A595E6E242599AB0080AE61 /* DashboardGridMenuCell.xib in Resources */,

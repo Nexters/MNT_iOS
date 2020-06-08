@@ -10,7 +10,6 @@ import UIKit
 
 class ReadyViewController: ViewController {
     
-    let room : Room = UserDefaults.standard.getObject(key: .room)!
     var isAdmin : Bool = false
     var isStarted: Bool = true
     var viewModel: ReadyViewModel?
@@ -49,18 +48,15 @@ class ReadyViewController: ViewController {
         let user : User? = UserDefaults.standard.getObject(key: .user)
         let room: Room? = UserDefaults.standard.getObject(key: .room)
         
-        if room?.id == 60263 {
-            self.isStarted = true
-        } else {
-            APISource.shared.getRoomCheck(userId: user!.id) { (roomCheck) in
-                if (roomCheck![0].userFruttoId == nil) {
-                    self.isStarted = false
-                    
-                } else {
-                    self.isStarted = true
-                }
+        APISource.shared.getRoomCheck(userId: user!.id) { (roomCheck) in
+            if (roomCheck![0].userFruttoId == nil) {
+                self.isStarted = false
+                
+            } else {
+                self.isStarted = true
             }
         }
+        
         self.setUpForParticipant()
     }
     
@@ -152,10 +148,12 @@ class ReadyViewController: ViewController {
     }
     
     func setUpDetailForParticipant() {
-        var frontText = "\(room.startDay) 정오"
+        let room: Room? = UserDefaults.standard.getObject(key: .room)
+        let roomStartDay: String = room?.startDay ?? ""
+        var frontText = "\(roomStartDay) 정오"
         var backText : String?
         
-        titleLabel.text = room.name
+        titleLabel.text = room?.name
         
         if isStarted == false {
             startButton.isUserInteractionEnabled = false

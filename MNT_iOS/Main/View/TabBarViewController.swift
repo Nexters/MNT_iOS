@@ -39,11 +39,17 @@ class TabBarViewController: UITabBarController {
     var missionST = UIButton(title: "", titleColor: .black)
     var stackView = UIView()
     var stackIndex: Int? // 0: 대시보드, 1: 피드, 2: 미션
+    var timer = Timer()
     
     //MARK:- ViewLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         addScrollObserver()
+        timer = Timer.scheduledTimer(timeInterval: 10,
+                             target: self,
+                             selector: #selector(updatetime),
+                             userInfo: nil,
+                             repeats: true)
         
         tabBar.isHidden = true
         // init page to FeedViewController
@@ -130,6 +136,21 @@ class TabBarViewController: UITabBarController {
                                                selector: #selector(animateTabBar(_:)),
                                                name: NSNotification.Name("ScrollAction"),
                                                object: nil)
+    }
+    
+    @objc func updatetime() {
+        let room: Room? = UserDefaults.standard.getObject(key: .room)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let endDate = dateFormatter.date(from: room!.endDay)!
+        let expirationDate = Date(timeInterval: 75600, since: endDate)
+        let today = Date(timeInterval: 32400, since: Date())
+        let interval = expirationDate.timeIntervalSince(today)
+        
+        if interval < 0 {
+            timer.invalidate()
+            viewModel?.exitAction()
+        }
     }
     
     @objc func animateTabBar(_ notification: Notification) {

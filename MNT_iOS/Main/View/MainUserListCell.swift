@@ -42,6 +42,7 @@ class MainUserListCell: UITableViewCell {
 //        deleteButton.centerYToSuperview()
         stackView.anchor(.leading(leadingAnchor, constant: 20))
 //        deleteButton.anchor(.trailing(trailingAnchor, constant: 30))
+        nameLabel.constrainWidth(180)
         
 //        self.deleteButton.addTarget(self,
 //                                    action: #selector(buttonTapped(_:)),

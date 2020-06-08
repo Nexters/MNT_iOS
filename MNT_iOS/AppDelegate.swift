@@ -55,7 +55,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
     
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+        var user: User? = UserDefaults.standard.getObject(key: .user)
+        
+        if user != nil {
+            let editedUser: User = User(id: user!.id,
+                                        name: user!.name,
+                                        profilePic: "string",
+                                        fcmToken: fcmToken)
+            
+            APISource.shared.postSignUp(user: editedUser) {
+                UserDefaults.standard.setObject(object: user, key: .user)
+            }
+        }
+        
         UserDefaults.standard.setStringValue(value: fcmToken, key: .fcmToken)
+        print("fcmToken is \(fcmToken)")
         
         let dataDict:[String: String] = ["token": fcmToken]
         NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
@@ -86,34 +100,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 let scene = MainScene.main(viewModel as! MainViewModel)
                 coordinator.transition(to: scene, using: .root, animated: true)
             } else {
-                if room?.id == 60263 {
-                    let isEntered: Int? = UserDefaults.standard.getIntValue(key: .isEntered)
-                    if isEntered == 0 {
-                        let viewModel = ReadyViewModel(title: "", coordinator: coordinator)
-                        let scene = MainScene.ready(viewModel as! ReadyViewModel)
+                let isEntered: Int? = UserDefaults.standard.getIntValue(key: .isEntered)
+                if isEntered == nil || isEntered == 0 {
+                    let viewModel = ReadyViewModel(title: "", coordinator: coordinator)
+                    let scene = MainScene.ready(viewModel as! ReadyViewModel)
+                    coordinator.transition(to: scene, using: .root, animated: true)
+                } else {
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyy-MM-dd"
+                    let endDate = dateFormatter.date(from: room!.endDay)!
+                    let expirationDate = Date(timeInterval: 75600, since: endDate)
+                    let today = Date(timeInterval: 32400, since: Date())
+                    let interval = expirationDate.timeIntervalSince(today)
+                    
+                    if interval < 0 {
+                        let coordinator = SceneCoordinator(window: window!)
+                        let viewModel = AlertExitViewModel(title: "프루또 종료", coordinator: coordinator)
+                        let scene: SceneType = ExitScene.alertExit(viewModel)
                         coordinator.transition(to: scene, using: .root, animated: true)
                     } else {
                         let viewModel = TabBarViewModel(title: "Tabbar", coordinator: coordinator)
                         let scene = MainScene.enterRoom(viewModel as! TabBarViewModel)
                         coordinator.transition(to: scene, using: .root, animated: true)
-                    }
-                } else {
-                    let userFruttoId: Int? = UserDefaults.standard.getIntValue(key: .userFruttoId)
-                    if userFruttoId == nil {
-                        let viewModel = ReadyViewModel(title: "", coordinator: coordinator)
-                        let scene = MainScene.ready(viewModel as! ReadyViewModel)
-                        coordinator.transition(to: scene, using: .root, animated: true)
-                    } else {
-                        let isEntered: Int? = UserDefaults.standard.getIntValue(key: .isEntered)
-                        if isEntered == 0 {
-                            let viewModel = ReadyViewModel(title: "", coordinator: coordinator)
-                            let scene = MainScene.ready(viewModel as! ReadyViewModel)
-                            coordinator.transition(to: scene, using: .root, animated: true)
-                        } else {
-                            let viewModel = TabBarViewModel(title: "Tabbar", coordinator: coordinator)
-                            let scene = MainScene.enterRoom(viewModel as! TabBarViewModel)
-                            coordinator.transition(to: scene, using: .root, animated: true)
-                        }
                     }
                 }
             }
@@ -255,8 +263,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 } else if let me = me as KOUserMe? {
                     APISource.shared.getRoomCheck(userId: me.id!) { (roomCheck) in
                         if (roomCheck != nil) {
-                            UserDefaults.standard.setObject(object: roomCheck![0].user, key: .user)
+                            var user = roomCheck![0].user
+                            user.fcmToken = UserDefaults.standard.getStringValue(key: .fcmToken) ?? "string"
+                            
+                            UserDefaults.standard.setObject(object: user, key: .user)
                             UserDefaults.standard.setObject(object: roomCheck![0].room, key: .room)
+                            
+                            APISource.shared.postSignUp(user: user) {
+                                UserDefaults.standard.setObject(object: user, key: .user)
+                            }
                             
                             if (roomCheck![0].userFruttoId != nil) {
                                 let isEntered: Int? = UserDefaults.standard.getIntValue(key: .isEntered)
@@ -311,7 +326,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         if KLKTalkLinkCenter.shared().isTalkLinkCallback(url) {
             let room : Room? = UserDefaults.standard.getObject(key: .room)
             if room == nil {
-                let params = url.query
+                //                let params = url.query
+                let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)
+                let queryItems = urlComponents?.queryItems
+                let param = queryItems?.filter({$0.name == "roomnum"}).first
+                let value = param?.value ?? ""
+                
                 let coordinator = SceneCoordinator(window: window!)
                 let mainViewModel = MainViewModel(title: "", coordinator: coordinator)
                 let mainScene: SceneType = MainScene.main(mainViewModel as! MainViewModel)
@@ -320,7 +340,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 
                 let joinViewModel = JoinRoomViewModel(title: "", coordinator: coordinator)
                 let joinScene = MainScene.joinRoom(joinViewModel)
-                joinViewModel.kakaoLinkParams = params
+                joinViewModel.kakaoLinkParams = value
                 coordinator.transition(to: joinScene, using: .push, animated: true).asObservable().map { _ in }
                 
                 return true
@@ -334,11 +354,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             return true
         }
         
+//        let urlComponents = NSURLComponents(string: url)
+//        let queryItems = urlComponents?.queryItems
+//        let param = queryItems?.filter({$0.name == "param1"}).first
+//
+//        let value = param?.value ?? ""
+//
+//        return value
+        
         // Called When Execute KaKaoLink
         if KLKTalkLinkCenter.shared().isTalkLinkCallback(url) {
             let room : Room? = UserDefaults.standard.getObject(key: .room)
             if room == nil {
-                let params = url.query
+//                let params = url.query
+                let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)
+                let queryItems = urlComponents?.queryItems
+                let param = queryItems?.filter({$0.name == "roomnum"}).first
+                let value = param?.value ?? ""
+                
                 let coordinator = SceneCoordinator(window: window!)
                 let mainViewModel = MainViewModel(title: "", coordinator: coordinator)
                 let mainScene: SceneType = MainScene.main(mainViewModel as! MainViewModel)
@@ -347,7 +380,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 
                 let joinViewModel = JoinRoomViewModel(title: "", coordinator: coordinator)
                 let joinScene = MainScene.joinRoom(joinViewModel)
-                joinViewModel.kakaoLinkParams = params
+                joinViewModel.kakaoLinkParams = value
                 coordinator.transition(to: joinScene, using: .push, animated: true).asObservable().map { _ in }
 
                 return true

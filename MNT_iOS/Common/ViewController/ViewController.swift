@@ -53,7 +53,10 @@ class ViewController: UIViewController {
     
     func setupLayout() {}
     
-    func setupNavigationController() {}
+    func setupNavigationController() {
+        navigationController?.navigationBar.tintColor = .defaultText
+        navigationController?.navigationBar.topItem?.title = ""
+    }
     
     func requestAPIs() {}
 }

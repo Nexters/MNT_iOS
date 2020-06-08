@@ -17,15 +17,12 @@ class OpenNittoViewModel: ViewModel {
             
             let user: User? = UserDefaults.standard.getObject(key: .user)
             let room: Room? = UserDefaults.standard.getObject(key: .room)
-            
-            if room?.id != 60263 {
-                APISource.shared.getRoomCheck(userId: user!.id) { (roomCheck) in
-                    UserDefaults.standard.setObject(object: roomCheck![0].manitto, key: .manitto)
-                    UserDefaults.standard.setIntValue(value: roomCheck![0].userFruttoId!, key: .userFruttoId)
-                    UserDefaults.standard.setIntValue(value: 0, key: .isEntered)
-                }
-            }
             UserDefaults.standard.setIntValue(value: 1, key: .isEntered)
+            
+            APISource.shared.getRoomCheck(userId: user!.id) { (roomCheck) in
+                UserDefaults.standard.setObject(object: roomCheck![0].manitto, key: .manitto)
+                UserDefaults.standard.setIntValue(value: roomCheck![0].userFruttoId!, key: .userFruttoId)
+            }
             
             return self.coordinator.transition(to: scene, using: .root, animated: true).asObservable().map { _ in }
         }

@@ -43,6 +43,8 @@ class FeedDetailViewController: ViewController {
 //                                                            style: .plain,
 //                                                            target: self,
 //                                                            action: #selector(tapShare))
+        navigationController?.navigationBar.tintColor = .defaultText
+        navigationController?.navigationBar.topItem?.title = ""
     }
     
     @objc fileprivate func tapShare() {

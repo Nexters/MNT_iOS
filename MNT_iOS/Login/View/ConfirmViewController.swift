@@ -21,15 +21,17 @@ class ConfirmViewController: ViewController{
                                textAlignment: .left,
                                numberOfLines: 0)
     
-    let nameLabel = UILabel(text: "",
-                            font: .mediumFont(ofSize: 17),
-                            textColor: .defaultText,
-                            textAlignment: .left,
-                            numberOfLines: 0)
+//    let nameLabel = UILabel(text: "",
+//                            font: .mediumFont(ofSize: 17),
+//                            textColor: .defaultText,
+//                            textAlignment: .left,
+//                            numberOfLines: 0)
+    
+    let textField = UITextField(placeholder: "이름을 입력해주세요.")
     
     lazy var nameStack : UIStackView = {
         let sv = UIStackView(arrangedSubviews: [
-            nameSubLabel, nameLabel
+            nameSubLabel, textField
         ])
         sv.axis = .vertical
         sv.spacing = 9
@@ -39,6 +41,7 @@ class ConfirmViewController: ViewController{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        activateTapGesture()
         requestMe()
     }
     
@@ -62,6 +65,24 @@ class ConfirmViewController: ViewController{
         )
         profileImage.centerXToSuperview()
         button.centerXToSuperview()
+        textField.constrainWidth(width * 0.84)
+        textField.constrainHeight(25.5)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        let border = CALayer()
+        let width = CGFloat(1.0)
+        
+        textField.clearButtonMode = .always
+        
+        border.borderColor = UIColor.moreText.cgColor
+        border.frame = CGRect(x: 0,
+                              y: textField.frame.size.height - width,
+                              width:  textField.frame.size.width,
+                              height: textField.frame.size.height)
+        border.borderWidth = width
+        textField.layer.addSublayer(border)
+        textField.layer.masksToBounds = true
     }
     
     fileprivate func requestMe() {
@@ -70,7 +91,7 @@ class ConfirmViewController: ViewController{
                 if let error = error as NSError? {
                     UIAlertController.showMessage(error.description)
                 } else if let me = me as KOUserMe? {
-                    self.nameLabel.text = me.nickname
+                    self.textField.text = me.nickname
                     self.title = "\(me.nickname as! String)님, 반가워요!"
                     self.viewModel?.id = me.id
                     self.viewModel?.name = me.nickname
@@ -79,10 +100,8 @@ class ConfirmViewController: ViewController{
                 }
             })
         } else {
-            self.nameLabel.text = UserDefaults.standard.getStringValue(key: .appleUserName)!
-            self.title = "\(UserDefaults.standard.getStringValue(key: .appleUserName)!)님, 반가워요!"
+            self.title = "반가워요!"
             self.viewModel?.id = UserDefaults.standard.getStringValue(key: .appleUserId)
-            self.viewModel?.name = UserDefaults.standard.getStringValue(key: .appleUserName)
         }
     }
 }
@@ -90,5 +109,9 @@ class ConfirmViewController: ViewController{
 extension ConfirmViewController: ViewModelBindableType {
     func bindViewModel(viewModel: ConfirmViewModel) {
         button.rx.action = viewModel.presentMainAction()
+        
+        textField.rx.text.orEmpty
+            .bind(to: viewModel.nameTextRelay)
+            .disposed(by: rx.disposeBag)
     }
 }

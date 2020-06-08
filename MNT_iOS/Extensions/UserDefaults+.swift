@@ -14,7 +14,6 @@ extension UserDefaults {
         case userFruttoId // userFruttoId: Int
         case socialLogin // socialLogin: String
         case appleUserId
-        case appleUserName
         case fcmToken
         case isEntered // 사용자가 방 시작하기 버튼 누름 - 1
     }
@@ -66,5 +65,17 @@ extension UserDefaults {
         let output = self.value(forKey: key.rawValue) as? String
         
         return output
+    }
+    
+    func deleteObject(key: UserDefaultKeys) {
+        self.removeObject(forKey: key.rawValue)
+        
+        self.synchronize()
+    }
+    
+    func deleteIntValue(key: UserDefaultKeys) {
+        self.removeObject(forKey: key.rawValue)
+        
+        self.synchronize()
     }
 }
