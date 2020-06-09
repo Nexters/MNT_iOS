@@ -23,15 +23,11 @@ class GuessViewModel: ViewModel {
         return Action { [unowned self] action in
             var manittoName: String?
             var manittoFruttoId: Int?
-            let viewModel = MainViewModel(title: "Main", coordinator: self.coordinator)
-            let scene = MainScene.main(viewModel)
+            let viewModel = TabBarViewModel(title: "Tabbar", coordinator: self.coordinator)
+            let scene = MainScene.enterRoom(viewModel)
             let alert = UIAlertController(title: nil, message: "당신의 마니또는?", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "확인", style: .default, handler: { (action) in
-                UserDefaults.standard.deleteObject(key: .room)
-                UserDefaults.standard.deleteObject(key: .manitto)
-                UserDefaults.standard.deleteIntValue(key: .userFruttoId)
-                UserDefaults.standard.deleteIntValue(key: .isEntered)
-                
+                UserDefaults.standard.setIntValue(value: 1, key: .isOver)
                 self.coordinator.transition(to: scene, using: .root, animated: true)
             })
             var VC: UIViewController?
