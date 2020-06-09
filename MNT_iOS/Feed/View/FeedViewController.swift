@@ -128,6 +128,7 @@ extension FeedViewController: ViewModelBindableType {
                                                         manittoId: $0.manitto?.id ?? "",
                                                         manittoFruttoId: $0.manitto?.fruttoId ?? 0,
                                                         manittoName: $0.manitto?.name ?? "") }.reversed()
+            
             self.emptyView.isHidden =  missions.count > 0
             self.tableView.reloadData()
         }

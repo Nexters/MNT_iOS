@@ -32,7 +32,7 @@
                         </constraints>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Ucq-lq-9Wl">
-                        <rect key="frame" x="118" y="14.5" width="40" height="35.5"/>
+                        <rect key="frame" x="115" y="14.5" width="40" height="35.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Qa-ch-fJI">
                                 <rect key="frame" x="0.0" y="0.0" width="40" height="18"/>
@@ -84,7 +84,7 @@
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="jkc-hf-3Iw" secondAttribute="trailing" constant="26" id="ClS-Fm-oCc"/>
                     <constraint firstItem="VzH-Ar-10Q" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="GXJ-HY-y36"/>
-                    <constraint firstItem="Ucq-lq-9Wl" firstAttribute="leading" secondItem="43o-AP-KTZ" secondAttribute="trailing" constant="8" symbolic="YES" id="QWF-nw-c9i"/>
+                    <constraint firstItem="Ucq-lq-9Wl" firstAttribute="leading" secondItem="43o-AP-KTZ" secondAttribute="trailing" constant="5" id="QWF-nw-c9i"/>
                     <constraint firstItem="43o-AP-KTZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="V0E-42-Rb8"/>
                     <constraint firstItem="43o-AP-KTZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="46" id="dHq-8b-VfW"/>
                     <constraint firstAttribute="bottomMargin" secondItem="jkc-hf-3Iw" secondAttribute="bottom" constant="5" id="fE9-Ra-4Ck"/>
