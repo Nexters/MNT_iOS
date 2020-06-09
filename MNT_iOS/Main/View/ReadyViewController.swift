@@ -38,6 +38,7 @@ class ReadyViewController: ViewController {
     var sendButton = PrimaryButton("카카오톡 초대장 보내기 🤝")
     var startButton = PrimaryButton("시작하기 🙋‍♀️")
     var checkButton = TextOnlyButton("참여자 보기 👭")
+    var timer = Timer()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -49,15 +50,46 @@ class ReadyViewController: ViewController {
         let room: Room? = UserDefaults.standard.getObject(key: .room)
         
         APISource.shared.getRoomCheck(userId: user!.id) { (roomCheck) in
-            if (roomCheck![0].userFruttoId == nil) {
-                self.isStarted = false
-                
-            } else {
-                self.isStarted = true
+            let roomNum: Int = roomCheck?.count ?? 0
+            
+            if roomNum > 0 {
+                let index = roomNum - 1 // 마지막으로 참가한 방의 인덱스
+                if roomCheck![index].room.isStart == 1 {
+                    self.isStarted = true
+                } else {
+                    self.isStarted = false
+                }
+            }
+            
+            self.setUpForParticipant()
+            
+            if self.isStarted == false {
+                self.timer = Timer.scheduledTimer(timeInterval: 30,
+                target: self,
+                selector: #selector(self.updatetime),
+                userInfo: nil,
+                repeats: true)
             }
         }
+    }
+    
+    @objc func updatetime() {
+        let user: User? = UserDefaults.standard.getObject(key: .user)
+        let room: Room? = UserDefaults.standard.getObject(key: .room)
         
-        self.setUpForParticipant()
+        APISource.shared.getRoomCheck(userId: user!.id) { (roomCheck) in
+            let roomNum: Int = roomCheck?.count ?? 0
+            
+            if roomNum > 0 {
+                let index = roomNum - 1 // 마지막으로 참가한 방의 인덱스
+                
+                if roomCheck![index].room.isStart == 1 { // 방이 시작됨
+                    self.timer.invalidate()
+                    self.isStarted = true
+                    self.setUpDetailForParticipant()
+                }
+            }
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -160,6 +192,8 @@ class ReadyViewController: ViewController {
             startButton.backgroundColor = .disableColor
             backText = "에 시작합니다.\n친구들이 모일 때까지 잠시 기다려주세요👏"
         } else {
+            startButton.isUserInteractionEnabled = true
+            startButton.backgroundColor = .primaryColor
             backText = "에 시작되었습니다!\n친구들과 함께 프루또를 해볼까요?👏"
         }
         

@@ -136,6 +136,7 @@
 		583659CC23E4AB7100E2752F /* RoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583659CB23E4AB7100E2752F /* RoomViewModel.swift */; };
 		583EBDAA246C616B0076C68F /* UserDefaults+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583EBDA9246C616B0076C68F /* UserDefaults+.swift */; };
 		58423436248BCF8B00920EEC /* agreement.txt in Resources */ = {isa = PBXBuildFile; fileRef = 58423435248BCF8B00920EEC /* agreement.txt */; };
+		584DDB4C248FDC3C000EA52E /* FruttoAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584DDB4B248FDC3C000EA52E /* FruttoAlertViewController.swift */; };
 		58938B582481155F00BECE51 /* TabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0697123F27F16000B8D27 /* TabBarViewModel.swift */; };
 		58938B59248115C300BECE51 /* MissionMakeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A595E792425C57B0080AE61 /* MissionMakeCell.swift */; };
 		58938B62248150D000BECE51 /* PushKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58938B61248150D000BECE51 /* PushKit.framework */; };
@@ -337,6 +338,7 @@
 		583659CB23E4AB7100E2752F /* RoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomViewModel.swift; sourceTree = "<group>"; };
 		583EBDA9246C616B0076C68F /* UserDefaults+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+.swift"; sourceTree = "<group>"; };
 		58423435248BCF8B00920EEC /* agreement.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = agreement.txt; sourceTree = "<group>"; };
+		584DDB4B248FDC3C000EA52E /* FruttoAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruttoAlertViewController.swift; sourceTree = "<group>"; };
 		586E24AB247FF55600D8DA75 /* MNT_iOSDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MNT_iOSDebug.entitlements; sourceTree = "<group>"; };
 		58938B61248150D000BECE51 /* PushKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PushKit.framework; path = System/Library/Frameworks/PushKit.framework; sourceTree = SDKROOT; };
 		58938B692481586000BECE51 /* GoogleUtilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GoogleUtilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -506,6 +508,7 @@
 				1A595E802425F6670080AE61 /* TextFieldContainer.swift */,
 				58D017B923FC799600D55DA6 /* DisableButton.swift */,
 				1A1354B6247FE7C800144B8D /* EmptyPageView.swift */,
+				584DDB4B248FDC3C000EA52E /* FruttoAlertViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1557,6 +1560,7 @@
 				1A4E688D23E40E79005D2CFD /* MissionPariticipantViewController.swift in Sources */,
 				1A8FAF4A23E0737E009A92C1 /* UIStackView+.swift in Sources */,
 				1A4E687923E3FFC3005D2CFD /* RoundedImageView.swift in Sources */,
+				584DDB4C248FDC3C000EA52E /* FruttoAlertViewController.swift in Sources */,
 				1A1354B7247FE7C800144B8D /* EmptyPageView.swift in Sources */,
 				1ADEFD9A23FC4D4E00E3DC49 /* FeedFilterCellFooterView.swift in Sources */,
 				1AECB7D623F137000018BC16 /* UIColor+.swift in Sources */,
@@ -1743,7 +1747,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MNT_iOS/MNT_iOSDebug.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CJ9DCX3V4H;
+				DEVELOPMENT_TEAM = WF8UF5VWG6;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
@@ -1754,7 +1758,7 @@
 					"@executable_path/Frameworks",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nexters.MNT-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "nexters.MNT-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "KakaoOpenSDK-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -1770,7 +1774,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CJ9DCX3V4H;
+				DEVELOPMENT_TEAM = WF8UF5VWG6;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",

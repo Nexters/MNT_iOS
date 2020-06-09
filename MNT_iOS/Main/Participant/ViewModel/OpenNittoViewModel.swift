@@ -20,11 +20,16 @@ class OpenNittoViewModel: ViewModel {
             UserDefaults.standard.setIntValue(value: 1, key: .isEntered)
             
             APISource.shared.getRoomCheck(userId: user!.id) { (roomCheck) in
-                UserDefaults.standard.setObject(object: roomCheck![0].manitto, key: .manitto)
-                UserDefaults.standard.setIntValue(value: roomCheck![0].userFruttoId!, key: .userFruttoId)
+                let roomNum: Int = roomCheck?.count ?? 0
+                if roomNum > 0 {
+                    let index = roomNum - 1 // 마지막으로 참가한 방의 인덱스
+                    UserDefaults.standard.setObject(object: roomCheck![index].manitto, key: .manitto)
+                    UserDefaults.standard.setIntValue(value: roomCheck![index].userFruttoId!, key: .userFruttoId)
+                    self.coordinator.transition(to: scene, using: .root, animated: true)
+                }
             }
             
-            return self.coordinator.transition(to: scene, using: .root, animated: true).asObservable().map { _ in }
+            return Observable.just(action)
         }
     }
 }

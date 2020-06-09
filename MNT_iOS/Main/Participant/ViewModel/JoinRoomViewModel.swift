@@ -17,13 +17,18 @@ class JoinRoomViewModel: ViewModel {
     
     func presentReadyAction() -> CocoaAction {
         return CocoaAction { action in
+            let fruttoAlertVC = FruttoAlertViewController()
+            fruttoAlertVC.onCancel = {
+                print("취소")
+            }
+            
             if self.codeTextRelay.value == "" {
                 self.showAlert("초대코드를 입력해주세요.")
                 return Observable.just(action)
             }
-            
+
             let code: Int = Int(self.codeTextRelay.value) ?? -1
-            
+
             if (code == 60263) {
                 let room = Room(endDay: "2020-08-16",
                                 id: code,
@@ -38,7 +43,7 @@ class JoinRoomViewModel: ViewModel {
                                 fcmToken: "string")
                 UserDefaults.standard.setObject(object: room, key: .room)
                 UserDefaults.standard.setObject(object: user, key: .user)
-                
+
                 let viewModel = ReadyViewModel(title: "대기화면", coordinator: self.coordinator)
                 let scene = MainScene.ready(viewModel)
                 self.coordinator.transition(to: scene, using: .root, animated: true).asObservable().map { _ in }
@@ -61,10 +66,12 @@ class JoinRoomViewModel: ViewModel {
                                             self.showAlert("유효하지 않은 방입니다.")
                                         } else {
                                             UserDefaults.standard.setObject(object: room, key: .room)
-                                            
+                                            UserDefaults.standard.setIntValue(value: 0, key: .isOver)
+                                            UserDefaults.standard.setIntValue(value: 0, key: .isEntered)
+
                                             let viewModel = ReadyViewModel(title: "대기화면", coordinator: self.coordinator)
                                             let scene = MainScene.ready(viewModel)
-                                            
+
                                             self.coordinator.transition(to: scene, using: .root, animated: true).asObservable().map { _ in }
                                         }
                                     }

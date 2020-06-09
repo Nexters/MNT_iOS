@@ -45,11 +45,14 @@ class TabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         addScrollObserver()
-        timer = Timer.scheduledTimer(timeInterval: 10,
-                             target: self,
-                             selector: #selector(updatetime),
-                             userInfo: nil,
-                             repeats: true)
+        
+        if UserDefaults.standard.getIntValue(key: .isOver) != 1 {
+            timer = Timer.scheduledTimer(timeInterval: 30,
+            target: self,
+            selector: #selector(updatetime),
+            userInfo: nil,
+            repeats: true)
+        }
         
         tabBar.isHidden = true
         // init page to FeedViewController
@@ -139,17 +142,20 @@ class TabBarViewController: UITabBarController {
     }
     
     @objc func updatetime() {
+        let user: User? = UserDefaults.standard.getObject(key: .user)
         let room: Room? = UserDefaults.standard.getObject(key: .room)
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let endDate = dateFormatter.date(from: room!.endDay)!
-        let expirationDate = Date(timeInterval: 75600, since: endDate)
-        let today = Date(timeInterval: 32400, since: Date())
-        let interval = expirationDate.timeIntervalSince(today)
         
-        if interval < 0 {
-            timer.invalidate()
-            viewModel?.exitAction()
+        APISource.shared.getRoomCheck(userId: user!.id) { (roomCheck) in
+            let roomNum: Int = roomCheck?.count ?? 0
+            
+            if roomNum > 0 {
+                let index = roomNum - 1 // 마지막으로 참가한 방의 인덱스
+                
+                if roomCheck![index].room.isDone == 1 { // 방이 종료됨
+                    self.timer.invalidate()
+                    self.viewModel?.exitAction()
+                }
+            }
         }
     }
     

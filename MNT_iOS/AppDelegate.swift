@@ -44,8 +44,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Override point for customization after application launch.
         //        testing()
         
-//        login()
-        testingMNTRoomWith(member: .bestchoi)
+        login()
+//        testingMNTRoomWith(member: .bestchoi)
         
         return true
     }
@@ -69,7 +69,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
         
         UserDefaults.standard.setStringValue(value: fcmToken, key: .fcmToken)
-        print("fcmToken is \(fcmToken)")
         
         let dataDict:[String: String] = ["token": fcmToken]
         NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
@@ -87,41 +86,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     private func login() {
         let coordinator = SceneCoordinator(window: window!)
-//        var viewModel: ViewModel?
-//        var scene: SceneType?
         let user: User? = UserDefaults.standard.getObject(key: .user)
         
         if user == nil {
             kakaoLogin()
         } else {
             let room: Room? = UserDefaults.standard.getObject(key: .room)
-            if room == nil {
+            if room == nil { // 방이 없음
                 let viewModel = MainViewModel(title: "", coordinator: coordinator)
                 let scene = MainScene.main(viewModel as! MainViewModel)
                 coordinator.transition(to: scene, using: .root, animated: true)
             } else {
                 let isEntered: Int? = UserDefaults.standard.getIntValue(key: .isEntered)
-                if isEntered == nil || isEntered == 0 {
+                if isEntered == nil || isEntered == 0 { // 방이 있으나 안 들어감
                     let viewModel = ReadyViewModel(title: "", coordinator: coordinator)
                     let scene = MainScene.ready(viewModel as! ReadyViewModel)
                     coordinator.transition(to: scene, using: .root, animated: true)
-                } else {
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "yyyy-MM-dd"
-                    let endDate = dateFormatter.date(from: room!.endDay)!
-                    let expirationDate = Date(timeInterval: 75600, since: endDate)
-                    let today = Date(timeInterval: 32400, since: Date())
-                    let interval = expirationDate.timeIntervalSince(today)
-                    
-                    if interval < 0 {
-                        let coordinator = SceneCoordinator(window: window!)
-                        let viewModel = AlertExitViewModel(title: "프루또 종료", coordinator: coordinator)
-                        let scene: SceneType = ExitScene.alertExit(viewModel)
-                        coordinator.transition(to: scene, using: .root, animated: true)
-                    } else {
-                        let viewModel = TabBarViewModel(title: "Tabbar", coordinator: coordinator)
-                        let scene = MainScene.enterRoom(viewModel as! TabBarViewModel)
-                        coordinator.transition(to: scene, using: .root, animated: true)
+                } else { // 방이 있고 들어감
+                    APISource.shared.getRoomCheck(userId: user!.id) { (roomCheck) in
+                        let roomNum = roomCheck?.count ?? 0
+                        
+                        if roomNum > 0 {
+                            let index = roomNum - 1 // 마지막으로 참가한 방의 인덱스
+                            
+                            if roomCheck![index].room.isDone == 1 { // 방이 종료됨
+                                UserDefaults.standard.setIntValue(value: 1, key: .isOver)
+                                let coordinator = SceneCoordinator(window: self.window!)
+                                let viewModel = AlertExitViewModel(title: "프루또 종료", coordinator: coordinator)
+                                let scene: SceneType = ExitScene.alertExit(viewModel)
+                                coordinator.transition(to: scene, using: .root, animated: true)
+                            } else { // 방이 종료되지 않음
+                                UserDefaults.standard.setIntValue(value: 1, key: .isEntered)
+                                let viewModel = TabBarViewModel(title: "Tabbar", coordinator: coordinator)
+                                let scene = MainScene.enterRoom(viewModel as! TabBarViewModel)
+                                coordinator.transition(to: scene, using: .root, animated: true)
+                            }
+                        }
                     }
                 }
             }
@@ -262,45 +262,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                     print(error.description)
                 } else if let me = me as KOUserMe? {
                     APISource.shared.getRoomCheck(userId: me.id!) { (roomCheck) in
-                        if (roomCheck != nil) {
-                            var user = roomCheck![0].user
-                            user.fcmToken = UserDefaults.standard.getStringValue(key: .fcmToken) ?? "string"
-                            
-                            UserDefaults.standard.setObject(object: user, key: .user)
-                            UserDefaults.standard.setObject(object: roomCheck![0].room, key: .room)
-                            
-                            APISource.shared.postSignUp(user: user) {
-                                UserDefaults.standard.setObject(object: user, key: .user)
-                            }
-                            
-                            if (roomCheck![0].userFruttoId != nil) {
-                                let isEntered: Int? = UserDefaults.standard.getIntValue(key: .isEntered)
-                                if isEntered == nil {
-                                    let viewModel = ReadyViewModel(title: "", coordinator: coordinator)
-                                    let scene = MainScene.ready(viewModel as! ReadyViewModel)
-                                    coordinator.transition(to: scene, using: .root, animated: true)
-                                } else {
-                                    let viewModel = TabBarViewModel(title: "Tabbar", coordinator: coordinator)
-                                    let scene = MainScene.enterRoom(viewModel as! TabBarViewModel)
-                                    if let user : User = UserDefaults.standard.getObject(key: .user) {
-                                        APISource.shared.getRoomCheck(userId: user.id) { (roomCheck) in
-                                            UserDefaults.standard.setObject(object: roomCheck![0].manitto, key: .manitto)
-                                            UserDefaults.standard.setIntValue(value: roomCheck![0].userFruttoId!, key: .userFruttoId)
-                                            UserDefaults.standard.setIntValue(value: 1, key: .isEntered)
-                                        }
-                                    }
-                                    coordinator.transition(to: scene, using: .root, animated: true)
-                                }
-                            } else {
-                                let viewModel = ReadyViewModel(title: "", coordinator: coordinator)
-                                let scene: SceneType = MainScene.ready(viewModel)
-                                coordinator.transition(to: scene, using: .root, animated: true)
-                            }
-                        } else {
+                        let roomNum: Int = roomCheck?.count ?? 0
+                        
+                        if roomNum == 0 { // 참가한 방이 하나도 없음
                             let viewModel = AgreeViewModel(title: "이용약관", coordinator: coordinator)
                             let scene: SceneType = LoginScene.agree(viewModel as! AgreeViewModel)
                             UserDefaults.standard.setStringValue(value: "Kakao", key: .socialLogin)
                             coordinator.transition(to: scene, using: .root, animated: true)
+                        } else {
+                            let index = roomNum - 1 // 마지막으로 참가한 방의 인덱스
+                            UserDefaults.standard.setObject(object: roomCheck![index].user, key: .user)
+                            
+                            if roomCheck![index].room.isDone == 1 { // 방이 종료됨
+                                let viewModel = AgreeViewModel(title: "이용약관", coordinator: coordinator)
+                                let scene: SceneType = LoginScene.agree(viewModel as! AgreeViewModel)
+                                UserDefaults.standard.setStringValue(value: "Kakao", key: .socialLogin)
+                                coordinator.transition(to: scene, using: .root, animated: true)
+                            } else {
+                                UserDefaults.standard.setObject(object: roomCheck![index].room, key: .room)
+                                
+                                if roomCheck![index].room.isStart == 1 { // 방이 시작됨
+                                    UserDefaults.standard.setObject(object: roomCheck![index].manitto, key: .manitto)
+                                    UserDefaults.standard.setIntValue(value: roomCheck![index].userFruttoId!, key: .userFruttoId)
+                                    UserDefaults.standard.setIntValue(value: 1, key: .isEntered)
+                                    let viewModel = TabBarViewModel(title: "Tabbar", coordinator: coordinator)
+                                    let scene = MainScene.enterRoom(viewModel as! TabBarViewModel)
+                                    coordinator.transition(to: scene, using: .root, animated: true)
+                                } else { // 방이 시작되지 않음
+                                    let viewModel = ReadyViewModel(title: "", coordinator: coordinator)
+                                    let scene: SceneType = MainScene.ready(viewModel)
+                                    coordinator.transition(to: scene, using: .root, animated: true)
+                                }
+                            }
                         }
                     }
                 } else {
@@ -327,7 +320,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         if KLKTalkLinkCenter.shared().isTalkLinkCallback(url) {
             let room : Room? = UserDefaults.standard.getObject(key: .room)
             if room == nil {
-                //                let params = url.query
                 let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)
                 let queryItems = urlComponents?.queryItems
                 let param = queryItems?.filter({$0.name == "roomnum"}).first
@@ -355,19 +347,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             return true
         }
         
-//        let urlComponents = NSURLComponents(string: url)
-//        let queryItems = urlComponents?.queryItems
-//        let param = queryItems?.filter({$0.name == "param1"}).first
-//
-//        let value = param?.value ?? ""
-//
-//        return value
-        
         // Called When Execute KaKaoLink
         if KLKTalkLinkCenter.shared().isTalkLinkCallback(url) {
             let room : Room? = UserDefaults.standard.getObject(key: .room)
             if room == nil {
-//                let params = url.query
                 let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)
                 let queryItems = urlComponents?.queryItems
                 let param = queryItems?.filter({$0.name == "roomnum"}).first

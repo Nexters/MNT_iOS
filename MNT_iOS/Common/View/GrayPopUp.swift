@@ -22,8 +22,8 @@ class GrayPopUp: UIButton {
     }
     
     override func draw(_ rect: CGRect) {
-        self.withWidth(116)
-        self.withHeight(40.5)
+        self.withWidth((superview?.frame.width)! * 0.425)
+        self.withHeight((superview?.frame.height)! * 0.215)
         self.layer.cornerRadius = 10.0
         self.clipsToBounds = true
     }
