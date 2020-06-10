@@ -43,6 +43,6 @@ class FeedCellViewModel {
         return "\(imageInstance.getFruitName(datas.userFruttoId))님이 \(datas.manittoName)에게 "
     }
     var date: String {
-        return datas.userDoneTime
+        return datas.userDoneTime.timeFormatted()
     }
 }

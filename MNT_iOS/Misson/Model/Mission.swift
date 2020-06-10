@@ -31,7 +31,7 @@ struct UserMission: Codable {
     var userDone: Int? = nil
     var userDoneTime: String? = nil
     var userId: UserId = UserId()
-//    var userMissions: [UserMissions] = []
+//    var userMissions: [UserMissions] 
 }
 
 struct MissionSendingData {
