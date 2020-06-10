@@ -27,7 +27,7 @@ class GuessViewModel: ViewModel {
             let scene = MainScene.enterRoom(viewModel)
             let alert = UIAlertController(title: nil, message: "당신의 마니또는?", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "확인", style: .default, handler: { (action) in
-                UserDefaults.standard.setIntValue(value: 1, key: .isOver)
+                UserDefaults.standard.setIntValue(value: 1, key: .isOver) 
                 self.coordinator.transition(to: scene, using: .root, animated: true)
             })
             var VC: UIViewController?

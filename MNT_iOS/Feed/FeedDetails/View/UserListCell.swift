@@ -72,6 +72,10 @@ class UserListCell: UITableViewCell {
         // TODO index error....
         manittoImageView.image =  instance.getFruitCircle(participant.userFruttoId ?? 0)
         manittoLabel.text = instance.getFruitName(participant.userFruttoId ?? 0)
+        
+        if UserDefaults.standard.getIntValue(key: .isOver) == 1 { // room is over
+            manittoLabel.text = participant.user?.name
+        }
         targetImageView.image = instance.getProfileFace((participant.manitto?.fruttoId ?? 0))
         targetLabel.text = participant.manitto?.name ?? ""
     }

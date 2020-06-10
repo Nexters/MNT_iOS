@@ -40,7 +40,13 @@ class FeedCellViewModel {
         return datas.content
     }
     var fromToLabel: String {
-        return "\(imageInstance.getFruitName(datas.userFruttoId))님이 \(datas.manittoName)에게 "
+        var username = imageInstance.getFruitName(datas.userFruttoId)
+        
+        if UserDefaults.standard.getIntValue(key: .isOver) == 1 {
+            username = datas.userName
+        }
+        
+        return "\(username)님이 \(datas.manittoName)에게 "
     }
     var date: String {
         return datas.userDoneTime.timeFormatted()

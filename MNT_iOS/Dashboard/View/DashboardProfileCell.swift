@@ -19,7 +19,14 @@ class DashboardProfileCell: UICollectionViewCell {
     
     func setupView() {
         let imageview = UIImageView(image: FruitImage.sharedInstance.getFruitCircle(userFruttoID))
-        let label = UILabel(text: "\(FruitImage.sharedInstance.getFruitName(userFruttoID))님,\n니또를 챙겨줄 때입니다!", font: .boldFont(ofSize: 20), textColor: .defaultText, numberOfLines: 2)
+        
+        var username = FruitImage.sharedInstance.getFruitName(userFruttoID)
+        
+        if UserDefaults.standard.getIntValue(key: .isOver) == 1 {
+            username = (UserDefaults.standard.getObject(key: .user) ?? User()).name
+        }
+        
+        let label = UILabel(text: "\(username)님,\n니또를 챙겨줄 때입니다!", font: .boldFont(ofSize: 20), textColor: .defaultText, numberOfLines: 2)
         
         addSubview(imageview)
         addSubview(label)

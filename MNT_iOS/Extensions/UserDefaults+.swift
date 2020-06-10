@@ -16,7 +16,7 @@ extension UserDefaults {
         case appleUserId
         case fcmToken
         case isEntered // 사용자가 방 시작하기 버튼 누름 - 1
-        case isOver
+        case isOver // 0: 아직 안끝난거, 1: 끝난거
     }
     
     func setObject<T: Codable>(object: T, key: UserDefaultKeys) {

@@ -15,7 +15,6 @@ class DashboardViewModel: ViewModel {
     var missionReceived: Int = 0
     var missionAll: Int = 0
     
-    
     var gridMenu: [DashboardGridMenu] {
         return [
             DashboardGridMenu(image: FruitImage.sharedInstance.getProfileFace(manitto.fruttoId!), subText: "내 푸르또는?", mainText: manitto.name!, type: .normal),

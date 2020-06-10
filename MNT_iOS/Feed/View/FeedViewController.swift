@@ -77,6 +77,7 @@ class FeedViewController: ViewController {
         view.addSubview(emptyView)
         view.backgroundColor = .white
         emptyView.setType(type: .feed)
+        tableView.backgroundColor = .white
         
         tableView.anchor(.top(view.topAnchor),
                          .bottom(view.bottomAnchor),

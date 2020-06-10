@@ -13,7 +13,15 @@ class FeedHeaderView: UIView {
         super.init(frame: .zero)
         
         let userFruitId = UserDefaults.standard.getIntValue(key: .userFruttoId) ?? 1
-        let label = UILabel(text: "\(FruitImage.sharedInstance.getFruitName(userFruitId))님,\n안녕하세요!", font: .boldFont(ofSize: 20), textColor: .defaultText, numberOfLines: 2)
+        var username: String {
+            var username = FruitImage.sharedInstance.getFruitName(userFruitId)
+            if UserDefaults.standard.getIntValue(key: .isOver) ==  1 {
+                username = (UserDefaults.standard.getObject(key: .user) ?? User()).name
+            }
+            return username
+        }
+        
+        let label = UILabel(text: "\(username)님,\n안녕하세요!", font: .boldFont(ofSize: 20), textColor: .defaultText, numberOfLines: 2)
         label.setLineSpacing(lineSpacing: 5)
         let profileImageview = UIImageView(image: FruitImage.sharedInstance.getFruitCircle(userFruitId))
         let randomImageviews = getDummyFruits(fruitId: userFruitId)
