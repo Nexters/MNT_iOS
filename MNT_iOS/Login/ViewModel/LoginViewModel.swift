@@ -27,7 +27,6 @@ class LoginViewModel: ViewModel {
     func presentTabbarAction() {
         let viewModel = TabBarViewModel(title: "", coordinator: self.coordinator)
         let scene: SceneType = MainScene.enterRoom(viewModel)
-        UserDefaults.standard.setIntValue(value: 1, key: .isEntered)
         
         self.coordinator.transition(to: scene, using: .root, animated: true).asObservable().map { _ in }
     }

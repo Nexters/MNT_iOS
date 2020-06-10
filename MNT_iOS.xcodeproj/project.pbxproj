@@ -138,6 +138,9 @@
 		583659CC23E4AB7100E2752F /* RoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583659CB23E4AB7100E2752F /* RoomViewModel.swift */; };
 		583EBDAA246C616B0076C68F /* UserDefaults+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583EBDA9246C616B0076C68F /* UserDefaults+.swift */; };
 		58423436248BCF8B00920EEC /* agreement.txt in Resources */ = {isa = PBXBuildFile; fileRef = 58423435248BCF8B00920EEC /* agreement.txt */; };
+		584DDB4E24909A51000EA52E /* FruttoAlert2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584DDB4D24909A51000EA52E /* FruttoAlert2ViewController.swift */; };
+		584DDB5024909A82000EA52E /* FruttoAlert1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584DDB4F24909A82000EA52E /* FruttoAlert1ViewController.swift */; };
+		584DDB522490ACDD000EA52E /* FruttoAlertWithImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584DDB512490ACDD000EA52E /* FruttoAlertWithImageViewController.swift */; };
 		58938B582481155F00BECE51 /* TabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB0697123F27F16000B8D27 /* TabBarViewModel.swift */; };
 		58938B59248115C300BECE51 /* MissionMakeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A595E792425C57B0080AE61 /* MissionMakeCell.swift */; };
 		58938B62248150D000BECE51 /* PushKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58938B61248150D000BECE51 /* PushKit.framework */; };
@@ -341,6 +344,9 @@
 		583659CB23E4AB7100E2752F /* RoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomViewModel.swift; sourceTree = "<group>"; };
 		583EBDA9246C616B0076C68F /* UserDefaults+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+.swift"; sourceTree = "<group>"; };
 		58423435248BCF8B00920EEC /* agreement.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = agreement.txt; sourceTree = "<group>"; };
+		584DDB4D24909A51000EA52E /* FruttoAlert2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruttoAlert2ViewController.swift; sourceTree = "<group>"; };
+		584DDB4F24909A82000EA52E /* FruttoAlert1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruttoAlert1ViewController.swift; sourceTree = "<group>"; };
+		584DDB512490ACDD000EA52E /* FruttoAlertWithImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruttoAlertWithImageViewController.swift; sourceTree = "<group>"; };
 		586E24AB247FF55600D8DA75 /* MNT_iOSDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MNT_iOSDebug.entitlements; sourceTree = "<group>"; };
 		58938B61248150D000BECE51 /* PushKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PushKit.framework; path = System/Library/Frameworks/PushKit.framework; sourceTree = SDKROOT; };
 		58938B692481586000BECE51 /* GoogleUtilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GoogleUtilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -510,6 +516,9 @@
 				1A595E802425F6670080AE61 /* TextFieldContainer.swift */,
 				58D017B923FC799600D55DA6 /* DisableButton.swift */,
 				1A1354B6247FE7C800144B8D /* EmptyPageView.swift */,
+				584DDB4D24909A51000EA52E /* FruttoAlert2ViewController.swift */,
+				584DDB4F24909A82000EA52E /* FruttoAlert1ViewController.swift */,
+				584DDB512490ACDD000EA52E /* FruttoAlertWithImageViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1488,6 +1497,7 @@
 				1A8FAF4823E06A81009A92C1 /* MainScene.swift in Sources */,
 				1ADEFDA023FC64EE00E3DC49 /* BottomBar.swift in Sources */,
 				1AB0696E23F232B0000B8D27 /* FeedFilterViewController.swift in Sources */,
+				584DDB5024909A82000EA52E /* FruttoAlert1ViewController.swift in Sources */,
 				1AFC040223C99841005B7A6F /* Objects+.swift in Sources */,
 				581B160E23EC790D00D0593B /* UICollectionView+.swift in Sources */,
 				1A21D271242B8B7B00FCAC3C /* MissionPreviewViewModel.swift in Sources */,
@@ -1501,6 +1511,7 @@
 				1A595E7524259A030080AE61 /* DashboardListMenuCell.swift in Sources */,
 				58C56FFF246AF1B6000FEDC7 /* AgreeViewModel.swift in Sources */,
 				581B161823ECB58F00D0593B /* UIApplication+.swift in Sources */,
+				584DDB522490ACDD000EA52E /* FruttoAlertWithImageViewController.swift in Sources */,
 				1AD5F7BB23E8762400F96263 /* MissionPreviewViewController.swift in Sources */,
 				1A81AE5F23E90C38004CADBC /* FromToView.swift in Sources */,
 				1AAB0E3A23DED4980003A2C4 /* ViewModel.swift in Sources */,
@@ -1511,6 +1522,7 @@
 				1A4E68A523E474D4005D2CFD /* MissionPostViewModel.swift in Sources */,
 				1A21D273242CECCF00FCAC3C /* OrderMissionResponse.swift in Sources */,
 				1A81AE5A23E9099A004CADBC /* FeedDetailViewController.swift in Sources */,
+				584DDB4E24909A51000EA52E /* FruttoAlert2ViewController.swift in Sources */,
 				58C56FFD246AF1A7000FEDC7 /* AgreeViewController.swift in Sources */,
 				1AD6D40523BF9DBC000B1893 /* AppDelegate.swift in Sources */,
 				1ADEFD9E23FC5A8E00E3DC49 /* CloseButtonBar.swift in Sources */,
@@ -1751,7 +1763,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MNT_iOS/MNT_iOSDebug.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CJ9DCX3V4H;
+				DEVELOPMENT_TEAM = WF8UF5VWG6;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
@@ -1762,7 +1774,7 @@
 					"@executable_path/Frameworks",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nexters.MNT-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "nexters.MNT-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "KakaoOpenSDK-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -1778,7 +1790,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CJ9DCX3V4H;
+				DEVELOPMENT_TEAM = WF8UF5VWG6;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",

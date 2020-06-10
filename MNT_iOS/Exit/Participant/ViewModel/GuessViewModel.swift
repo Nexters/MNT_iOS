@@ -25,12 +25,6 @@ class GuessViewModel: ViewModel {
             var manittoFruttoId: Int?
             let viewModel = TabBarViewModel(title: "Tabbar", coordinator: self.coordinator)
             let scene = MainScene.enterRoom(viewModel)
-            let alert = UIAlertController(title: nil, message: "당신의 마니또는?", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "확인", style: .default, handler: { (action) in
-                UserDefaults.standard.setIntValue(value: 1, key: .isOver) 
-                self.coordinator.transition(to: scene, using: .root, animated: true)
-            })
-            var VC: UIViewController?
             let user: User? = UserDefaults.standard.getObject(key: .user)
             let room: Room? = UserDefaults.standard.getObject(key: .room)
             
@@ -39,41 +33,26 @@ class GuessViewModel: ViewModel {
                     if participants[i].manitto.id == user?.id {
                         manittoName = participants[i].user.name
                         manittoFruttoId = participants[i].userFruttoId
-                        VC = self.createCustomVC(manittoName!, manittoFruttoId!)
-                        alert.setValue(VC, forKey: "contentViewController")
-                        alert.addAction(okAction)
-                        UIApplication.topViewController()?.present(alert, animated: false)
+                        
+                        let alertVC = FruttoAlertWithImageViewController()
+                        alertVC.modalPresentationStyle = .overFullScreen
+                        alertVC.setTitleLabel(text: "당신의 마니또는?")
+                        alertVC.setManitto(manittoName: manittoName ?? "프루또",
+                                           manittoFruttoId: manittoFruttoId ?? 3)
+                        alertVC.onConfirm = {
+                            print("확인")
+                            let viewModel = TabBarViewModel(title: "Tabbar", coordinator: self.coordinator)
+                            let scene = MainScene.enterRoom(viewModel)
+                            UserDefaults.standard.setIntValue(value: 1, key: .isOver)
+                            self.coordinator.transition(to: scene, using: .root, animated: true)
+                        }
+                        UIApplication.topViewController()?.present(alertVC, animated: true, completion: nil)
                     }
                 }
             }
             
             return Observable.just(action)
         }
-    }
-    
-    func createCustomVC(_ manittoName: String, _ manittoFruittoId: Int) -> UIViewController {
-        let nameImage = UIImageView(image: FruitImage.sharedInstance.getFruitPopUp(manittoFruittoId))
-        var nameLabel = UILabel(text: manittoName,
-                                font: .mediumFont(ofSize: 16),
-                                textColor: .defaultText,
-                                textAlignment: .center,
-                                numberOfLines: 0)
-        let customVC = UIViewController()
-        let containerView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-        
-        customVC.view = containerView
-        customVC.view.addSubview(nameImage)
-        customVC.view.addSubview(nameLabel)
-        
-        nameImage.anchor(.top(customVC.view.topAnchor, constant: customVC.view.frame.height * 0.225))
-        nameLabel.anchor(.top(nameImage.topAnchor, constant: nameImage.frame.height * 0.34))
-        nameImage.centerXToSuperview()
-        nameLabel.centerXToSuperview()
-        
-        customVC.preferredContentSize.width = 300
-        customVC.preferredContentSize.height = 200
-        
-        return customVC
     }
 }
 

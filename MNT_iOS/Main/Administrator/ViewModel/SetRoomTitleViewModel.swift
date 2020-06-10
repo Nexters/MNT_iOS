@@ -17,10 +17,13 @@ class SetRoomTitleViewModel: ViewModel {
     func presentSetRoomDetailAction() -> CocoaAction {
         return CocoaAction { action in
             if self.roomTitleTextRelay.value == "" || self.roomTitleTextRelay.value == nil {
-                let alert = UIAlertController(title: nil, message: "방 이름을 입력해주세요.", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
-                alert.addAction(okAction)
-                UIApplication.topViewController()?.present(alert, animated: false)
+                let alertVC = FruttoAlert1ViewController()
+                alertVC.modalPresentationStyle = .overFullScreen
+                alertVC.setTitleLabel(text: "방 이름을 입력해주세요.")
+                alertVC.onConfirm = {
+                    print("확인")
+                }
+                UIApplication.topViewController()?.present(alertVC, animated: true, completion: nil)
                 
                 return Observable.just(action)
             }

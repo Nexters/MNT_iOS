@@ -21,21 +21,30 @@ class ConfirmViewController: ViewController{
                                textAlignment: .left,
                                numberOfLines: 0)
     
-//    let nameLabel = UILabel(text: "",
-//                            font: .mediumFont(ofSize: 17),
-//                            textColor: .defaultText,
-//                            textAlignment: .left,
-//                            numberOfLines: 0)
+    let nameLabel = UILabel(text: "",
+                            font: .mediumFont(ofSize: 17),
+                            textColor: .defaultText,
+                            textAlignment: .left,
+                            numberOfLines: 0)
     
     let textField = UITextField(placeholder: "이름을 입력해주세요.")
     
     lazy var nameStack : UIStackView = {
-        let sv = UIStackView(arrangedSubviews: [
-            nameSubLabel, textField
-        ])
-        sv.axis = .vertical
-        sv.spacing = 9
-       return sv
+        let sv: UIStackView?
+        if UserDefaults.standard.getStringValue(key: .socialLogin) == "Kakao" {
+            sv = UIStackView(arrangedSubviews: [
+                nameSubLabel, nameLabel
+            ])
+            sv!.axis = .vertical
+            sv!.spacing = 9
+        } else {
+            sv = UIStackView(arrangedSubviews: [
+                nameSubLabel, textField
+            ])
+            sv!.axis = .vertical
+            sv!.spacing = 9
+        }
+       return sv!
     }()
     
     override func viewWillAppear(_ animated: Bool) {
@@ -91,7 +100,7 @@ class ConfirmViewController: ViewController{
                 if let error = error as NSError? {
                     UIAlertController.showMessage(error.description)
                 } else if let me = me as KOUserMe? {
-                    self.textField.text = me.nickname
+                    self.nameLabel.text = me.nickname
                     self.title = "\(me.nickname as! String)님, 반가워요!"
                     self.viewModel?.id = me.id
                     self.viewModel?.name = me.nickname

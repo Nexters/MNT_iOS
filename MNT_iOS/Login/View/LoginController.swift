@@ -105,19 +105,28 @@ class LoginController: ViewController, ASAuthorizationControllerDelegate, ASAuth
             UserDefaults.standard.setStringValue(value: credential.user, key: .appleUserId)
             
             APISource.shared.getRoomCheck(userId: credential.user) { (roomCheck) in
-                if (roomCheck != nil) {
-                    UserDefaults.standard.setObject(object: roomCheck![0].user, key: .user)
-                    UserDefaults.standard.setObject(object: roomCheck![0].room, key: .room)
-                    
-                    if (roomCheck![0].userFruttoId != nil) {
-                        UserDefaults.standard.setObject(object: roomCheck![0].manitto, key: .manitto)
-                        UserDefaults.standard.setIntValue(value: roomCheck![0].userFruttoId!, key: .userFruttoId)
-                        self.viewModel?.presentTabbarAction()
-                    } else {
-                        self.viewModel?.presentReadyAction()
-                    }
-                } else {
+                let roomNum: Int = roomCheck?.count ?? 0
+                
+                if roomNum == 0 { // 참가한 방이 하나도 없음
                     self.viewModel?.presentAgreeAction()
+                } else {
+                    let index = roomNum - 1 // 마지막으로 참가한 방의 인덱스
+                    
+                    if roomCheck![index].room.isDone == 1 { // 방이 종료됨
+                        self.viewModel?.presentAgreeAction()
+                    } else {
+                        UserDefaults.standard.setObject(object: roomCheck![index].user, key: .user)
+                        UserDefaults.standard.setObject(object: roomCheck![index].room, key: .room)
+                        
+                        if roomCheck![index].room.isStart == 1 { // 방이 시작됨
+                            UserDefaults.standard.setObject(object: roomCheck![index].manitto, key: .manitto)
+                            UserDefaults.standard.setIntValue(value: roomCheck![index].userFruttoId!, key: .userFruttoId)
+                            UserDefaults.standard.setIntValue(value: 1, key: .isEntered)
+                            self.viewModel?.presentTabbarAction()
+                        } else { // 방이 시작되지 않음
+                            self.viewModel?.presentReadyAction()
+                        }
+                    }
                 }
             }
         }
