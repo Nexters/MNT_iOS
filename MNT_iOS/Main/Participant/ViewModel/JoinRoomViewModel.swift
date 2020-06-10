@@ -17,10 +17,6 @@ class JoinRoomViewModel: ViewModel {
     
     func presentReadyAction() -> CocoaAction {
         return CocoaAction { action in
-            let fruttoAlertVC = FruttoAlertViewController()
-            fruttoAlertVC.onCancel = {
-                print("취소")
-            }
             
             if self.codeTextRelay.value == "" {
                 self.showAlert("초대코드를 입력해주세요.")
@@ -89,9 +85,9 @@ class JoinRoomViewModel: ViewModel {
     }
     
     func showAlert(_ message: String) {
-        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
-        alert.addAction(okAction)
-        UIApplication.topViewController()?.present(alert, animated: false)
+        let alertVC = FruttoAlert1ViewController()
+        alertVC.modalPresentationStyle = .overFullScreen
+        alertVC.setTitleLabel(text: message)
+        UIApplication.topViewController()?.present(alertVC, animated: true, completion: nil)
     }
 }

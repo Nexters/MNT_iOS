@@ -103,7 +103,6 @@ class LoginController: ViewController, ASAuthorizationControllerDelegate, ASAuth
         if let credential = authorization.credential as? ASAuthorizationAppleIDCredential {
             UserDefaults.standard.setStringValue(value: "Apple", key: .socialLogin)
             UserDefaults.standard.setStringValue(value: credential.user, key: .appleUserId)
-            print("user is \(credential.user)")
             
             APISource.shared.getRoomCheck(userId: credential.user) { (roomCheck) in
                 let roomNum: Int = roomCheck?.count ?? 0
@@ -112,11 +111,11 @@ class LoginController: ViewController, ASAuthorizationControllerDelegate, ASAuth
                     self.viewModel?.presentAgreeAction()
                 } else {
                     let index = roomNum - 1 // 마지막으로 참가한 방의 인덱스
-                    UserDefaults.standard.setObject(object: roomCheck![index].user, key: .user)
                     
                     if roomCheck![index].room.isDone == 1 { // 방이 종료됨
                         self.viewModel?.presentAgreeAction()
                     } else {
+                        UserDefaults.standard.setObject(object: roomCheck![index].user, key: .user)
                         UserDefaults.standard.setObject(object: roomCheck![index].room, key: .room)
                         
                         if roomCheck![index].room.isStart == 1 { // 방이 시작됨

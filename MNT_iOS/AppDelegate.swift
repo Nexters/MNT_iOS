@@ -271,7 +271,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                             coordinator.transition(to: scene, using: .root, animated: true)
                         } else {
                             let index = roomNum - 1 // 마지막으로 참가한 방의 인덱스
-                            UserDefaults.standard.setObject(object: roomCheck![index].user, key: .user)
                             
                             if roomCheck![index].room.isDone == 1 { // 방이 종료됨
                                 let viewModel = AgreeViewModel(title: "이용약관", coordinator: coordinator)
@@ -279,6 +278,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                                 UserDefaults.standard.setStringValue(value: "Kakao", key: .socialLogin)
                                 coordinator.transition(to: scene, using: .root, animated: true)
                             } else {
+                                UserDefaults.standard.setObject(object: roomCheck![index].user, key: .user)
                                 UserDefaults.standard.setObject(object: roomCheck![index].room, key: .room)
                                 
                                 if roomCheck![index].room.isStart == 1 { // 방이 시작됨

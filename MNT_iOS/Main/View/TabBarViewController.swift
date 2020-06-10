@@ -48,10 +48,10 @@ class TabBarViewController: UITabBarController {
         
         if UserDefaults.standard.getIntValue(key: .isOver) != 1 {
             timer = Timer.scheduledTimer(timeInterval: 30,
-            target: self,
-            selector: #selector(updatetime),
-            userInfo: nil,
-            repeats: true)
+                                         target: self,
+                                         selector: #selector(updatetime),
+                                         userInfo: nil,
+                                         repeats: true)
         }
         
         tabBar.isHidden = true

@@ -21,8 +21,8 @@ class PrimaryPopUp: UIButton {
     }
     
     override func draw(_ rect: CGRect) {
-        self.withWidth((superview?.frame.width)! * 0.425)
-        self.withHeight((superview?.frame.height)! * 0.215)
+        self.withWidth((superview?.frame.width)! * 0.344)
+        self.withHeight((superview?.frame.height)! * 0.057)
         self.layer.cornerRadius = 10.0
         self.clipsToBounds = true
     }
