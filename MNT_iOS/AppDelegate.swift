@@ -16,7 +16,7 @@ import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, MessagingDelegate {
-    
+     
     var window: UIWindow?
     
     // MARK:- APP Lifecycle
@@ -44,8 +44,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Override point for customization after application launch.
         //        testing()
         
-        login()
-//        testingMNTRoomWith(member: .bestchoi)
+//        login()
+        testingMNTRoomWith(member: .bestchoi)
         
         return true
     }

@@ -9,7 +9,6 @@
 import Foundation
 
 extension String {
-    
     func timeFormatted() -> String {
         let substring = self.replacingOccurrences(of: "T", with: " ")
         guard let index = substring.index(of: ".") else { return "tagg fffail !" }

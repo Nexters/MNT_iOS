@@ -24,10 +24,17 @@ class MissionPreviewViewModel: ViewModel {
     }
     
     func confirmAction() {
-        NotificationCenter.default.post(
-            name: .init("MissionPosted"),
-            object: nil)
-        self.coordinator.transition(using: .popToRoot)
+        let alertVC = FruttoAlert1ViewController()
+        alertVC.modalPresentationStyle = .overFullScreen
+        alertVC.setTitleLabel(text: "이름을 입력해주세요.")
+        alertVC.onConfirm = { [unowned self] in
+            NotificationCenter.default.post(
+                name: .init("MissionPosted"),
+                object: nil)
+            self.coordinator.transition(using: .popToRoot)
+        }
+        
+        UIApplication.topViewController()?.present(alertVC, animated: true, completion: nil)
     }
     
     //

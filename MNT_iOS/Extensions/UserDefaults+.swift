@@ -15,7 +15,7 @@ extension UserDefaults {
         case socialLogin // socialLogin: String
         case appleUserId
         case fcmToken
-        case isEntered // 사용자가 방 시작하기 버튼 누름 - 1
+        case isEntered // 0: 시작 안한거 1: 시작한거
         case isOver // 0: 아직 안끝난거, 1: 끝난거
     }
     
@@ -78,5 +78,15 @@ extension UserDefaults {
         self.removeObject(forKey: key.rawValue)
         
         self.synchronize()
+    }
+    
+    func deleteAllAboutRoom(completion: () -> Void = {}) {
+        self.deleteObject(key: .manitto)
+        self.deleteObject(key: .room)
+        self.deleteIntValue(key: .isEntered)
+        self.deleteIntValue(key: .isOver)
+        self.deleteIntValue(key: .userFruttoId)
+        
+        completion()
     }
 }

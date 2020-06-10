@@ -55,6 +55,15 @@ struct Room: Codable, getRoomViewModel {
     var name: String = ""
     var startDay: String = ""
 
+    var getIntervalDate: String {
+        let format = DateFormatter()
+        format.dateFormat = "yyyy-MM-dd"
+        guard let tempDate = format.date(from: endDay) else { return endDay }
+        let interval = Int((NSDate().timeIntervalSince(tempDate)))
+        let dateInterval = interval / 60 / 60 / 24
+        return "D-\(dateInterval)"
+    }
+    
     var asRoomViewModel: RoomViewModel {
         return RoomViewModel(datas: self)
     }
