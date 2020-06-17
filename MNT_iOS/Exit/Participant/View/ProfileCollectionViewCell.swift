@@ -32,6 +32,7 @@ class ProfileCollectionViewCell: UICollectionViewCell {
         
         profileImageView.constrainWidth(45)
         profileImageView.constrainHeight(45)
+        profileNameLabel.constrainWidth(70)
         
         layer.masksToBounds = false
         layer.cornerRadius = 10
