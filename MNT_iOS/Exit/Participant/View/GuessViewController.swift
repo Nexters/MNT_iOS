@@ -15,7 +15,7 @@ class GuessViewController: ViewController, UICollectionViewDelegateFlowLayout {
     
     var viewModel: GuessViewModel?
     let descriptionLabel = UILabel(
-        text: "푸르또가 종료되었습니다.\n마니또를 공개하기 전에\n본인의 마니또를 맞춰보세요!",
+        text: "프루또가 종료되었습니다.\n마니또를 공개하기 전에\n본인의 마니또를 맞춰보세요!",
         font: .mediumFont(ofSize: 14),
         textColor: .subLabelColor,
         textAlignment: .center,

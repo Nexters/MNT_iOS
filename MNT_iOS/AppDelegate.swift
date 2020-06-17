@@ -206,14 +206,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     fileprivate func testingAdminExit() {
         let coordinator = SceneCoordinator(window: window!)
-        let viewModel = AlertExitOrNotViewModel(title: "푸르또 종료", coordinator: coordinator)
+        let viewModel = AlertExitOrNotViewModel(title: "프루또 종료", coordinator: coordinator)
         let scene: SceneType = ExitScene.alertExitOrNot(viewModel)
         coordinator.transition(to: scene, using: .root, animated: true)
     }
     
     fileprivate func testingParticipantExit() {
         let coordinator = SceneCoordinator(window: window!)
-        let viewModel = AlertExitViewModel(title: "푸르또 종료", coordinator: coordinator)
+        let viewModel = AlertExitViewModel(title: "프루또 종료", coordinator: coordinator)
         let scene: SceneType = ExitScene.alertExit(viewModel)
         coordinator.transition(to: scene, using: .root, animated: true)
     }

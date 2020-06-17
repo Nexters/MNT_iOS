@@ -50,7 +50,7 @@ class ReadyViewModel: ViewModel {
     
     func enterRoom() -> CocoaAction {
         return CocoaAction { _ in
-            let viewModel = OpenNittoViewModel(title: "내 푸르또는 누구일까요?", coordinator: self.coordinator)
+            let viewModel = OpenNittoViewModel(title: "내 프루또는 누구일까요?", coordinator: self.coordinator)
             let scene: SceneType = MainScene.openNitto(viewModel)
             
             return self.coordinator.transition(to: scene, using: .push, animated: true).asObservable().map { _ in }

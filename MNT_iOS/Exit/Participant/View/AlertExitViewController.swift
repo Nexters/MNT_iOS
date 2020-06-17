@@ -14,7 +14,7 @@ import RxCocoa
 class AlertExitViewController: ViewController {
     
     var viewModel: AlertExitViewModel?
-    let subLabel = UILabel(text: "아쉽게도 푸르또 종료일이 다가왔습니다.😢\n즐겁고 행복한 시간이 되셨길 바랍니다.",
+    let subLabel = UILabel(text: "아쉽게도 프루또 종료일이 다가왔습니다.😢\n즐겁고 행복한 시간이 되셨길 바랍니다.",
                            font: .mediumFont(ofSize: 15),
                            textColor: .subLabelColor,
                            textAlignment: .center,

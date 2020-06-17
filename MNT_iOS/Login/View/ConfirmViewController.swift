@@ -14,7 +14,7 @@ class ConfirmViewController: ViewController{
     let profileImage = UIImageView(image: #imageLiteral(resourceName: "profileFace01"))
     var userId: String?
     var userName: String?
-    var button = PrimaryButton("푸르또 시작하기🍎")
+    var button = PrimaryButton("프루또 시작하기🍎")
     let nameSubLabel = UILabel(text: "이름",
                                font: .mediumFont(ofSize: 13),
                                textColor: .subLabelColor,

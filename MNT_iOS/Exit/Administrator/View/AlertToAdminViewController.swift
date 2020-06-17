@@ -10,7 +10,7 @@ import Foundation
 
 class AlertToAdminViewController : ViewController {
     
-    let label = UILabel(text: "푸르또를 종료하시겠습니까?\n참가자들의 푸르또가 공개됩니다.",
+    let label = UILabel(text: "프루또를 종료하시겠습니까?\n참가자들의 프루또가 공개됩니다.",
                         font: .semiBoldFont(ofSize: 15),
                         textColor: .defaultText,
                         textAlignment: .center,

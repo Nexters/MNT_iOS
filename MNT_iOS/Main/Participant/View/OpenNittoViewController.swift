@@ -71,7 +71,7 @@ class OpenNittoViewController: ViewController {
         navigationController?.navigationBar.isHidden = false
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.title = "내 푸르또는 누구일까요?"
+        self.title = "내 프루또는 누구일까요?"
     }
     
     override func setupLayout() {

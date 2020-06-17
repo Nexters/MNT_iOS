@@ -91,7 +91,7 @@ class MissionTableViewController: UITableViewController {
      */
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
-           return MissionTitleHeaderView(text: "푸르또를 위해\n미션을 수행해주세요.")
+           return MissionTitleHeaderView(text: "프루또를 위해\n미션을 수행해주세요.")
         } else {
             return UIView()
         }
@@ -117,7 +117,7 @@ extension MissionTableViewController {
 }
 
 class MissionTitleHeaderView: UIView {
-    let label = UILabel(text: "푸르또를 위해\n미션을 수행해주세요.", font: .boldFont(ofSize: 20), textColor: .defaultText, numberOfLines: 2)
+    let label = UILabel(text: "프루또를 위해\n미션을 수행해주세요.", font: .boldFont(ofSize: 20), textColor: .defaultText, numberOfLines: 2)
     
     init(text: String) {
         super.init(frame: .zero)
