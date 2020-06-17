@@ -44,8 +44,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Override point for customization after application launch.
         //        testing()
         
-//        login()
-        testingMNTRoomWith(member: .bestchoi)
+        login()
+//        testingMNTRoomWith(member: .bestchoi)
         
         return true
     }

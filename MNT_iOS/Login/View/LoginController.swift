@@ -72,6 +72,7 @@ class LoginController: ViewController, ASAuthorizationControllerDelegate, ASAuth
         logoImage.constrainWidth(height * 0.273)
         logoImage.constrainHeight(height * 0.298)
         KakaoLoginButton.centerXToSuperview()
+        
         if #available(iOS 13.0, *) {
             appleLoginButton.anchor(.top(KakaoLoginButton.bottomAnchor, constant: 10))
             appleLoginButton.centerXToSuperview()

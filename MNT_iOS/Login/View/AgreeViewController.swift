@@ -58,7 +58,7 @@ class AgreeViewController: ViewController {
 
         
         scrollView.anchor(
-            .top(view.topAnchor, constant: height * 0.35),
+            .top(view.topAnchor, constant: height * 0.2),
             .bottom(view.bottomAnchor, constant: height * 0.35),
             .leading(view.leadingAnchor, constant: 30),
             .trailing(view.trailingAnchor, constant: 30)

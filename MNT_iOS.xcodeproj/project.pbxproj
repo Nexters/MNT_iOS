@@ -273,7 +273,7 @@
 		1AB0697123F27F16000B8D27 /* TabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewModel.swift; sourceTree = "<group>"; };
 		1AB0697223F27F16000B8D27 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		1AD5F7BA23E8762400F96263 /* MissionPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionPreviewViewController.swift; sourceTree = "<group>"; };
-		1AD6D40123BF9DBC000B1893 /* MNT_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MNT_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1AD6D40123BF9DBC000B1893 /* 프루또.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "프루또.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AD6D40423BF9DBC000B1893 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1AD6D40623BF9DBC000B1893 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		1AD6D40823BF9DBC000B1893 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -898,7 +898,7 @@
 		1AD6D40223BF9DBC000B1893 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1AD6D40123BF9DBC000B1893 /* MNT_iOS.app */,
+				1AD6D40123BF9DBC000B1893 /* 프루또.app */,
 				1AD6D41A23BF9DBF000B1893 /* MNT_iOSTests.xctest */,
 				1AD6D42523BF9DBF000B1893 /* MNT_iOSUITests.xctest */,
 			);
@@ -1213,7 +1213,7 @@
 			);
 			name = MNT_iOS;
 			productName = MNT_iOS;
-			productReference = 1AD6D40123BF9DBC000B1893 /* MNT_iOS.app */;
+			productReference = 1AD6D40123BF9DBC000B1893 /* 프루또.app */;
 			productType = "com.apple.product-type.application";
 		};
 		1AD6D41923BF9DBF000B1893 /* MNT_iOSTests */ = {
@@ -1763,7 +1763,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MNT_iOS/MNT_iOSDebug.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WF8UF5VWG6;
+				DEVELOPMENT_TEAM = CJ9DCX3V4H;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
@@ -1774,8 +1774,8 @@
 					"@executable_path/Frameworks",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "nexters.MNT-iOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nexters.MNT-iOS";
+				PRODUCT_NAME = "프루또";
 				SWIFT_OBJC_BRIDGING_HEADER = "KakaoOpenSDK-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1790,7 +1790,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WF8UF5VWG6;
+				DEVELOPMENT_TEAM = CJ9DCX3V4H;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
@@ -1802,7 +1802,7 @@
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "nexters.MNT-iOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "프루또";
 				SWIFT_OBJC_BRIDGING_HEADER = "KakaoOpenSDK-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
