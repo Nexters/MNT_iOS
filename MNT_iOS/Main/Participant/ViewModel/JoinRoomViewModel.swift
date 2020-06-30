@@ -25,7 +25,7 @@ class JoinRoomViewModel: ViewModel {
 
             let code: Int = Int(self.codeTextRelay.value) ?? -1
 
-            if (code == 60263) {
+            if (code == 34852) {
                 let room = Room(endDay: "2020-08-16",
                                 id: code,
                                 isDone: 0,
