@@ -26,7 +26,7 @@ class LoginController: ViewController, ASAuthorizationControllerDelegate, ASAuth
     @available(iOS 13.0, *)
     lazy var appleLoginButton: ASAuthorizationAppleIDButton = {
         let btn = ASAuthorizationAppleIDButton(type: .signIn, style: .whiteOutline)
-        btn.addTarget(self, action: #selector(appleLogin), for: .touchUpInside)
+        btn.addTarget(self, action: #selector(appleLogin), for: .touchDown)
         btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
     }()
@@ -101,10 +101,10 @@ class LoginController: ViewController, ASAuthorizationControllerDelegate, ASAuth
     @available(iOS 13.0, *)
     func authorizationController(controller: ASAuthorizationController,
                                  didCompleteWithAuthorization authorization: ASAuthorization) {
+        
         if let credential = authorization.credential as? ASAuthorizationAppleIDCredential {
             UserDefaults.standard.setStringValue(value: "Apple", key: .socialLogin)
             UserDefaults.standard.setStringValue(value: credential.user, key: .appleUserId)
-            
             APISource.shared.getRoomCheck(userId: credential.user) { (roomCheck) in
                 let roomNum: Int = roomCheck?.count ?? 0
                 
@@ -131,6 +131,10 @@ class LoginController: ViewController, ASAuthorizationControllerDelegate, ASAuth
                 }
             }
         }
+    }
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        print("Err : \(error)")
     }
 }
 
